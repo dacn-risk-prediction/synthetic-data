@@ -331,6 +331,84 @@ def balanced_class_sizes(demand, max_size=120):
     ]
 
 
+def assign_balanced_lecturers(
+    course_order,
+    eligibility,
+    lecturers,
+    course_names,
+    semester,
+    max_size=120,
+):
+    """Assign lecturers to classes across courses in a semester in a balanced round-robin manner per department.
+
+    Parameters:
+    - course_order: sequence of course codes to create classes for
+    - eligibility: dict mapping student_id -> list/set of selected courses, or course_code -> int demand
+    - lecturers: DataFrame containing 'lecturer_id', 'departments', 'lecturer_name'
+    - course_names: dict mapping course_code -> course_name
+    - semester: semester code (e.g. 'HK221')
+    - max_size: maximum class capacity (default: 120)
+
+    Returns:
+    - list of dicts representing classes
+    """
+    if not eligibility:
+        return []
+
+    # Precompute demand per course
+    first_val = next(iter(eligibility.values()))
+    if isinstance(first_val, (int, np.integer, float)):
+        demands = {code: int(demand) for code, demand in eligibility.items()}
+    else:
+        demands = {}
+        for selected in eligibility.values():
+            for code in selected:
+                demands[code] = demands.get(code, 0) + 1
+
+    lecturer_names = dict(zip(lecturers["lecturer_id"], lecturers["lecturer_name"]))
+    dept_lecturers = {}
+    for dept, group in lecturers.groupby("departments", sort=False):
+        dept_lecturers[dept] = group["lecturer_id"].tolist()
+    dept_pointers = {dept: 0 for dept in dept_lecturers}
+
+    class_data = []
+    for course_code in course_order:
+        demand = demands.get(course_code, 0)
+        if not demand:
+            continue
+        if course_code not in course_names:
+            raise ValueError(f"Courses missing from course.csv: {course_code}")
+
+        dept = catalog_department(course_code)
+        dept_ids = dept_lecturers.get(dept)
+        if not dept_ids:
+            dept_ids = lecturers.loc[
+                lecturers["departments"] == dept,
+                "lecturer_id",
+            ].tolist() or ["UNKNOWN_ID"]
+            dept_lecturers[dept] = dept_ids
+            dept_pointers[dept] = 0
+
+        for index, _ in enumerate(
+            balanced_class_sizes(demand, max_size=max_size), start=1
+        ):
+            group = f"L{index:02d}"
+            ptr = dept_pointers[dept]
+            lecturer_id = dept_ids[ptr % len(dept_ids)]
+            dept_pointers[dept] = ptr + 1
+            class_data.append({
+                "class_id": f"{semester}_{course_code}_{group}",
+                "course_code": course_code,
+                "course_name": course_names[course_code],
+                "semester": semester,
+                "class_group": group,
+                "lecturer_id": lecturer_id,
+                "lecturer_name": lecturer_names.get(lecturer_id, "Unknown Name"),
+            })
+
+    return class_data
+
+
 def students_by_course_from_eligibility(eligibility):
     students_by_course = {}
     for student_id, courses in eligibility.items():

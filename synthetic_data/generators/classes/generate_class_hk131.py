@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT_DIR = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT_DIR / "rules"))
 from academic_rules import (
+    assign_balanced_lecturers,
     balanced_class_sizes,
     get_exempted_english_courses,
     load_student_profiles,
@@ -29,37 +30,26 @@ missing = [code for code in course_codes if code not in course_names]
 if missing:
     raise ValueError("Courses missing from course.csv: " + ", ".join(missing))
 
-id_to_name = dict(zip(lecturers["lecturer_id"], lecturers["lecturer_name"]))
-class_data = []
-
-for course_code in course_codes:
-    department = get_department(course_code)
-    lecturer_ids = lecturers.loc[
-        lecturers["departments"] == department, "lecturer_id"
-    ].tolist() or ["UNKNOWN"]
-    if course_code == "LA1003":
-        course_demand = sum(
+course_demands = {
+    code: (
+        sum(
             "LA1003" not in get_exempted_english_courses(student)
             for student in students.loc[
                 students["student_id"].str.startswith("13")
             ].itertuples(index=False)
         )
-    else:
-        course_demand = len(student_ids)
-    for index, _ in enumerate(balanced_class_sizes(course_demand), start=1):
-        group = f"L{index:02d}"
-        lecturer_id = lecturer_ids[(index - 1) % len(lecturer_ids)]
-        class_data.append(
-            {
-                "class_id": f"{SEMESTER}_{course_code}_{group}",
-                "course_code": course_code,
-                "course_name": course_names[course_code],
-                "semester": SEMESTER,
-                "class_group": group,
-                "lecturer_id": lecturer_id,
-                "lecturer_name": id_to_name.get(lecturer_id, "Unknown Name"),
-            }
-        )
+        if code == "LA1003"
+        else len(student_ids)
+    )
+    for code in course_codes
+}
+class_data = assign_balanced_lecturers(
+    course_order=course_codes,
+    eligibility=course_demands,
+    lecturers=lecturers,
+    course_names=course_names,
+    semester=SEMESTER,
+)
 
 output = ROOT_DIR / "generated" / "classes" / "class_hk131.csv"
 pd.DataFrame(class_data).to_csv(output, index=False, encoding="utf-8-sig")

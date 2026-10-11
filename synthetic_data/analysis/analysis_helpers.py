@@ -1188,3 +1188,110 @@ def view_late_graduation_distribution(cohort, print_report=True):
 analyze_late_graduations = view_late_graduation_distribution
 
 
+def view_lecturer_classes(lecturer_id, print_report=True):
+    """Retrieve and display all classes taught by a lecturer across all semesters (HK131 to HK261)."""
+    lecturer_id_str = str(lecturer_id).strip()
+
+    # Load lecturer metadata if available
+    lecturer_name = "N/A"
+    department = "N/A"
+    if LECTURE_FILE.exists():
+        df_lecturers = pd.read_csv(LECTURE_FILE, dtype={"lecturer_id": str})
+        df_lecturers["lecturer_id"] = df_lecturers["lecturer_id"].astype(str).str.strip()
+        match_lec = df_lecturers[df_lecturers["lecturer_id"] == lecturer_id_str]
+        if not match_lec.empty:
+            lecturer_name = match_lec["lecturer_name"].values[0]
+            department = match_lec["departments"].values[0]
+
+    # Find and sort all class files from HK131 onwards
+    class_files = []
+    for file in sorted(CLASSES_DIR.glob("class_hk*.csv")):
+        sem_code = file.stem.replace("class_", "").upper()
+        try:
+            sem_idx = semester_index(sem_code)
+        except Exception:
+            sem_idx = 999
+        class_files.append((sem_idx, sem_code, file))
+    class_files.sort(key=lambda x: x[0])
+
+    records = []
+    for _, sem_code, file in class_files:
+        df_class = pd.read_csv(file, dtype=str)
+        if "lecturer_id" not in df_class.columns:
+            continue
+        df_class["lecturer_id"] = df_class["lecturer_id"].astype(str).str.strip()
+        matched = df_class[df_class["lecturer_id"] == lecturer_id_str]
+        if matched.empty:
+            continue
+
+        # Check enrollment for student counts if available
+        enr_file = ENROLLMENTS_DIR / f"enrollment_{sem_code.lower()}.csv"
+        enr_counts = {}
+        if enr_file.exists():
+            try:
+                df_enr = pd.read_csv(enr_file, usecols=["class_id"], dtype=str)
+                df_enr["class_id"] = df_enr["class_id"].astype(str).str.strip()
+                enr_counts = df_enr["class_id"].value_counts().to_dict()
+            except Exception:
+                pass
+
+        for _, row in matched.iterrows():
+            cid = row.get("class_id", "")
+            if lecturer_name == "N/A" and "lecturer_name" in row and pd.notna(row["lecturer_name"]):
+                lecturer_name = str(row["lecturer_name"]).strip()
+            records.append({
+                "semester": sem_code,
+                "class_id": cid,
+                "course_code": row.get("course_code", ""),
+                "course_name": row.get("course_name", ""),
+                "class_group": row.get("class_group", ""),
+                "students_count": enr_counts.get(cid) if enr_file.exists() else None,
+            })
+
+    df_result = pd.DataFrame(records)
+
+    result = {
+        "lecturer_id": lecturer_id_str,
+        "lecturer_name": lecturer_name,
+        "department": department,
+        "total_classes": len(records),
+        "total_semesters": df_result["semester"].nunique() if not df_result.empty else 0,
+        "classes": df_result,
+    }
+
+    if print_report:
+        print(f"\n{'='*85}")
+        print(f" LỊCH SỬ GIẢNG DẠY CỦA GIẢNG VIÊN (LECTURER TEACHING PROFILE) ".center(85, "="))
+        print(f"{'='*85}")
+        print(f"Mã giảng viên: {lecturer_id_str}")
+        print(f"Họ và tên:     {lecturer_name}")
+        print(f"Bộ môn / Khoa: {department}")
+        print(f"Tổng số lớp:   {len(records)} lớp")
+        print(f"Số học kỳ dạy: {result['total_semesters']} kỳ")
+        print(f"{'-'*85}")
+
+        if df_result.empty:
+            print(f"[!] Giảng viên {lecturer_id_str} ({lecturer_name}) chưa được phân công lớp nào trong hệ thống.")
+        else:
+            for sem, group in df_result.groupby("semester", sort=False):
+                print(f"\n▶ Học kỳ {sem} ({len(group)} lớp):")
+                display_cols = ["class_id", "course_code", "course_name", "class_group"]
+                rename_map = {
+                    "class_id": "Mã lớp",
+                    "course_code": "Mã môn",
+                    "course_name": "Tên môn học",
+                    "class_group": "Nhóm",
+                }
+                if group["students_count"].notna().any():
+                    display_cols.append("students_count")
+                    rename_map["students_count"] = "Sĩ số"
+                table = group[display_cols].rename(columns=rename_map)
+                print(table.to_string(index=False))
+        print(f"\n{'='*85}\n")
+
+    return result
+
+
+get_lecturer_classes = view_lecturer_classes
+
+

@@ -12,6 +12,7 @@ from academic_rules import (
     MAX_CREDITS,
     add_gpa_summaries,
     allocate_course_rosters,
+    assign_balanced_lecturers,
     balanced_class_sizes,
     calculate_eligibility_for_schedule,
     load_history,
@@ -38,7 +39,9 @@ SEMESTERS = (
     "HK221", "HK222", "HK231", "HK232", "HK241", "HK242",
     "HK251", "HK252", "HK261", "HK262",
 )
-NEW_SEMESTERS = ("HK221", "HK222", "HK231", "HK232", "HK241", "HK242", "HK251", "HK252")
+NEW_SEMESTERS = (
+    "HK221", "HK222", "HK231", "HK232", "HK241", "HK242", "HK251", "HK252", "HK261"
+)
 PROJECT_OPTIONS = ["CO3107", "CO3109", "CO3111"]
 
 
@@ -194,35 +197,18 @@ def generate_class(semester):
         semester, students, history, course_credits, prerequisites
     )
 
-    lecturer_names = dict(zip(lecturers["lecturer_id"], lecturers["lecturer_name"]))
-    class_data = []
     course_order = list(dict.fromkeys(
         schedule[-1] + [
             code for selected in eligibility.values() for code in selected
         ]
     ))
-    for course_code in course_order:
-        if course_code not in course_names:
-            raise ValueError(f"Courses missing from course.csv: {course_code}")
-        demand = sum(course_code in selected for selected in eligibility.values())
-        if not demand:
-            continue
-        lecturer_ids = lecturers.loc[
-            lecturers["departments"] == get_department(course_code),
-            "lecturer_id",
-        ].tolist() or ["UNKNOWN_ID"]
-        for index, _ in enumerate(balanced_class_sizes(demand), start=1):
-            group = f"L{index:02d}"
-            lecturer_id = lecturer_ids[(index - 1) % len(lecturer_ids)]
-            class_data.append({
-                "class_id": f"{semester}_{course_code}_{group}",
-                "course_code": course_code,
-                "course_name": course_names[course_code],
-                "semester": semester,
-                "class_group": group,
-                "lecturer_id": lecturer_id,
-                "lecturer_name": lecturer_names.get(lecturer_id, "Unknown Name"),
-            })
+    class_data = assign_balanced_lecturers(
+        course_order=course_order,
+        eligibility=eligibility,
+        lecturers=lecturers,
+        course_names=course_names,
+        semester=semester,
+    )
 
     output = ROOT_DIR / "generated" / "classes" / f"class_{semester.lower()}.csv"
     pd.DataFrame(class_data).to_csv(output, index=False, encoding="utf-8-sig")
@@ -230,7 +216,10 @@ def generate_class(semester):
     print(f"Maximum credits per student: {MAX_CREDITS}")
 
 
-def generate_enrollment(semester):
+def generate_enrollment(semester, is_current=None):
+    if is_current is None:
+        is_current = str(semester).upper() == "HK261"
+
     students = load_student_profiles()
     classes = pd.read_csv(
         ROOT_DIR / "generated" / "classes" / f"class_{semester.lower()}.csv"
@@ -281,33 +270,64 @@ def generate_enrollment(semester):
                     "semester": semester_index(semester),
                     "retaken": retake,
                 }
-                scores, final_score, letter, gpa = score_course_components(
-                    student,
-                    course_code,
-                    components.get(course_code, [("cuoi_ky", 1.0)]),
-                    difficulties.get(course_code, 0.0),
-                    rng,
-                    retaken=retake,
-                    student_id=student_id,
-                )
-                record.update(scores)
-                record.update({
-                    "final_score": final_score,
-                    "letter_grade": letter,
-                    "gpa_4": gpa,
-                    "passed": letter != "F",
-                    "status": "Pass" if letter != "F" else "Fail",
-                })
+                if is_current:
+                    scores, _, _, _ = score_course_components(
+                        student,
+                        course_code,
+                        components.get(course_code, [("cuoi_ky", 1.0)]),
+                        difficulties.get(course_code, 0.0),
+                        rng,
+                        retaken=retake,
+                        student_id=student_id,
+                    )
+                    # For current ongoing semester, final exam has not occurred yet
+                    scores["cuoi_ky"] = np.nan
+                    record.update(scores)
+                    record.update({
+                        "final_score": np.nan,
+                        "letter_grade": np.nan,
+                        "gpa_4": np.nan,
+                        "passed": np.nan,
+                        "status": np.nan,
+                    })
+                else:
+                    scores, final_score, letter, gpa = score_course_components(
+                        student,
+                        course_code,
+                        components.get(course_code, [("cuoi_ky", 1.0)]),
+                        difficulties.get(course_code, 0.0),
+                        rng,
+                        retaken=retake,
+                        student_id=student_id,
+                    )
+                    record.update(scores)
+                    record.update({
+                        "final_score": final_score,
+                        "letter_grade": letter,
+                        "gpa_4": gpa,
+                        "passed": letter != "F",
+                        "status": "Pass" if letter != "F" else "Fail",
+                    })
                 records.append(record)
                 enrollment_id += 1
 
-    result = add_gpa_summaries(pd.DataFrame(records), history, course_credits)
+    if is_current:
+        result = pd.DataFrame(records)
+        result["semester_gpa_4"] = np.nan
+        result["final_gpa_4"] = np.nan
+    else:
+        result = add_gpa_summaries(pd.DataFrame(records), history, course_credits)
+
     base = ["enrollment_id", "student_id", "class_id", "course_id", "semester", "retaken"]
     end = [
         "final_score", "letter_grade", "gpa_4", "passed",
         "semester_gpa_4", "final_gpa_4", "status",
     ]
     components_in_result = [c for c in result.columns if c not in base + end]
+    for comp in ["quiz", "lab", "btl", "giua_ky", "cuoi_ky"]:
+        if comp not in components_in_result:
+            result[comp] = np.nan
+            components_in_result.append(comp)
     result = result[base + components_in_result + end]
     output = ROOT_DIR / "generated" / "enrollments" / f"enrollment_{semester.lower()}.csv"
     result.to_csv(output, index=False, encoding="utf-8-sig")

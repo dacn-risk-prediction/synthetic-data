@@ -16,6 +16,7 @@ from analysis_helpers import (
     view_ctxh_distribution,
     view_fail_result,
     view_late_graduation_distribution,
+    view_lecturer_classes,
     view_student_results,
 )
 
@@ -68,6 +69,7 @@ Ví dụ sử dụng:
   python run_analysis.py --ctxh K13
   python run_analysis.py --summary K13
   python run_analysis.py --late K13
+  python run_analysis.py --lecturer 1300746
   python run_analysis.py --semesters
   python run_analysis.py --demo 1309714
   python run_analysis.py (chạy demo mặc định)
@@ -123,6 +125,14 @@ Ví dụ sử dụng:
         dest="late_cohort",
         metavar="COHORT",
         help="Phân tích chi tiết sinh viên tốt nghiệp trễ hạn theo từng học kỳ (kỳ 9, 10, 11, 12) của một khóa",
+    )
+    parser.add_argument(
+        "-g",
+        "--lecturer",
+        "--lecturer-id",
+        dest="lecturer_id",
+        metavar="LECTURER_ID",
+        help="Xem toàn bộ các lớp học phần được phân công giảng dạy của một giảng viên từ HK131 đến HK261",
     )
     parser.add_argument(
         "-s",
@@ -181,6 +191,9 @@ Ví dụ sử dụng:
 
     if args.late_cohort:
         view_late_graduation_distribution(args.late_cohort)
+
+    if args.lecturer_id:
+        view_lecturer_classes(args.lecturer_id)
 
     if args.demo is not None:
         target = args.demo if args.demo else None

@@ -7,6 +7,7 @@ ROOT_DIR = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT_DIR / "rules"))
 
 from academic_rules import (
+    assign_balanced_lecturers,
     balanced_class_sizes,
     calculate_eligibility_for_schedule,
     load_history,
@@ -83,29 +84,13 @@ COURSE_ORDER = list(dict.fromkeys(
         code for selected in eligibility.values() for code in selected
     ]
 ))
-lecturer_names = dict(zip(lecturers["lecturer_id"], lecturers["lecturer_name"]))
-class_data = []
-
-for course_code in COURSE_ORDER:
-    demand = sum(course_code in selected for selected in eligibility.values())
-    if not demand:
-        continue
-    lecturer_ids = lecturers.loc[
-        lecturers["departments"] == get_department(course_code),
-        "lecturer_id",
-    ].tolist() or ["UNKNOWN_ID"]
-    for index, _ in enumerate(balanced_class_sizes(demand), start=1):
-        group = f"L{index:02d}"
-        lecturer_id = lecturer_ids[(index - 1) % len(lecturer_ids)]
-        class_data.append({
-            "class_id": f"{SEMESTER}_{course_code}_{group}",
-            "course_code": course_code,
-            "course_name": course_names[course_code],
-            "semester": SEMESTER,
-            "class_group": group,
-            "lecturer_id": lecturer_id,
-            "lecturer_name": lecturer_names.get(lecturer_id, "Unknown Name"),
-        })
+class_data = assign_balanced_lecturers(
+    course_order=COURSE_ORDER,
+    eligibility=eligibility,
+    lecturers=lecturers,
+    course_names=course_names,
+    semester=SEMESTER,
+)
 
 output = ROOT_DIR / "generated" / "classes" / "class_hk152.csv"
 pd.DataFrame(class_data).to_csv(output, index=False, encoding="utf-8-sig")

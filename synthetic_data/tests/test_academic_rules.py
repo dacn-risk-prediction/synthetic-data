@@ -19,6 +19,7 @@ from academic_rules import (
     academic_suspension_semesters,
     add_gpa_summaries,
     allocate_course_rosters,
+    assign_balanced_lecturers,
     balanced_class_sizes,
     calculate_eligibility_for_schedule,
     convert_score_to_grade,
@@ -60,6 +61,92 @@ class AcademicScoreRulesTests(unittest.TestCase):
         self.assertEqual(balanced_class_sizes(120), [120])
         self.assertEqual(balanced_class_sizes(121), [61, 60])
         self.assertEqual(balanced_class_sizes(241), [81, 80, 80])
+
+    def test_assign_balanced_lecturers_distributes_workload_evenly(self):
+        lecturers = pd.DataFrame({
+            "lecturer_id": ["GV01", "GV02", "GV03", "DC01", "DC02"],
+            "lecturer_name": ["Prof 1", "Prof 2", "Prof 3", "Math 1", "Math 2"],
+            "departments": ["ChuyenNganh", "ChuyenNganh", "ChuyenNganh", "DaiCuong", "DaiCuong"],
+        })
+        course_names = {
+            "CO1001": "Prog 1",
+            "CO1002": "Prog 2",
+            "CO1003": "Prog 3",
+            "CO1004": "Prog 4",
+            "CO1005": "Prog 5",
+            "CO1006": "Prog 6",
+            "MT1001": "Calc 1",
+            "MT1002": "Calc 2",
+            "MT1003": "Calc 3",
+            "MT1004": "Calc 4",
+        }
+        # 1 section per course (demand 50 <= 120)
+        eligibility = {
+            f"std_{i}": ["CO1001", "CO1002", "CO1003", "CO1004", "CO1005", "CO1006",
+                         "MT1001", "MT1002", "MT1003", "MT1004"]
+            for i in range(50)
+        }
+        course_order = list(course_names.keys())
+
+        classes = assign_balanced_lecturers(
+            course_order=course_order,
+            eligibility=eligibility,
+            lecturers=lecturers,
+            course_names=course_names,
+            semester="HK231",
+        )
+
+        self.assertEqual(len(classes), 10)
+        # Check workload per lecturer
+        assigned_lecturers = [c["lecturer_id"] for c in classes]
+        # ChuyenNganh: 6 courses / 3 lecturers = 2 courses each
+        self.assertEqual(assigned_lecturers.count("GV01"), 2)
+        self.assertEqual(assigned_lecturers.count("GV02"), 2)
+        self.assertEqual(assigned_lecturers.count("GV03"), 2)
+        # DaiCuong: 4 courses / 2 lecturers = 2 courses each
+        self.assertEqual(assigned_lecturers.count("DC01"), 2)
+        self.assertEqual(assigned_lecturers.count("DC02"), 2)
+
+    def test_assign_balanced_lecturers_supports_direct_demand_dict(self):
+        lecturers = pd.DataFrame({
+            "lecturer_id": ["DC01", "DC02"],
+            "lecturer_name": ["Math 1", "Math 2"],
+            "departments": ["DaiCuong", "DaiCuong"],
+        })
+        course_names = {"MT1001": "Calc 1", "MT1002": "Calc 2"}
+        demands = {"MT1001": 240, "MT1002": 120}  # MT1001 has 2 sections, MT1002 has 1 section
+
+        classes = assign_balanced_lecturers(
+            course_order=["MT1001", "MT1002"],
+            eligibility=demands,
+            lecturers=lecturers,
+            course_names=course_names,
+            semester="HK131",
+        )
+
+        self.assertEqual(len(classes), 3)
+        self.assertEqual(classes[0]["class_id"], "HK131_MT1001_L01")
+        self.assertEqual(classes[1]["class_id"], "HK131_MT1001_L02")
+        self.assertEqual(classes[2]["class_id"], "HK131_MT1002_L01")
+        # DC01 gets section 1, DC02 gets section 2, then DC01 gets section 3
+        assigned = [c["lecturer_id"] for c in classes]
+        self.assertEqual(assigned, ["DC01", "DC02", "DC01"])
+
+    def test_assign_balanced_lecturers_raises_on_missing_course(self):
+        lecturers = pd.DataFrame({
+            "lecturer_id": ["DC01"],
+            "lecturer_name": ["Math 1"],
+            "departments": ["DaiCuong"],
+        })
+        with self.assertRaises(ValueError) as ctx:
+            assign_balanced_lecturers(
+                course_order=["NONEXISTENT"],
+                eligibility={"NONEXISTENT": 50},
+                lecturers=lecturers,
+                course_names={"MA1001": "Calc 1"},
+                semester="HK131",
+            )
+        self.assertIn("Courses missing from course.csv: NONEXISTENT", str(ctx.exception))
 
     def test_course_rosters_assign_every_student_to_available_matching_classes(self):
         eligibility = {
