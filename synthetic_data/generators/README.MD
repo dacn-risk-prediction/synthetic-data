@@ -116,7 +116,7 @@ môn sau học kỳ đó.
 
 `run_all.py` gọi `generate_academic_metrics.py` ở cuối. Các file metric nằm
 trong `synthetic_data/generated/metrics/`; metric chỉ bao phủ sinh viên có
-enrollment trong các học kỳ đã sinh. Các khóa K17–K20 chỉ xuất hiện từ những
+enrollment trong các học kỳ đã sinh. Các khóa K17–K26 chỉ xuất hiện từ những
 học kỳ tương ứng trong bảng bên dưới; không có lịch sử trước khi khóa bắt đầu.
 
 ## Các học kỳ được sinh
@@ -141,26 +141,35 @@ học kỳ tương ứng trong bảng bên dưới; không có lịch sử trư�
 | HK202 | `generate_class_hk202.py` | `generate_enrollment_hk202.py` | K15 HK12 và K16 HK10 hoàn tất yêu cầu còn thiếu; K17 HK8 tốt nghiệp, K18 HK6 chọn môn dự án, K19 HK4, K20 HK2. |
 | HK211 | `generate_class_hk211.py` | `generate_enrollment_hk211.py` | K16–K17 hoàn tất yêu cầu còn thiếu; K18 HK7, K19 HK5, K20 HK3. |
 | HK212 | `generate_class_hk212.py` | `generate_enrollment_hk212.py` | K16 HK12 hoàn tất yêu cầu còn thiếu; K17 HK10, K18 HK8 tốt nghiệp, K19 HK6 chọn môn dự án, K20 HK4. |
+| HK221 | `generate_class_hk221.py` | `generate_enrollment_hk221.py` | K21 HK3, K22 HK1. |
+| HK222 | `generate_class_hk222.py` | `generate_enrollment_hk222.py` | K21 HK4, K22 HK2. |
+| HK231 | `generate_class_hk231.py` | `generate_enrollment_hk231.py` | K21 HK5, K22 HK3, K23 HK1. |
+| HK232 | `generate_class_hk232.py` | `generate_enrollment_hk232.py` | K21 HK6, K22 HK4, K23 HK2. |
+| HK241 | `generate_class_hk241.py` | `generate_enrollment_hk241.py` | K21 HK7, K22 HK5, K23 HK3, K24 HK1. |
+| HK242 | `generate_class_hk242.py` | `generate_enrollment_hk242.py` | K21 HK8 tốt nghiệp, K22 HK6 chọn môn dự án, K23 HK4, K24 HK2. |
+| HK251 | `generate_class_hk251.py` | `generate_enrollment_hk251.py` | K21 HK9, K22 HK7, K23 HK5, K24 HK3, K25 HK1. |
+| HK252 | `generate_class_hk252.py` | `generate_enrollment_hk252.py` | K21 HK10, K22 HK8 tốt nghiệp, K23 HK6 chọn môn dự án, K24 HK4, K25 HK2. |
 
 Toàn bộ cặp script hiện có đều sinh điểm đầy đủ theo `assessment.csv`; các kỳ
 không có cấu hình thành phần riêng dùng `cuoi_ky` 100%. Lịch sử được nối tiếp
 theo đúng thứ tự bảng trên, vì vậy không chạy riêng một kỳ nếu chưa có các file
 class/enrollment mà kỳ đó đọc.
 
-Danh sách sinh viên được phân bổ từ K13 đến K20 và profile bao gồm các khóa
-này. MSSV theo dạng `YY` + 5 chữ số; các chữ số cuối dùng dãy modulo bảo đảm
-duy nhất trong từng khóa.
+Danh sách sinh viên được phân bổ từ K13 đến K26 và profile bao gồm các khóa
+này. K26 bắt đầu từ HK261; HK261 chưa có generator trong phạm vi hiện tại.
+MSSV theo dạng `YY` + 5 chữ số; các chữ số cuối dùng dãy modulo bảo đảm duy
+nhất trong từng khóa.
 
 ## Chạy một học kỳ riêng lẻ
 
-Ví dụ tạo lại HK212:
+Ví dụ tạo lại HK252:
 
 ```bash
-python synthetic_data/generators/classes/generate_class_hk212.py
-python synthetic_data/generators/enrollments/generate_enrollment_hk212.py
+python synthetic_data/generators/classes/generate_class_hk252.py
+python synthetic_data/generators/enrollments/generate_enrollment_hk252.py
 ```
 
-Hai lệnh ghi đè `class_hk212.csv` và `enrollment_hk212.csv` trong
+Hai lệnh ghi đè `class_hk252.csv` và `enrollment_hk252.csv` trong
 `synthetic_data/generated/classes/` và `synthetic_data/generated/enrollments/`.
 Nếu thay đổi dữ liệu đầu vào, tiên quyết, assessment hoặc rule, nên chạy lại
 `tools/run_all.py` để các kỳ sau sử dụng lịch sử đồng nhất.

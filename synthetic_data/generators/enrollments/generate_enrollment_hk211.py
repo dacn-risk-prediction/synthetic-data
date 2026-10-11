@@ -40,6 +40,8 @@ K18_COURSES = ["SP1037", "CO4029"]
 K19_COURSES = curriculum_courses("HK5")
 # K20 (HK3): sophomore semester 3 courses
 K20_COURSES = curriculum_courses("HK3")
+# K21 (HK1): freshman new cohort semester 1 courses
+K21_COURSES = curriculum_courses("HK1")
 
 K18_EXTRA_COURSES = [
     code for code in additional_courses("HK7") if code not in K18_COURSES
@@ -50,10 +52,13 @@ K19_EXTRA_COURSES = [
 K20_EXTRA_COURSES = [
     code for code in additional_courses("HK3") if code not in K20_COURSES
 ]
+K21_EXTRA_COURSES = [
+    code for code in additional_courses("HK1") if code not in K21_COURSES
+]
 
-MANAGEMENT = management_elective_courses("HK4")
-FREE = free_elective_courses("HK8")
-GROUP_C = group_c_elective_courses("HK8")
+MANAGEMENT = management_elective_courses("HK6")
+FREE = free_elective_courses("HK7")
+GROUP_C = group_c_elective_courses("HK7")
 
 students = load_student_profiles()
 classes = pd.read_csv(ROOT_DIR / "generated" / "classes" / "class_hk211.csv")
@@ -75,19 +80,21 @@ eligibility, failed = calculate_eligibility_for_schedule(
         "18": K18_COURSES,
         "19": K19_COURSES,
         "20": K20_COURSES,
+        "21": K21_COURSES,
     },
     {
         "18": K18_EXTRA_COURSES,
         "19": K19_EXTRA_COURSES,
         "20": K20_EXTRA_COURSES,
+        "21": K21_EXTRA_COURSES,
     },
     {
         "16": {"GROUP_C": GROUP_C, "MANAGEMENT": MANAGEMENT, "FREE": FREE},
         "17": {"GROUP_C": GROUP_C, "MANAGEMENT": MANAGEMENT, "FREE": FREE},
-        "18": {"MANAGEMENT": MANAGEMENT},
-        "18": {"MANAGEMENT": MANAGEMENT},
-        "19": {"MANAGEMENT": MANAGEMENT},
-        "20": {"MANAGEMENT": MANAGEMENT},
+        "18": {"FREE": FREE, "GROUP_C": GROUP_C},
+        "19": {"FREE": FREE, "GROUP_C": GROUP_C},
+        "20": {"FREE": FREE, "GROUP_C": GROUP_C},
+        "21": {"FREE": FREE, "GROUP_C": GROUP_C},
     },
     {
         "16": {"FREE": FREE, "GROUP_C": GROUP_C},
@@ -95,6 +102,7 @@ eligibility, failed = calculate_eligibility_for_schedule(
         "18": {"FREE": FREE, "GROUP_C": GROUP_C},
         "19": {"FREE": FREE, "GROUP_C": GROUP_C},
         "20": {"FREE": FREE, "GROUP_C": GROUP_C},
+        "21": {"FREE": FREE, "GROUP_C": GROUP_C},
     },
     {
         "16": {"FREE": 9, "GROUP_C": 15, "MANAGEMENT": 3},

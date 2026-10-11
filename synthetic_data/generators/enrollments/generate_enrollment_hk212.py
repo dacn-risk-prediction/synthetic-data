@@ -41,15 +41,17 @@ K19_COURSES = ["SP1039", "CO2001", "CO3005", "CO3335"]
 K19_PROJECT_OPTIONS = ["CO3107", "CO3109", "CO3111"]
 # K20 (HK4): semester 4 courses
 K20_COURSES = curriculum_courses("HK4")
+# K21 (HK2): semester 2 courses
+K21_COURSES = curriculum_courses("HK2")
 
-K18_EXTRA_COURSES = [
-    code for code in additional_courses("HK8") if code not in K18_COURSES
-]
 K19_EXTRA_COURSES = [
     code for code in additional_courses("HK6") if code not in K19_COURSES
 ]
 K20_EXTRA_COURSES = [
     code for code in additional_courses("HK4") if code not in K20_COURSES
+]
+K21_EXTRA_COURSES = [
+    code for code in additional_courses("HK2") if code not in K21_COURSES
 ]
 
 MANAGEMENT = management_elective_courses("HK4")
@@ -76,19 +78,20 @@ eligibility, failed = calculate_eligibility_for_schedule(
         "18": K18_COURSES,
         "19": K19_COURSES,
         "20": K20_COURSES,
+        "21": K21_COURSES,
     },
     {
-        "18": K18_EXTRA_COURSES,
         "19": K19_EXTRA_COURSES,
         "20": K20_EXTRA_COURSES,
+        "21": K21_EXTRA_COURSES,
     },
     {
         "16": {"GROUP_C": GROUP_C, "MANAGEMENT": MANAGEMENT, "FREE": FREE},
         "17": {"GROUP_C": GROUP_C, "MANAGEMENT": MANAGEMENT, "FREE": FREE},
-        "18": {"MANAGEMENT": MANAGEMENT},
-        "18": {"MANAGEMENT": MANAGEMENT},
+        "18": {"GROUP_C": GROUP_C, "MANAGEMENT": MANAGEMENT, "FREE": FREE},
         "19": {"MANAGEMENT": MANAGEMENT},
         "20": {"MANAGEMENT": MANAGEMENT},
+        "21": {"MANAGEMENT": MANAGEMENT},
     },
     {
         "16": {"FREE": FREE, "GROUP_C": GROUP_C},
@@ -96,11 +99,12 @@ eligibility, failed = calculate_eligibility_for_schedule(
         "18": {"FREE": FREE, "GROUP_C": GROUP_C},
         "19": {"FREE": FREE, "GROUP_C": GROUP_C},
         "20": {"FREE": FREE, "GROUP_C": GROUP_C},
+        "21": {"FREE": FREE, "GROUP_C": GROUP_C},
     },
     {
         "16": {"FREE": 9, "GROUP_C": 15, "MANAGEMENT": 3},
         "17": {"FREE": 9, "GROUP_C": 15, "MANAGEMENT": 3},
-        "18": {"FREE": 9, "GROUP_C": 15, "MANAGEMENT": 3},
+        "18": {"GROUP_C": 9, "MANAGEMENT": 3},
         "19": {"MANAGEMENT": 3},
     },
     {"19": {"INTERDISCIPLINARY_PROJECT": K19_PROJECT_OPTIONS}},
