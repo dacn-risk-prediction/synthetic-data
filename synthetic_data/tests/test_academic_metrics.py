@@ -8,10 +8,30 @@ import pandas as pd
 TOOLS_DIR = Path(__file__).resolve().parents[1] / "tools"
 sys.path.insert(0, str(TOOLS_DIR))
 
-from generate_academic_metrics import _distribution_tables
+from generate_academic_metrics import (
+    _distribution_tables,
+    _english_eligibility_metrics,
+)
 
 
 class AcademicMetricsTests(unittest.TestCase):
+    def test_english_eligibility_metrics_show_rate_by_semester(self):
+        progress = pd.DataFrame([
+            {"semester": "HK131", "english_pass": False},
+            {"semester": "HK131", "english_pass": True},
+            {"semester": "HK132", "english_pass": True},
+            {"semester": "HK132", "english_pass": True},
+            {"semester": "HK132", "english_pass": False},
+        ])
+
+        result = _english_eligibility_metrics(progress).set_index("semester")
+
+        self.assertEqual(result.loc["HK131", "eligible_students"], 1)
+        self.assertEqual(result.loc["HK131", "tracked_students"], 2)
+        self.assertEqual(result.loc["HK132", "eligible_students"], 2)
+        self.assertEqual(result.loc["HK132", "tracked_students"], 3)
+        self.assertAlmostEqual(result.loc["HK132", "rate"], 2 / 3)
+
     def test_score_and_letter_distributions_include_course_and_university(self):
         history = pd.DataFrame([
             {
@@ -81,4 +101,3 @@ class AcademicMetricsTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

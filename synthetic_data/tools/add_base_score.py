@@ -13,6 +13,7 @@ from academic_rules import (
     PROFILE_OUTPUT_FILE,
     filter_students_from_2013,
     generate_student_profile,
+    select_early_graduation_candidates,
 )
 
 
@@ -25,6 +26,13 @@ profiles = [
     generate_student_profile(student_id, GENERATOR_CONFIG)
     for student_id in students["student_id"]
 ]
+early_graduation_candidates = select_early_graduation_candidates(
+    [
+        {"student_id": student_id, **profile}
+        for student_id, profile in zip(students["student_id"], profiles)
+    ],
+    GENERATOR_CONFIG,
+)
 
 result = students[["student_id", "name"]].copy()
 profile_fields = profiles[0].keys() if profiles else ()
@@ -37,6 +45,9 @@ result["base_score"] = [
     GENERATOR_CONFIG["academic"]["base_scores"][profile["academic_level"] - 1]
     for profile in profiles
 ]
+result["early_graduation_candidate"] = result["student_id"].isin(
+    early_graduation_candidates
+)
 
 PROFILE_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 result.to_csv(PROFILE_OUTPUT_FILE, index=False, encoding="utf-8-sig")

@@ -147,8 +147,19 @@ def _profile_graduation_state(
         else 0
     )
     graduation_config = GENERATOR_CONFIG["student_progress"]["graduation"]
-    english_pass = is_english_passed(profile, passed_courses, GENERATOR_CONFIG)
-    exempted_english = get_exempted_english_courses(profile, GENERATOR_CONFIG)
+    english_pass = (
+        is_english_passed(
+            profile,
+            passed_courses,
+            GENERATOR_CONFIG,
+            current_semester,
+        )
+        if current_semester
+        else is_english_passed(profile, passed_courses, GENERATOR_CONFIG)
+    )
+    exempted_english = get_exempted_english_courses(
+        profile, GENERATOR_CONFIG, current_semester
+    )
     effective_required_courses = required_courses - exempted_english
     missing_courses = effective_required_courses - passed_courses
     graduation_ready = (
@@ -173,7 +184,7 @@ def _profile_graduation_state(
             term_ctxh_days = _ctxh_days_for_semester(progress, semester)
             term_passed = set(completed_through_term["course_code"])
             term_english_pass = is_english_passed(
-                profile, term_passed, GENERATOR_CONFIG
+                profile, term_passed, GENERATOR_CONFIG, semester
             )
             if (
                 effective_required_courses.issubset(term_passed)
@@ -302,14 +313,21 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
                 & student_history["status"].astype(str).str.casefold().eq("pass")
             ]
             term_english_pass = is_english_passed(
-                profile, set(completed_through_term["course_code"]), GENERATOR_CONFIG
+                profile,
+                set(completed_through_term["course_code"]),
+                GENERATOR_CONFIG,
+                semester,
             )
             completed_before_term = student_history[
                 student_history["semester_index"].lt(semester_index(semester))
                 & student_history["status"].astype(str).str.casefold().eq("pass")
             ]
             before_english_pass = is_english_passed(
-                profile, set(completed_before_term["course_code"]), GENERATOR_CONFIG
+                profile,
+                set(completed_before_term["course_code"]),
+                GENERATOR_CONFIG,
+                semester,
+                before=True,
             )
             progress_rows.append({
                 "student_id": student_id,
@@ -669,6 +687,24 @@ def _summary_metrics(student_metrics, history):
     return pd.DataFrame(rows)
 
 
+def _english_eligibility_metrics(progress):
+    if progress.empty:
+        return pd.DataFrame(columns=[
+            "semester", "eligible_students", "tracked_students", "rate",
+        ])
+    rows = []
+    for semester, group in progress.groupby("semester", sort=False):
+        denominator = len(group)
+        numerator = int(group["english_pass"].fillna(False).astype(bool).sum())
+        rows.append({
+            "semester": semester,
+            "eligible_students": numerator,
+            "tracked_students": denominator,
+            "rate": numerator / denominator if denominator else 0.0,
+        })
+    return pd.DataFrame(rows)
+
+
 def _normalize_cohort(cohort):
     if cohort is None:
         return None
@@ -712,6 +748,11 @@ def generate_academic_metrics(cohort=None):
     metrics_dir.mkdir(parents=True, exist_ok=True)
     progress.to_csv(
         metrics_dir / "student_progress.csv",
+        index=False,
+        encoding="utf-8-sig",
+    )
+    _english_eligibility_metrics(progress).to_csv(
+        metrics_dir / "english_eligibility_by_semester.csv",
         index=False,
         encoding="utf-8-sig",
     )

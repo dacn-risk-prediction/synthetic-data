@@ -87,11 +87,30 @@ lịch sử enrollment các kỳ trước.
 
 `student_progress` trong `config/generator_config.json` cấu hình điều kiện CTXH,
 tiếng Anh, tốt nghiệp và dropout. Mỗi profile có `ctxh_days_by_semester` dạng
-JSON array với ngày tích lũy theo kỳ và trường boolean `english_pass`. Môn
-`CO4029` và `CO4337` chỉ được đăng ký khi sinh viên đã tích lũy ít nhất 12 ngày
-CTXH trước kỳ học và đạt điều kiện tiếng Anh. Tốt nghiệp cần ít nhất 15 ngày
-CTXH, tiếng Anh, hoàn thành các môn bắt buộc trong curriculum và `CO4337`;
-ngưỡng phân loại GPA4 cũng được cấu hình.
+JSON array với ngày tích lũy theo kỳ và `english_eligibility_by_semester` dạng
+JSON array với trạng thái đủ điều kiện tiếng Anh. Trạng thái tiếng Anh bắt đầu
+theo xác suất profile và chỉ chuyển một chiều từ chưa đạt sang đạt; xác suất
+khởi đầu và xác suất chuyển đổi đều phụ thuộc background, academic, năng lực
+tiếng Anh và personality. Tỷ lệ theo từng kỳ được ghi trong
+`generated/metrics/english_eligibility_by_semester.csv`. Môn `CO4029` và
+`CO4337` chỉ được đăng ký khi sinh viên đã tích lũy ít nhất 12 ngày CTXH trước
+kỳ học và đã đủ điều kiện tiếng Anh. Tốt nghiệp cần ít nhất 15 ngày CTXH, tiếng
+Anh, hoàn thành các môn bắt buộc trong curriculum và `CO4337`; ngưỡng phân loại
+GPA4 cũng được cấu hình. Các lớp GPA hiện là `below_average`, `average`,
+`fairly_good`, `good`, `excellent`; báo cáo degree rate cần tính cả
+`below_average` nếu muốn tổng các nhóm bằng 1.
+
+Lộ trình tốt nghiệp sớm được bật cho sinh viên được chọn ngẫu nhiên một cách
+xác định trong nhóm top 1% theo tổng điểm chuẩn hóa academic và personality
+(discipline, motivation, social activity, stress đảo chiều), thuộc các khóa
+K23–K26. Tỷ lệ chọn là 5% của nhóm top 1%; cấu hình nằm trong
+`student_progress.graduation.early_graduation`. Các sinh viên này được mở thêm
+`CO3061` và `CO4029` ở HK6, rồi `CO4337` và môn bắt buộc `SP1007` ở HK7. Như
+vậy tất cả học phần bắt buộc có thể hoàn tất trong 7 học kỳ. Cờ ứng viên được
+tạo cùng `student_profiles.csv`; chạy lại `tools/add_base_score.py` trước khi
+tạo lại class/enrollment để cập nhật profile. Đây là eligibility của lộ trình,
+không đảm bảo tốt nghiệp nếu sinh viên trượt môn, thiếu điều kiện tiếng Anh/
+CTXH hoặc rút học.
 
 Dropout tự nguyện dùng xác suất 30% cho nhóm rủi ro (background thấp hoặc
 academic level thấp), với trọng số nguyên nhân background/academic 95%/5%.

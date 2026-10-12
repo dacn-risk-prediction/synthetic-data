@@ -33,11 +33,13 @@ from academic_rules import (
     is_academic_dismissal,
     is_english_passed,
     is_late_semester,
+    select_early_graduation_candidates,
     semester_from_index,
     semester_index,
     students_by_course_from_eligibility,
     validate_generator_config,
     wants_acceleration,
+    additional_courses,
 )
 
 
@@ -202,6 +204,21 @@ class AcademicScoreRulesTests(unittest.TestCase):
 
         self.assertEqual(first, second)
         self.assertIsInstance(first["english_pass"], bool)
+        self.assertEqual(
+            first["english_eligibility_by_semester"],
+            second["english_eligibility_by_semester"],
+        )
+        self.assertEqual(
+            first["english_eligibility_by_semester"][0]["eligible"],
+            first["english_pass"],
+        )
+        self.assertTrue(all(
+            not earlier["eligible"] or later["eligible"]
+            for earlier, later in zip(
+                first["english_eligibility_by_semester"],
+                first["english_eligibility_by_semester"][1:],
+            )
+        ))
         self.assertIsInstance(first["ctxh_days_by_semester"], list)
         self.assertTrue(all(
             earlier["cumulative_days"] <= later["cumulative_days"]
@@ -727,6 +744,115 @@ class AcademicScoreRulesTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Invalid enrollment policy configuration"):
             validate_generator_config(bad_policy)
 
+    def test_early_graduation_selection_is_stable_and_limited_to_top_one_percent(self):
+        profiles = [
+            {
+                "student_id": f"23{index:05d}",
+                "academic_level": 5 if index < 100 else 1,
+                "discipline": 5,
+                "motivation": 5,
+                "stress": 1,
+                "social_activity": 5,
+            }
+            for index in range(10000)
+        ]
+        profiles.append({
+            "student_id": "2210001",
+            "academic_level": 5,
+            "discipline": 5,
+            "motivation": 5,
+            "stress": 1,
+            "social_activity": 5,
+        })
+
+        selected = select_early_graduation_candidates(profiles)
+
+        self.assertEqual(len(selected), 5)
+        self.assertTrue(all(
+            student_id.startswith(("23", "24", "25", "26"))
+            for student_id in selected
+        ))
+        self.assertEqual(selected, select_early_graduation_candidates(profiles))
+        self.assertTrue(selected.issubset({
+            profile["student_id"] for profile in profiles[:100]
+        }))
+
+    def test_early_courses_are_cohort_scoped_and_injected_only_for_candidates(self):
+        self.assertEqual(
+            additional_courses(
+                "HK7",
+                early_graduation=True,
+                early_graduation_only=True,
+                cohort="23",
+            ),
+            ["CO4337", "SP1007"],
+        )
+        self.assertEqual(
+            additional_courses(
+                "HK7",
+                early_graduation=True,
+                early_graduation_only=True,
+                cohort="22",
+            ),
+            [],
+        )
+
+        students = pd.DataFrame([
+            {
+                "student_id": "2310001",
+                "base_score": 9.0,
+                "voluntary_dropout_semester": "",
+                "english_pass": True,
+                "ctxh_days_by_semester": (
+                    '[{"semester":"HK252","cumulative_days":15}]'
+                ),
+                "early_graduation_candidate": True,
+            },
+            {
+                "student_id": "2310002",
+                "base_score": 9.0,
+                "voluntary_dropout_semester": "",
+                "english_pass": True,
+                "ctxh_days_by_semester": (
+                    '[{"semester":"HK252","cumulative_days":15}]'
+                ),
+                "early_graduation_candidate": False,
+            },
+        ])
+        history = pd.DataFrame([
+            {"student_id": student_id, "course_code": course_code, "status": "pass"}
+            for student_id in students["student_id"]
+            for course_code in ("CO3335", "CO4029")
+        ])
+        credits = {"SP1037": 2, "CO4029": 2, "CO4337": 4, "SP1007": 2}
+        prerequisites = pd.DataFrame([
+            {"course_code": "CO4337", "related_course_code": "CO3335", "relation_type": "TQ"},
+            {"course_code": "CO4337", "related_course_code": "CO4029", "relation_type": "TQ"},
+        ])
+        config = GENERATOR_CONFIG.copy()
+        config["student_progress"] = GENERATOR_CONFIG["student_progress"].copy()
+        config["student_progress"]["graduation"] = (
+            GENERATOR_CONFIG["student_progress"]["graduation"].copy()
+        )
+        config["student_progress"]["graduation"][
+            "minimum_passed_credits_per_semester"
+        ] = 0
+        eligible, _ = calculate_eligibility_for_schedule(
+            students,
+            history,
+            credits,
+            prerequisites,
+            {"23": ["SP1037", "CO4029"]},
+            {"23": {}},
+            semester_code="HK261",
+            config=config,
+        )
+
+        self.assertIn("CO4337", eligible["2310001"])
+        self.assertIn("SP1007", eligible["2310001"])
+        self.assertNotIn("CO4337", eligible["2310002"])
+        self.assertNotIn("SP1007", eligible["2310002"])
+
     def test_custom_config_overrides_electives_and_acceleration(self):
         import copy
         custom_config = copy.deepcopy(GENERATOR_CONFIG)
@@ -752,6 +878,104 @@ class AcademicScoreRulesTests(unittest.TestCase):
         needed = {"LA1003", "LA1005", "LA1007", "LA1009"} - exempted_l1
         self.assertFalse(is_english_passed(student_l1, {"LA1003"}))
         self.assertTrue(is_english_passed(student_l1, needed))
+
+    def test_english_eligibility_switches_on_and_is_used_per_semester(self):
+        student = {
+            "student_id": "1300001",
+            "english_pass": False,
+            "english_level": 1,
+            "english_eligibility_by_semester": (
+                '[{"semester":"HK131","eligible":false},'
+                '{"semester":"HK132","eligible":true},'
+                '{"semester":"HK141","eligible":true}]'
+            ),
+        }
+
+        self.assertFalse(is_english_passed(student, set(), semester_code="HK131"))
+        self.assertFalse(is_english_passed(student, set(), semester_code="HK132", before=True))
+        self.assertTrue(is_english_passed(student, set(), semester_code="HK132"))
+        self.assertTrue(is_english_passed(student, set(), semester_code="HK141"))
+        initial_english_exemptions = get_exempted_english_courses({
+            "student_id": "1300001",
+            "english_pass": False,
+            "english_level": 1,
+        })
+        self.assertEqual(
+            get_exempted_english_courses(student, semester_code="HK131"),
+            initial_english_exemptions,
+        )
+        self.assertEqual(
+            get_exempted_english_courses(student, semester_code="HK132"),
+            {"LA1003", "LA1005", "LA1007", "LA1009"},
+        )
+        self.assertEqual(
+            get_exempted_english_courses(student),
+            {"LA1003", "LA1005", "LA1007", "LA1009"},
+        )
+
+    def test_english_eligibility_progression_can_be_configured_to_switch(self):
+        import copy
+
+        config = copy.deepcopy(GENERATOR_CONFIG)
+        english = config["student_progress"]["english"]
+        for key in (
+            "base_probability",
+            "background_weight",
+            "english_skill_weight",
+            "academic_weight",
+            "personality_weight",
+        ):
+            english[key] = 0
+        english["transition"] = {
+            "base_probability": 1,
+            "background_weight": 0,
+            "english_skill_weight": 0,
+            "academic_weight": 0,
+            "personality_weight": 0,
+        }
+
+        profile = generate_student_profile("1300001", config)
+
+        self.assertFalse(profile["english_pass"])
+        self.assertFalse(profile["english_eligibility_by_semester"][0]["eligible"])
+        self.assertTrue(profile["english_eligibility_by_semester"][1]["eligible"])
+        self.assertTrue(all(
+            entry["eligible"]
+            for entry in profile["english_eligibility_by_semester"][1:]
+        ))
+
+    def test_transitioned_english_eligibility_allows_thesis_next_semester(self):
+        students = pd.DataFrame([{
+            "student_id": "1397004",
+            "base_score": 7.0,
+            "english_pass": False,
+            "english_level": 1,
+            "english_eligibility_by_semester": [
+                {"semester": "HK131", "eligible": False},
+                {"semester": "HK132", "eligible": True},
+            ],
+            "ctxh_days_by_semester": [
+                {"semester": "HK131", "cumulative_days": 15},
+            ],
+        }])
+        history = pd.DataFrame(columns=[
+            "student_id", "course_code", "semester", "status",
+        ])
+        prerequisites = pd.DataFrame(columns=[
+            "course_code", "related_course_code", "relation_type",
+        ])
+
+        eligible, _ = calculate_eligibility_for_schedule(
+            students,
+            history,
+            {"CO4029": 2},
+            prerequisites,
+            {"13": ["CO4029"]},
+            {},
+            semester_code="HK141",
+        )
+
+        self.assertEqual(eligible["1397004"], ["CO4029"])
 
     def test_thesis_eligible_when_student_passed_english_courses(self):
         students = pd.DataFrame([{
@@ -801,5 +1025,3 @@ class AcademicScoreRulesTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
-

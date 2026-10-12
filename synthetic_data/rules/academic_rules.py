@@ -203,7 +203,23 @@ def validate_generator_config(config):
         or english["base_probability"] > 1
     ):
         raise ValueError("Invalid English eligibility probability configuration")
+    transition = english["transition"]
+    transition_weights = (
+        "background_weight",
+        "english_skill_weight",
+        "academic_weight",
+        "personality_weight",
+    )
+    if (
+        not 0 <= transition["base_probability"] <= 1
+        or any(transition[name] < 0 for name in transition_weights)
+        or transition["base_probability"]
+        + sum(transition[name] for name in transition_weights)
+        > 1
+    ):
+        raise ValueError("Invalid English transition probability configuration")
     graduation = progress["graduation"]
+    early_graduation = graduation.get("early_graduation", {})
     if (
         graduation["standard_semesters"] <= 0
         or graduation.get("max_late_semesters", 1) <= 0
@@ -215,6 +231,9 @@ def validate_generator_config(config):
         ] <= 1
         or not graduation["thesis_course_codes"]
         or not graduation["graduation_project_codes"]
+        or not 0 < early_graduation.get("top_performer_share", 0) <= 1
+        or not 0 <= early_graduation.get("selection_rate", -1) <= 1
+        or not early_graduation.get("supported_cohorts")
     ):
         raise ValueError("Invalid graduation progress configuration")
     if "electives" in progress:
@@ -466,6 +485,58 @@ def _stable_seed(student_id, config, salt):
     return int(hashlib.sha256(value).hexdigest()[:8], 16)
 
 
+def select_early_graduation_candidates(profiles, config=None):
+    """Select a deterministic 5% of the top-scoring eligible-cohort profiles."""
+    config = config or GENERATOR_CONFIG
+    settings = config["student_progress"]["graduation"]["early_graduation"]
+    supported_cohorts = {
+        str(value).upper().removeprefix("K")
+        for value in settings["supported_cohorts"]
+    }
+    eligible = [
+        profile for profile in profiles
+        if str(profile["student_id"])[:2] in supported_cohorts
+    ]
+    if not eligible:
+        return set()
+
+    def score(profile):
+        personality = np.mean([
+            (float(profile["discipline"]) - 1) / 4,
+            (float(profile["motivation"]) - 1) / 4,
+            (5 - float(profile["stress"])) / 4,
+            (float(profile["social_activity"]) - 1) / 4,
+        ])
+        academic = (float(profile["academic_level"]) - 1) / 4
+        return academic + personality
+
+    eligible.sort(
+        key=lambda profile: (
+            -score(profile),
+            str(profile["student_id"]),
+        )
+    )
+    top_count = max(
+        1,
+        math.ceil(len(eligible) * settings["top_performer_share"]),
+    )
+    top_performers = eligible[:top_count]
+    selected_count = min(
+        top_count,
+        int(math.floor(top_count * settings["selection_rate"] + 0.5)),
+    )
+    return {
+        str(profile["student_id"])
+        for profile in sorted(
+            top_performers,
+            key=lambda item: (
+                _stable_seed(item["student_id"], config, "early_graduation"),
+                str(item["student_id"]),
+            ),
+        )[:selected_count]
+    }
+
+
 def _base_score_for_level(level, config):
     base_scores = config["academic"]["base_scores"]
     lower = int(math.floor(level))
@@ -536,6 +607,14 @@ def generate_student_profile(student_id, config=None):
     profile["english_pass"] = bool(
         english_rng.random() < np.clip(english_probability, 0.0, 1.0)
     )
+    profile["english_eligibility_by_semester"] = (
+        _generate_english_eligibility_progress(
+            student_id,
+            profile,
+            config,
+            initial_eligible=profile["english_pass"],
+        )
+    )
     profile["ctxh_days_by_semester"] = _generate_ctxh_progress(
         student_id, profile, config
     )
@@ -545,6 +624,61 @@ def generate_student_profile(student_id, config=None):
     profile["voluntary_dropout_semester"] = dropout_semester or ""
     profile["voluntary_dropout_reason"] = dropout_reason or ""
     return profile
+
+
+def _generate_english_eligibility_progress(
+    student_id, profile, config, *, initial_eligible
+):
+    progress_config = config["student_progress"]
+    start_semester = progress_config["cohort_start_semester"].get(
+        str(student_id)[:2]
+    )
+    if start_semester is None:
+        return []
+    start_index = semester_index(start_semester)
+    semesters = [
+        semester
+        for semester in progress_config["observed_semesters"]
+        if semester_index(semester) >= start_index
+    ]
+    if not semesters:
+        return []
+
+    english_config = progress_config["english"]
+    background_scores = english_config["background_scores"]
+    background_strength = float(np.mean([
+        background_scores[field][profile[field]]
+        for field in background_scores
+    ]))
+    factors = {
+        "background_weight": background_strength,
+        "english_skill_weight": (profile["english_level"] - 1) / 4,
+        "academic_weight": (profile["academic_level"] - 1) / 4,
+        "personality_weight": _progress_personality_strength(
+            profile, progress_config
+        ),
+    }
+    transition_config = english_config["transition"]
+    probability = transition_config["base_probability"] + sum(
+        transition_config[name] * factors[name]
+        for name in factors
+    )
+    eligible = bool(initial_eligible)
+    progress = []
+    for index, semester in enumerate(semesters):
+        if is_academic_dismissal(student_id, semester, config):
+            break
+        if index and not eligible:
+            rng = np.random.default_rng(
+                _stable_seed(student_id, config, f"english_transition:{semester}")
+            )
+            eligible = bool(rng.random() < probability)
+        progress.append({
+            "semester": semester,
+            "eligible": eligible,
+            "transition_probability": float(probability),
+        })
+    return progress
 
 
 def _progress_personality_strength(profile, progress_config):
@@ -651,6 +785,15 @@ def _student_value(student, field, default=None):
     if hasattr(student, "get"):
         return student.get(field, default)
     return getattr(student, field, default)
+
+
+def _student_flag(student, field):
+    value = _student_value(student, field, False)
+    if pd.isna(value):
+        return False
+    if isinstance(value, str):
+        return value.strip().casefold() in {"true", "1", "yes"}
+    return bool(value)
 
 
 def ctxh_days_before_semester(student, semester_code, config=None):
@@ -1129,10 +1272,13 @@ def load_history(semesters=("hk231", "hk232")):
 ENGLISH_COURSE_CODES = ("LA1003", "LA1005", "LA1007", "LA1009")
 
 
-def get_exempted_english_courses(student, config=None):
+def get_exempted_english_courses(
+    student, config=None, semester_code=None, *, before=False
+):
     """Return the set of English courses exempted for the student.
 
-    - If english_pass is True, student is exempt from all 4 courses (LA1003-LA1009).
+    - Students who have attained English eligibility are exempt from all 4
+      courses (LA1003-LA1009).
     - If english_pass is False, student takes the English placement test upon entry.
       Based on their english_level and test score, they can skip early courses:
         * Placement 1: Skip none (learn LA1003, LA1005, LA1007, LA1009)
@@ -1142,7 +1288,11 @@ def get_exempted_english_courses(student, config=None):
     """
     config = config or GENERATOR_CONFIG
     english_pass = (
-        str(_student_value(student, "english_pass", False)).casefold() == "true"
+        english_eligible_by_semester(
+            student, semester_code, before=before
+        )
+        if semester_code is not None
+        else english_eligible_by_semester(student)
     )
     if english_pass:
         return set(ENGLISH_COURSE_CODES)
@@ -1174,18 +1324,70 @@ def get_exempted_english_courses(student, config=None):
     return mapping[skip_count]
 
 
-def is_english_passed(student, passed_courses=None, config=None):
+def english_eligible_by_semester(
+    student, semester_code=None, *, before=False
+):
+    """Return the monotonic English eligibility state for a semester."""
+    initial_eligible = (
+        str(_student_value(student, "english_pass", False)).casefold()
+        == "true"
+    )
+    progress = _student_value(student, "english_eligibility_by_semester", [])
+    if progress is None or (
+        not isinstance(progress, (list, str)) and pd.isna(progress)
+    ):
+        progress = []
+    if isinstance(progress, str):
+        try:
+            progress = json.loads(progress) if progress else []
+        except json.JSONDecodeError as error:
+            raise ValueError(
+                "english_eligibility_by_semester must contain a JSON array"
+            ) from error
+    if not isinstance(progress, list):
+        raise ValueError("english_eligibility_by_semester must be an array")
+    if not progress:
+        return initial_eligible
+    if initial_eligible:
+        return True
+
+    target_index = (
+        semester_index(semester_code)
+        if semester_code is not None
+        else float("inf")
+    )
+    return any(
+        bool(entry["eligible"])
+        and (
+            semester_index(entry["semester"]) < target_index
+            if before
+            else semester_index(entry["semester"]) <= target_index
+        )
+        for entry in progress
+    )
+
+
+def is_english_passed(
+    student, passed_courses=None, config=None, semester_code=None, *, before=False
+):
     """Return True if the student has satisfied English graduation requirements.
 
     A student satisfies the English requirement if:
-    1. english_pass in profile is True (exempt from all English courses upon admission), OR
+    1. The profile is English-eligible by the requested semester, OR
     2. All courses in ENGLISH_COURSE_CODES (LA1003-LA1009) are either exempted or passed.
     """
-    if str(_student_value(student, "english_pass", False)).casefold() == "true":
+    if english_eligible_by_semester(
+        student, semester_code, before=before
+    ):
         return True
     if passed_courses is None:
         return False
-    exempted = get_exempted_english_courses(student, config)
+    exempted = get_exempted_english_courses(
+        student,
+        config,
+        semester_code,
+        before=before,
+    )
     return set(ENGLISH_COURSE_CODES).issubset(set(passed_courses) | exempted)
 
 
@@ -1412,6 +1614,24 @@ def calculate_eligibility_for_schedule(
         scheduled = scheduled_courses.get(prefix)
         if scheduled is None:
             continue
+        scheduled = list(scheduled)
+        start_semester = progress_config["cohort_start_semester"].get(prefix)
+        if start_semester and _student_flag(student, "early_graduation_candidate"):
+            term = (
+                semester_index(semester_code)
+                - semester_index(start_semester)
+                + 1
+            )
+            if term in (6, 7):
+                scheduled.extend(
+                    additional_courses(
+                        f"HK{term}",
+                        early_graduation=True,
+                        early_graduation_only=True,
+                        cohort=prefix,
+                    )
+                )
+                scheduled = list(dict.fromkeys(scheduled))
         passed_courses = passed.get(student.student_id, set())
         failed_courses = failed.get(student.student_id, set())
 
@@ -1419,11 +1639,19 @@ def calculate_eligibility_for_schedule(
             config["student_progress"]["graduation"]["thesis_course_codes"]
         )
         thesis_eligible = (
-            is_english_passed(student, passed_courses, config)
+            is_english_passed(
+                student,
+                passed_courses,
+                config,
+                semester_code,
+                before=True,
+            )
             and ctxh_days_before_semester(student, semester_code)
             >= config["student_progress"]["ctxh"]["minimum_for_thesis"]
         )
-        exempted_english = get_exempted_english_courses(student, config)
+        exempted_english = get_exempted_english_courses(
+            student, config, semester_code, before=True
+        )
 
         def course_is_available(course_code):
             if course_code in exempted_english:

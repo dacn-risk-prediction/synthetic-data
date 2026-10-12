@@ -9,6 +9,7 @@ ROOT_DIR = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT_DIR / "rules"))
 from academic_rules import (
     GENERATOR_CONFIG,
+    english_eligible_by_semester,
     get_exempted_english_courses,
     is_english_passed,
     semester_from_index,
@@ -218,9 +219,19 @@ def summarize_required_courses(student_id, print_report=True):
             print(f"    - Xếp loại: {graduation_info.get('degree_classification', '')} | GPA: {gpa_lbl} | CTXH: {graduation_info.get('ctxh_days', 0)} ngày")
             print(f"    - Tổng tín chỉ tích lũy: {graduation_info.get('passed_credits', 0.0):g} TC (Đã đạt chuẩn tốt nghiệp)")
             print(f"{'-'*75}")
-        if str(student_row.get("english_pass", False)).casefold() == "true":
+        initial_english_pass = (
+            str(student_row.get("english_pass", False)).casefold() == "true"
+        )
+        transitioned_english_pass = (
+            not initial_english_pass
+            and english_eligible_by_semester(student_row)
+        )
+        if initial_english_pass:
             print("[*] Chuẩn ngoại ngữ đầu ra: ĐÃ ĐẠT")
             print("    (Miễn học toàn bộ chuỗi môn Anh văn: LA1003, LA1005, LA1007, LA1009)")
+        elif transitioned_english_pass:
+            print("[*] Chuẩn ngoại ngữ đầu ra: ĐÃ ĐẠT")
+            print("    (Đạt điều kiện tiếng Anh theo tiến độ mô phỏng)")
         elif english_pass:
             print("[*] Chuẩn ngoại ngữ đầu ra: ĐÃ ĐẠT")
             print("    (Đã hoàn thành các học phần Anh văn trong chương trình đào tạo)")
@@ -1293,5 +1304,4 @@ def view_lecturer_classes(lecturer_id, print_report=True):
 
 
 get_lecturer_classes = view_lecturer_classes
-
 

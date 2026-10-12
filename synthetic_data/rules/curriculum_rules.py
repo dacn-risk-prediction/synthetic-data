@@ -51,7 +51,13 @@ def curriculum_courses(semester):
     return rows["course_code"].tolist()
 
 
-def additional_courses(semester, *, early_graduation=False):
+def additional_courses(
+    semester,
+    *,
+    early_graduation=False,
+    early_graduation_only=False,
+    cohort=None,
+):
     rules = load_rules()
     rows = rules[
         (rules["available_from_semester"] <= semester)
@@ -60,6 +66,20 @@ def additional_courses(semester, *, early_graduation=False):
     ].sort_values(["priority", "rule_id"])
     if not early_graduation:
         rows = rows[rows["activation_condition"] != "early_graduation_3_5_years"]
+    elif early_graduation_only:
+        rows = rows[
+            rows["activation_condition"].eq("early_graduation_3_5_years")
+            & rows["early_graduation_semester"].eq(semester)
+        ]
+    if cohort is not None and "applies_to_cohorts" in rows:
+        cohort_code = str(cohort).upper()
+        if not cohort_code.startswith("K"):
+            cohort_code = f"K{cohort_code}"
+        rows = rows[
+            rows["applies_to_cohorts"].fillna("").apply(
+                lambda value: cohort_code in str(value).split("|")
+            )
+        ]
     return rows["course_code"].tolist()
 
 

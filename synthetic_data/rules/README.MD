@@ -35,7 +35,9 @@ generator class và enrollment dùng cùng một chương trình đào tạo.
 - `curriculum_courses(semester)`: trả các môn bắt buộc của một học kỳ, theo
   `course_order`.
 - `additional_courses(semester)`: trả môn có thể học thêm tại học kỳ đó; mặc
-  định không lấy rule chỉ dành cho lộ trình tốt nghiệp sớm.
+  định không lấy rule chỉ dành cho lộ trình tốt nghiệp sớm. Có thể truyền
+  `early_graduation=True`, `early_graduation_only=True` và `cohort` để lấy đúng
+  các môn sớm áp dụng cho một khóa.
 - `free_elective_courses()`, `management_elective_courses()` và
   `group_c_elective_courses()`: trả các lựa chọn môn tự chọn tương ứng.
 - `course_catalog()`: tạo ba ánh xạ `course_code → course_name`, `credits` và
@@ -95,10 +97,15 @@ chạy `python synthetic_data/tools/run_all.py` để sinh lại các học kỳ
 ### Điều kiện tiến độ, đồ án và dropout
 
 `student_progress` cấu hình các kỳ được theo dõi, kỳ bắt đầu theo khóa, ngưỡng
-CTXH, xác suất đạt tiếng Anh và chính sách dropout/tốt nghiệp. Profile xuất ra
-`english_pass` dạng boolean và `ctxh_days_by_semester` dạng JSON array với ngày
-CTXH cộng dồn. Ngày tăng theo từng kỳ với kỳ vọng phụ thuộc discipline,
-motivation, social activity và stress.
+CTXH, xác suất tiếng Anh ban đầu/chuyển trạng thái và chính sách dropout/tốt
+nghiệp. Profile xuất ra `english_pass` ban đầu,
+`english_eligibility_by_semester` dạng JSON array với trạng thái tiếng Anh chỉ
+chuyển từ chưa đạt sang đạt, và `ctxh_days_by_semester` dạng JSON array với
+ngày CTXH cộng dồn. Xác suất tiếng Anh ban đầu và xác suất chuyển theo mỗi kỳ
+cùng phụ thuộc background, English level, academic level và personality; các
+trọng số được cấu hình trong `student_progress.english`. Ngày CTXH tăng theo
+từng kỳ với kỳ vọng phụ thuộc discipline, motivation, social activity và stress.
+Báo cáo `english_eligibility_by_semester.csv` tổng hợp tỷ lệ theo từng kỳ.
 
 Các môn đồ án trong `thesis_course_codes` bị loại khỏi eligibility nếu tiếng
 Anh chưa đạt hoặc CTXH tích lũy trước kỳ học chưa đủ 12 ngày. Tốt nghiệp yêu cầu
@@ -114,6 +121,12 @@ nguyên nhân background 95%, academic 5%.
 phân phối điểm theo course/toàn trường và tổng hợp dropout/tốt nghiệp. Mẫu số
 chỉ gồm sinh viên có enrollment trong các kỳ đã sinh; điểm chưa chấm ở kỳ đang
 diễn ra bị loại khỏi phân phối điểm.
+
+Khi tạo profile, `add_base_score.py` đánh dấu 5% số sinh viên có điểm cao nhất
+trong top 1% của các khóa K23–K26 theo academic level và personality đã chuẩn
+hóa. Việc chọn ổn định theo seed và được lưu ở `early_graduation_candidate`.
+Profile được đánh dấu có thể học các môn bổ sung theo lộ trình HK6–HK7; việc
+tốt nghiệp sớm vẫn phụ thuộc vào qua môn và đủ điều kiện tiếng Anh/CTXH.
 
 ### Lịch sử học tập
 

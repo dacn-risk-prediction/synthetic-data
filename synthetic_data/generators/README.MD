@@ -96,9 +96,12 @@ generator dừng với lỗi thay vì âm thầm bỏ sinh viên hay tạo lớp
 
 ## Điều kiện đồ án, CTXH và tốt nghiệp
 
-`add_base_score.py` bổ sung `english_pass` (boolean) dựa trên background,
-`english_level`, academic level và personality theo trọng số cấu hình. Profile
-có `ctxh_days_by_semester` là JSON array; mỗi phần tử gồm mã học kỳ và tổng ngày
+`add_base_score.py` bổ sung `english_pass` ban đầu và
+`english_eligibility_by_semester` (JSON array) dựa trên background,
+`english_level`, academic level và personality theo trọng số cấu hình. Trạng
+thái đủ điều kiện tiếng Anh chỉ chuyển một chiều từ chưa đạt sang đạt; xác suất
+khởi đầu và xác suất chuyển đổi được cấu hình riêng. Profile cũng có
+`ctxh_days_by_semester` là JSON array; mỗi phần tử gồm mã học kỳ và tổng ngày
 CTXH cộng dồn. Sinh viên có personality engagement thấp thường tích lũy ít
 ngày hơn.
 
@@ -114,10 +117,19 @@ academic level thấp; nguyên nhân được gán theo trọng số 95% backgro
 academic. Generator cho phép sinh viên hoàn tất học kỳ dropout nhưng không xếp
 môn sau học kỳ đó.
 
-`run_all.py` gọi `generate_academic_metrics.py` ở cuối. Các file metric nằm
-trong `synthetic_data/generated/metrics/`; metric chỉ bao phủ sinh viên có
+`run_all.py` gọi `generate_academic_metrics.py` ở cuối. Ngoài tiến độ sinh viên,
+script xuất `english_eligibility_by_semester.csv` với tỷ lệ đủ điều kiện theo
+từng học kỳ. Các file metric nằm trong `synthetic_data/generated/metrics/`;
+metric chỉ bao phủ sinh viên có
 enrollment trong các học kỳ đã sinh. Các khóa K17–K26 chỉ xuất hiện từ những
 học kỳ tương ứng trong bảng bên dưới; không có lịch sử trước khi khóa bắt đầu.
+
+Lộ trình sớm được bật cho 5% sinh viên top 1% theo điểm academic + personality
+ở các khóa K23–K26; cờ `early_graduation_candidate` được tạo bởi
+`add_base_score.py`. Khi tạo lại dữ liệu sau thay đổi cấu hình/lộ trình, cần
+chạy lại bước tạo profile trước `run_all.py`. Profile đủ điều kiện có thể đăng
+ký `CO3061`/`CO4029` tại HK6 và `CO4337`/`SP1007` tại HK7; vẫn phải qua các môn
+và đạt điều kiện tiếng Anh, CTXH để metric ghi nhận tốt nghiệp sớm.
 
 ## Các học kỳ được sinh
 
