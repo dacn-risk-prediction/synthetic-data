@@ -1072,12 +1072,12 @@ def semester_index(semester_code):
     term = int(code[4])
     if term not in (1, 2):
         raise ValueError(f"Invalid semester term in {semester_code}")
-    return (year - 23) * 2 + term
+    return (year - 13) * 2 + term
 
 
 def semester_from_index(idx):
-    """Convert integer semester index back to canonical semester code, e.g. -19 -> 'HK131'."""
-    year = 23 + (idx - 1) // 2
+    """Convert integer semester index back to canonical semester code, e.g. 1 -> 'HK131'."""
+    year = 13 + (idx - 1) // 2
     term = 1 if (idx % 2 != 0) else 2
     return f"HK{year}{term}"
 
