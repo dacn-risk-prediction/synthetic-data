@@ -1,104 +1,159 @@
-# Synthetic Course and Semester Data
+# Dữ liệu mô phỏng quản lý đào tạo
 
-This folder contains synthetic data used for analyzing study plans, prerequisite relationships between courses, and academic semester information.
+`synthetic_data` là bộ dữ liệu mô phỏng cho bài toán quản lý đào tạo ngành Computer Science: danh mục môn học, chương trình, sinh viên, giảng viên, lớp học phần, đăng ký và điểm theo học kỳ. Toàn bộ dữ liệu là **dữ liệu tổng hợp**, không phải dữ liệu học vụ thực tế.
 
-## 1. course.csv
+## Cấu trúc thư mục
 
-File: `course.csv`
-
-Description: A table listing all courses in the curriculum.
-
-Columns:
-- `course_id`: internal unique identifier for the course.
-- `course_code`: course code, for example `CO1005`, `MT1003`, `SP1031`.
-- `course_name`: course name in Vietnamese.
-- `credits`: number of credits for the course.
-- `course_group`: curriculum grouping. Values include `ELECTIVE_GROUP_A`,
-  `ELECTIVE_GROUP_B`, `ELECTIVE_GROUP_C`, `ELECTIVE_MANAGEMENT`, and
-  `NON_ELECTIVE`.
-
-Example:
-```csv
-1,CO1005,Nhập môn Điện toán,3
+```text
+synthetic_data/
+├── data/        # Dữ liệu nguồn
+├── config/      # Cấu hình hồ sơ, điểm và độ khó theo môn
+├── rules/       # Quy tắc chương trình và học vụ
+├── generators/  # Script sinh lớp, enrollment và điểm
+├── generated/   # Kết quả sinh ra
+└── tools/       # Script chuẩn bị dữ liệu và điều phối
 ```
 
-Purpose:
-- Used to look up general information about each course.
-- Supports curriculum analysis, credit mapping, and course grouping.
+| Thư mục | Vai trò | Tài liệu chi tiết |
+| --- | --- | --- |
+| `data/` | Dữ liệu nguồn về học kỳ, danh mục môn, sinh viên và giảng viên. | [data/README.MD](data/README.MD) |
+| `config/` | Phân phối hồ sơ/điểm, difficulty theo môn và chính sách CTXH, tiếng Anh, tốt nghiệp, dropout. | [config/generator_config.json](config/generator_config.json) |
+| `rules/` | Xét môn học, tiên quyết, học lại, điều kiện đồ án và mô phỏng điểm. | [rules/README.MD](rules/README.MD) |
+| `generators/` | Tạo lớp, phân sinh viên vào lớp và mô phỏng điểm từ HK231 đến HK261. | [generators/README.MD](generators/README.MD) |
+| `tools/` | Tạo điểm nền, phân bộ môn giảng viên, cập nhật độ khó và chạy generator. | [tools/README.MD](tools/README.MD) |
+| `generated/` | File đầu ra có thể tạo lại, không phải dữ liệu nguồn. | Xem phần dưới. |
 
----
+## Dữ liệu nguồn: `data/`
 
-## 2. course_prerequisite.csv
+`data/` có ba nhóm lớn.
 
-File: `course_prerequisite.csv`
+### `data/academic/` — mốc thời gian
 
-Description: A table showing prerequisite relationships between courses.
+- `semester.csv`: danh sách học kỳ, gồm mã kỳ (`semester_code`), niên khóa và số thứ tự kỳ. Mã như `HK131`, `HK142` xuất hiện trong tên file class và enrollment.
 
-Columns:
-- `course_prerequisite_id`: unique identifier for the prerequisite relationship.
-- `course_code`: the course being evaluated, which has prerequisite conditions.
-- `related_course_code`: the related course, typically the course that must be completed first.
-- `relation_type`: the type of relationship between the two courses.
+### `data/catalog/` — chương trình đào tạo và môn học
 
-Common values in `relation_type`:
-- `KN`: knowledge block / required prerequisite.
-- `TQ`: equivalent prerequisite or a course that must be completed before another.
-- `HT`: prerequisite / required sequence condition.
-- `SHT`: a specific prerequisite relationship, often representing a stronger or additional condition.
+- `course.csv`: danh mục môn chuẩn (`course_code`, tên, tín chỉ, `difficulty`).
+- `assessment.csv`: cơ cấu điểm theo môn, gồm trọng số `quiz`, `lab`, `btl`, `giua_ky`, `cuoi_ky`.
+- `course_prerequisite.csv`: quan hệ môn học; logic hiện tại bắt buộc quan hệ `TQ` khi xét đăng ký.
+- `curriculum_computer_science.csv`: môn theo khung chương trình HK1–HK8.
+- `additional_course_rules.csv`: môn bổ sung/học sớm và điều kiện áp dụng.
+- `elective_courses.csv`, `management_electives.csv`, `group_c_electives.csv`: môn tự chọn theo nhóm.
 
-Example:
-```csv
-1,MT1005,MT1003,KN
+### `data/people/` — sinh viên và giảng viên
+
+- `student.csv`: hồ sơ sinh viên gốc, gồm mã sinh viên, khóa, ngành và thông tin liên hệ.
+- `student_base_score.csv`: profile cũ, chỉ làm fallback trước khi tạo profile mới.
+- `lecture.csv`: hồ sơ giảng viên gốc.
+- `lecturer_for_class.csv`: giảng viên đã gắn bộ môn `Triet`, `DaiCuong` hoặc `ChuyenNganh` để generator phân công lớp.
+
+Xem [data/README.MD](data/README.MD) để biết vai trò và cấu trúc cột của từng CSV.
+
+## Dữ liệu được sinh: `generated/`
+
+| Loại file | Mẫu tên | Nội dung chính |
+| --- | --- | --- |
+| Profile sinh viên | `generated/student_profile/student_profiles.csv` | Background, personality, academic/subject ability và điểm nền cho sinh viên nguồn khóa 2013 trở đi. |
+| Lớp học phần | `generated/classes/class_hk*.csv` | `class_id`, mã/tên môn, học kỳ, nhóm lớp và giảng viên phụ trách. |
+| Đăng ký/điểm | `generated/enrollments/enrollment_hk*.csv` | Sinh viên, lớp/môn, điểm thành phần, grade, GPA môn/học kỳ và GPA tích lũy. |
+| Metric | `generated/metrics/` | Tiến độ sinh viên, trạng thái tốt nghiệp/dropout, phân phối điểm và tổng hợp toàn trường. |
+
+Các file liên kết qua `class_id`: enrollment ghi lớp sinh viên được xếp, còn file class xác định môn và giảng viên. Nhờ vậy lịch sử enrollment có thể được ghép với class để xác định sinh viên đã học, đậu hoặc trượt môn nào.
+
+HK161 là kỳ cuối của chuỗi mô phỏng; enrollment vẫn sinh đầy đủ
+`final_score`, grade và `status` như các kỳ trước.
+
+## Quy trình tạo dữ liệu
+
+```text
+student.csv ──> add_base_score.py ──> generated/student_profile/student_profiles.csv
+lecture.csv ──> add_lecture_dep.py ──> lecturer_for_class.csv
+catalog CSV + people CSV + rules ──> generator class ──> class_hk*.csv
+class_hk*.csv + lịch sử + assessment ──> generator enrollment ──> enrollment_hk*.csv
+profile + classes + enrollments ──> generate_academic_metrics.py ──> generated/metrics/
 ```
 
-Explanation:
-- `MT1005` (Calculus 2) has a `KN` relationship with `MT1003` (Calculus 1), meaning this course requires `MT1003` to be completed first.
+Chạy quy trình đầy đủ từ thư mục gốc dự án:
 
-Purpose:
-- Used to build a course dependency graph, check prerequisite rules, and support academic roadmap recommendations.
-
----
-
-## 3. semester.csv
-
-File: `semester.csv`
-
-Description: A table containing academic semester information.
-
-Columns:
-- `semester_id`: unique identifier for the semester.
-- `semester_code`: semester code, for example `HK231`, `HK242`, `HK251`.
-- `academic_year`: corresponding academic year.
-- `term`: semester in the academic year, values 1, 2, or 3.
-
-Example:
-```csv
-1,HK231,2023-2024,1
+```bash
+source .venv/bin/activate
+python synthetic_data/tools/run_all.py
 ```
 
-Explanation:
-- `HK231` represents semester 1 of the 2023-2024 academic year.
+Lệnh tạo profile trước, sau đó chạy theo từng cặp class → enrollment trong thứ
+tự HK131 → HK161 và ghi đè CSV trong `synthetic_data/generated/`. Không thể
+tạo toàn bộ class của các kỳ trước enrollment vì nhu cầu lớp ở kỳ sau phụ thuộc
+lịch sử enrollment các kỳ trước.
 
-Purpose:
-- Used to categorize data by study period.
-- Supports tracking student progression, scheduling, and analysis by academic year and semester.
+`student_progress` trong `config/generator_config.json` cấu hình điều kiện CTXH,
+tiếng Anh, tốt nghiệp và dropout. Mỗi profile có `ctxh_days_by_semester` dạng
+JSON array với ngày tích lũy theo kỳ và `english_eligibility_by_semester` dạng
+JSON array với trạng thái đủ điều kiện tiếng Anh. Trạng thái tiếng Anh bắt đầu
+theo xác suất profile và chỉ chuyển một chiều từ chưa đạt sang đạt; xác suất
+khởi đầu và xác suất chuyển đổi đều phụ thuộc background, academic, năng lực
+tiếng Anh và personality. Tỷ lệ theo từng kỳ được ghi trong
+`generated/metrics/english_eligibility_by_semester.csv`. Môn `CO4029` và
+`CO4337` chỉ được đăng ký khi sinh viên đã tích lũy ít nhất 12 ngày CTXH trước
+kỳ học và đã đủ điều kiện tiếng Anh. Tốt nghiệp cần ít nhất 15 ngày CTXH, tiếng
+Anh, hoàn thành các môn bắt buộc trong curriculum và `CO4337`; ngưỡng phân loại
+GPA4 cũng được cấu hình. Các lớp GPA hiện là `below_average`, `average`,
+`fairly_good`, `good`, `excellent`; báo cáo degree rate cần tính cả
+`below_average` nếu muốn tổng các nhóm bằng 1.
 
----
+Lộ trình tốt nghiệp sớm được bật cho sinh viên được chọn ngẫu nhiên một cách
+xác định trong nhóm top 1% theo tổng điểm chuẩn hóa academic và personality
+(discipline, motivation, social activity, stress đảo chiều), thuộc các khóa
+K23–K26. Tỷ lệ chọn là 5% của nhóm top 1%; cấu hình nằm trong
+`student_progress.graduation.early_graduation`. Các sinh viên này được mở thêm
+`CO3061` và `CO4029` ở HK6, rồi `CO4337` và môn bắt buộc `SP1007` ở HK7. Như
+vậy tất cả học phần bắt buộc có thể hoàn tất trong 7 học kỳ. Cờ ứng viên được
+tạo cùng `student_profiles.csv`; chạy lại `tools/add_base_score.py` trước khi
+tạo lại class/enrollment để cập nhật profile. Đây là eligibility của lộ trình,
+không đảm bảo tốt nghiệp nếu sinh viên trượt môn, thiếu điều kiện tiếng Anh/
+CTXH hoặc rút học.
 
-## Dataset overview
+Dropout tự nguyện dùng xác suất 30% cho nhóm rủi ro (background thấp hoặc
+academic level thấp), với trọng số nguyên nhân background/academic 95%/5%.
+Sinh viên đạt dưới 11 tín chỉ trong hai kỳ liên tiếp phải tạm dừng đúng một
+học kỳ: không đăng ký môn, nhưng tiến độ CTXH và trạng thái tiếng Anh vẫn được
+ghi nhận. Sau kỳ dừng, sinh viên có thể đăng ký học lại. Buộc thôi học nếu đã
+qua 12 học kỳ mà chưa tốt nghiệp. Kỳ tạm dừng được đánh dấu trong
+`student_progress.csv`, không bị tính là dropout.
 
-This dataset simulates a training management system with three main components:
-1. Course list.
-2. Prerequisite relationships between courses.
-3. Semester information.
+Metric học tập chỉ tính sinh viên có enrollment trong các kỳ đã cấu hình và
+được sinh. K13–K22 chưa có lịch sử lớp/enrollment nên không bị tính là bỏ học
+hoặc đưa vào mẫu số. HK261 đang diễn ra; điểm chưa chấm không tham gia phân
+phối điểm và tỷ lệ grade. Khi chưa có sinh viên tốt nghiệp trong dữ liệu quan
+sát, các tỷ lệ tốt nghiệp/phân loại có mẫu số 0 và giá trị 0.
 
-The data can be used for:
-- Building study roadmaps.
-- Analyzing prerequisite courses.
-- Evaluating student progress by semester.
-- Generating data for machine learning models, course recommendation systems, or risk assessments for delayed progression.
+Để tái sinh riêng một khóa và giữ nguyên enrollment/lớp của các khóa còn lại,
+chạy:
 
-## Notes
+```bash
+python synthetic_data/tools/regenerate_cohort.py --cohort 13
+```
 
-- This is synthetic data and not real academic data from a management system.
-- Course codes and semester codes are designed with a consistent format to simplify data processing.
+Script chạy lần lượt từng kỳ cho khóa được chọn, giữ lại các dòng class/
+enrollment của khóa khác, rồi ghi metric riêng vào
+`synthetic_data/generated/metrics/K13/`.
+
+Nguồn dữ liệu hiện có 9.890 sinh viên, thuộc khóa 2013–2016 (mã bắt đầu
+`13`–`16`). `tools/generate_student_cohorts.py` giữ nguyên tên và các trường
+khác, phân bổ lại danh sách theo trọng số tăng dần từ 8% cho K13 tới 14,5% cho
+K26 (chuẩn hóa tổng trọng số thành 100%), đồng thời cập nhật MSSV/email. Sĩ số
+theo khóa được làm tròn để tổng vẫn là 9.890; K26 nhận khoảng 910 sinh viên.
+Profile được sinh cho tất cả các khóa K13–K26. Lịch sử lớp/đăng ký chỉ được
+sinh cho những khóa có lịch học được khai báo trong generator.
+
+## Quy ước quan trọng
+
+- `student_id` có dạng `YY` + 5 chữ số, ví dụ `2301234`; phần `YY` nhận biết khóa. Phần số cuối được tạo bằng dãy modulo với bước nguyên tố cùng nhau với 100.000, nên không trùng trong một khóa mà không cần quét danh sách hiện có.
+- `course_code` là mã liên kết chính giữa danh mục môn, class, tiên quyết và enrollment.
+- `credits` được dùng để giữ số tín chỉ đăng ký không vượt 22 trong một kỳ.
+- `status` là `Pass` nếu grade khác F (điểm từ 4.0), ngược lại là `Fail`.
+- Difficulty override theo môn chỉnh trong
+  `config/generator_config.json`; sinh viên có tổng academic/personality strength
+  cao sẽ bị difficulty làm giảm điểm ít hơn.
+- `calibration_targets` trong config là mục tiêu để so sánh phân phối GPA, không
+  phải nhãn hard-code hay tỷ lệ bị ép vào đầu ra.
+- Đường dẫn trong tài liệu được viết từ thư mục gốc dự án.
