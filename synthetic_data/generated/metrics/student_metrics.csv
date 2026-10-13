@@ -220,7 +220,7 @@
 1343336,K13,medium,low,dorm,3,5,2,4,3,4,0.625,13,9,4,HK191,True,15,True,119.0,2.4747899159663866,True,0,,HK181,late,fairly_average,False,none,,,0
 1343654,K13,medium,medium,dorm,1,4,2,1,3,3,0.4375,13,9,4,HK191,True,17,True,119.0,2.2478991596638656,True,0,,HK172,late,average,False,none,,,0
 1343791,K13,high,medium,dorm,3,4,3,5,3,2,0.5938,13,8,5,HK191,True,20,True,123.0,2.3983739837398375,True,0,,HK172,late,average,False,none,,,0
-1343928,K13,medium,medium,dorm,4,4,3,5,5,4,0.875,13,8,5,HK191,True,31,True,119.0,4.0,True,0,,HK162,on_time,not_graduated,False,none,,,0
+1343928,K13,medium,medium,dorm,4,4,3,5,5,4,0.875,13,8,5,HK191,True,31,True,119.0,4.0,True,0,,HK162,on_time,excellent,False,none,,,0
 1344065,K13,medium,high,with_family,1,3,2,5,4,5,0.6562,13,9,4,HK191,True,16,True,119.0,3.033613445378151,True,0,,HK182,late,fair,False,none,,,0
 1344383,K13,medium,low,rental,4,5,2,3,4,4,0.75,13,8,5,HK191,True,26,True,121.0,3.5702479338842976,True,0,,HK162,on_time,good,False,none,,,0
 1344520,K13,medium,low,dorm,4,4,2,3,3,4,0.5938,13,8,5,HK191,True,26,True,119.0,2.6134453781512605,True,0,,HK162,on_time,fairly_average,False,none,,,0
@@ -277,7 +277,7 @@
 1354907,K13,medium,medium,dorm,3,3,3,3,5,5,0.75,13,9,4,HK191,True,17,True,119.0,3.869747899159664,True,0,,HK172,late,excellent,False,none,,,0
 1355044,K13,medium,low,rental,3,3,1,5,4,4,0.75,13,8,5,HK191,True,20,True,121.0,3.3884297520661155,True,0,,HK172,late,good,False,none,,,0
 1355181,K13,medium,medium,dorm,4,4,2,5,4,5,0.7812,13,8,5,HK191,True,27,True,119.0,3.302521008403361,True,0,,HK162,on_time,good,False,none,,,0
-1355499,K13,medium,medium,dorm,5,4,3,5,5,5,0.9062,13,8,5,HK191,True,24,True,119.0,4.0,True,0,,HK162,on_time,not_graduated,False,none,,,0
+1355499,K13,medium,medium,dorm,5,4,3,5,5,5,0.9062,13,8,5,HK191,True,24,True,119.0,4.0,True,0,,HK162,on_time,excellent,False,none,,,0
 1355636,K13,medium,high,dorm,4,4,3,3,2,3,0.4375,13,7,6,HK191,True,16,True,115.0,1.7434782608695651,False,0,,,not_graduated,not_graduated,True,forced,overdue_more_than_two_years,HK191,1
 1355773,K13,medium,high,dorm,5,4,2,3,2,2,0.5,13,9,4,HK191,True,19,True,119.0,1.9831932773109244,True,0,,HK172,late,below_average,False,none,,,0
 1355910,K13,low,medium,dorm,3,1,1,4,4,4,0.6562,13,8,5,HK191,True,22,True,119.0,3.2436974789915967,True,0,,HK162,on_time,good,False,none,,,0
@@ -341,7 +341,7 @@
 1367618,K13,medium,medium,dorm,5,3,3,4,3,4,0.5938,13,10,3,HK191,True,22,True,119.0,2.588235294117647,True,0,,HK172,late,fairly_average,False,none,,,0
 1367755,K13,medium,low,rental,3,4,2,4,3,3,0.5938,13,8,5,HK191,True,17,True,119.0,2.6554621848739495,True,0,,HK172,late,fairly_average,False,none,,,0
 1368073,K13,medium,low,dorm,4,4,3,5,3,3,0.625,13,9,4,HK191,True,25,True,123.0,2.565040650406504,True,0,,HK172,late,fairly_average,False,none,,,0
-1368210,K13,medium,medium,dorm,5,4,2,4,5,5,0.9062,13,7,6,HK191,True,24,True,119.0,4.0,True,0,,HK161,early,not_graduated,False,none,,,0
+1368210,K13,medium,medium,dorm,5,4,2,4,5,5,0.9062,13,7,6,HK191,True,24,True,119.0,4.0,True,0,,HK161,early,excellent,False,none,,,0
 1368347,K13,medium,medium,dorm,4,3,2,3,3,4,0.5625,13,9,4,HK191,True,20,True,119.0,2.407563025210084,True,0,,HK172,late,fairly_average,False,none,,,0
 1368484,K13,medium,medium,dorm,3,3,3,4,2,3,0.4062,13,9,4,HK191,True,23,True,119.0,1.6512605042016806,True,0,,HK172,late,below_average,False,none,,,0
 1368802,K13,medium,medium,rental,1,4,4,3,4,3,0.5625,13,8,5,HK191,True,21,True,123.0,2.9390243902439024,True,0,,HK171,late,fair,False,none,,,0
@@ -902,7 +902,7 @@
 1474628,K14,medium,medium,dorm,4,4,3,2,4,4,0.6562,13,9,4,HK201,True,20,True,119.0,3.273109243697479,True,0,,HK182,late,good,False,none,,,0
 1474781,K14,medium,low,dorm,3,3,2,3,4,4,0.6562,13,9,4,HK201,True,23,True,119.0,3.327731092436975,True,0,,HK182,late,good,False,none,,,0
 1474934,K14,medium,low,dorm,3,3,2,4,1,1,0.3125,13,12,1,HK201,True,25,True,116.0,1.0258620689655173,False,0,,,not_graduated,not_graduated,True,forced,overdue_more_than_two_years,HK201,1
-1475087,K14,medium,low,dorm,4,4,2,3,5,5,0.8438,13,8,5,HK201,True,27,True,119.0,4.0,True,0,,HK172,on_time,not_graduated,False,none,,,0
+1475087,K14,medium,low,dorm,4,4,2,3,5,5,0.8438,13,8,5,HK201,True,27,True,119.0,4.0,True,0,,HK172,on_time,excellent,False,none,,,0
 1475240,K14,medium,low,dorm,3,4,4,4,4,4,0.6562,13,8,5,HK201,True,19,True,119.0,3.222689075630252,True,0,,HK172,on_time,good,False,none,,,0
 1475703,K14,medium,medium,with_family,5,4,3,5,2,3,0.5312,13,8,5,HK201,True,24,True,123.0,2.0365853658536586,True,0,,HK172,on_time,average,False,none,,,0
 1475856,K14,medium,low,dorm,4,3,3,1,3,3,0.4688,13,9,4,HK201,True,19,True,119.0,2.4411764705882355,True,0,,HK182,late,fairly_average,False,none,,,0
@@ -1089,12 +1089,12 @@
 1508982,K15,high,high,dorm,1,4,2,5,3,4,0.5625,13,9,4,HK211,True,22,True,119.0,2.453781512605042,True,0,,HK192,late,fairly_average,False,none,,,0
 1509151,K15,medium,medium,rental,4,4,5,5,4,3,0.6875,13,7,6,HK211,True,13,True,121.0,3.2768595041322315,False,0,,,not_graduated,not_graduated,True,forced,overdue_more_than_two_years,HK211,1
 1509320,K15,medium,medium,rental,3,4,3,4,4,2,0.6875,13,8,5,HK211,True,28,True,125.0,3.324,True,0,,HK182,on_time,good,False,none,,,0
-1509446,K15,medium,medium,dorm,4,4,3,3,5,5,0.8125,13,8,5,HK211,True,25,True,121.0,4.0,True,0,,HK192,late,not_graduated,False,none,,,0
+1509446,K15,medium,medium,dorm,4,4,3,3,5,5,0.8125,13,8,5,HK211,True,25,True,121.0,4.0,True,0,,HK192,late,excellent,False,none,,,0
 1509615,K15,medium,low,dorm,4,4,1,1,5,4,0.8125,13,10,3,HK211,True,20,True,121.0,3.8801652892561984,True,0,,HK192,late,excellent,False,none,,,0
 1509784,K15,medium,medium,dorm,5,2,2,5,4,2,0.75,13,9,4,HK211,True,21,True,127.0,3.248031496062992,True,0,,HK192,late,good,False,none,,,0
 1509910,K15,medium,low,dorm,5,4,2,4,3,3,0.6562,13,8,5,HK211,True,21,True,119.0,2.7394957983193278,True,0,,HK182,on_time,fairly_average,False,none,,,0
 1510079,K15,medium,medium,dorm,3,3,2,4,3,4,0.5625,13,8,5,HK211,True,21,True,119.0,2.323529411764706,True,0,,HK191,late,average,False,none,,,0
-1510374,K15,medium,medium,dorm,4,4,1,2,5,5,0.8438,13,9,4,HK211,True,24,True,119.0,4.0,True,0,,HK192,late,not_graduated,False,none,,,0
+1510374,K15,medium,medium,dorm,4,4,1,2,5,5,0.8438,13,9,4,HK211,True,24,True,119.0,4.0,True,0,,HK192,late,excellent,False,none,,,0
 1510543,K15,medium,low,dorm,5,5,3,3,4,4,0.75,13,8,5,HK211,True,16,True,119.0,3.53781512605042,True,0,,HK202,late,good,False,none,,,0
 1510838,K15,medium,low,with_family,3,4,5,4,4,5,0.625,13,8,5,HK211,True,26,True,119.0,3.0672268907563027,True,0,,HK182,on_time,fair,False,none,,,0
 1511007,K15,medium,medium,rental,4,4,4,3,2,1,0.4062,13,9,4,HK211,True,20,True,119.0,1.76890756302521,True,0,,HK192,late,below_average,False,none,,,0
@@ -2540,7 +2540,7 @@
 1749855,K17,medium,low,dorm,4,4,4,2,2,3,0.375,13,9,4,HK231,True,19,True,119.0,1.8277310924369747,True,0,,HK212,late,below_average,False,none,,,0
 1750064,K17,medium,high,dorm,4,5,1,5,2,3,0.5938,13,9,4,HK231,True,23,True,125.0,2.088,True,0,,HK212,late,average,False,none,,,0
 1750315,K17,medium,low,dorm,2,3,5,3,4,4,0.5312,13,8,5,HK231,True,15,True,123.0,2.9471544715447155,True,0,,HK222,late,fair,False,none,,,0
-1750524,K17,low,low,dorm,4,5,1,3,5,5,0.9062,13,8,5,HK231,True,34,True,119.0,4.0,True,0,,HK202,on_time,not_graduated,False,none,,,0
+1750524,K17,low,low,dorm,4,5,1,3,5,5,0.9062,13,8,5,HK231,True,34,True,119.0,4.0,True,0,,HK202,on_time,excellent,False,none,,,0
 1750566,K17,low,low,rental,4,3,4,3,4,5,0.625,13,9,4,HK231,True,16,True,119.0,3.2058823529411766,True,0,,HK221,late,good,False,none,,,0
 1750775,K17,medium,medium,dorm,3,4,4,4,4,2,0.6562,13,8,5,HK231,True,27,True,119.0,3.2016806722689077,True,0,,HK202,on_time,good,False,none,,,0
 1751026,K17,medium,medium,dorm,3,3,1,4,4,4,0.7188,13,9,4,HK231,True,21,True,121.0,3.231404958677686,True,0,,HK221,late,good,False,none,,,0
@@ -3228,7 +3228,7 @@
 1861179,K18,medium,medium,dorm,3,3,5,5,2,1,0.375,13,7,6,HK241,False,19,False,115.0,1.5782608695652174,False,0,,,not_graduated,not_graduated,True,forced,overdue_more_than_two_years,HK241,5
 1861208,K18,medium,medium,dorm,4,4,3,2,3,4,0.5312,13,9,4,HK241,True,18,True,119.0,2.5756302521008405,True,0,,HK231,late,fairly_average,False,none,,,0
 1861237,K18,low,medium,rental,4,2,1,4,2,2,0.4688,10,8,2,HK222,True,27,True,127.0,1.8661417322834646,True,0,,HK212,on_time,below_average,False,none,,,0
-1861266,K18,medium,medium,with_family,3,4,2,4,5,4,0.8438,13,8,5,HK241,True,27,True,119.0,4.0,True,0,,HK212,on_time,not_graduated,False,none,,,0
+1861266,K18,medium,medium,with_family,3,4,2,4,5,4,0.8438,13,8,5,HK241,True,27,True,119.0,4.0,True,0,,HK212,on_time,excellent,False,none,,,0
 1861295,K18,medium,low,dorm,3,4,4,4,3,2,0.5312,13,9,4,HK241,True,17,True,127.0,2.3031496062992125,True,0,,HK231,late,average,False,none,,,0
 1861324,K18,medium,medium,rental,1,4,4,3,2,1,0.3125,13,8,5,HK241,True,12,True,117.0,1.5042735042735043,False,0,,,not_graduated,not_graduated,True,forced,overdue_more_than_two_years,HK241,2
 1862028,K18,medium,medium,dorm,4,3,3,4,4,4,0.6875,13,8,5,HK241,True,19,True,119.0,3.310924369747899,True,0,,HK222,late,good,False,none,,,0
@@ -3489,7 +3489,7 @@
 1900219,K19,medium,medium,dorm,4,3,3,3,3,3,0.5312,13,9,4,HK251,True,20,True,119.0,2.4411764705882355,True,0,,HK232,late,fairly_average,False,none,,,0
 1900236,K19,medium,low,rental,5,3,4,4,2,1,0.4375,13,8,5,HK251,True,20,True,119.0,1.815126050420168,True,0,,HK222,on_time,below_average,False,none,,,0
 1900253,K19,medium,medium,dorm,3,2,3,2,2,3,0.3125,13,8,5,HK251,True,12,True,115.0,1.4956521739130435,False,0,,,not_graduated,not_graduated,True,forced,overdue_more_than_two_years,HK251,1
-1900270,K19,medium,medium,dorm,4,5,3,2,5,5,0.8125,13,9,4,HK251,True,23,True,119.0,4.0,True,0,,HK232,late,not_graduated,False,none,,,0
+1900270,K19,medium,medium,dorm,4,5,3,2,5,5,0.8125,13,9,4,HK251,True,23,True,119.0,4.0,True,0,,HK232,late,excellent,False,none,,,0
 1900287,K19,medium,medium,dorm,5,4,3,3,3,2,0.5938,13,8,5,HK251,True,24,True,119.0,2.600840336134454,True,0,,HK232,late,fairly_average,False,none,,,0
 1900304,K19,medium,medium,dorm,1,3,2,3,2,2,0.3438,13,9,4,HK251,True,18,True,119.0,1.546218487394958,True,0,,HK232,late,below_average,False,none,,,0
 1900321,K19,medium,low,dorm,5,2,2,4,4,4,0.7188,13,8,5,HK251,True,22,True,119.0,3.3361344537815127,True,0,,HK222,on_time,good,False,none,,,0
@@ -3672,7 +3672,7 @@
 1925902,K19,medium,medium,dorm,4,4,4,3,2,4,0.4062,13,8,5,HK251,True,18,True,119.0,1.8445378151260505,True,0,,HK241,late,below_average,False,none,,,0
 1925919,K19,medium,low,dorm,3,3,3,3,4,4,0.625,13,8,5,HK251,True,21,True,119.0,3.222689075630252,True,0,,HK241,late,good,False,none,,,0
 1925936,K19,medium,medium,dorm,1,5,4,1,2,2,0.2812,13,10,3,HK251,True,17,True,119.0,1.546218487394958,True,0,,HK242,late,below_average,False,none,,,0
-1925953,K19,low,low,dorm,4,5,3,3,5,5,0.8438,13,8,5,HK251,True,22,True,119.0,4.0,True,0,,HK222,on_time,not_graduated,False,none,,,0
+1925953,K19,low,low,dorm,4,5,3,3,5,5,0.8438,13,8,5,HK251,True,22,True,119.0,4.0,True,0,,HK222,on_time,excellent,False,none,,,0
 1925970,K19,medium,medium,dorm,4,4,4,3,3,3,0.5312,13,8,5,HK251,True,25,True,119.0,2.30672268907563,True,0,,HK222,on_time,average,False,none,,,0
 1925987,K19,medium,medium,dorm,4,1,3,3,5,5,0.7188,13,10,3,HK251,True,17,True,119.0,3.8949579831932772,True,0,,HK242,late,excellent,False,none,,,0
 1926004,K19,medium,low,dorm,4,3,1,4,4,5,0.75,13,9,4,HK251,True,19,True,119.0,3.5252100840336134,True,0,,HK241,late,good,False,none,,,0
@@ -4204,7 +4204,7 @@
 2003640,K20,medium,high,rental,4,4,2,4,4,5,0.75,6,6,0,HK222,True,26,True,109.0,3.389908256880734,False,0,,,not_graduated,not_graduated,True,voluntary,background,HK222,4
 2003747,K20,medium,medium,dorm,4,3,4,3,4,3,0.625,13,8,5,HK261,True,34,True,119.0,3.226890756302521,True,0,,HK232,on_time,good,False,none,,,0
 2003854,K20,medium,low,dorm,3,4,4,5,4,5,0.6875,13,8,5,HK261,True,18,True,119.0,3.2100840336134455,True,0,,HK251,late,good,False,none,,,0
-2004071,K20,low,medium,dorm,4,5,3,3,5,5,0.8438,13,8,5,HK261,True,23,True,121.0,4.0,True,0,,HK232,on_time,not_graduated,False,none,,,0
+2004071,K20,low,medium,dorm,4,5,3,3,5,5,0.8438,13,8,5,HK261,True,23,True,121.0,4.0,True,0,,HK232,on_time,excellent,False,none,,,0
 2004178,K20,medium,high,dorm,3,4,3,1,4,4,0.5938,13,9,4,HK261,True,14,True,121.0,3.243801652892562,False,0,,,not_graduated,not_graduated,True,forced,overdue_more_than_two_years,HK261,0
 2004285,K20,medium,high,dorm,2,4,3,5,3,3,0.5625,13,9,4,HK261,True,24,True,123.0,2.410569105691057,True,0,,HK242,late,fairly_average,False,none,,,0
 2004392,K20,medium,high,dorm,3,4,4,5,4,5,0.6875,13,8,5,HK261,True,19,True,119.0,3.1596638655462184,True,0,,HK232,on_time,fair,False,none,,,0
@@ -4658,7 +4658,7 @@
 2065858,K20,medium,low,with_family,3,4,3,4,3,4,0.5625,13,8,5,HK261,True,27,True,119.0,2.53781512605042,True,0,,HK241,late,fairly_average,False,none,,,0
 2065965,K20,medium,high,dorm,3,3,3,3,4,4,0.625,13,8,5,HK261,True,20,True,121.0,3.227272727272727,True,0,,HK232,on_time,good,False,none,,,0
 2066072,K20,medium,medium,dorm,4,4,2,3,4,5,0.7188,13,8,5,HK261,True,19,True,119.0,3.3865546218487395,True,0,,HK241,late,good,False,none,,,0
-2066179,K20,medium,low,dorm,5,3,2,3,5,5,0.8438,13,8,5,HK261,True,25,True,119.0,4.0,True,0,,HK242,late,not_graduated,False,none,,,0
+2066179,K20,medium,low,dorm,5,3,2,3,5,5,0.8438,13,8,5,HK261,True,25,True,119.0,4.0,True,0,,HK242,late,excellent,False,none,,,0
 2066396,K20,medium,low,dorm,3,5,3,5,3,4,0.625,13,9,4,HK261,True,18,True,115.0,2.4,False,0,,,not_graduated,not_graduated,True,forced,overdue_more_than_two_years,HK261,1
 2066503,K20,medium,low,dorm,3,2,3,4,3,2,0.5,13,8,5,HK261,True,18,True,125.0,2.352,True,0,,HK242,late,average,False,none,,,0
 2066610,K20,medium,medium,dorm,3,4,1,2,4,4,0.6875,13,9,4,HK261,True,25,True,119.0,3.436974789915966,True,0,,HK242,late,good,False,none,,,0
@@ -4720,7 +4720,7 @@
 2074252,K20,medium,low,dorm,4,3,2,3,4,4,0.6875,13,8,5,HK261,True,27,True,121.0,3.4214876033057853,True,0,,HK232,on_time,good,False,none,,,0
 2074469,K20,medium,medium,dorm,3,4,2,3,2,3,0.4375,13,8,5,HK261,True,17,True,123.0,1.8170731707317074,True,0,,HK252,late,below_average,False,none,,,0
 2074576,K20,medium,low,rental,2,3,3,5,2,2,0.4062,13,8,5,HK261,True,15,True,119.0,1.6092436974789917,True,0,,HK251,late,below_average,False,none,,,0
-2074683,K20,medium,low,dorm,4,5,2,3,5,5,0.875,13,9,4,HK261,True,20,True,119.0,4.0,True,0,,HK242,late,not_graduated,False,none,,,0
+2074683,K20,medium,low,dorm,4,5,2,3,5,5,0.875,13,9,4,HK261,True,20,True,119.0,4.0,True,0,,HK242,late,excellent,False,none,,,0
 2075007,K20,medium,low,dorm,5,3,2,3,4,4,0.7188,13,8,5,HK261,True,22,True,119.0,3.596638655462185,True,0,,HK241,late,good,False,none,,,0
 2075114,K20,medium,high,dorm,4,4,5,3,4,5,0.625,13,9,4,HK261,True,15,True,119.0,3.30672268907563,True,0,,HK252,late,good,False,none,,,0
 2075221,K20,medium,low,dorm,3,3,2,2,3,3,0.5,13,10,3,HK261,True,22,True,121.0,2.458677685950413,True,0,,HK242,late,fairly_average,False,none,,,0
@@ -4762,7 +4762,7 @@
 2080604,K20,medium,low,dorm,4,3,4,2,4,4,0.5938,13,8,5,HK261,True,13,True,115.0,3.2217391304347824,False,0,,,not_graduated,not_graduated,True,forced,overdue_more_than_two_years,HK261,1
 2080711,K20,medium,medium,dorm,1,4,3,5,4,4,0.6562,13,10,3,HK261,True,25,True,119.0,2.903361344537815,True,0,,HK242,late,fair,False,none,,,0
 2081035,K20,medium,low,dorm,3,4,2,5,4,5,0.75,13,8,5,HK261,True,31,True,119.0,3.3823529411764706,True,0,,HK232,on_time,good,False,none,,,0
-2081142,K20,medium,high,dorm,5,5,2,2,5,5,0.875,13,8,5,HK261,True,22,True,121.0,4.0,True,0,,HK232,on_time,not_graduated,False,none,,,0
+2081142,K20,medium,high,dorm,5,5,2,2,5,5,0.875,13,8,5,HK261,True,22,True,121.0,4.0,True,0,,HK232,on_time,excellent,False,none,,,0
 2081249,K20,medium,medium,dorm,4,4,2,3,3,3,0.5938,13,7,6,HK261,True,14,True,113.0,2.65929203539823,False,0,,,not_graduated,not_graduated,True,forced,overdue_more_than_two_years,HK261,2
 2081466,K20,low,medium,dorm,4,4,4,5,3,4,0.5938,13,8,5,HK261,True,22,True,121.0,2.4338842975206614,True,0,,HK232,on_time,fairly_average,False,none,,,0
 2081573,K20,medium,medium,rental,3,4,2,4,2,1,0.4688,13,9,4,HK261,True,32,True,119.0,1.7647058823529411,True,0,,HK242,late,below_average,False,none,,,0
@@ -4774,7 +4774,7 @@
 2082542,K20,high,high,with_family,4,3,4,3,2,1,0.375,13,8,5,HK261,True,12,True,113.0,1.6725663716814159,False,0,,,not_graduated,not_graduated,True,forced,overdue_more_than_two_years,HK261,2
 2082649,K20,medium,medium,with_family,5,3,2,3,4,3,0.7188,13,9,4,HK261,True,21,True,123.0,3.426829268292683,True,0,,HK242,late,good,False,none,,,0
 2082756,K20,high,low,dorm,3,4,1,4,4,3,0.75,13,9,4,HK261,True,17,True,123.0,3.4634146341463414,True,0,,HK242,late,good,False,none,,,0
-2082973,K20,medium,medium,dorm,3,3,2,4,5,5,0.8125,13,8,5,HK261,True,22,True,119.0,4.0,True,0,,HK232,on_time,not_graduated,False,none,,,0
+2082973,K20,medium,medium,dorm,3,3,2,4,5,5,0.8125,13,8,5,HK261,True,22,True,119.0,4.0,True,0,,HK232,on_time,excellent,False,none,,,0
 2083080,K20,medium,low,rental,5,4,3,3,3,3,0.5938,13,8,5,HK261,True,18,True,123.0,2.4959349593495936,True,0,,HK251,late,fairly_average,False,none,,,0
 2083187,K20,medium,medium,dorm,5,5,2,3,3,1,0.6562,13,9,4,HK261,True,24,True,119.0,2.7058823529411766,True,0,,HK242,late,fairly_average,False,none,,,0
 2083294,K20,medium,medium,dorm,3,5,5,3,4,4,0.625,13,9,4,HK261,True,21,True,119.0,3.3445378151260505,True,0,,HK242,late,good,False,none,,,0
@@ -6115,7 +6115,7 @@
 2258767,K22,medium,medium,dorm,3,4,2,5,3,3,0.625,9,8,1,HK261,True,22,True,123.0,2.4552845528455283,True,0,,HK252,on_time,fairly_average,False,none,,,0
 2258948,K22,medium,low,dorm,3,2,4,2,2,3,0.2812,9,8,1,HK261,True,21,True,123.0,1.6666666666666667,True,0,,HK252,on_time,below_average,False,none,,,0
 2259004,K22,low,low,dorm,5,2,2,4,3,3,0.5938,9,6,3,HK261,True,17,True,109.0,2.573394495412844,False,0,,,not_graduated,not_graduated,False,none,,,4
-2259185,K22,medium,low,dorm,4,4,2,4,5,5,0.875,9,8,1,HK261,True,22,True,119.0,4.0,True,0,,HK252,on_time,not_graduated,False,none,,,0
+2259185,K22,medium,low,dorm,4,4,2,4,5,5,0.875,9,8,1,HK261,True,22,True,119.0,4.0,True,0,,HK252,on_time,excellent,False,none,,,0
 2259241,K22,medium,medium,dorm,3,4,3,2,3,5,0.5,9,7,2,HK261,True,16,True,109.0,2.2981651376146788,False,0,,,not_graduated,not_graduated,False,none,,,4
 2259422,K22,medium,medium,dorm,2,4,2,4,5,5,0.8125,9,8,1,HK261,True,18,True,111.0,3.9279279279279278,False,0,,,not_graduated,not_graduated,False,none,,,3
 2259478,K22,medium,medium,dorm,5,5,1,4,3,4,0.7188,9,8,1,HK261,True,21,True,111.0,2.9054054054054053,False,0,,,not_graduated,not_graduated,False,none,,,3
