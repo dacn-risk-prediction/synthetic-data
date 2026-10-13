@@ -34,6 +34,20 @@ early_graduation_candidates = select_early_graduation_candidates(
     GENERATOR_CONFIG,
 )
 
+# Accelerate CTXH and ensure english_pass for early graduation candidates
+ctxh_benchmarks = [3, 6, 8, 10, 12, 15, 17]
+for student_id, profile in zip(students["student_id"], profiles):
+    if student_id in early_graduation_candidates:
+        profile["english_pass"] = True
+        ctxh_raw = profile.get("ctxh_days_by_semester", [])
+        ctxh_list = json.loads(ctxh_raw) if isinstance(ctxh_raw, str) else [dict(x) for x in ctxh_raw]
+        for idx, item in enumerate(ctxh_list):
+            if idx < len(ctxh_benchmarks):
+                item["cumulative_days"] = max(item.get("cumulative_days", 0), ctxh_benchmarks[idx])
+            else:
+                item["cumulative_days"] = max(item.get("cumulative_days", 0), 18 + (idx - 6))
+        profile["ctxh_days_by_semester"] = ctxh_list
+
 result = students[["student_id", "name"]].copy()
 profile_fields = profiles[0].keys() if profiles else ()
 for field in profile_fields:

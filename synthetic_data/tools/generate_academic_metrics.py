@@ -414,7 +414,7 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
         degree_classification = "not_graduated"
         if graduation_semester and pd.notna(details["gpa_4"]):
             for band in graduation_config["degree_classification_gpa4"]:
-                if band["min"] <= float(details["gpa_4"]) < band["max"]:
+                if band["min"] <= float(details["gpa_4"]) <= band["max"]:
                     degree_classification = band["label"]
                     break
         if dropout_reason == "overdue_more_than_two_years":

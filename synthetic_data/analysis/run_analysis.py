@@ -14,6 +14,7 @@ from analysis_helpers import (
     summarize_required_courses,
     view_cohort_status,
     view_ctxh_distribution,
+    view_early_graduation_distribution,
     view_fail_result,
     view_late_graduation_distribution,
     view_lecturer_classes,
@@ -68,6 +69,7 @@ Ví dụ sử dụng:
   python run_analysis.py --fails HK162
   python run_analysis.py --ctxh K13
   python run_analysis.py --summary K13
+  python run_analysis.py --early K13
   python run_analysis.py --late K13
   python run_analysis.py --lecturer 1300746
   python run_analysis.py --semesters
@@ -117,6 +119,14 @@ Ví dụ sử dụng:
         dest="summary_cohort",
         metavar="COHORT",
         help="Tổng kết kết quả học vụ của một khóa (tốt nghiệp, thôi học, tiếp tục học)",
+    )
+    parser.add_argument(
+        "-e",
+        "--early",
+        "--early-grad",
+        dest="early_cohort",
+        metavar="COHORT",
+        help="Phân tích chi tiết sinh viên tốt nghiệp sớm hạn (3.5 năm / Kỳ 7) của một khóa",
     )
     parser.add_argument(
         "-l",
@@ -188,6 +198,9 @@ Ví dụ sử dụng:
 
     if args.summary_cohort:
         summarize_cohort_results(args.summary_cohort)
+
+    if args.early_cohort:
+        view_early_graduation_distribution(args.early_cohort)
 
     if args.late_cohort:
         view_late_graduation_distribution(args.late_cohort)

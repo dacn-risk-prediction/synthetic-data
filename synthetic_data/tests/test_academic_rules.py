@@ -757,7 +757,7 @@ class AcademicScoreRulesTests(unittest.TestCase):
             for index in range(10000)
         ]
         profiles.append({
-            "student_id": "2210001",
+            "student_id": "1210001",
             "academic_level": 5,
             "discipline": 5,
             "motivation": 5,
@@ -769,7 +769,7 @@ class AcademicScoreRulesTests(unittest.TestCase):
 
         self.assertEqual(len(selected), 5)
         self.assertTrue(all(
-            student_id.startswith(("23", "24", "25", "26"))
+            student_id.startswith(tuple(str(c) for c in range(13, 27)))
             for student_id in selected
         ))
         self.assertEqual(selected, select_early_graduation_candidates(profiles))
@@ -792,7 +792,7 @@ class AcademicScoreRulesTests(unittest.TestCase):
                 "HK7",
                 early_graduation=True,
                 early_graduation_only=True,
-                cohort="22",
+                cohort="12",
             ),
             [],
         )

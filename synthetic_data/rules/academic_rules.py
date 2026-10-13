@@ -486,18 +486,21 @@ def _stable_seed(student_id, config, salt):
 
 
 def select_early_graduation_candidates(profiles, config=None):
-    """Select a deterministic 5% of the top-scoring eligible-cohort profiles."""
+    """Select a deterministic share of the top-scoring eligible-cohort profiles per cohort."""
     config = config or GENERATOR_CONFIG
     settings = config["student_progress"]["graduation"]["early_graduation"]
     supported_cohorts = {
         str(value).upper().removeprefix("K")
         for value in settings["supported_cohorts"]
     }
-    eligible = [
-        profile for profile in profiles
-        if str(profile["student_id"])[:2] in supported_cohorts
-    ]
-    if not eligible:
+
+    by_cohort = {}
+    for profile in profiles:
+        cohort = str(profile["student_id"])[:2]
+        if cohort in supported_cohorts:
+            by_cohort.setdefault(cohort, []).append(profile)
+
+    if not by_cohort:
         return set()
 
     def score(profile):
@@ -510,31 +513,38 @@ def select_early_graduation_candidates(profiles, config=None):
         academic = (float(profile["academic_level"]) - 1) / 4
         return academic + personality
 
-    eligible.sort(
-        key=lambda profile: (
-            -score(profile),
-            str(profile["student_id"]),
+    selected = set()
+    for cohort in sorted(by_cohort.keys()):
+        cohort_profiles = by_cohort[cohort]
+        cohort_profiles.sort(
+            key=lambda profile: (
+                -score(profile),
+                str(profile["student_id"]),
+            )
         )
-    )
-    top_count = max(
-        1,
-        math.ceil(len(eligible) * settings["top_performer_share"]),
-    )
-    top_performers = eligible[:top_count]
-    selected_count = min(
-        top_count,
-        int(math.floor(top_count * settings["selection_rate"] + 0.5)),
-    )
-    return {
-        str(profile["student_id"])
-        for profile in sorted(
-            top_performers,
-            key=lambda item: (
-                _stable_seed(item["student_id"], config, "early_graduation"),
-                str(item["student_id"]),
+        top_count = max(
+            1,
+            math.ceil(len(cohort_profiles) * settings["top_performer_share"]),
+        )
+        top_performers = cohort_profiles[:top_count]
+        selected_count = max(
+            1,
+            min(
+                top_count,
+                int(math.floor(top_count * settings["selection_rate"] + 0.5)),
             ),
-        )[:selected_count]
-    }
+        )
+        selected.update(
+            str(profile["student_id"])
+            for profile in sorted(
+                top_performers,
+                key=lambda item: (
+                    _stable_seed(item["student_id"], config, "early_graduation"),
+                    str(item["student_id"]),
+                ),
+            )[:selected_count]
+        )
+    return selected
 
 
 def _base_score_for_level(level, config):
