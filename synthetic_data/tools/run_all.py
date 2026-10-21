@@ -9,6 +9,7 @@ ROOT_DIR = Path(__file__).resolve().parents[1]
 core_scripts = [
     ROOT_DIR / "generators" / "academics" / "generate_semester.py",
     ROOT_DIR / "generators" / "academics" / "generate_curriculum.py",
+    ROOT_DIR / "generators" / "academics" / "generate_assessment.py",
     ROOT_DIR / "generators" / "users" / "generate_users.py",
     ROOT_DIR / "generators" / "users" / "generate_student_profiles.py",
 ]

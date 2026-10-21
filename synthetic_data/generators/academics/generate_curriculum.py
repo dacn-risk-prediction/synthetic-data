@@ -251,6 +251,13 @@ SUPPLEMENTARY_COURSES = {
     "PE1055": ("Cờ vua (Học phần 2)", "Chess 2", 0),
     "PE1059": ("Bowling (Học phần 2)", "Bowling 2", 0),
     "PE1063": ("Pickleball (Học phần 2)", "Pickleball 2", 0),
+    "CH4079": ("Hoá học xanh", "Green Chemistry", 3),
+    "E1013": ("Khoa học trái đất", "Earth Science", 3),
+    "IM1011": ("Máy tính trong Kinh doanh", "Computers in Business", 3),
+    "IM1019": ("Tiếp thị căn bản", "Basic Marketing", 3),
+    "IM1021": ("Khởi nghiệp", "Entrepreneurship", 3),
+    "IM3047": ("Giao tiếp trong kinh doanh", "Business Communication", 3),
+    "ME4625": ("Kỹ năng lãnh đạo", "Leadership Skills", 3),
 }
 
 # Fixed knowledge block sets
