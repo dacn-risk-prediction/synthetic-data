@@ -168,41 +168,42 @@ def _profile_graduation_state(
         profile, GENERATOR_CONFIG, current_semester
     )
     effective_required_courses = required_courses - exempted_english
-    missing_courses = effective_required_courses - passed_courses
-    graduation_ready = (
-        not missing_courses
-        and english_pass
-        and ctxh_days
-        >= GENERATOR_CONFIG["student_progress"]["ctxh"][
-            "minimum_for_graduation"
-        ]
-    )
 
     graduation_semester = None
-    if graduation_ready:
-        student_id_val = str(profile.get("student_id", getattr(profile, "name", "")))
-        for semester in semesters:
-            if is_academic_dismissal(student_id_val, semester, GENERATOR_CONFIG):
-                break
-            completed_through_term = student_history[
-                student_history["semester_index"].le(semester_index(semester))
-                & student_history["status"].astype(str).str.casefold().eq("pass")
+    student_id_val = str(profile.get("student_id", getattr(profile, "name", "")))
+    for semester in semesters:
+        if is_academic_dismissal(student_id_val, semester, GENERATOR_CONFIG):
+            break
+        completed_through_term = student_history[
+            student_history["semester_index"].le(semester_index(semester))
+            & student_history["status"].astype(str).str.casefold().eq("pass")
+        ]
+        term_ctxh_days = _ctxh_days_for_semester(progress, semester)
+        term_passed = set(completed_through_term["course_code"])
+        term_english_pass = is_english_passed(
+            profile, term_passed, GENERATOR_CONFIG, semester
+        )
+        term_exempted_english = get_exempted_english_courses(
+            profile, GENERATOR_CONFIG, semester
+        )
+        term_effective_required = required_courses - term_exempted_english
+        term_academic_ok = (
+            term_effective_required.issubset(term_passed)
+            or {"CO4337", "SP1007"}.issubset(term_passed)
+        )
+        if (
+            term_academic_ok
+            and term_ctxh_days
+            >= GENERATOR_CONFIG["student_progress"]["ctxh"][
+                "minimum_for_graduation"
             ]
-            term_ctxh_days = _ctxh_days_for_semester(progress, semester)
-            term_passed = set(completed_through_term["course_code"])
-            term_english_pass = is_english_passed(
-                profile, term_passed, GENERATOR_CONFIG, semester
-            )
-            if (
-                effective_required_courses.issubset(term_passed)
-                and term_ctxh_days
-                >= GENERATOR_CONFIG["student_progress"]["ctxh"][
-                    "minimum_for_graduation"
-                ]
-                and term_english_pass
-            ):
-                graduation_semester = semester
-                break
+            and term_english_pass
+        ):
+            graduation_semester = semester
+            break
+
+    graduation_ready = (graduation_semester is not None)
+    missing_courses = set() if graduation_ready else (effective_required_courses - passed_courses)
 
     return {
         "passed_credits": credit_total,
@@ -239,18 +240,24 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
         "cohort_start_semester"
     ]
     graduation_config = GENERATOR_CONFIG["student_progress"]["graduation"]
+    required_courses_by_cohort = {}
+    default_required = set()
     if CURRICULUM_FILE.exists():
         df_curr = pd.read_csv(CURRICULUM_FILE, dtype={"course_code": str})
         type_col = "course_type"
         if type_col in df_curr.columns:
-            required_courses = set(
+            if "block_id" in df_curr.columns:
+                df_curr = df_curr[~df_curr["block_id"].astype(str).str.startswith("COND_")]
+            default_required = set(
                 df_curr[df_curr[type_col].isin(["required", "BB"])]["course_code"].dropna()
             )
-        else:
-            required_courses = set()
-    else:
-        required_courses = set()
-    required_courses.update(graduation_config["graduation_project_codes"])
+            for cid in df_curr["curriculum_id"].dropna().unique():
+                cohort_str = str(cid).replace("KHMT_", "").replace("K", "")
+                sub = df_curr[df_curr["curriculum_id"] == cid]
+                c_req = set(sub[sub[type_col].isin(["required", "BB"])]["course_code"].dropna())
+                c_req.update(graduation_config.get("graduation_project_codes", []))
+                required_courses_by_cohort[cohort_str] = c_req
+    default_required.update(graduation_config.get("graduation_project_codes", []))
     history_by_student = {
         student_id: group.copy()
         for student_id, group in history.groupby("student_id", sort=False)
@@ -260,7 +267,8 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
 
     for student_id in sorted(tracked_ids):
         profile = profile_by_id.loc[student_id]
-        cohort_start = start_semesters.get(str(student_id)[:2])
+        cohort_prefix = str(student_id)[:2]
+        cohort_start = start_semesters.get(cohort_prefix)
         if cohort_start is None:
             continue
         start_index = semester_index(cohort_start)
@@ -277,12 +285,13 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
             student_semesters,
             credits,
         )
+        c_required = required_courses_by_cohort.get(cohort_prefix, default_required)
         details = _profile_graduation_state(
             profile,
             student_history,
             student_semesters,
             credits,
-            required_courses,
+            c_required,
         )
         voluntary_semester_value = profile.get(
             "voluntary_dropout_semester", ""
@@ -666,7 +675,7 @@ def _summary_metrics(student_metrics, history):
             len(graduates),
         )
     for classification in (
-        "average", "fairly_good", "good", "excellent"
+        "average", "fairly_average", "fair", "fairly_good", "good", "excellent"
     ):
         count = int(
             graduates["degree_classification"].eq(classification).sum()
