@@ -23,11 +23,9 @@ from curriculum_rules import (
 
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
-DATA_DIR = ROOT_DIR / "data" / "people"
 CONFIG_FILE = ROOT_DIR / "config" / "generator_config.json"
 PROFILE_OUTPUT_DIR = ROOT_DIR / "generated" / "users"
 PROFILE_OUTPUT_FILE = PROFILE_OUTPUT_DIR / "student_profiles.csv"
-LEGACY_PROFILE_FILE = DATA_DIR / "student_base_score.csv"
 OPTIONAL_ENROLLMENT_THRESHOLD = 15
 OPTIONAL_16_CREDIT_PROBABILITY = 0.35
 ACCELERATION_BASE_SCORE = 8.0

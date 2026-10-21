@@ -6,10 +6,8 @@ ROOT_DIR = Path(__file__).resolve().parents[2]
 
 # Target output files:
 # 1. generated/academics/semester.csv (Standard generator output directory)
-# 2. data/academic/semester.csv (Project data directory)
 OUTPUT_FILES = [
     ROOT_DIR / "generated" / "academics" / "semester.csv",
-    ROOT_DIR / "data" / "academic" / "semester.csv",
 ]
 
 START_COHORT_YEAR = 20

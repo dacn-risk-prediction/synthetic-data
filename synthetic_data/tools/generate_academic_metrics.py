@@ -24,14 +24,8 @@ from academic_rules import (  # noqa: E402
 GENERATED_DIR = ROOT_DIR / "generated"
 METRICS_DIR = GENERATED_DIR / "metrics"
 STUDENT_FILE = GENERATED_DIR / "users" / "student.csv"
-if not STUDENT_FILE.exists():
-    STUDENT_FILE = ROOT_DIR / "data" / "people" / "student.csv"
 COURSE_FILE = GENERATED_DIR / "academics" / "courses.csv"
-if not COURSE_FILE.exists():
-    COURSE_FILE = ROOT_DIR / "data" / "catalog" / "course.csv"
 CURRICULUM_FILE = GENERATED_DIR / "academics" / "program_structures.csv"
-if not CURRICULUM_FILE.exists():
-    CURRICULUM_FILE = ROOT_DIR / "data" / "catalog" / "curriculum_computer_science.csv"
 LETTER_GRADES = [
     grade["letter"] for grade in GENERATOR_CONFIG["grade_scale"]
 ]
@@ -237,7 +231,7 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
     history["semester_index"] = history["semester_code"].map(semester_index)
     semester_complete = (
         history.groupby("semester_code")["final_score"].apply(
-            lambda values: pd.to_numeric(values, errors="coerce").notna().any()
+            lambda values: pd.to_numeric(values, errors="coerce").dropna().loc[lambda v: v != 12.0].any()
         ).to_dict()
     )
     profile_by_id = profiles.set_index("student_id")
