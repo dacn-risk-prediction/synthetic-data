@@ -611,9 +611,9 @@ class AcademicScoreRulesTests(unittest.TestCase):
         self.assertEqual(MAX_LATE_SEMESTERS, 4)
         self.assertEqual(DISMISSAL_AFTER_SEMESTERS, 12)
 
-        self.assertEqual(semester_from_index(-19), "HK131")
-        self.assertEqual(semester_from_index(-12), "HK162")
-        self.assertEqual(semester_from_index(-7), "HK191")
+        self.assertEqual(semester_from_index(1), "HK131")
+        self.assertEqual(semester_from_index(8), "HK162")
+        self.assertEqual(semester_from_index(13), "HK191")
 
         for year in range(13, 26):
             for term in (1, 2):

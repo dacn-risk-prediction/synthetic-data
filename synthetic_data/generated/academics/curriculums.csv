@@ -1,0 +1,8 @@
+﻿curriculum_id,curriculum_name,major_code,major_name,cohort,academic_year_start,total_credits,base_curriculum_id,faculty
+KHMT_K20,Chương trình Đào tạo Cử nhân Khoa học Máy tính Khóa 2020,KHMT,Khoa học Máy tính,K20,2020,128.0,,Khoa Khoa học và Kỹ thuật Máy tính
+KHMT_K21,Chương trình Đào tạo Cử nhân Khoa học Máy tính Khóa 2021,KHMT,Khoa học Máy tính,K21,2021,128.0,,Khoa Khoa học và Kỹ thuật Máy tính
+KHMT_K22,Chương trình Đào tạo Cử nhân Khoa học Máy tính Khóa 2022,KHMT,Khoa học Máy tính,K22,2022,128.0,,Khoa Khoa học và Kỹ thuật Máy tính
+KHMT_K23,Chương trình Đào tạo Cử nhân Khoa học Máy tính Khóa 2023,KHMT,Khoa học Máy tính,K23,2023,128.0,,Khoa Khoa học và Kỹ thuật Máy tính
+KHMT_K24,Chương trình Đào tạo Cử nhân Khoa học Máy tính Khóa 2024,KHMT,Khoa học Máy tính,K24,2024,128.0,,Khoa Khoa học và Kỹ thuật Máy tính
+KHMT_K25,Chương trình Đào tạo Cử nhân Khoa học Máy tính Khóa 2025,KHMT,Khoa học Máy tính,K25,2025,128.0,KHMT_K24,Khoa Khoa học và Kỹ thuật Máy tính
+KHMT_K26,Chương trình Đào tạo Cử nhân Khoa học Máy tính Khóa 2026,KHMT,Khoa học Máy tính,K26,2026,128.0,KHMT_K24,Khoa Khoa học và Kỹ thuật Máy tính

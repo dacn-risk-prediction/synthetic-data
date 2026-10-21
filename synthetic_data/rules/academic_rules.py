@@ -23,11 +23,9 @@ from curriculum_rules import (
 
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
-DATA_DIR = ROOT_DIR / "data" / "people"
 CONFIG_FILE = ROOT_DIR / "config" / "generator_config.json"
-PROFILE_OUTPUT_DIR = ROOT_DIR / "generated" / "student_profile"
+PROFILE_OUTPUT_DIR = ROOT_DIR / "generated" / "users"
 PROFILE_OUTPUT_FILE = PROFILE_OUTPUT_DIR / "student_profiles.csv"
-LEGACY_PROFILE_FILE = DATA_DIR / "student_base_score.csv"
 OPTIONAL_ENROLLMENT_THRESHOLD = 15
 OPTIONAL_16_CREDIT_PROBABILITY = 0.35
 ACCELERATION_BASE_SCORE = 8.0
@@ -68,12 +66,18 @@ def get_group_c_course_codes():
     return _GROUP_C_COURSE_CODES
 
 SEMESTER = "HK141"
-K13_COURSES = curriculum_courses("HK3")
-K13_EXTRA_COURSES = [
-    code for code in additional_courses("HK3") if code not in K13_COURSES
-]
-K14_COURSES = curriculum_courses("HK1")
-COURSE_ORDER = list(dict.fromkeys(K13_COURSES + K13_EXTRA_COURSES + K14_COURSES))
+try:
+    K13_COURSES = curriculum_courses("HK3")
+    K13_EXTRA_COURSES = [
+        code for code in additional_courses("HK3") if code not in K13_COURSES
+    ]
+    K14_COURSES = curriculum_courses("HK1")
+    COURSE_ORDER = list(dict.fromkeys(K13_COURSES + K13_EXTRA_COURSES + K14_COURSES))
+except Exception:
+    K13_COURSES = []
+    K13_EXTRA_COURSES = []
+    K14_COURSES = []
+    COURSE_ORDER = []
 PROFILE_FIELDS = (
     "family_income",
     "financial_pressure",
@@ -309,7 +313,7 @@ def load_student_profiles():
     """Load generated profiles for cohort 2013 onward."""
     if not PROFILE_OUTPUT_FILE.exists():
         raise FileNotFoundError(
-            "Student profiles are missing. Run tools/add_base_score.py first."
+            "Student profiles are missing. Run generators/users/generate_student_profiles.py first."
         )
     students = pd.read_csv(PROFILE_OUTPUT_FILE, dtype={"student_id": str})
     required_columns = {"student_id", "name", "base_score"}
@@ -516,24 +520,40 @@ def select_early_graduation_candidates(profiles, config=None):
     selected = set()
     for cohort in sorted(by_cohort.keys()):
         cohort_profiles = by_cohort[cohort]
-        cohort_profiles.sort(
+        # Đối với các khóa sinh viên thực tế (khoảng 1000 - 2500 SV/khóa):
+        # Lọc các sinh viên xuất sắc nhất có base_score >= 8.5 (academic_level >= 5)
+        # và chọn khoảng 15 - 20 sinh viên (1.0% - 1.5% quy mô khóa)
+        high_performers = [
+            p for p in cohort_profiles
+            if float(p.get("base_score", 0.0) or 0.0) >= 8.5
+            or int(p.get("academic_level", 0)) >= 5
+        ]
+        pool = high_performers if high_performers else cohort_profiles
+        pool.sort(
             key=lambda profile: (
                 -score(profile),
                 str(profile["student_id"]),
             )
         )
-        top_count = max(
-            1,
-            math.ceil(len(cohort_profiles) * settings["top_performer_share"]),
-        )
-        top_performers = cohort_profiles[:top_count]
-        selected_count = max(
-            1,
-            min(
-                top_count,
-                int(math.floor(top_count * settings["selection_rate"] + 0.5)),
-            ),
-        )
+
+        if 1000 <= len(cohort_profiles) <= 2500:
+            target_count = max(15, min(20, round(len(cohort_profiles) * 0.012)))
+            top_performers = pool[:target_count]
+            selected_count = min(len(top_performers), target_count)
+        else:
+            top_count = max(
+                1,
+                math.ceil(len(cohort_profiles) * settings["top_performer_share"]),
+            )
+            top_performers = pool[:top_count]
+            selected_count = max(
+                1,
+                min(
+                    top_count,
+                    int(math.floor(top_count * settings["selection_rate"] + 0.5)),
+                ),
+            )
+
         selected.update(
             str(profile["student_id"])
             for profile in sorted(
@@ -1072,12 +1092,12 @@ def semester_index(semester_code):
     term = int(code[4])
     if term not in (1, 2):
         raise ValueError(f"Invalid semester term in {semester_code}")
-    return (year - 23) * 2 + term
+    return (year - 13) * 2 + term
 
 
 def semester_from_index(idx):
-    """Convert integer semester index back to canonical semester code, e.g. -19 -> 'HK131'."""
-    year = 23 + (idx - 1) // 2
+    """Convert integer semester index back to canonical semester code, e.g. 1 -> 'HK131'."""
+    year = 13 + (idx - 1) // 2
     term = 1 if (idx % 2 != 0) else 2
     return f"HK{year}{term}"
 

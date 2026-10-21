@@ -1,216 +1,322 @@
+"""Academic Curriculum Analysis CLI and Demonstration Tool.
+
+Executes analysis and lookup of training program roadmaps, required courses,
+and prerequisite requirements for student cohorts across academic terms 1 to 8 (K20 - K26).
+"""
+
+from __future__ import annotations
+
 import argparse
+import json
 import sys
 from pathlib import Path
 
-# Add current directory to path to import helpers
+# Add current directory to sys.path to enable imports
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from analysis_helpers import (
-    analyze_ctxh_distribution,
-    get_available_semesters,
-    get_sample_student_id,
-    get_class_roster,
-    summarize_cohort_results,
-    summarize_required_courses,
-    view_cohort_status,
-    view_ctxh_distribution,
-    view_early_graduation_distribution,
-    view_fail_result,
-    view_late_graduation_distribution,
-    view_lecturer_classes,
-    view_student_results,
+    format_cohort_graduation_report,
+    format_course_lecturers_report,
+    format_curriculum_report,
+    format_lecturer_courses_report,
+    format_student_history_report,
+    get_cohort_graduation_analysis,
+    get_courses_by_lecturer,
+    get_curriculum_for_cohort_semester,
+    get_curriculum_for_cohort_term,
+    get_full_curriculum_roadmap,
+    get_lecturers_by_course,
+    get_student_academic_history,
+    normalize_cohort,
+    resolve_semester,
 )
 
 
-def run_demo(student_id=None):
-    """Run a comprehensive demonstration report."""
-    target_id = student_id or get_sample_student_id()
-    available_semesters = get_available_semesters()
-    latest_sem = available_semesters[-1] if available_semesters else "HK162"
+def run_demo():
+    """Run an illustrative demonstration of curriculum retrieval across cohorts and terms."""
+    print("\n" + "=" * 90)
+    print(" HỆ THỐNG TRA CỨU CHƯƠNG TRÌNH ĐÀO TẠO & LỘ TRÌNH MÔN HỌC (DEMO ANALYSIS) ".center(90, "="))
+    print("=" * 90)
+    print("Khảo sát dữ liệu đào tạo ABET Khoa Khoa học & Kỹ thuật Máy tính - ĐHBK ĐHQG-HCM (K20 - K26)")
 
-    print("\n" + "#" * 80)
-    print(" BÁO CÁO PHÂN TÍCH HỌC VỤ MINH HỌA (DEMO ANALYSIS REPORT) ".center(80, "#"))
-    print("#" * 80)
-    print(f"Các học kỳ đã mô phỏng trong hệ thống: {', '.join(available_semesters)}")
-    print(f"Mã sinh viên được chọn phân tích:       {target_id}")
+    # 1. K24 tại Học kỳ 1 (chỉ cần nhập số 1)
+    print("\n[DEMO 1] Khóa K24 - Học kỳ 1 (chỉ cần nhập số 1):")
+    res_k24_hk1 = get_curriculum_for_cohort_semester("K24", 1)
+    print(format_curriculum_report(res_k24_hk1))
 
-    # 1. Bảng điểm chi tiết
-    view_student_results(target_id, print_report=True)
+    # 2. K24 tại Học kỳ 2 (chỉ cần nhập số 2) - có môn tiên quyết (TQ/KN)
+    print("\n[DEMO 2] Khóa K24 - Học kỳ 2 (chỉ cần nhập số 2) kèm ràng buộc tiên quyết:")
+    res_k24_hk2 = get_curriculum_for_cohort_semester("K24", 2)
+    print(format_curriculum_report(res_k24_hk2))
 
-    # 2. Môn còn thiếu & tự chọn
-    try:
-        summarize_required_courses(target_id, print_report=True)
-    except Exception as e:
-        print(f"[!] Không thể tổng kết môn còn thiếu cho {target_id}: {e}")
+    # 3. K24 tại Học kỳ 6 (nhập số 6) - Bắt buộc + Tự chọn chuyên ngành AI
+    print("\n[DEMO 3] Khóa K24 - Học kỳ 6 (nhập số 6) theo định hướng Trí tuệ Nhân tạo (AI):")
+    res_k24_hk6 = get_curriculum_for_cohort_semester("K24", 6, specialization="AI")
+    print(format_curriculum_report(res_k24_hk6, show_electives_pool=True))
 
-    # 3. Phân phối môn rớt ở kỳ mới nhất
-    print(f"\n[DEMO] Thống kê tỷ lệ rớt môn học kỳ gần nhất ({latest_sem}):")
-    view_fail_result(latest_sem, print_report=True)
+    # 4. So sánh cùng một thời điểm: Các khóa đang học ở kỳ thứ mấy?
+    print("\n" + "=" * 90)
+    print(" [DEMO 4] BẢNG SO SÁNH LỘ TRÌNH CÁC KHÓA ĐANG CÙNG HỌC TẠI HỌC KỲ HK241 ".center(90, "="))
+    print("=" * 90)
+    print(f"{'Khóa':<8} {'CTĐT áp dụng':<14} {'Học kỳ theo lộ trình':<24} {'Số môn BB':<12} {'Số TC BB':<12} {'TC Tự chọn':<12}")
+    print("-" * 90)
 
-    # 4. Phân phối CTXH theo khóa của sinh viên
-    target_cohort = f"K{str(target_id)[:2]}" if str(target_id)[:2].isdigit() else "K13"
-    print(f"\n[DEMO] Phân tích phân phối số ngày CTXH của khóa {target_cohort}:")
-    view_ctxh_distribution(target_cohort, print_report=True)
+    for ch in ["K24", "K23", "K22", "K21"]:
+        c_res = get_curriculum_for_cohort_semester(ch, "HK241")
+        if c_res["status"] == "NORMAL":
+            sem_name = f"Học kỳ {c_res['relative_semester']} ({c_res['recommended_semester']})"
+            bb_count = len(c_res["compulsory_courses"])
+            bb_credits = int(c_res["total_compulsory_credits"])
+            tc_credits = c_res["elective_guidance"]["recommended_elective_credits"]
+            print(
+                f"{c_res['cohort']:<8} {c_res['curriculum_id']:<14} {sem_name:<24} "
+                f"{bb_count:<12} {bb_credits:<12} {tc_credits:<12}"
+            )
+        else:
+            print(f"{ch:<8} - {c_res['status_message']}")
+    print("=" * 90)
 
-    # 5. Tổng kết kết quả học vụ của khóa (tốt nghiệp, thôi học, tiếp tục học)
-    print(f"\n[DEMO] Tổng kết kết quả học vụ của khóa {target_cohort}:")
-    summarize_cohort_results(target_cohort, print_report=True)
+    # 5. Tra cứu lịch sử học tập từng kỳ của sinh viên (MSSV: 2028899)
+    print("\n" + "=" * 90)
+    print(" [DEMO 5] TRA CỨU LỊCH SỬ HỌC TẬP TỪNG KỲ CỦA SINH VIÊN (MSSV: 2028899) ".center(90, "="))
+    print("=" * 90)
+    st_res = get_student_academic_history("2028899")
+    print(format_student_history_report(st_res))
+
+    # 6. Thống kê tỷ lệ tốt nghiệp sớm, đúng hạn & trễ hạn của khóa K20
+    print("\n" + "=" * 90)
+    print(" [DEMO 6] THỐNG KÊ TỶ LỆ TỐT NGHIỆP SỚM, ĐÚNG HẠN & TRỄ HẠN - KHÓA K20 ".center(90, "="))
+    print("=" * 90)
+    grad_res = get_cohort_graduation_analysis("K20")
+    print(format_cohort_graduation_report(grad_res))
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Công cụ phân tích và tra cứu dữ liệu học vụ mô phỏng (Academic Data Analysis CLI)",
+        description="Công cụ tra cứu môn học theo Khóa, Học kỳ, Lịch sử sinh viên & Thống kê tốt nghiệp",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
-Ví dụ sử dụng:
-  python run_analysis.py --transcript 1309714
-  python run_analysis.py --remaining 1309714
-  python run_analysis.py --roster HK162 HK162_CO4337_L01
-  python run_analysis.py --fails HK162
-  python run_analysis.py --ctxh K13
-  python run_analysis.py --summary K13
-  python run_analysis.py --early K13
-  python run_analysis.py --late K13
-  python run_analysis.py --lecturer 1300746
-  python run_analysis.py --semesters
-  python run_analysis.py --demo 1309714
-  python run_analysis.py (chạy demo mặc định)
+Ví dụ sử dụng cực kỳ đơn giản:
+  python run_analysis.py -c K20 --grad       # Thống kê tỷ lệ tốt nghiệp sớm, đúng hạn, trễ hạn K20
+  python run_analysis.py K20 --grad          # Tra cứu nhanh tỷ lệ tốt nghiệp khóa K20
+  python run_analysis.py K20 --grad --json   # Xuất thống kê tỷ lệ tốt nghiệp dạng JSON
+  python run_analysis.py 2028899             # Tra cứu lịch sử học tập của SV theo MSSV
+  python run_analysis.py -st 2031846         # Tra cứu sinh viên theo MSSV, Email hoặc Tên
+  python run_analysis.py -st 2028899 --json  # Xuất lịch sử học tập dạng JSON
+  python run_analysis.py K24 1               # Tra cứu học kỳ 1 của khóa K24
+  python run_analysis.py K24 2               # Tra cứu học kỳ 2 của khóa K24
+  python run_analysis.py 3                   # Tra cứu học kỳ 3 (mặc định khóa K24)
+  python run_analysis.py -c K24 -s 1         # Dùng cờ -c và -s
+  python run_analysis.py -c K24 -t 2         # Dùng cờ -t (term: 1..8)
+  python run_analysis.py -c K24 -t 6 -spec AI -e  # Kỳ 6 chuyên ngành AI kèm môn tự chọn
+  python run_analysis.py -c K24 --all        # Xem trọn bộ lộ trình 8 học kỳ chuẩn
+  python run_analysis.py --lecturer GV00001  # Tra cứu danh sách môn giảng viên GV00001 có thể dạy
+  python run_analysis.py --course MT1003     # Tra cứu danh sách giảng viên đủ điều kiện dạy MT1003
+  python run_analysis.py                     # Chạy demo so sánh minh họa
         """,
     )
 
     parser.add_argument(
-        "-t",
-        "--transcript",
-        metavar="STUDENT_ID",
-        help="In bảng điểm chi tiết theo từng học kỳ của sinh viên",
+        "positional_args",
+        nargs="*",
+        help="Nhập nhanh [MSSV] hoặc [KHÓA] [HỌC KỲ (1..8)], ví dụ: '2028899', 'K24 1' hoặc chỉ số kỳ '2'",
     )
     parser.add_argument(
-        "-r",
-        "--remaining",
-        metavar="STUDENT_ID",
-        help="Tổng kết môn bắt buộc cần học/học lại và tiến độ tín chỉ tự chọn",
+        "-st",
+        "--student",
+        "--mssv",
+        dest="student",
+        metavar="STUDENT_QUERY",
+        help="Tra cứu hồ sơ & lịch sử học tập từng kỳ của sinh viên (nhập MSSV, Email hoặc Họ tên)",
     )
     parser.add_argument(
         "-c",
-        "--roster",
-        nargs=2,
-        metavar=("SEMESTER", "CLASS_ID"),
-        help="Tra cứu giảng viên và danh sách sinh viên của một lớp học phần (VD: HK162 HK162_CO4337_L01)",
-    )
-    parser.add_argument(
-        "-f",
-        "--fails",
-        nargs="?",
-        const="",
-        metavar="SEMESTER",
-        help="Xem thống kê phân phối số môn rớt của một học kỳ (mặc định: kỳ mới nhất)",
-    )
-    parser.add_argument(
-        "-k",
-        "--ctxh",
-        dest="ctxh_cohort",
+        "--cohort",
         metavar="COHORT",
-        help="Xem phân phối số ngày CTXH của một khóa sinh viên (VD: K13, K14)",
-    )
-    parser.add_argument(
-        "-u",
-        "--summary",
-        "--cohort-status",
-        dest="summary_cohort",
-        metavar="COHORT",
-        help="Tổng kết kết quả học vụ của một khóa (tốt nghiệp, thôi học, tiếp tục học)",
-    )
-    parser.add_argument(
-        "-e",
-        "--early",
-        "--early-grad",
-        dest="early_cohort",
-        metavar="COHORT",
-        help="Phân tích chi tiết sinh viên tốt nghiệp sớm hạn (3.5 năm / Kỳ 7) của một khóa",
-    )
-    parser.add_argument(
-        "-l",
-        "--late",
-        "--late-grad",
-        dest="late_cohort",
-        metavar="COHORT",
-        help="Phân tích chi tiết sinh viên tốt nghiệp trễ hạn theo từng học kỳ (kỳ 9, 10, 11, 12) của một khóa",
-    )
-    parser.add_argument(
-        "-g",
-        "--lecturer",
-        "--lecturer-id",
-        dest="lecturer_id",
-        metavar="LECTURER_ID",
-        help="Xem toàn bộ các lớp học phần được phân công giảng dạy của một giảng viên từ HK131 đến HK261",
+        help="Khóa tuyển sinh (VD: K24, 24, K20..K26). Mặc định: K24",
     )
     parser.add_argument(
         "-s",
-        "--semesters",
-        action="store_true",
-        help="Liệt kê danh sách tất cả các học kỳ có dữ liệu trong hệ thống",
+        "-t",
+        "--semester",
+        "--term",
+        dest="semester",
+        metavar="TERM",
+        help="Học kỳ theo lộ trình: chỉ cần nhập số 1, 2, 3, ..., 8 (hoặc mã học kỳ HK241)",
     )
     parser.add_argument(
-        "-d",
-        "--demo",
-        nargs="?",
-        const="",
-        metavar="STUDENT_ID",
-        help="Chạy báo cáo minh họa tổng hợp (bảng điểm, môn còn thiếu, phân phối điểm rớt, CTXH, tổng kết khóa)",
+        "-spec",
+        "--specialization",
+        metavar="SPEC",
+        help="Chuyên ngành định hướng lọc môn tự chọn (VD: AI, SE, DATA, SEC, CS)",
+    )
+    parser.add_argument(
+        "-e",
+        "--electives",
+        action="store_true",
+        help="Hiển thị danh sách chi tiết các môn tự chọn khả dụng cho học kỳ này",
+    )
+    parser.add_argument(
+        "--all",
+        action="store_true",
+        help="Hiển thị toàn bộ lộ trình 8 học kỳ chuẩn của khóa sinh viên",
+    )
+    parser.add_argument(
+        "-grad",
+        "--grad",
+        "--graduation",
+        action="store_true",
+        dest="graduation",
+        help="Thống kê tỷ lệ tốt nghiệp sớm (Kỳ 7 - 3.5 năm), đúng hạn (Kỳ 8 - 4.0 năm) và trễ hạn (kỳ 9..12) của một khóa",
+    )
+    parser.add_argument(
+        "-l",
+        "--lecturer",
+        metavar="LECTURER_ID",
+        help="Tra cứu danh sách các môn giảng viên có thể dạy (VD: GV00001, GV00056...)",
+    )
+    parser.add_argument(
+        "--course",
+        metavar="COURSE_CODE",
+        help="Tra cứu danh sách giảng viên đủ điều kiện dạy môn học (VD: CO1005, MT1003, CO3117...)",
+    )
+    parser.add_argument(
+        "--json",
+        action="store_true",
+        help="Xuất kết quả dưới định dạng JSON",
     )
 
     args = parser.parse_args()
 
-    # If no arguments provided, run demo with usage guide
-    if len(sys.argv) == 1:
-        print("[*] Không có tham số được chỉ định. Chạy báo cáo demo minh họa:")
+    # Tra cứu lịch sử học tập theo từng kỳ của sinh viên
+    if args.student:
+        info = get_student_academic_history(args.student)
+        if args.json:
+            print(json.dumps(info, ensure_ascii=False, indent=2))
+        else:
+            print(format_student_history_report(info))
+        return
+
+    # Tra cứu môn học theo giảng viên
+    if args.lecturer:
+        info = get_courses_by_lecturer(args.lecturer)
+        if args.json:
+            print(json.dumps(info, ensure_ascii=False, indent=2))
+        else:
+            print(format_lecturer_courses_report(info))
+        return
+
+    # Tra cứu giảng viên theo môn học
+    if args.course:
+        info = get_lecturers_by_course(args.course)
+        if args.json:
+            print(json.dumps(info, ensure_ascii=False, indent=2))
+        else:
+            print(format_course_lecturers_report(info))
+        return
+
+    # Check graduation query from flags or positional tokens
+    is_graduation_query = bool(args.graduation)
+    grad_keywords = {"grad", "-grad", "--grad", "graduation", "--graduation", "totnghiep", "tot-nghiep"}
+    filtered_pos = []
+    for arg in args.positional_args:
+        if arg.lower() in grad_keywords:
+            is_graduation_query = True
+        else:
+            filtered_pos.append(arg)
+
+    if is_graduation_query:
+        target_cohort = args.cohort
+        if not target_cohort and filtered_pos:
+            target_cohort = filtered_pos[0].strip()
+        target_cohort = target_cohort or "K20"
+
+        grad_info = get_cohort_graduation_analysis(target_cohort)
+        if args.json:
+            print(json.dumps(grad_info, ensure_ascii=False, indent=2))
+        else:
+            print(format_cohort_graduation_report(grad_info))
+        return
+
+    # Determine cohort and semester from positional args or flags
+    target_cohort = args.cohort
+    target_semester = args.semester
+
+    if filtered_pos:
+        pos = filtered_pos
+        if len(pos) == 1:
+            val = pos[0].strip()
+            # If student query: starts with SV, contains @, or is 7-digit MSSV
+            if "@" in val or val.upper().startswith("SV") or (val.isdigit() and len(val) >= 7):
+                info = get_student_academic_history(val)
+                if args.json:
+                    print(json.dumps(info, ensure_ascii=False, indent=2))
+                else:
+                    print(format_student_history_report(info))
+                return
+
+            # If single argument is a number (e.g. '1'..'8'), treat as semester
+            if (val.isdigit() and len(val) <= 2) or (val.upper().startswith("HK") and len(val) <= 3):
+                target_semester = val
+                if not target_cohort:
+                    target_cohort = "K24"
+            else:
+                target_cohort = val
+                if not target_semester:
+                    target_semester = 1
+        elif len(pos) >= 2:
+            # Check if first or second is number
+            if pos[0].strip().isdigit():
+                target_semester = pos[0].strip()
+                target_cohort = pos[1].strip()
+            else:
+                target_cohort = pos[0].strip()
+                target_semester = pos[1].strip()
+
+    # If no arguments provided at all, execute demo
+    if not target_cohort and not target_semester and not args.all:
         run_demo()
-        print("[i] Gợi ý: Chạy 'python run_analysis.py --help' để xem các tùy chọn tra cứu khác.")
         return
 
-    if args.semesters:
-        semesters = get_available_semesters()
-        print(f"\nDanh sách các học kỳ có dữ liệu ({len(semesters)} kỳ):")
-        for sem in semesters:
-            print(f" - {sem}")
-        print()
+    target_cohort = target_cohort or "K24"
+
+    # Display entire 8-semester roadmap
+    if args.all:
+        roadmap = get_full_curriculum_roadmap(
+            cohort=target_cohort, specialization=args.specialization
+        )
+        if args.json:
+            print(json.dumps(roadmap, ensure_ascii=False, indent=2))
+        else:
+            print("\n" + "=" * 88)
+            print(
+                f" TOÀN BỘ LỘ TRÌNH ĐÀO TẠO 8 HỌC KỲ - KHÓA {roadmap['cohort']} ({roadmap['curriculum_id']}) ".center(
+                    88, "="
+                )
+            )
+            print("=" * 88)
+            print(
+                f"Tổng tín chỉ bắt buộc: {int(roadmap['total_compulsory_credits'])} TC | "
+                f"Tổng tín chỉ tự chọn: {int(roadmap['total_recommended_elective_credits'])} TC | "
+                f"Tổng chương trình: {int(roadmap['total_roadmap_credits'])} TC\n"
+            )
+            for sem in roadmap["semesters"]:
+                print(format_curriculum_report(sem, show_electives_pool=args.electives))
+                print()
         return
 
-    if args.transcript:
-        view_student_results(args.transcript)
+    # Single semester/term lookup (default: term 1)
+    target_semester = target_semester or 1
+    res = get_curriculum_for_cohort_semester(
+        cohort=target_cohort,
+        semester=target_semester,
+        specialization=args.specialization,
+    )
 
-    if args.remaining:
-        try:
-            summarize_required_courses(args.remaining)
-        except Exception as e:
-            print(f"[!] Lỗi: {e}")
-
-    if args.roster:
-        sem, class_id = args.roster
-        get_class_roster(sem, class_id)
-
-    if args.fails is not None:
-        sem = args.fails if args.fails else None
-        view_fail_result(sem)
-
-    if args.ctxh_cohort:
-        view_ctxh_distribution(args.ctxh_cohort)
-
-    if args.summary_cohort:
-        summarize_cohort_results(args.summary_cohort)
-
-    if args.early_cohort:
-        view_early_graduation_distribution(args.early_cohort)
-
-    if args.late_cohort:
-        view_late_graduation_distribution(args.late_cohort)
-
-    if args.lecturer_id:
-        view_lecturer_classes(args.lecturer_id)
-
-    if args.demo is not None:
-        target = args.demo if args.demo else None
-        run_demo(target)
+    if args.json:
+        print(json.dumps(res, ensure_ascii=False, indent=2))
+    else:
+        print(format_curriculum_report(res, show_electives_pool=args.electives))
 
 
 if __name__ == "__main__":

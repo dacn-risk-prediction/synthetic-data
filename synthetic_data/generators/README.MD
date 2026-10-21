@@ -21,12 +21,12 @@ Các đường dẫn sau tính từ thư mục gốc dự án:
 
 | Nhóm | Đường dẫn | Vai trò |
 | --- | --- | --- |
-| Sinh viên nguồn | `synthetic_data/data/people/student.csv` | Danh sách sinh viên, phân bổ vào khóa K13–K16. |
-| Profile | `synthetic_data/generated/student_profile/student_profiles.csv` | Background, personality, năng lực học tập, tiếng Anh boolean, ngày CTXH tích lũy theo kỳ và `base_score`. |
-| Giảng viên | `synthetic_data/data/people/lecturer_for_class.csv` | Giảng viên và bộ môn để phân công lớp. |
-| Danh mục | `synthetic_data/data/catalog/` | Môn học, tín chỉ, độ khó, cấu trúc điểm, tiên quyết và chương trình. |
+| Sinh viên nguồn | `synthetic_data/generated/users/student.csv` | Danh sách sinh viên các khóa K20–K26 theo từng hệ đào tạo. |
+| Profile | `synthetic_data/generated/users/student_profiles.csv` | Background, personality, năng lực học tập, tiếng Anh boolean, ngày CTXH tích lũy theo kỳ và `base_score`. |
+| Giảng viên | `synthetic_data/generated/users/lecturer.csv` | 100 giảng viên kèm đơn vị (`department`) và chuyên môn (`specialization`). |
+| Danh mục học vụ | `synthetic_data/generated/academics/` | Môn học (`courses.csv`), CTĐT (`curriculums.csv`), khối kiến thức (`knowledge_blocks.csv`), cấu trúc môn (`program_structures.csv`), tiên quyết (`course_prerequisites.csv`), học kỳ (`semester.csv`), đề cương (`assessment.csv`). |
 | Cấu hình | `synthetic_data/config/generator_config.json` | Phân phối profile, noise, grade/difficulty theo môn và điều kiện tốt nghiệp/dropout. |
-| Lớp sinh ra | `synthetic_data/generated/classes/class_hk*.csv` | Đầu vào trực tiếp của generator enrollment. |
+| Lớp sinh ra | `synthetic_data/generated/classes/class_hk*.csv` | Đầu vào trực tiếp của generator enrollment (phân tách nhóm lớp `L`, `CC`, `TT`). |
 | Điểm sinh ra | `synthetic_data/generated/enrollments/enrollment_hk*.csv` | Lịch sử để xét các kỳ tiếp theo. |
 
 Quy tắc chọn môn, học lại, tiên quyết và tín chỉ được trình bày ở
@@ -34,30 +34,22 @@ Quy tắc chọn môn, học lại, tiên quyết và tín chỉ được trình
 
 ## Cách tạo lớp
 
-Từ HK132 trở đi, generator class thực hiện các bước sau:
+Generator class thực hiện các bước sau:
 
 1. Đọc sinh viên, giảng viên và lịch sử enrollment/class các kỳ trước.
 2. Gọi `calculate_eligibility_for_schedule()` để lấy các môn mỗi sinh viên có
    thể học: học lại trước, sau đó môn theo chương trình, môn tự chọn và môn bổ
    sung; chỉ chọn môn thỏa tiên quyết và không vượt 22 tín chỉ.
-3. Đếm số sinh viên đăng ký mỗi môn để tính nhu cầu (`demand`).
-4. Mở số lớp tối thiểu cần thiết, chia sĩ số gần đều và không lớp nào vượt quá
-   120 sinh viên. Khi nhu cầu từ 40 trở lên, cách chia này tránh các lớp dưới
-   40 sinh viên nếu có thể; dưới 40 thì giữ một lớp.
-5. Phân loại môn thành `Triet`, `DaiCuong` hoặc `ChuyenNganh`, rồi gán luân
-   phiên giảng viên cùng bộ môn.
+3. Đếm số sinh viên đăng ký mỗi môn theo từng hệ đào tạo (`standard`, `high-quality`, `advanced`).
+4. Mở số lớp tối đa 40 sinh viên/lớp, chia đều sĩ số và gán tiền tố mã nhóm: `L01..L23` (đại trà), `CC01..CC12` (chất lượng cao), `TT01..TT05` (tiên tiến).
+5. Phân công giảng viên cân bằng tải theo đúng bộ môn phụ trách môn học.
 
 File class gồm: `class_id`, `course_code`, `course_name`, `semester`,
-`class_group`, `lecturer_id`, `lecturer_name`.
-
-HK131 là kỳ khởi tạo: lớp được tạo từ chương trình HK1 của K13, chưa cần đọc
-lịch sử kết quả.
+`class_group`, `lecturer_id`, `lecturer_name`, `program`, `max_capacity`.
 
 ## Cách tạo enrollment và điểm
 
-Generator enrollment lấy danh sách sinh viên đủ điều kiện, trộn có seed rồi
-chia gần đều vào các lớp cùng môn. Từ HK232, seed được tạo từ SHA-256 của học
-kỳ/môn/mã sinh viên nên cùng đầu vào sẽ cho phân lớp và điểm ổn định.
+Generator enrollment lấy danh sách sinh viên đủ điều kiện, chia vào các lớp cùng môn theo hệ đào tạo.
 
 `assessment.csv` quyết định cột điểm thành phần và trọng số. Với mỗi thành
 phần, điểm được mô phỏng theo công thức cấu hình dùng chung:
@@ -67,10 +59,9 @@ clip(academic ability + personality effect + subject effect
      - student-adjusted course difficulty + noise, 0, 10)
 ```
 
--   Profile lấy từ `generated/student_profile/student_profiles.csv`;
-  `add_base_score.py` sinh profile từ sinh viên nguồn theo config và seed ổn định
-  theo mã sinh viên. Các công cụ phân tích sẽ ưu tiên profile mới và vẫn có thể
-  dùng file cũ `data/people/student_base_score.csv` khi profile mới chưa được tạo.
+- Profile lấy từ `generated/users/student_profiles.csv`;
+  `generate_student_profiles.py` sinh profile từ sinh viên nguồn theo config và seed ổn định theo mã sinh viên.
+- Sinh viên thuộc hệ CLC (`high-quality`) và Tiên tiến (`advanced`) được miễn trọn gói 4 học phần tiếng Anh (`LA1003`, `LA1005`, `LA1007`, `LA1009`) với điểm 12.0 (`status = 'Exempted'`), không tính vào GPA tích lũy.
 - Difficulty mặc định lấy từ `course.csv`; một course override trong config dùng
   thang 1–5. Difficulty càng cao càng trừ điểm, nhưng profile academic/personality
   mạnh sẽ làm mức trừ nhỏ hơn.
