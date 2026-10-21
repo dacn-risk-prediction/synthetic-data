@@ -6,8 +6,8 @@ chúng cung cấp quy tắc để generator quyết định **môn nào được
 **điểm được mô phỏng theo độ khó nào**.
 
 ```text
-catalog CSV ──> curriculum_rules.py ──> generator class/enrollment
-history CSV ──> academic_rules.py   ──> generator class/enrollment
+academics CSV ──> curriculum_rules.py ──> generator class/enrollment
+history CSV   ──> academic_rules.py   ──> generator class/enrollment
                                               │
                                               └──> generated/classes,
                                                    generated/enrollments
@@ -15,7 +15,7 @@ history CSV ──> academic_rules.py   ──> generator class/enrollment
 
 ## `curriculum_rules.py` — quy tắc chương trình đào tạo
 
-Module này đọc dữ liệu từ `synthetic_data/data/catalog/` và trả về danh sách
+Module này đọc dữ liệu từ `synthetic_data/generated/academics/` (và `synthetic_data/rules/additional_course_rules.csv`), trả về danh sách
 môn học, nhóm tự chọn, số tín chỉ và độ khó. Nó là nguồn quy tắc chung để các
 generator class và enrollment dùng cùng một chương trình đào tạo.
 
@@ -23,12 +23,11 @@ generator class và enrollment dùng cùng một chương trình đào tạo.
 
 | File | Vai trò |
 | --- | --- |
-| `curriculum_computer_science.csv` | Môn bắt buộc theo học kỳ và thứ tự ưu tiên. |
-| `additional_course_rules.csv` | Môn có thể học bổ sung và điều kiện áp dụng. |
-| `elective_courses.csv` | Danh sách tự chọn tự do (`FREE`). |
-| `management_electives.csv` | Danh sách tự chọn quản lý (`MANAGEMENT`). |
-| `group_c_electives.csv` | Danh sách môn nhóm C (`GROUP_C`). |
-| `course.csv` | Tên môn, số tín chỉ và `difficulty`. |
+| `courses.csv` | Danh mục 128 môn học chuẩn hóa, tên môn, số tín chỉ và khoa/bộ môn phụ trách. |
+| `program_structures.csv` | Môn bắt buộc (`BB`), tự chọn (`TC`), nhóm tự chọn (`Group A/B/C/D`) theo CTĐT khóa. |
+| `additional_course_rules.csv` | Môn có thể học bổ sung và điều kiện áp dụng (nằm trong `rules/`). |
+| `course_prerequisites.csv` | Quan hệ môn học tiên quyết (`TQ`), học trước (`KN`), song hành (`SH`). |
+| `assessment.csv` | Đề cương tỷ lệ % điểm thành phần (`quiz`, `lab`, `btl`, `giua_ky`, `cuoi_ky`). |
 
 ### Hàm quan trọng
 

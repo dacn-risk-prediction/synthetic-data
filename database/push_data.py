@@ -172,24 +172,36 @@ CREATE INDEX IF NOT EXISTS idx_enrollments_semester ON enrollments(semester_code
 # -----------------------------------------------------------------------------
 def load_semesters_data():
     """Load semesters data."""
-    csv_file = SYNTHETIC_DIR / "data" / "academic" / "semester.csv"
+    csv_file = SYNTHETIC_DIR / "generated" / "academics" / "semester.csv"
     df = pd.read_csv(csv_file)
+    if "term" not in df.columns:
+        df["term"] = df["semester_code"].astype(str).str[-1].astype(int)
     df = df[["semester_code", "academic_year", "term"]].drop_duplicates(subset=["semester_code"])
     return df
 
 
 def load_courses_data():
     """Load courses catalog."""
-    csv_file = SYNTHETIC_DIR / "data" / "catalog" / "course.csv"
+    csv_file = SYNTHETIC_DIR / "generated" / "academics" / "courses.csv"
     df = pd.read_csv(csv_file)
+    if "course_name" not in df.columns and "course_name_vi" in df.columns:
+        df["course_name"] = df["course_name_vi"]
+    if "difficulty" not in df.columns:
+        df["difficulty"] = 0.5
     df = df[["course_code", "course_name", "credits", "difficulty"]].drop_duplicates(subset=["course_code"])
     return df
 
 
 def load_prerequisites_data():
     """Load course prerequisites."""
-    csv_file = SYNTHETIC_DIR / "data" / "catalog" / "course_prerequisite.csv"
+    csv_file = SYNTHETIC_DIR / "generated" / "academics" / "course_prerequisites.csv"
     df = pd.read_csv(csv_file)
+    if "course_prerequisite_id" not in df.columns and "prerequisite_id" in df.columns:
+        df["course_prerequisite_id"] = df["prerequisite_id"]
+    elif "course_prerequisite_id" not in df.columns:
+        df["course_prerequisite_id"] = range(1, len(df) + 1)
+    if "related_course_code" not in df.columns and "prerequisite_course_code" in df.columns:
+        df["related_course_code"] = df["prerequisite_course_code"]
     df = df[["course_prerequisite_id", "course_code", "related_course_code", "relation_type"]].drop_duplicates()
     return df
 
@@ -199,26 +211,22 @@ def load_users_data():
     users_list = []
 
     # 1. Admins
-    admin_file = SYNTHETIC_DIR / "admin.csv"
+    admin_file = SYNTHETIC_DIR / "generated" / "users" / "admin.csv"
     if admin_file.exists():
         df_admin = pd.read_csv(admin_file, dtype=str)
         df_admin["user_code"] = df_admin["user_id"]
         users_list.append(df_admin[["user_code", "name", "email", "password_hash", "role", "title"]])
 
     # 2. Lecturers
-    lec_file = SYNTHETIC_DIR / "data" / "people" / "lecture.csv"
+    lec_file = SYNTHETIC_DIR / "generated" / "users" / "lecturer.csv"
     df_lec = pd.read_csv(lec_file, dtype=str)
-    df_lec["user_code"] = df_lec["lecture_id"]
-    df_lec["password_hash"] = "hashed_pass_lecturer_" + df_lec["user_code"]
-    df_lec["role"] = "lecturer"
+    df_lec["user_code"] = df_lec["user_id"]
     users_list.append(df_lec[["user_code", "name", "email", "password_hash", "role", "title"]])
 
     # 3. Students
-    stu_file = SYNTHETIC_DIR / "data" / "people" / "student.csv"
+    stu_file = SYNTHETIC_DIR / "generated" / "users" / "student.csv"
     df_stu = pd.read_csv(stu_file, dtype=str)
-    df_stu["user_code"] = df_stu["student_id"]
-    df_stu["password_hash"] = "hashed_pass_student_" + df_stu["user_code"]
-    df_stu["role"] = "student"
+    df_stu["user_code"] = df_stu["user_id"]
     users_list.append(df_stu[["user_code", "name", "email", "password_hash", "role", "title"]])
 
     df_users = pd.concat(users_list, ignore_index=True)
@@ -232,20 +240,14 @@ def load_users_data():
 
 def load_students_data(user_uuid_map):
     """Load detailed student profiles and map user_id UUID."""
-    stu_file = SYNTHETIC_DIR / "data" / "people" / "student.csv"
-    profile_file = SYNTHETIC_DIR / "generated" / "student_profile" / "student_profiles.csv"
-
-    df_stu = pd.read_csv(stu_file, dtype=str)
-    df_prof = pd.read_csv(profile_file, dtype={"student_id": str})
-
-    df = pd.merge(
-        df_stu[["student_id", "cohort", "major"]],
-        df_prof,
-        on="student_id",
-        how="inner",
-    )
+    profile_file = SYNTHETIC_DIR / "generated" / "users" / "student_profiles.csv"
+    df = pd.read_csv(profile_file, dtype={"student_id": str})
     df.drop(columns=["name"], errors="ignore", inplace=True)
     df.drop_duplicates(subset=["student_id"], inplace=True)
+    if "cohort" not in df.columns:
+        df["cohort"] = "K" + df["student_id"].str[:2]
+    if "major" not in df.columns:
+        df["major"] = "Khoa hoc May tinh"
     # Link UUID
     df["user_id"] = df["student_id"].map(user_uuid_map)
     return df
@@ -253,8 +255,10 @@ def load_students_data(user_uuid_map):
 
 def load_lecturers_data(user_uuid_map):
     """Load lecturer departmental assignments and map user_id UUID."""
-    lec_dep_file = SYNTHETIC_DIR / "data" / "people" / "lecturer_for_class.csv"
-    df = pd.read_csv(lec_dep_file, dtype={"lecturer_id": str})
+    lec_file = SYNTHETIC_DIR / "generated" / "users" / "lecturer.csv"
+    df = pd.read_csv(lec_file, dtype={"user_id": str})
+    df["lecturer_id"] = df["user_id"]
+    df["departments"] = df["department"]
     df = df[["lecturer_id", "departments"]].drop_duplicates(subset=["lecturer_id"])
     # Link UUID
     df["user_id"] = df["lecturer_id"].map(user_uuid_map)

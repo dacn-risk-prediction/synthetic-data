@@ -188,8 +188,20 @@ def _eligibility(semester, students, history, credits, prerequisites):
 
 def generate_class(semester):
     students = load_student_profiles()
-    lecturers = pd.read_csv(ROOT_DIR / "data" / "people" / "lecturer_for_class.csv")
-    prerequisites = pd.read_csv(ROOT_DIR / "data" / "catalog" / "course_prerequisite.csv")
+    lec_file = ROOT_DIR / "generated" / "users" / "lecturer.csv"
+    if lec_file.exists():
+        lecturers = pd.read_csv(lec_file)
+        if "user_id" in lecturers.columns and "lecturer_id" not in lecturers.columns:
+            lecturers = lecturers.rename(columns={"user_id": "lecturer_id", "name": "lecturer_name", "department": "departments"})
+    else:
+        lecturers = pd.read_csv(ROOT_DIR / "data" / "people" / "lecturer_for_class.csv")
+
+    prereq_file = ROOT_DIR / "generated" / "academics" / "course_prerequisites.csv"
+    if prereq_file.exists():
+        prerequisites = pd.read_csv(prereq_file)
+    else:
+        prerequisites = pd.read_csv(ROOT_DIR / "data" / "catalog" / "course_prerequisite.csv")
+
     course_names, course_credits, _ = course_catalog()
     history = load_history(_history_for(semester))
     schedule = _schedule(semester)
@@ -224,8 +236,18 @@ def generate_enrollment(semester, is_current=None):
     classes = pd.read_csv(
         ROOT_DIR / "generated" / "classes" / f"class_{semester.lower()}.csv"
     )
-    assessment = pd.read_csv(ROOT_DIR / "data" / "catalog" / "assessment.csv")
-    prerequisites = pd.read_csv(ROOT_DIR / "data" / "catalog" / "course_prerequisite.csv")
+    assess_file = ROOT_DIR / "generated" / "academics" / "assessment.csv"
+    if assess_file.exists():
+        assessment = pd.read_csv(assess_file)
+    else:
+        assessment = pd.read_csv(ROOT_DIR / "data" / "catalog" / "assessment.csv")
+
+    prereq_file = ROOT_DIR / "generated" / "academics" / "course_prerequisites.csv"
+    if prereq_file.exists():
+        prerequisites = pd.read_csv(prereq_file)
+    else:
+        prerequisites = pd.read_csv(ROOT_DIR / "data" / "catalog" / "course_prerequisite.csv")
+
     history = load_history(_history_for(semester))
     _, course_credits, difficulties = course_catalog()
     eligibility, failed = _eligibility(

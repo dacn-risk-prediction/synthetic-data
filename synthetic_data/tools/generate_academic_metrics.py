@@ -23,9 +23,15 @@ from academic_rules import (  # noqa: E402
 
 GENERATED_DIR = ROOT_DIR / "generated"
 METRICS_DIR = GENERATED_DIR / "metrics"
-STUDENT_FILE = ROOT_DIR / "data" / "people" / "student.csv"
-COURSE_FILE = ROOT_DIR / "data" / "catalog" / "course.csv"
-CURRICULUM_FILE = ROOT_DIR / "data" / "catalog" / "curriculum_computer_science.csv"
+STUDENT_FILE = GENERATED_DIR / "users" / "student.csv"
+if not STUDENT_FILE.exists():
+    STUDENT_FILE = ROOT_DIR / "data" / "people" / "student.csv"
+COURSE_FILE = GENERATED_DIR / "academics" / "courses.csv"
+if not COURSE_FILE.exists():
+    COURSE_FILE = ROOT_DIR / "data" / "catalog" / "course.csv"
+CURRICULUM_FILE = GENERATED_DIR / "academics" / "program_structures.csv"
+if not CURRICULUM_FILE.exists():
+    CURRICULUM_FILE = ROOT_DIR / "data" / "catalog" / "curriculum_computer_science.csv"
 LETTER_GRADES = [
     grade["letter"] for grade in GENERATOR_CONFIG["grade_scale"]
 ]
@@ -58,9 +64,16 @@ def _load_enrollment_history(profiles):
             how="left",
             validate="many_to_one",
         )
-        if merged["course_code"].isna().any():
+        if "course_code" not in merged.columns or merged["course_code"].isna().any():
+            if "course_id" in merged.columns:
+                merged["course_code"] = merged["course_code"].fillna(merged["course_id"])
+        if merged.loc[merged["class_id"].notna(), "course_code"].isna().any():
             raise ValueError(
                 f"{semester_code} enrollment references an unknown class"
+            )
+        if merged["course_code"].isna().any():
+            raise ValueError(
+                f"{semester_code} enrollment contains records with missing course"
             )
         observed_semesters.append(semester_code)
         merged["semester_code"] = semester_code
@@ -232,11 +245,17 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
         "cohort_start_semester"
     ]
     graduation_config = GENERATOR_CONFIG["student_progress"]["graduation"]
-    required_courses = set(
-        pd.read_csv(CURRICULUM_FILE, dtype={"course_code": str})
-        .query("course_type == 'required'")["course_code"]
-        .dropna()
-    )
+    if CURRICULUM_FILE.exists():
+        df_curr = pd.read_csv(CURRICULUM_FILE, dtype={"course_code": str})
+        type_col = "course_type"
+        if type_col in df_curr.columns:
+            required_courses = set(
+                df_curr[df_curr[type_col].isin(["required", "BB"])]["course_code"].dropna()
+            )
+        else:
+            required_courses = set()
+    else:
+        required_courses = set()
     required_courses.update(graduation_config["graduation_project_codes"])
     history_by_student = {
         student_id: group.copy()
@@ -719,12 +738,15 @@ def _normalize_cohort(cohort):
 def generate_academic_metrics(cohort=None):
     cohort = _normalize_cohort(cohort)
     profiles = pd.read_csv(PROFILE_OUTPUT_FILE, dtype={"student_id": str})
-    students = pd.read_csv(STUDENT_FILE, dtype={"student_id": str})
+    students = pd.read_csv(STUDENT_FILE, dtype=str)
+    if "user_id" in students.columns and "student_id" not in students.columns:
+        students = students.rename(columns={"user_id": "student_id"})
+    if "cohort" not in students.columns:
+        students["cohort"] = students["student_id"].str[:2]
     profiles = profiles.merge(
         students[["student_id", "cohort"]],
         on="student_id",
         how="left",
-        validate="one_to_one",
     )
     history, observed_semesters, tracked_ids = _load_enrollment_history(profiles)
     if cohort:

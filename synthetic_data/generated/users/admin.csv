@@ -1,0 +1,11 @@
+﻿user_id,name,email,password,password_hash,role,title
+AD00001,Ngô Minh Khang,ngominhkhang.ad00001@hcmut.edu.vn,7FM1t4R5OwIz,7FM1t4R5OwIz,admin,none
+AD00002,Ngô Khánh Hiếu,ngokhanhhieu.ad00002@hcmut.edu.vn,csZdOVStfrMZ,csZdOVStfrMZ,admin,none
+AD00003,Lý Gia Hải,lygiahai.ad00003@hcmut.edu.vn,zEErnMNS0IZ3,zEErnMNS0IZ3,admin,none
+AD00004,Nguyễn Khánh Quân,nguyenkhanhquan.ad00004@hcmut.edu.vn,L3CTtuebDXQG,L3CTtuebDXQG,admin,none
+AD00005,Trần Đức Uyên,tranducuyen.ad00005@hcmut.edu.vn,F54Uwub0tNbs,F54Uwub0tNbs,admin,none
+AD00006,Võ Đức Phát,voducphat.ad00006@hcmut.edu.vn,0YABqdjhbiFy,0YABqdjhbiFy,admin,none
+AD00007,Trần Gia Quang,trangiaquang.ad00007@hcmut.edu.vn,DPhCnKbz5xEK,DPhCnKbz5xEK,admin,none
+AD00008,Lê Văn Yến,levanyen.ad00008@hcmut.edu.vn,0DhnZheCwAFH,0DhnZheCwAFH,admin,none
+AD00009,Hồ Quang Hiếu,hoquanghieu.ad00009@hcmut.edu.vn,3uvcLER3mKpd,3uvcLER3mKpd,admin,none
+AD00010,Nguyễn Khánh Nhi,nguyenkhanhnhi.ad00010@hcmut.edu.vn,Mr7bP5d1z1Om,Mr7bP5d1z1Om,admin,none

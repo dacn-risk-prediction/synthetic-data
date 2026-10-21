@@ -1,0 +1,21 @@
+﻿block_id,block_code,block_name_vi,block_name_en,category,required_credits,description
+MATH_SCI,A,Toán và Khoa học Tự nhiên,Mathematics and Basic Sciences,Toán & KHTN,30.0,"Các môn toán nền tảng, vật lý, hóa học, cấu trúc rời rạc và mô hình hóa toán học."
+POLITICS_LAW,B.1,"Kinh tế, Chính trị, Xã hội, Pháp luật","Socials, Politics, Economics and Law",Giáo dục chung,13.0,"Lý luận chính trị Mác - Lênin, Tư tưởng Hồ Chí Minh, Lịch sử Đảng và Pháp luật đại cương."
+GEN_SKILLS,B.2.1-2,Nhập môn & Kỹ năng Nghề nghiệp,Introduction and Professional Skills,Giáo dục chung,6.0,Nhập môn điện toán và Kỹ năng chuyên nghiệp cho kỹ sư.
+MANAGEMENT,B.2.3,Quản lý cho Kỹ sư,Management for Engineers,Giáo dục chung,3.0,"Các môn quản lý dự án, kinh tế kỹ thuật, khởi nghiệp, năng suất chất lượng."
+FOREIGN_LANG,B.3,Ngoại ngữ (Tiếng Anh),Foreign Languages,Giáo dục chung,8.0,"Chuỗi học phần Anh văn 1, 2, 3, 4."
+CORE,C,Cơ sở ngành,Core Courses,Cơ sở ngành,21.0,"Hệ thống số, Kỹ thuật lập trình, Cấu trúc dữ liệu & giải thuật, Kiến trúc máy tính, Hệ CSDL, Lập trình nâng cao."
+MAJOR,D,Bắt buộc ngành,Compulsory Major Subjects,Ngành,13.0,"Hệ điều hành, Công nghệ phần mềm, Nguyên lý ngôn ngữ lập trình, Mạng máy tính."
+ELECTIVE_MAJOR_A,E.1,Tự chọn ngành - Nhóm A (Đồ án tổng hợp),Elective Major - Group A (Integration Project),Tự chọn ngành,1.0,Đồ án tổng hợp thực hành lập trình theo hướng chuyên sâu.
+ELECTIVE_MAJOR_B,E.2,Tự chọn ngành - Nhóm B (Đồ án đa ngành),Elective Major - Group B (Multidisciplinary Project),Tự chọn ngành,1.0,Thực tập đồ án môn học đa ngành kết hợp thực chiến.
+SPEC_DATA,F.1,Chuyên ngành Công nghệ Dữ liệu & Dữ liệu lớn,Specialty: Data Engineering and Big Data,Chuyên ngành,15.0,"Hệ quản trị CSDL, Khai phá dữ liệu, Dữ liệu lớn, Kho dữ liệu & BI."
+SPEC_SE,F.2,Chuyên ngành Công nghệ Phần mềm,Specialty: Software Engineering,Chuyên ngành,15.0,"Kiến trúc phần mềm, Kiểm thử phần mềm, Quản lý dự án PM, Bảo mật phần mềm."
+SPEC_CS,F.3,Chuyên ngành Khoa học Máy tính,Specialty: Computer Science,Chuyên ngành,15.0,Chuyên ngành rộng bao quát toàn diện các lĩnh vực KHMT.
+SPEC_SEC,F.4,Chuyên ngành An ninh Hệ thống và Mạng,Specialty: System and Network Security,Chuyên ngành,15.0,"Mật mã & an ninh mạng, Quản trị mạng, Đánh giá an toàn thông tin, Hệ phân bố."
+SPEC_AI,F.5,Chuyên ngành Trí tuệ Nhân tạo,Specialty: Artificial Intelligence,Chuyên ngành,15.0,"Nhập môn AI, Học máy, Học sâu, Xử lý ngôn ngữ tự nhiên, Thị giác máy tính."
+SPEC_CV,F.6,Chuyên ngành Xử lý ảnh và Thị giác máy tính,Specialty: Image Processing and Computer Vision,Chuyên ngành,15.0,"Xử lý ảnh số, Đồ họa máy tính, Game programming (K20-K23, sáp nhập vào AI từ K24)."
+FREE_ELECTIVE,G,Tự chọn tự do,Free Electives,Tự do,9.0,Sinh viên tự do tích lũy các học phần trong hoặc ngoài Khoa.
+GRADUATION,H,Học phần Tốt nghiệp,Graduation Modules,Tốt nghiệp,8.0,"Thực tập ngoài trường (2 TC), Đồ án chuyên ngành (2 TC), Đồ án tốt nghiệp (4 TC)."
+COND_DEFENSE,I,Giáo dục Quốc phòng,National Defense Education,Điều kiện tốt nghiệp,0.0,Chứng chỉ Giáo dục Quốc phòng và An ninh (MI1003).
+COND_PHYSICAL,J,Giáo dục Thể chất,Physical Education,Điều kiện tốt nghiệp,0.0,Học phần Giáo dục thể chất 1 & 2 (PE1003/PE1005 hoặc thể thao tự chọn).
+COND_OTHERS,K,Điều kiện Tốt nghiệp Khác,Other Graduation Requirements,Điều kiện tốt nghiệp,0.0,"Hoạt động sinh viên (SA4001), Chuẩn tiếng Anh tốt nghiệp."
