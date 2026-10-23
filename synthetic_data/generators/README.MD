@@ -24,7 +24,7 @@ Các đường dẫn sau tính từ thư mục gốc dự án:
 | Sinh viên nguồn | `synthetic_data/generated/users/student.csv` | Danh sách sinh viên các khóa K20–K26 theo từng hệ đào tạo. |
 | Profile | `synthetic_data/generated/users/student_profiles.csv` | Background, personality, năng lực học tập, tiếng Anh boolean, ngày CTXH tích lũy theo kỳ và `base_score`. |
 | Giảng viên | `synthetic_data/generated/users/lecturer.csv` | 100 giảng viên kèm đơn vị (`department`) và chuyên môn (`specialization`). |
-| Danh mục học vụ | `synthetic_data/generated/academics/` | Môn học (`courses.csv`), CTĐT (`curriculums.csv`), khối kiến thức (`knowledge_blocks.csv`), cấu trúc môn (`program_structures.csv`), tiên quyết (`course_prerequisites.csv`), học kỳ (`semester.csv`), đề cương (`assessment.csv`). |
+| Danh mục học vụ | `synthetic_data/generated/academics/` | Môn học (`courses.csv`), CTĐT (`curriculums.csv`), khối kiến thức (`knowledge_blocks.csv`), cấu trúc môn (`program_structures.csv`), tiên quyết (`course_prerequisites.csv`), học kỳ (`semester.csv` gồm `semester_id`, `semester_code`, `academic_year`, `is_active`), đề cương (`assessment.csv`). |
 | Cấu hình | `synthetic_data/config/generator_config.json` | Phân phối profile, noise, grade/difficulty theo môn và điều kiện tốt nghiệp/dropout. |
 | Lớp sinh ra | `synthetic_data/generated/classes/class_hk*.csv` | Đầu vào trực tiếp của generator enrollment (phân tách nhóm lớp `L`, `CC`, `TT`). |
 | Điểm sinh ra | `synthetic_data/generated/enrollments/enrollment_hk*.csv` | Lịch sử để xét các kỳ tiếp theo. |
@@ -152,16 +152,16 @@ và đạt điều kiện tiếng Anh, CTXH để metric ghi nhận tốt nghi�
 | HK242 | `generate_class_hk242.py` | `generate_enrollment_hk242.py` | K21 HK8 tốt nghiệp, K22 HK6 chọn môn dự án, K23 HK4, K24 HK2. |
 | HK251 | `generate_class_hk251.py` | `generate_enrollment_hk251.py` | K21 HK9, K22 HK7, K23 HK5, K24 HK3, K25 HK1. |
 | HK252 | `generate_class_hk252.py` | `generate_enrollment_hk252.py` | K21 HK10, K22 HK8 tốt nghiệp, K23 HK6 chọn môn dự án, K24 HK4, K25 HK2. |
+| HK261 | `generate_class_hk261.py` | `generate_enrollment_hk261.py` | K22 HK9, K23 HK7, K24 HK5, K25 HK3, K26 HK1 (**Học kỳ hiện tại - `is_active=True`**). |
 
 Toàn bộ cặp script hiện có đều sinh điểm đầy đủ theo `assessment.csv`; các kỳ
 không có cấu hình thành phần riêng dùng `cuoi_ky` 100%. Lịch sử được nối tiếp
 theo đúng thứ tự bảng trên, vì vậy không chạy riêng một kỳ nếu chưa có các file
 class/enrollment mà kỳ đó đọc.
 
-Danh sách sinh viên được phân bổ từ K13 đến K26 và profile bao gồm các khóa
-này. K26 bắt đầu từ HK261; HK261 chưa có generator trong phạm vi hiện tại.
-MSSV theo dạng `YY` + 5 chữ số; các chữ số cuối dùng dãy modulo bảo đảm duy
-nhất trong từng khóa.
+### Quản lý trạng thái học kỳ (`is_active`):
+- **`generators/academics/generate_semester.py`**: Sinh danh mục 13 học kỳ chuẩn hóa (`semester.csv` từ HK201 đến HK261). Cột `is_active` nhận giá trị `True` duy nhất cho kỳ hiện tại **`HK261`**, các kỳ trước đều là `False`.
+- **`generators/semester_generator.py`**: Module hóa chung logic sinh lớp và kết quả cho các kỳ từ HK221 đến HK261. Cung cấp hàm `is_semester_active(semester)` và `get_semesters_catalog()`. Với học kỳ đang hoạt động (`HK261`), điểm trung bình học kỳ (`semester_gpa_4`) và CPA tích lũy (`final_gpa_4`) được để giá trị trống (`NaN`) do kỳ học chưa kết thúc.
 
 ## Chạy một học kỳ riêng lẻ
 

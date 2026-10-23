@@ -2,7 +2,7 @@
 
 Repository này cung cấp hệ thống sinh dữ liệu học vụ **mô phỏng** (Synthetic Data) toàn diện cho chương trình đào tạo Cử nhân Khoa học Máy tính (Computer Science - Chuẩn ABET, Trường ĐH Bách Khoa - ĐHQG-HCM). 
 
-Hệ thống mô phỏng toàn bộ vòng đời sinh viên từ lúc nhập học (K20 đến K26) qua từng học kỳ (HK201 đến HK232), bao gồm: danh mục môn học, phân công giảng viên, đăng ký học phần, điểm thành phần theo đề cương, đánh giá tiến độ học vụ, chuẩn đầu ra (Tiếng Anh, Công tác xã hội) và xét tốt nghiệp.
+Hệ thống mô phỏng toàn bộ vòng đời sinh viên từ lúc nhập học (K20 đến K26) qua từng học kỳ (HK201 đến HK261), bao gồm: danh mục môn học, phân công giảng viên, đăng ký học phần, điểm thành phần theo đề cương, đánh giá tiến độ học vụ, chuẩn đầu ra (Tiếng Anh, Công tác xã hội) và xét tốt nghiệp.
 
 > [!NOTE]
 > Toàn bộ dữ liệu trong repository là **dữ liệu tổng hợp (synthetic)** phục vụ kiểm thử, phát triển thuật toán và phân tích; không chứa thông tin cá nhân hay dữ liệu học vụ thực tế của sinh viên.
@@ -36,8 +36,8 @@ Hệ thống mô phỏng toàn bộ vòng đời sinh viên từ lúc nhập h�
     ├── generated/                          # Bộ dữ liệu CSV chuẩn hóa
     │   ├── academics/                      # Môn học, CTĐT, tiên quyết, đề cương thành phần điểm
     │   ├── users/                          # User, Sinh viên, Giảng viên, Hồ sơ năng lực (profiles)
-    │   ├── classes/                        # Danh sách lớp học phần theo học kỳ (HK201 -> HK232)
-    │   ├── enrollments/                    # Điểm và kết quả đăng ký theo học kỳ (HK201 -> HK232)
+    │   ├── classes/                        # Danh sách lớp học phần theo học kỳ (HK201 -> HK261)
+    │   ├── enrollments/                    # Điểm và kết quả đăng ký theo học kỳ (HK201 -> HK261)
     │   └── metrics/                        # Thống kê tiến độ ngoại ngữ, CTXH
     ├── rules/
     │   ├── academic_rules.py               # Luật học vụ, mô phỏng điểm số, miễn giảm ngoại ngữ
@@ -75,7 +75,7 @@ pip install -r requirements.txt
 ```
 
 ### Sinh toàn bộ dữ liệu (Pipeline Execution)
-Chạy toàn bộ pipeline từ việc tạo hồ sơ, danh mục đến lớp học phần và điểm số từ HK201 đến HK232:
+Chạy toàn bộ pipeline từ việc tạo hồ sơ, danh mục đến lớp học phần và điểm số từ HK201 đến HK261:
 
 ```bash
 python synthetic_data/tools/run_all.py
@@ -158,6 +158,13 @@ Khi nhận được số liệu khảo sát thực tế từ giảng viên hoặ
 ### 4.6. Đổi danh mục môn học, Số tín chỉ & Điều kiện tiên quyết
 * **Danh sách môn & số tín chỉ:** [`synthetic_data/generated/academics/courses.csv`](file:///home/nhan/Documents/DACN/synthetic-data/synthetic_data/generated/academics/courses.csv) (`course_code`, `course_name_vi`, `credits`, `department`).
 * **Tiên quyết & Điểm chuẩn qua môn:** [`synthetic_data/generated/academics/course_prerequisites.csv`](file:///home/nhan/Documents/DACN/synthetic-data/synthetic_data/generated/academics/course_prerequisites.csv) (`course_code`, `prerequisite_course_code`, `relation_type`, `min_grade`).
+
+---
+
+### 4.7. Quản lý Danh mục học kỳ & Trạng thái học kỳ hiện tại (`is_active`)
+* **File danh mục:** [`synthetic_data/generated/academics/semester.csv`](file:///home/nhan/Documents/DACN/synthetic-data/synthetic_data/generated/academics/semester.csv) (`semester_id`, `semester_code`, `academic_year`, `is_active`).
+* **Kỳ hiện tại:** Cờ `is_active = True` được gán duy nhất cho học kỳ hiện tại (**`HK261`**). Tất cả các học kỳ đã hoàn tất (từ `HK201` đến `HK252`) có `is_active = False`.
+* **Quy tắc tính GPA kỳ active:** Đối với học kỳ đang hoạt động (`is_active = True`), học kỳ chưa kết thúc nên điểm trung bình học kỳ (`semester_gpa_4`) và CPA tích lũy (`final_gpa_4`) được gán giá trị trống (`NaN`/`NULL`). Khi sang kỳ tiếp theo, hệ thống mới tiến hành chốt GPA học kỳ.
 
 ---
 

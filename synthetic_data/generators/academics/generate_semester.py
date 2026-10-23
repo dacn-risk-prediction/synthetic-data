@@ -13,6 +13,7 @@ OUTPUT_FILES = [
 START_COHORT_YEAR = 20
 END_COHORT_YEAR = 26
 LAST_YEAR_MAX_TERM = 1
+ACTIVE_SEMESTER_CODE = "HK261"
 
 
 def generate_semesters(start_year=START_COHORT_YEAR, end_year=END_COHORT_YEAR, last_term_final_year=LAST_YEAR_MAX_TERM):
@@ -20,6 +21,7 @@ def generate_semesters(start_year=START_COHORT_YEAR, end_year=END_COHORT_YEAR, l
     Generate semesters sequence from HK201 to HK261.
     Each academic year from 2020 to 2025 has 2 main terms (1 and 2).
     The final year 2026 stops at term 1 (HK261).
+    Only semester HK261 is marked with is_active = True, all other semesters are False.
     """
     semesters = []
     semester_id = 1
@@ -32,10 +34,12 @@ def generate_semesters(start_year=START_COHORT_YEAR, end_year=END_COHORT_YEAR, l
         max_term = last_term_final_year if year == end_year else 2
         for term in range(1, max_term + 1):
             semester_code = f"HK{year}{term}"
+            is_active = (semester_code == ACTIVE_SEMESTER_CODE)
             semesters.append({
                 "semester_id": semester_id,
                 "semester_code": semester_code,
                 "academic_year": academic_year,
+                "is_active": is_active,
             })
             semester_id += 1
 
@@ -44,7 +48,7 @@ def generate_semesters(start_year=START_COHORT_YEAR, end_year=END_COHORT_YEAR, l
 
 def save_semesters():
     semesters = generate_semesters()
-    header = ["semester_id", "semester_code", "academic_year"]
+    header = ["semester_id", "semester_code", "academic_year", "is_active"]
 
     for output_file in OUTPUT_FILES:
         output_file.parent.mkdir(parents=True, exist_ok=True)

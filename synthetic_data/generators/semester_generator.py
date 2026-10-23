@@ -42,7 +42,22 @@ SEMESTERS = (
 NEW_SEMESTERS = (
     "HK221", "HK222", "HK231", "HK232", "HK241", "HK242", "HK251", "HK252", "HK261"
 )
+ACTIVE_SEMESTER = "HK261"
 PROJECT_OPTIONS = ["CO3107", "CO3109", "CO3111"]
+
+
+def is_semester_active(semester: str) -> bool:
+    """Kiểm tra học kỳ hiện tại có đang hoạt động hay không (chỉ HK261 là True)."""
+    return str(semester).strip().upper() in ("HK261", "261")
+
+
+def get_semesters_catalog() -> pd.DataFrame:
+    """Trả về danh mục học kỳ với cột trạng thái is_active (True cho HK261, False cho các kỳ khác)."""
+    csv_file = ROOT_DIR / "generated" / "academics" / "semester.csv"
+    if csv_file.exists():
+        return pd.read_csv(csv_file)
+    from academics.generate_semester import generate_semesters
+    return pd.DataFrame(generate_semesters())
 
 
 def _cohort_term(cohort, semester):
@@ -224,7 +239,7 @@ def generate_class(semester):
 
 def generate_enrollment(semester, is_current=None):
     if is_current is None:
-        is_current = str(semester).upper() == "HK261"
+        is_current = is_semester_active(semester)
 
     students = load_student_profiles()
     classes = pd.read_csv(

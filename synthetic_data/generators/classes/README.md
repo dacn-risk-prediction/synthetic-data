@@ -74,8 +74,9 @@ flowchart TD
 - **Điều kiện mở lớp Đồ án tốt nghiệp / Khóa luận:** Sinh viên phải tích lũy đủ số tín chỉ quy định, qua chuẩn tiếng Anh và hoàn thành $\ge 12$ ngày CTXH.
 
 ### 2.5. Giai đoạn 5: Module hóa toàn diện (`semester_generator.py`)
-- **Đặc trưng:** Thay vì viết script rời rạc cho từng kỳ, toàn bộ logic được gom vào một hàm duy nhất `generate_class(semester_code)`.
+- **Đặc trưng:** Thay vì viết script rời rạc cho từng kỳ, toàn bộ logic được gom vào một hàm duy nhất `generate_class(semester_code)` trong `synthetic_data/generators/semester_generator.py`.
 - Các file `generate_class_hk221.py` đến `generate_class_hk261.py` chỉ còn vỏn vẹn 4 dòng gọi hàm.
+- Tích hợp kiểm tra học kỳ hiện tại đang hoạt động (`is_semester_active(semester)`), đồng bộ với cờ `is_active = True` của kỳ `HK261` trong bảng danh mục học kỳ `semester.csv`.
 
 ---
 

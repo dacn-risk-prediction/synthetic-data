@@ -138,6 +138,12 @@ $$\text{final\_gpa\_4} = \frac{\sum_{j \in \text{Môn đạt duy nhất}} \left(
 2. **Không tính điểm rớt (F) vào CPA tích lũy:** Điểm F chỉ ảnh hưởng tiêu cực đến GPA của chính học kỳ bị rớt. Khi xét CPA tích lũy tổng kết, điểm F không tính vào tín chỉ tích lũy (khi sinh viên học lại qua môn thì điểm môn đạt sẽ thay thế).
 3. **Loại trừ môn điểm 12:** Môn miễn không có điểm thang 4 nên không tham gia vào phép tính CPA.
 
+### 4.3. Xử lý GPA đối với Học kỳ đang hoạt động (`is_active = True` - Kỳ hiện tại `HK261`)
+Trong học kỳ hiện tại (`HK261` - cờ `is_active = True` trong `semester.csv` hoặc `is_semester_active(semester) == True`):
+- Do học kỳ vẫn đang diễn ra và chưa chốt sổ học vụ, các cột **`semester_gpa_4`** và **`final_gpa_4`** được gán giá trị trống (`NaN` / `NULL`).
+- Điểm thành phần và kết quả môn học vẫn được mô phỏng bình thường để phục vụ theo dõi học vụ theo thời gian thực.
+- Khi bước sang học kỳ mới và kỳ hiện tại chuyển trạng thái thành `is_active = False`, hệ thống mới tiến hành chốt GPA học kỳ và cập nhật CPA tích lũy.
+
 ---
 
 ## 5. Quy Trình & Thuật Toán Phân Bổ Sinh Viên Vào Lớp (Rostering Algorithm)

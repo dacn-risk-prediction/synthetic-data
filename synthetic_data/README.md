@@ -41,7 +41,7 @@ synthetic_data/
 - `knowledge_blocks.csv`: 20 khối kiến thức chuẩn hóa (Toán - KHTN, Chính trị - Pháp luật, Cơ sở ngành, Bắt buộc ngành, Chuyên ngành, v.v.).
 - `program_structures.csv`: 1,011 ánh xạ môn học theo từng CTĐT khóa học, kèm loại môn (`BB`/`TC`), nhóm tự chọn (`Group A/B/C/D`), học kỳ gợi ý.
 - `course_prerequisites.csv`: Quan hệ tiên quyết môn học (`TQ`, `KN`, `SH`).
-- `semester.csv`: Danh sách học kỳ chuẩn hóa từ HK201 đến HK261.
+- `semester.csv`: Danh sách học kỳ chuẩn hóa từ HK201 đến HK261 kèm cờ trạng thái `is_active` (chỉ `HK261` là `True` - biểu thị học kỳ hiện tại đang diễn ra, các học kỳ trước từ HK201 đến HK252 là `False`).
 - `assessment.csv`: Đề cương tỷ lệ điểm thành phần của các môn học (`quiz`, `lab`, `btl`, `giua_ky`, `cuoi_ky`).
 
 ### 2. `generated/users/` — Người dùng & Hồ sơ năng lực

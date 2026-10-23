@@ -67,7 +67,8 @@ DDL_STATEMENTS = """
 CREATE TABLE IF NOT EXISTS semesters (
     semester_code VARCHAR(20) PRIMARY KEY,
     academic_year VARCHAR(20) NOT NULL,
-    term INT NOT NULL
+    term INT NOT NULL,
+    is_active BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 -- 2. Courses (Danh mục môn học - Đã bỏ trường difficulty của bộ sinh data)
@@ -239,12 +240,16 @@ CREATE INDEX IF NOT EXISTS idx_prog_struct_course ON program_structures(course_c
 # 3. DATA EXTRACTION & TRANSFORMATION HELPERS
 # -----------------------------------------------------------------------------
 def load_semesters_data():
-    """Load semesters catalog."""
+    """Load semesters catalog (bao gồm cờ is_active cho học kỳ hiện tại)."""
     csv_file = SYNTHETIC_DIR / "generated" / "academics" / "semester.csv"
     df = pd.read_csv(csv_file)
     if "term" not in df.columns:
         df["term"] = df["semester_code"].astype(str).str[-1].astype(int)
-    cols = ["semester_code", "academic_year", "term"]
+    if "is_active" not in df.columns:
+        df["is_active"] = df["semester_code"].astype(str).str.strip().str.upper().isin(["HK261", "261"])
+    else:
+        df["is_active"] = df["is_active"].astype(bool)
+    cols = ["semester_code", "academic_year", "term", "is_active"]
     return df[cols].drop_duplicates(subset=["semester_code"])
 
 
@@ -567,14 +572,24 @@ def run_push_to_neon():
     engine = create_engine(db_uri, pool_pre_ping=True)
 
     with engine.connect() as conn:
-        # Check if table 'students' has column 'program' or old schema exists
+        # Tự động phát hiện schema cũ thiếu trường -> tiến hành reset sạch sẽ
         students_cols = [
             row[0]
             for row in conn.execute(
                 text("SELECT column_name FROM information_schema.columns WHERE table_name = 'students'")
             ).fetchall()
         ]
-        if "--reset" in sys.argv or (students_cols and "program" not in students_cols):
+        semesters_cols = [
+            row[0]
+            for row in conn.execute(
+                text("SELECT column_name FROM information_schema.columns WHERE table_name = 'semesters'")
+            ).fetchall()
+        ]
+        if (
+            "--reset" in sys.argv
+            or (students_cols and "program" not in students_cols)
+            or (semesters_cols and "is_active" not in semesters_cols)
+        ):
             print("[*] Đang làm sạch và tái cấu trúc toàn bộ 13 bảng (DROP & RECREATE CASCADE)...")
             conn.execute(text("""
                 DROP TABLE IF EXISTS enrollments, classes, course_assessments, program_structures,
