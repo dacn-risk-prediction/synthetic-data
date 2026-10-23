@@ -1,7 +1,8 @@
 """Generate persistent student psychological profiles and academic baselines.
 
 Generates latent traits (academic_level, math_level, english_level, discipline,
-motivation, stress, base_score) for all students in synthetic_data/generated/users/student.csv.
+motivation, stress, base_score) and assigns realistic specializations (chuyên ngành)
+for all students in synthetic_data/generated/users/student.csv.
 Exports directly to: synthetic_data/generated/users/student_profiles.csv.
 
 These persistent traits ensure academic performance follows realistic, consistent patterns
@@ -10,6 +11,7 @@ across all semesters (HK201 - HK262).
 
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -37,6 +39,30 @@ INPUT_STUDENT_FILE = USERS_DIR / "student.csv"
 OUTPUT_PROFILE_FILE = USERS_DIR / "student_profiles.csv"
 
 
+def assign_specialization(student_id: str, cohort: str, config: Dict[str, Any]) -> str:
+    """Assign student specialization based on cohort distribution configured in generator_config.json."""
+    spec_config = config.get("student_progress", {}).get("specializations", {})
+    if not spec_config:
+        spec_config = config.get("specializations", {})
+
+    cohort_dist = spec_config.get("cohort_distribution", {}).get(
+        cohort, spec_config.get("default_distribution", {})
+    )
+    if not cohort_dist:
+        return "Khoa học Máy tính"
+
+    specs = list(cohort_dist.keys())
+    probs = np.array(list(cohort_dist.values()), dtype=float)
+    probs = probs / probs.sum()
+
+    # Deterministic assignment using sha256 to ensure reproducibility
+    seed = config.get("seed", 20261006)
+    val = f"{seed}:{student_id}:specialization".encode("utf-8")
+    hash_val = int(hashlib.sha256(val).hexdigest()[:8], 16)
+    rng = np.random.default_rng(hash_val)
+    return str(rng.choice(specs, p=probs))
+
+
 def generate_student_profiles() -> Path:
     """Generate persistent profiles for all system students."""
     print("=== KHỞI CHẠY SINH HỒ SƠ NĂNG LỰC SINH VIÊN (STUDENT PROFILES) ===")
@@ -48,13 +74,18 @@ def generate_student_profiles() -> Path:
     student_count = len(df_students)
     print(f"1. Tổng số sinh viên cần sinh hồ sơ: {student_count:,} sinh viên (Khóa K20 - K26).")
 
-    # 1. Sinh latent profile cho từng sinh viên
-    print("\n2. Đang tạo các chỉ số tâm lý & học lực ẩn (academic_level, math_level, discipline...)...")
+    # 1. Sinh latent profile và gán chuyên ngành cho từng sinh viên
+    print("\n2. Đang tạo các chỉ số tâm lý, học lực ẩn và gán chuyên ngành theo khóa...")
     profiles: List[Dict[str, Any]] = []
     for _, row in df_students.iterrows():
-        uid = row["user_id"]
+        uid = str(row["user_id"])
         prog = row.get("program", "standard")
+        cohort = "K" + uid[:2]
+
         p = generate_student_profile(uid, GENERATOR_CONFIG)
+
+        # Gán chuyên ngành theo cấu hình generator_config.json
+        p["specialization"] = assign_specialization(uid, cohort, GENERATOR_CONFIG)
 
         # Với hệ Chất lượng cao và Tiên tiến: Miễn tiếng Anh đầu vào
         if prog in ("high-quality", "advanced"):
@@ -105,8 +136,9 @@ def generate_student_profiles() -> Path:
     result["student_id"] = df_students["user_id"]
     result["name"] = df_students["name"]
     result["program"] = df_students["program"]
+    result["specialization"] = [p["specialization"] for p in profiles]
 
-    profile_fields = list(profiles[0].keys())
+    profile_fields = [k for k in profiles[0].keys() if k != "specialization"]
     for field in profile_fields:
         values = [p[field] for p in profiles]
         if values and isinstance(values[0], (list, dict)):
@@ -120,25 +152,38 @@ def generate_student_profiles() -> Path:
     ]
     result["early_graduation_candidate"] = result["student_id"].isin(early_graduation_candidates)
 
-    # 4. Xuất file CSV
+    # 4. Xuất file CSV hồ sơ sinh viên
     OUTPUT_PROFILE_FILE.parent.mkdir(parents=True, exist_ok=True)
     result.to_csv(OUTPUT_PROFILE_FILE, index=False, encoding="utf-8-sig")
+
+    # 5. Đồng bộ chuyên ngành vào student.csv và user.csv
+    spec_map = dict(zip(result["student_id"], result["specialization"]))
+    df_students["specialization"] = df_students["user_id"].map(spec_map)
+    df_students.to_csv(INPUT_STUDENT_FILE, index=False, encoding="utf-8-sig")
+
+    user_file = USERS_DIR / "user.csv"
+    if user_file.exists():
+        df_user = pd.read_csv(user_file, dtype=str)
+        is_student = df_user["role"] == "student"
+        df_user.loc[is_student, "specialization"] = (
+            df_user.loc[is_student, "user_id"].map(spec_map).fillna(df_user.loc[is_student, "specialization"])
+        )
+        df_user.to_csv(user_file, index=False, encoding="utf-8-sig")
 
     print(f"\n=== ĐÃ TẠO THÀNH CÔNG: {OUTPUT_PROFILE_FILE} ===")
     print(f"Tổng số hồ sơ sinh viên: {len(result):,} dòng")
 
-    print("\nPhân phối học lực (academic_level 1-5):")
-    print(result["academic_level"].value_counts(normalize=True).sort_index().round(3))
+    result["cohort"] = "K" + result["student_id"].str[:2]
+    print("\nThống kê chuyên ngành (specialization) theo từng khóa:")
+    cross_tab = pd.crosstab(result["cohort"], result["specialization"], margins=True)
+    print(cross_tab)
 
-    print("\nPhân phối điểm nền tảng (base_score):")
-    print(result["base_score"].value_counts().sort_index())
-
-    print("\nThống kê miễn tiếng Anh (english_pass) theo hệ đào tạo:")
-    print(result.groupby("program")["english_pass"].value_counts(dropna=False))
+    print("\nTỷ lệ chuyên ngành theo từng khóa (%):")
+    cross_tab_pct = pd.crosstab(result["cohort"], result["specialization"], normalize="index").round(3) * 100
+    print(cross_tab_pct)
 
     return OUTPUT_PROFILE_FILE
 
 
 if __name__ == "__main__":
     generate_student_profiles()
-

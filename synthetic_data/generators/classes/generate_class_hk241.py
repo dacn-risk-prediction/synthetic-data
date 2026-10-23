@@ -74,6 +74,8 @@ if str(ANALYSIS_DIR) not in sys.path:
 if str(RULES_DIR) not in sys.path:
     sys.path.insert(0, str(RULES_DIR))
 
+from curriculum_rules import select_student_group_c_course, get_student_specialization_map
+
 from academic_rules import balanced_class_sizes
 from analysis_helpers import (
     get_curriculum_for_cohort_semester,
@@ -148,13 +150,14 @@ def get_k23_acceleration_students(k23_students: pd.DataFrame) -> Dict[str, List[
 
 
 def get_k22_group_c_distribution(k22_students: pd.DataFrame) -> Dict[Tuple[str, str], List[str]]:
-    """Distribute K22 students among Group C elective courses."""
+    """Distribute K22 students among Group C elective courses based on specialization."""
+    spec_map = get_student_specialization_map()
     choice_map: Dict[Tuple[str, str], List[str]] = defaultdict(list)
     for _, row in k22_students.iterrows():
         uid = str(row["user_id"])
         prog = row["program"]
-        seed_val = int(hashlib.sha256(f"{uid}:group_c".encode()).hexdigest()[:8], 16)
-        c_code = GROUP_C_COURSES[seed_val % len(GROUP_C_COURSES)]
+        spec = spec_map.get(uid, "Khoa học Máy tính")
+        c_code = select_student_group_c_course(uid, "K22", spec, seed_salt="k22_group_c_hk241")
         choice_map[(prog, c_code)].append(uid)
     return choice_map
 
@@ -510,36 +513,71 @@ def generate_class_hk241() -> Path:
             retake_str = f" (+{retake_count} SV khóa trước học ghép)" if retake_count > 0 else ""
             print(f"   + [K22] {course_code} ({c_name}): demand={demand}{retake_str} -> {len(sizes)} lớp ({prefix}{existing_count+1:02d}..{prefix}{existing_count+len(sizes):02d}){cap_note}")
 
-        # Tự chọn Nhóm C cho K22
-        print(f"   + [K22 Tự chọn ngành - Group C]:")
-        for g_course in GROUP_C_COURSES:
-            g_uids = k22_group_c.get((prog, g_course), [])
-            if not g_uids:
-                continue
-            g_demand = len(g_uids)
-            sizes = balanced_class_sizes(g_demand, max_size=REGULAR_CLASS_MAX_CAPACITY)
-            eligible_gvs, dept, c_name = get_all_lecturers_with_fallback(g_course, all_lecturers)
+        # Tự chọn Nhóm C cho K22 theo chuyên ngành (Hệ Tiên tiến học chung với CLC)
+        if prog == "advanced":
+            print(f"   + [K22 Tự chọn ngành - Group C]: Ghép học chung lớp với hệ Chất lượng cao (CC)")
+        else:
+            print(f"   + [K22 Tự chọn ngành - Group C]:")
+            if prog == "high-quality":
+                all_group_c = sorted(list({c for (p, c) in k22_group_c.keys() if p in ("high-quality", "advanced")}))
+                for g_course in all_group_c:
+                    g_uids = k22_group_c.get(("high-quality", g_course), []) + k22_group_c.get(("advanced", g_course), [])
+                    if not g_uids:
+                        continue
+                    g_demand = len(g_uids)
+                    sizes = balanced_class_sizes(g_demand, max_size=REGULAR_CLASS_MAX_CAPACITY)
+                    eligible_gvs, dept, c_name = get_all_lecturers_with_fallback(g_course, all_lecturers)
 
-            existing_count = sum(1 for cl in classes if cl["course_code"] == g_course and cl["program"] == prog)
-            for idx, size in enumerate(sizes, start=existing_count + 1):
-                group_code = f"{prefix}{idx:02d}"
-                best_gv = min(eligible_gvs, key=lambda g: (assigned_count[g["user_id"]], g["user_id"]))
-                assigned_count[best_gv["user_id"]] += 1
+                    existing_count = sum(1 for cl in classes if cl["course_code"] == g_course and cl["program"] == prog)
+                    for idx, size in enumerate(sizes, start=existing_count + 1):
+                        group_code = f"{prefix}{idx:02d}"
+                        best_gv = min(eligible_gvs, key=lambda g: (assigned_count[g["user_id"]], g["user_id"]))
+                        assigned_count[best_gv["user_id"]] += 1
 
-                classes.append({
-                    "class_id": f"{SEMESTER}_{g_course}_{group_code}",
-                    "course_code": g_course,
-                    "course_name": c_name,
-                    "semester": SEMESTER,
-                    "class_group": group_code,
-                    "program": prog,
-                    "max_capacity": REGULAR_CLASS_MAX_CAPACITY,
-                    "lecturer_id": best_gv["user_id"],
-                    "lecturer_name": best_gv["name"],
-                    "department": dept,
-                })
+                        classes.append({
+                            "class_id": f"{SEMESTER}_{g_course}_{group_code}",
+                            "course_code": g_course,
+                            "course_name": c_name,
+                            "semester": SEMESTER,
+                            "class_group": group_code,
+                            "program": prog,
+                            "max_capacity": REGULAR_CLASS_MAX_CAPACITY,
+                            "lecturer_id": best_gv["user_id"],
+                            "lecturer_name": best_gv["name"],
+                            "department": dept,
+                        })
 
-            print(f"     * {g_course} ({c_name}): demand={g_demand} -> {len(sizes)} lớp")
+                    print(f"     * {g_course} ({c_name}): demand={g_demand} (CLC+TT) -> {len(sizes)} lớp")
+            else:
+                all_group_c = sorted(list({c for (p, c) in k22_group_c.keys() if p == prog}))
+                for g_course in all_group_c:
+                    g_uids = k22_group_c.get((prog, g_course), [])
+                    if not g_uids:
+                        continue
+                    g_demand = len(g_uids)
+                    sizes = balanced_class_sizes(g_demand, max_size=REGULAR_CLASS_MAX_CAPACITY)
+                    eligible_gvs, dept, c_name = get_all_lecturers_with_fallback(g_course, all_lecturers)
+
+                    existing_count = sum(1 for cl in classes if cl["course_code"] == g_course and cl["program"] == prog)
+                    for idx, size in enumerate(sizes, start=existing_count + 1):
+                        group_code = f"{prefix}{idx:02d}"
+                        best_gv = min(eligible_gvs, key=lambda g: (assigned_count[g["user_id"]], g["user_id"]))
+                        assigned_count[best_gv["user_id"]] += 1
+
+                        classes.append({
+                            "class_id": f"{SEMESTER}_{g_course}_{group_code}",
+                            "course_code": g_course,
+                            "course_name": c_name,
+                            "semester": SEMESTER,
+                            "class_group": group_code,
+                            "program": prog,
+                            "max_capacity": REGULAR_CLASS_MAX_CAPACITY,
+                            "lecturer_id": best_gv["user_id"],
+                            "lecturer_name": best_gv["name"],
+                            "department": dept,
+                        })
+
+                    print(f"     * {g_course} ({c_name}): demand={g_demand} -> {len(sizes)} lớp")
 
     # -------------------------------------------------------------------------
     # D. PHÂN BỔ LỚP HỌC PHẦN CHO KHÓA K21 (NĂM 4 - KỲ 7) & K20 TRẢ NỢ

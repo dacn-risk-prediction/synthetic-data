@@ -82,6 +82,8 @@ if str(ANALYSIS_DIR) not in sys.path:
 if str(RULES_DIR) not in sys.path:
     sys.path.insert(0, str(RULES_DIR))
 
+from curriculum_rules import select_student_group_c_course, get_student_specialization_map
+
 from academic_rules import balanced_class_sizes
 from analysis_helpers import (
     get_curriculum_for_cohort_semester,
@@ -636,70 +638,182 @@ def generate_class_hk252() -> Path:
             print(f"   + [K23] {course_code} ({c_name}): demand={demand}{retake_str} -> {len(sizes)} lớp ({prefix}{existing_count+1:02d}..{prefix}{existing_count+len(sizes):02d}){cap_note}")
 
         # Lộ trình tốt nghiệp sớm 3.5 năm cho K23: CO3061 và CO4029
-        early_candidates = [
-            uid for uid in prog_uids
-            if str(prof_by_id.get(uid, {}).get("early_graduation_candidate", "")).lower() == "true"
-        ]
-        if early_candidates:
-            for early_code in ["CO3061", "CO4029"]:
-                sizes = balanced_class_sizes(len(early_candidates), max_size=REGULAR_CLASS_MAX_CAPACITY)
-                eligible_gvs, dept, c_name = get_all_lecturers_with_fallback(early_code, all_lecturers)
-                pref_specs = course_spec_preference.get(early_code, [])
+        # Quy tắc: Hệ Tiên tiến (advanced) và Chất lượng cao (high-quality) học chung lớp (CC)
+        if prog == "advanced":
+            print(f"   + [K23 Lộ trình sớm]: Ghép học chung lớp với hệ Chất lượng cao (CC)")
+            print(f"   + [K23 Tự chọn ngành - Group C]: Ghép học chung lớp với hệ Chất lượng cao (CC)")
+        elif prog == "high-quality":
+            adv_uids = set(k23_students[k23_students["program"] == "advanced"]["user_id"])
+            combined_k23_uids = prog_uids | adv_uids
+            early_candidates = [
+                uid for uid in combined_k23_uids
+                if str(prof_by_id.get(uid, {}).get("early_graduation_candidate", "")).lower() == "true"
+            ]
+            if early_candidates:
+                for early_code in ["CO3061", "CO4029"]:
+                    sizes = balanced_class_sizes(len(early_candidates), max_size=REGULAR_CLASS_MAX_CAPACITY)
+                    eligible_gvs, dept, c_name = get_all_lecturers_with_fallback(early_code, all_lecturers)
+                    pref_specs = course_spec_preference.get(early_code, [])
 
-                existing_count = sum(1 for cl in classes if cl["course_code"] == early_code and cl["program"] == prog)
-                for idx, size in enumerate(sizes, start=existing_count + 1):
-                    group_code = f"{prefix}{idx:02d}"
-                    best_gv = min(
-                        eligible_gvs,
-                        key=lambda g: (
-                            assigned_count[g["user_id"]],
-                            0 if g.get("specialization") in pref_specs else 1,
-                            g["user_id"],
-                        ),
-                    )
-                    assigned_count[best_gv["user_id"]] += 1
+                    existing_count = sum(1 for cl in classes if cl["course_code"] == early_code and cl["program"] == prog)
+                    for idx, size in enumerate(sizes, start=existing_count + 1):
+                        group_code = f"{prefix}{idx:02d}"
+                        best_gv = min(
+                            eligible_gvs,
+                            key=lambda g: (
+                                assigned_count[g["user_id"]],
+                                0 if g.get("specialization") in pref_specs else 1,
+                                g["user_id"],
+                            ),
+                        )
+                        assigned_count[best_gv["user_id"]] += 1
 
-                    classes.append({
-                        "class_id": f"{SEMESTER}_{early_code}_{group_code}",
-                        "course_code": early_code,
-                        "course_name": f"{c_name} (Lộ trình sớm)",
-                        "semester": SEMESTER,
-                        "class_group": group_code,
-                        "program": prog,
-                        "max_capacity": REGULAR_CLASS_MAX_CAPACITY,
-                        "lecturer_id": best_gv["user_id"],
-                        "lecturer_name": best_gv["name"],
-                        "department": dept,
-                    })
-                print(f"   + [K23 Lộ trình sớm] {early_code} ({c_name}): {len(early_candidates)} SV -> {len(sizes)} lớp")
+                        classes.append({
+                            "class_id": f"{SEMESTER}_{early_code}_{group_code}",
+                            "course_code": early_code,
+                            "course_name": f"{c_name} (Lộ trình sớm)",
+                            "semester": SEMESTER,
+                            "class_group": group_code,
+                            "program": prog,
+                            "max_capacity": REGULAR_CLASS_MAX_CAPACITY,
+                            "lecturer_id": best_gv["user_id"],
+                            "lecturer_name": best_gv["name"],
+                            "department": dept,
+                        })
+                    print(f"   + [K23 Lộ trình sớm - Gộp CLC+TT] {early_code} ({c_name}): {len(early_candidates)} SV -> {len(sizes)} lớp")
 
-        # Tự chọn ngành Group C cho các SV K23 còn lại
-        remaining_uids = [uid for uid in prog_uids if uid not in set(early_candidates)]
-        print(f"   + [K23 Tự chọn ngành - Group C] ({len(remaining_uids)} SV):")
-        for g_course in GROUP_C_COURSES:
-            g_demand = max(1, int(len(remaining_uids) * 0.35))
-            sizes = balanced_class_sizes(g_demand, max_size=REGULAR_CLASS_MAX_CAPACITY)
-            eligible_gvs, dept, c_name = get_all_lecturers_with_fallback(g_course, all_lecturers)
+            # Tự chọn ngành Group C cho sinh viên K23 thông thường (chọn 2 môn theo chuyên ngành)
+            regular_k23_uids = [uid for uid in combined_k23_uids if uid not in set(early_candidates)]
+            if regular_k23_uids:
+                spec_map = get_student_specialization_map()
+                c_demand_map: Dict[str, int] = defaultdict(int)
+                for uid in regular_k23_uids:
+                    spec = spec_map.get(uid, "Khoa học Máy tính")
+                    prev_passed = passed_map.get(uid, set())
+                    c1 = select_student_group_c_course(uid, "K23", spec, seed_salt="k23_group_c_1_hk252", exclude_courses=prev_passed)
+                    c2 = select_student_group_c_course(uid, "K23", spec, seed_salt="k23_group_c_2_hk252", exclude_courses=prev_passed | {c1})
+                    c_demand_map[c1] += 1
+                    c_demand_map[c2] += 1
 
-            existing_count = sum(1 for cl in classes if cl["course_code"] == g_course and cl["program"] == prog)
-            for idx, size in enumerate(sizes, start=existing_count + 1):
-                group_code = f"{prefix}{idx:02d}"
-                best_gv = min(eligible_gvs, key=lambda g: (assigned_count[g["user_id"]], g["user_id"]))
-                assigned_count[best_gv["user_id"]] += 1
+                print(f"   + [K23 Tự chọn ngành - Group C - Gộp CLC+TT ({len(c_demand_map)} môn có SV đăng ký)] ({len(regular_k23_uids)} SV):")
+                for c_code, c_demand in c_demand_map.items():
+                    if c_demand <= 0:
+                        continue
+                    sizes = balanced_class_sizes(c_demand, max_size=REGULAR_CLASS_MAX_CAPACITY)
+                    eligible_gvs, dept, c_name = get_all_lecturers_with_fallback(c_code, all_lecturers)
+                    pref_specs = course_spec_preference.get(c_code, [])
 
-                classes.append({
-                    "class_id": f"{SEMESTER}_{g_course}_{group_code}",
-                    "course_code": g_course,
-                    "course_name": c_name,
-                    "semester": SEMESTER,
-                    "class_group": group_code,
-                    "program": prog,
-                    "max_capacity": REGULAR_CLASS_MAX_CAPACITY,
-                    "lecturer_id": best_gv["user_id"],
-                    "lecturer_name": best_gv["name"],
-                    "department": dept,
-                })
-            print(f"     * {g_course} ({c_name}): demand={g_demand} -> {len(sizes)} lớp")
+                    existing_count = sum(1 for cl in classes if cl["course_code"] == c_code and cl["program"] == prog)
+                    for idx, size in enumerate(sizes, start=existing_count + 1):
+                        group_code = f"{prefix}{idx:02d}"
+                        best_gv = min(
+                            eligible_gvs,
+                            key=lambda g: (
+                                assigned_count[g["user_id"]],
+                                0 if g.get("specialization") in pref_specs else 1,
+                                g["user_id"],
+                            ),
+                        )
+                        assigned_count[best_gv["user_id"]] += 1
+
+                        classes.append({
+                            "class_id": f"{SEMESTER}_{c_code}_{group_code}",
+                            "course_code": c_code,
+                            "course_name": c_name,
+                            "semester": SEMESTER,
+                            "class_group": group_code,
+                            "program": prog,
+                            "max_capacity": REGULAR_CLASS_MAX_CAPACITY,
+                            "lecturer_id": best_gv["user_id"],
+                            "lecturer_name": best_gv["name"],
+                            "department": dept,
+                        })
+                    print(f"     * {c_code} ({c_name}): demand={c_demand} -> {len(sizes)} lớp")
+        else:  # standard
+            early_candidates = [
+                uid for uid in prog_uids
+                if str(prof_by_id.get(uid, {}).get("early_graduation_candidate", "")).lower() == "true"
+            ]
+            if early_candidates:
+                for early_code in ["CO3061", "CO4029"]:
+                    sizes = balanced_class_sizes(len(early_candidates), max_size=REGULAR_CLASS_MAX_CAPACITY)
+                    eligible_gvs, dept, c_name = get_all_lecturers_with_fallback(early_code, all_lecturers)
+                    pref_specs = course_spec_preference.get(early_code, [])
+
+                    existing_count = sum(1 for cl in classes if cl["course_code"] == early_code and cl["program"] == prog)
+                    for idx, size in enumerate(sizes, start=existing_count + 1):
+                        group_code = f"{prefix}{idx:02d}"
+                        best_gv = min(
+                            eligible_gvs,
+                            key=lambda g: (
+                                assigned_count[g["user_id"]],
+                                0 if g.get("specialization") in pref_specs else 1,
+                                g["user_id"],
+                            ),
+                        )
+                        assigned_count[best_gv["user_id"]] += 1
+
+                        classes.append({
+                            "class_id": f"{SEMESTER}_{early_code}_{group_code}",
+                            "course_code": early_code,
+                            "course_name": f"{c_name} (Lộ trình sớm)",
+                            "semester": SEMESTER,
+                            "class_group": group_code,
+                            "program": prog,
+                            "max_capacity": REGULAR_CLASS_MAX_CAPACITY,
+                            "lecturer_id": best_gv["user_id"],
+                            "lecturer_name": best_gv["name"],
+                            "department": dept,
+                        })
+                    print(f"   + [K23 Lộ trình sớm] {early_code} ({c_name}): {len(early_candidates)} SV -> {len(sizes)} lớp")
+
+            # Tự chọn ngành Group C cho sinh viên K23 thông thường (chọn 2 môn theo chuyên ngành)
+            regular_k23_uids = [uid for uid in prog_uids if uid not in set(early_candidates)]
+            if regular_k23_uids:
+                spec_map = get_student_specialization_map()
+                c_demand_map: Dict[str, int] = defaultdict(int)
+                for uid in regular_k23_uids:
+                    spec = spec_map.get(uid, "Khoa học Máy tính")
+                    prev_passed = passed_map.get(uid, set())
+                    c1 = select_student_group_c_course(uid, "K23", spec, seed_salt="k23_group_c_1_hk252", exclude_courses=prev_passed)
+                    c2 = select_student_group_c_course(uid, "K23", spec, seed_salt="k23_group_c_2_hk252", exclude_courses=prev_passed | {c1})
+                    c_demand_map[c1] += 1
+                    c_demand_map[c2] += 1
+
+                print(f"   + [K23 Tự chọn ngành - Group C ({len(c_demand_map)} môn có SV đăng ký)] ({len(regular_k23_uids)} SV):")
+                for c_code, c_demand in c_demand_map.items():
+                    if c_demand <= 0:
+                        continue
+                    sizes = balanced_class_sizes(c_demand, max_size=REGULAR_CLASS_MAX_CAPACITY)
+                    eligible_gvs, dept, c_name = get_all_lecturers_with_fallback(c_code, all_lecturers)
+                    pref_specs = course_spec_preference.get(c_code, [])
+
+                    existing_count = sum(1 for cl in classes if cl["course_code"] == c_code and cl["program"] == prog)
+                    for idx, size in enumerate(sizes, start=existing_count + 1):
+                        group_code = f"{prefix}{idx:02d}"
+                        best_gv = min(
+                            eligible_gvs,
+                            key=lambda g: (
+                                assigned_count[g["user_id"]],
+                                0 if g.get("specialization") in pref_specs else 1,
+                                g["user_id"],
+                            ),
+                        )
+                        assigned_count[best_gv["user_id"]] += 1
+
+                        classes.append({
+                            "class_id": f"{SEMESTER}_{c_code}_{group_code}",
+                            "course_code": c_code,
+                            "course_name": c_name,
+                            "semester": SEMESTER,
+                            "class_group": group_code,
+                            "program": prog,
+                            "max_capacity": REGULAR_CLASS_MAX_CAPACITY,
+                            "lecturer_id": best_gv["user_id"],
+                            "lecturer_name": best_gv["name"],
+                            "department": dept,
+                        })
+                    print(f"     * {c_code} ({c_name}): demand={c_demand} -> {len(sizes)} lớp")
 
     # -------------------------------------------------------------------------
     # D. PHÂN BỔ LỚP HỌC PHẦN CHO KHÓA K22 (HỌC KỲ 8 - TỐT NGHIỆP CHUẨN 4 NĂM) & K21/K20 TRẢ NỢ

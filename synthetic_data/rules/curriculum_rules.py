@@ -7,8 +7,9 @@ in generated/academics/ (program_structures.csv, courses.csv, curriculums.csv).
 
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Set, Tuple
 
 import pandas as pd
 
@@ -21,6 +22,25 @@ RULE_FILE = ROOT_DIR / "rules" / "additional_course_rules.csv"
 
 MAX_CREDITS = 22
 TUITION_BASELINE_CREDITS = 18
+
+MERGEABLE_PROGRAMS = ("high-quality", "advanced")
+
+
+def can_share_class(prog1: str, prog2: str) -> bool:
+    """Check if two programs can share the same class section.
+    High-quality and Advanced programs can study together in the same class
+    (both taught in English / Computer Science department).
+    """
+    if prog1 == prog2:
+        return True
+    return prog1 in MERGEABLE_PROGRAMS and prog2 in MERGEABLE_PROGRAMS
+
+
+def get_shared_program_group(prog: str) -> str:
+    """Return canonical program name for shared English classes."""
+    if prog in MERGEABLE_PROGRAMS:
+        return "high-quality"
+    return prog
 
 
 def load_curriculum(cohort: Optional[str] = "K20") -> pd.DataFrame:
@@ -95,7 +115,84 @@ def load_management_electives(cohort: Optional[str] = "K20") -> pd.DataFrame:
     return sub
 
 
-def load_group_c_electives(cohort: Optional[str] = "K20") -> pd.DataFrame:
+_STUDENT_SPEC_MAP: Optional[Dict[str, str]] = None
+
+
+def get_student_specialization_map() -> Dict[str, str]:
+    """Retrieve mapping of student_id -> specialization from student_profiles.csv with caching."""
+    global _STUDENT_SPEC_MAP
+    if _STUDENT_SPEC_MAP is not None:
+        return _STUDENT_SPEC_MAP
+    profile_file = ROOT_DIR / "generated" / "users" / "student_profiles.csv"
+    if profile_file.exists():
+        df = pd.read_csv(profile_file, dtype=str)
+        if "student_id" in df.columns and "specialization" in df.columns:
+            _STUDENT_SPEC_MAP = dict(zip(df["student_id"], df["specialization"]))
+            return _STUDENT_SPEC_MAP
+    return {}
+
+
+def get_specialization_group_c_courses(specialization: str, cohort: Optional[str] = None) -> List[str]:
+    """Retrieve list of Group C course codes for a specific specialization and cohort."""
+    if PROGRAM_STRUCTURES_FILE.exists():
+        df = pd.read_csv(PROGRAM_STRUCTURES_FILE, dtype={"course_code": "string"})
+        mask = (
+            df["elective_group"].fillna("").str.upper().isin(["GROUP C", "GROUP_C"])
+            | df["block_id"].fillna("").str.startswith("SPEC_")
+        )
+        if cohort:
+            curr_id = f"KHMT_{cohort.upper()}"
+            if curr_id in df["curriculum_id"].values:
+                mask = mask & (df["curriculum_id"] == curr_id)
+        if specialization:
+            mask = mask & (df["specialization"] == specialization)
+
+        courses = df[mask]["course_code"].dropna().unique().tolist()
+        if courses:
+            return courses
+
+    fallback_map = {
+        "Khoa học Máy tính": ["CO3011", "CO3021", "CO3029", "CO3043", "CO3045"],
+        "Công nghệ Phần mềm": ["CO3011", "CO3013", "CO3015", "CO3017", "CO3065"],
+        "Trí tuệ nhân tạo ứng dụng": ["CO3029", "CO3035", "CO3037", "CO3041", "CO3043", "CO3045"],
+        "Trí tuệ nhân tạo": ["CO3061", "CO3029", "CO3045", "CO3057", "CO3085"],
+        "Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh": ["CO3021", "CO3023", "CO3027", "CO3029", "CO3033"],
+        "Công nghệ dữ liệu và dữ liệu lớn": ["CO3021", "CO3027", "CO3029", "CO3033", "CO4031"],
+        "Mật mã và An ninh mạng": ["CO3047", "CO3049", "CO3051", "CO3069", "CO3083"],
+        "An ninh hệ thống và mạng": ["CO3049", "CO3051", "CO3069", "CO3033", "CO3151"],
+        "Xử lý ảnh và Thị giác máy tính": ["CO3043", "CO3045", "CO3049", "CO3051", "CO3057"],
+    }
+    return fallback_map.get(specialization, ["CO3011", "CO3021", "CO3029", "CO3043", "CO3045"])
+
+
+def select_student_group_c_course(
+    student_id: str,
+    cohort: str,
+    specialization: Optional[str] = None,
+    seed_salt: str = "group_c",
+    exclude_courses: Optional[Set[str]] = None,
+) -> str:
+    """Select a Group C course deterministically matching the student's specialization."""
+    if not specialization:
+        spec_map = get_student_specialization_map()
+        specialization = spec_map.get(str(student_id), "Khoa học Máy tính")
+
+    spec_courses = get_specialization_group_c_courses(specialization, cohort)
+    exclude = exclude_courses or set()
+    available = [c for c in spec_courses if c not in exclude]
+
+    if not available:
+        all_group_c = load_group_c_electives(cohort=cohort)["course_code"].tolist()
+        available = [c for c in all_group_c if c not in exclude]
+
+    if not available:
+        available = spec_courses if spec_courses else ["CO3011", "CO3021", "CO3029", "CO3043", "CO3045"]
+
+    seed_val = int(hashlib.sha256(f"{student_id}:{seed_salt}".encode("utf-8")).hexdigest()[:8], 16)
+    return available[seed_val % len(available)]
+
+
+def load_group_c_electives(cohort: Optional[str] = "K20", specialization: Optional[str] = None) -> pd.DataFrame:
     """Load Specialized Electives (Group C) directly from program_structures.csv."""
     if PROGRAM_STRUCTURES_FILE.exists():
         df = pd.read_csv(PROGRAM_STRUCTURES_FILE, dtype={"course_code": "string"})
@@ -103,6 +200,13 @@ def load_group_c_electives(cohort: Optional[str] = "K20") -> pd.DataFrame:
             df["elective_group"].fillna("").str.upper().isin(["GROUP C", "GROUP_C"])
             | df["block_id"].fillna("").str.startswith("SPEC_")
         )
+        if cohort:
+            curr_id = f"KHMT_{cohort.upper()}"
+            if curr_id in df["curriculum_id"].values:
+                mask = mask & (df["curriculum_id"] == curr_id)
+        if specialization:
+            mask = mask & (df["specialization"] == specialization)
+
         sub = df[mask][["course_code"]].drop_duplicates().copy()
         if not sub.empty:
             sub["elective_group"] = "GROUP_C"

@@ -13,12 +13,17 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from curriculum_rules import (
     MAX_CREDITS,
     TUITION_BASELINE_CREDITS,
+    MERGEABLE_PROGRAMS,
+    can_share_class,
+    get_shared_program_group,
     additional_courses,
     course_catalog,
     curriculum_courses,
     get_department as catalog_department,
     load_electives,
     load_group_c_electives,
+    get_student_specialization_map,
+    get_specialization_group_c_courses,
 )
 
 
@@ -1782,6 +1787,12 @@ def calculate_eligibility_for_schedule(
         )
         for group_name, target in credit_targets.items():
             candidates = elective_groups.get(group_name, [])
+            if group_name == "GROUP_C":
+                spec_map = get_student_specialization_map()
+                spec = getattr(student, "specialization", None) or spec_map.get(str(student.student_id))
+                if spec:
+                    spec_courses = set(get_specialization_group_c_courses(spec, f"K{prefix}"))
+                    candidates = [c for c in candidates if c in spec_courses] + [c for c in candidates if c not in spec_courses]
             current_all = passed_courses | set(selected)
             if group_name == "FREE" and sum(credits.get(code, 0) for code in current_all if code in free_codes) >= free_credit_limit:
                 continue
@@ -1936,6 +1947,16 @@ def calculate_eligibility_for_schedule(
                 ]
                 if not available:
                     break
+                spec_map = get_student_specialization_map()
+                spec = getattr(student, "specialization", None) or spec_map.get(str(student.student_id))
+                if spec:
+                    spec_courses = set(get_specialization_group_c_courses(spec, f"K{prefix}"))
+                    spec_available = [
+                        (src, code) for (src, code) in available
+                        if src != "GROUP_C" or (code in spec_courses)
+                    ]
+                    if spec_available:
+                        available = spec_available
                 digest = hashlib.sha256(
                     f"{student.student_id}:FREE_OR_GROUP_C:{peer_round}"
                     .encode("utf-8")

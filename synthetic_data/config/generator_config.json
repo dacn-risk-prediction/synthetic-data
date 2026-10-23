@@ -57,20 +57,6 @@
   },
   "student_progress": {
     "observed_semesters": [
-      "HK131",
-      "HK132",
-      "HK141",
-      "HK142",
-      "HK151",
-      "HK152",
-      "HK161",
-      "HK162",
-      "HK171",
-      "HK172",
-      "HK181",
-      "HK182",
-      "HK191",
-      "HK192",
       "HK201",
       "HK202",
       "HK211",
@@ -86,13 +72,6 @@
       "HK261"
     ],
     "cohort_start_semester": {
-      "13": "HK131",
-      "14": "HK141",
-      "15": "HK151",
-      "16": "HK161",
-      "17": "HK171",
-      "18": "HK181",
-      "19": "HK191",
       "20": "HK201",
       "21": "HK211",
       "22": "HK221",
@@ -161,13 +140,6 @@
         "top_performer_share": 0.01,
         "selection_rate": 0.05,
         "supported_cohorts": [
-          "13",
-          "14",
-          "15",
-          "16",
-          "17",
-          "18",
-          "19",
           "20",
           "21",
           "22",
@@ -214,6 +186,70 @@
       "free_credit_limit": 9,
       "group_c_credit_limit": 15
     },
+    "specializations": {
+      "cohort_distribution": {
+        "K20": {
+          "Khoa học Máy tính": 0.25,
+          "Công nghệ Phần mềm": 0.25,
+          "Trí tuệ nhân tạo ứng dụng": 0.20,
+          "Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh": 0.12,
+          "Mật mã và An ninh mạng": 0.10,
+          "Xử lý ảnh và Thị giác máy tính": 0.08
+        },
+        "K21": {
+          "Khoa học Máy tính": 0.25,
+          "Công nghệ Phần mềm": 0.25,
+          "Trí tuệ nhân tạo ứng dụng": 0.20,
+          "Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh": 0.12,
+          "Mật mã và An ninh mạng": 0.10,
+          "Xử lý ảnh và Thị giác máy tính": 0.08
+        },
+        "K22": {
+          "Khoa học Máy tính": 0.25,
+          "Công nghệ Phần mềm": 0.25,
+          "Trí tuệ nhân tạo ứng dụng": 0.20,
+          "Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh": 0.12,
+          "Mật mã và An ninh mạng": 0.10,
+          "Xử lý ảnh và Thị giác máy tính": 0.08
+        },
+        "K23": {
+          "Khoa học Máy tính": 0.25,
+          "Công nghệ Phần mềm": 0.25,
+          "Trí tuệ nhân tạo ứng dụng": 0.20,
+          "Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh": 0.12,
+          "Mật mã và An ninh mạng": 0.10,
+          "Xử lý ảnh và Thị giác máy tính": 0.08
+        },
+        "K24": {
+          "Khoa học Máy tính": 0.25,
+          "Công nghệ Phần mềm": 0.25,
+          "Trí tuệ nhân tạo": 0.25,
+          "Công nghệ dữ liệu và dữ liệu lớn": 0.15,
+          "An ninh hệ thống và mạng": 0.10
+        },
+        "K25": {
+          "Khoa học Máy tính": 0.25,
+          "Công nghệ Phần mềm": 0.25,
+          "Trí tuệ nhân tạo": 0.25,
+          "Công nghệ dữ liệu và dữ liệu lớn": 0.15,
+          "An ninh hệ thống và mạng": 0.10
+        },
+        "K26": {
+          "Khoa học Máy tính": 0.25,
+          "Công nghệ Phần mềm": 0.25,
+          "Trí tuệ nhân tạo": 0.25,
+          "Công nghệ dữ liệu và dữ liệu lớn": 0.15,
+          "An ninh hệ thống và mạng": 0.10
+        }
+      },
+      "default_distribution": {
+        "Khoa học Máy tính": 0.25,
+        "Công nghệ Phần mềm": 0.25,
+        "Trí tuệ nhân tạo": 0.25,
+        "Công nghệ dữ liệu và dữ liệu lớn": 0.15,
+        "An ninh hệ thống và mạng": 0.10
+      }
+    },
     "enrollment_policy": {
       "optional_threshold": 15,
       "optional_16_credit_probability": 0.35,
@@ -246,5 +282,86 @@
     "good_gpa4": [0.18, 0.25],
     "fair_gpa4": [0.55, 0.65],
     "average_gpa4": [0.1, 0.15]
+  },
+  "user_generation": {
+    "seed": 20260923,
+    "students": {
+      "cohorts": [20, 21, 22, 23, 24, 25, 26],
+      "initial_student_count": 1500,
+      "increment_min": 15,
+      "increment_max": 50,
+      "program_weights": {
+        "standard": 0.60,
+        "high-quality": 0.30,
+        "advanced": 0.10
+      }
+    },
+    "staff": {
+      "admin_count": 10,
+      "lecturer_titles": [
+        "bachelor",
+        "master",
+        "doctor",
+        "associate_professor",
+        "professor"
+      ],
+      "lecturer_allocations": [
+        {
+          "department": "Khoa Khoa học và Kỹ thuật Máy tính",
+          "specialization": "Trí tuệ nhân tạo",
+          "count": 13
+        },
+        {
+          "department": "Khoa Khoa học và Kỹ thuật Máy tính",
+          "specialization": "Công nghệ Phần mềm",
+          "count": 13
+        },
+        {
+          "department": "Khoa Khoa học và Kỹ thuật Máy tính",
+          "specialization": "An ninh hệ thống và mạng",
+          "count": 11
+        },
+        {
+          "department": "Khoa Khoa học và Kỹ thuật Máy tính",
+          "specialization": "Kỹ thuật Máy tính",
+          "count": 10
+        },
+        {
+          "department": "Khoa Khoa học và Kỹ thuật Máy tính",
+          "specialization": "Công nghệ dữ liệu và dữ liệu lớn",
+          "count": 8
+        },
+        {
+          "department": "Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng",
+          "specialization": "Toán Ứng dụng & Thống kê",
+          "count": 15
+        },
+        {
+          "department": "Trung tâm Ngoại ngữ",
+          "specialization": "Tiếng Anh học thuật",
+          "count": 14
+        },
+        {
+          "department": "Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị",
+          "specialization": "Lý luận Chính trị & Pháp luật",
+          "count": 8
+        },
+        {
+          "department": "Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng",
+          "specialization": "Vật lý & Khoa học Tự nhiên",
+          "count": 8
+        },
+        {
+          "department": "Khoa Kỹ thuật Hóa học",
+          "specialization": "Hóa học Đại cương",
+          "count": 8
+        },
+        {
+          "department": "Bộ môn Giáo dục Thể chất",
+          "specialization": "Giáo dục Thể chất & Thể thao",
+          "count": 8
+        }
+      ]
+    }
   }
 }

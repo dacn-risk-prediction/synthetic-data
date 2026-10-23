@@ -59,6 +59,8 @@ OUTPUT_DIR = ROOT_DIR / "generated" / "enrollments"
 if str(RULES_DIR) not in sys.path:
     sys.path.insert(0, str(RULES_DIR))
 
+from curriculum_rules import select_student_group_c_course, get_student_specialization_map
+
 from academic_rules import (
     GENERATOR_CONFIG,
     balanced_class_sizes,
@@ -104,13 +106,14 @@ def get_k25_acceleration_students(k25_students: pd.DataFrame, df_prof: pd.DataFr
 
 
 def get_k24_group_c_distribution(k24_students: pd.DataFrame) -> Dict[Tuple[str, str], List[str]]:
-    """Distribute K24 students among Group C elective courses."""
+    """Distribute K24 students among Group C elective courses based on specialization."""
+    spec_map = get_student_specialization_map()
     choice_map: Dict[Tuple[str, str], List[str]] = defaultdict(list)
     for _, row in k24_students.iterrows():
         uid = str(row["user_id"])
         prog = row["program"]
-        seed_val = int(hashlib.sha256(f"{uid}:group_c".encode()).hexdigest()[:8], 16)
-        c_code = GROUP_C_COURSES[seed_val % len(GROUP_C_COURSES)]
+        spec = spec_map.get(uid, "Khoa học Máy tính")
+        c_code = select_student_group_c_course(uid, "K24", spec, seed_salt="k24_group_c_hk261")
         choice_map[(prog, c_code)].append(uid)
     return choice_map
 
@@ -590,22 +593,44 @@ def generate_enrollment_hk261() -> Path:
 
             print(f"   -> Đã gán {len(valid_co2013)} SV vào môn CO2013 ({len(class_ids)} lớp)")
 
-        # Tự chọn Group C cho K24
-        for g_course in GROUP_C_COURSES:
-            g_uids = k24_group_c.get((prog, g_course), [])
-            valid_g_uids = [uid for uid in g_uids if can_enroll(uid, g_course)]
-            if not valid_g_uids:
-                continue
-            class_ids = classes_by_prog_course.get((prog, g_course), [])
-            sizes = balanced_class_sizes(len(valid_g_uids), max_size=40)
-            offset = 0
+        # Tự chọn Group C cho K24 theo chuyên ngành
+        # Quy tắc: Hệ Tiên tiến (advanced) ghép học chung lớp với Chất lượng cao (high-quality)
+        if prog == "advanced":
+            print(f"   -> [K24 Tự chọn ngành - Group C]: Đã ghép học chung lớp với hệ Chất lượng cao (CC)")
+        elif prog == "high-quality":
+            all_group_c = sorted(list({c for (p, c) in k24_group_c.keys() if p in ("high-quality", "advanced")}))
+            for g_course in all_group_c:
+                g_uids = k24_group_c.get(("high-quality", g_course), []) + k24_group_c.get(("advanced", g_course), [])
+                valid_g_uids = [uid for uid in g_uids if can_enroll(uid, g_course)]
+                if not valid_g_uids:
+                    continue
+                class_ids = classes_by_prog_course.get((prog, g_course), [])
+                sizes = balanced_class_sizes(len(valid_g_uids), max_size=40)
+                offset = 0
 
-            for class_id, size in zip(class_ids, sizes):
-                assigned_chunk = valid_g_uids[offset : offset + size]
-                offset += size
+                for class_id, size in zip(class_ids, sizes):
+                    assigned_chunk = valid_g_uids[offset : offset + size]
+                    offset += size
 
-                for uid in assigned_chunk:
-                    record_grade(uid, g_course, class_id, is_retake=False)
+                    for uid in assigned_chunk:
+                        record_grade(uid, g_course, class_id, is_retake=False)
+        else:
+            all_group_c = sorted(list({c for (p, c) in k24_group_c.keys() if p == prog}))
+            for g_course in all_group_c:
+                g_uids = k24_group_c.get((prog, g_course), [])
+                valid_g_uids = [uid for uid in g_uids if can_enroll(uid, g_course)]
+                if not valid_g_uids:
+                    continue
+                class_ids = classes_by_prog_course.get((prog, g_course), [])
+                sizes = balanced_class_sizes(len(valid_g_uids), max_size=40)
+                offset = 0
+
+                for class_id, size in zip(class_ids, sizes):
+                    assigned_chunk = valid_g_uids[offset : offset + size]
+                    offset += size
+
+                    for uid in assigned_chunk:
+                        record_grade(uid, g_course, class_id, is_retake=False)
 
     # -------------------------------------------------------------------------
     # D. MÔ PHỎNG ĐĂNG KÝ CHO KHÓA K23 (HỌC KỲ 7) & K22/K21 TRẢ NỢ

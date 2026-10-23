@@ -1,6 +1,6 @@
 ﻿course_id,course_code,course_name_vi,course_name_en,credits,department
 1,CH1003,Hóa đại cương,General Chemistry,3,Khoa Kỹ thuật Hóa học
-2,CH4079,Hoá học xanh,,3,Khoa Kỹ thuật Hóa học
+2,CH4079,Hoá học xanh,Green Chemistry,3,Khoa Kỹ thuật Hóa học
 3,CO1005,Nhập môn Điện toán,Introduction to Computing,3,Khoa Khoa học và Kỹ thuật Máy tính
 4,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,Discrete Structures for Computing,4,Khoa Khoa học và Kỹ thuật Máy tính
 5,CO1023,Hệ thống số,Digital Systems,3,Khoa Khoa học và Kỹ thuật Máy tính
@@ -70,23 +70,23 @@
 69,CO4037,Hệ thống thông tin quản lý,Management Information Systems,3,Khoa Khoa học và Kỹ thuật Máy tính
 70,CO4039,Bảo mật sinh trắc,Biometric Security,3,Khoa Khoa học và Kỹ thuật Máy tính
 71,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),Capstone Project,4,Khoa Khoa học và Kỹ thuật Máy tính
-72,E1013,Khoa học trái đất,,3,Trường Đại học Bách Khoa
-73,IM1011,Máy tính trong Kinh doanh,,3,Khoa Quản lý Công nghiệp
+72,E1013,Khoa học trái đất,Earth Science,3,Trường Đại học Bách Khoa
+73,IM1011,Máy tính trong Kinh doanh,Computers in Business,3,Khoa Quản lý Công nghiệp
 74,IM1013,Kinh tế học Đại cương,Economics,3,Khoa Quản lý Công nghiệp
-75,IM1019,Tiếp thị căn bản,,3,Khoa Quản lý Công nghiệp
-76,IM1021,Khởi nghiệp,,3,Khoa Quản lý Công nghiệp
+75,IM1019,Tiếp thị căn bản,Basic Marketing,3,Khoa Quản lý Công nghiệp
+76,IM1021,Khởi nghiệp,Entrepreneurship,3,Khoa Quản lý Công nghiệp
 77,IM1023,Quản lý Sản xuất cho Kỹ sư,Production and Operations Management for,3,Khoa Quản lý Công nghiệp
 78,IM1025,Quản lý Dự án cho Kỹ sư,Project Management for Engineers,3,Khoa Quản lý Công nghiệp
 79,IM1027,Kinh tế Kỹ thuật,Engineering Economics,3,Khoa Quản lý Công nghiệp
 80,IM1031,Khởi nghiệp và đổi mới sáng tạo,Entrepreneurship and Innovation,3,Khoa Quản lý Công nghiệp
 81,IM3001,Quản trị Kinh doanh cho Kỹ sư,Business Administration for Engineers,3,Khoa Quản lý Công nghiệp
-82,IM3047,Giao tiếp trong kinh doanh,,3,Khoa Quản lý Công nghiệp
+82,IM3047,Giao tiếp trong kinh doanh,Business Communication,3,Khoa Quản lý Công nghiệp
 83,LA1003,Anh văn 1,English 1,2,Trung tâm Ngoại ngữ
 84,LA1005,Anh văn 2,English 2,2,Trung tâm Ngoại ngữ
 85,LA1007,Anh văn 3,English 3,2,Trung tâm Ngoại ngữ
 86,LA1009,Anh văn 4,English 4,2,Trung tâm Ngoại ngữ
 87,ME1019,Quản lý năng suất và chất lượng,Quality and Productivity Management,3,Khoa Kỹ thuật Cơ khí
-88,ME4625,Kỹ năng lãnh đạo,,3,Khoa Kỹ thuật Cơ khí
+88,ME4625,Kỹ năng lãnh đạo,Leadership Skills,3,Khoa Kỹ thuật Cơ khí
 89,MI1003,Giáo dục Quốc phòng,National Defense Education,0,Trung tâm GDQP và AN
 90,MT1003,Giải tích 1,Calculus 1,4,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 91,MT1005,Giải tích 2,Calculus 2,4,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng

@@ -55,6 +55,8 @@ OUTPUT_DIR = ROOT_DIR / "generated" / "enrollments"
 if str(RULES_DIR) not in sys.path:
     sys.path.insert(0, str(RULES_DIR))
 
+from curriculum_rules import select_student_group_c_course, get_student_specialization_map
+
 from academic_rules import (
     GENERATOR_CONFIG,
     balanced_class_sizes,
@@ -609,44 +611,104 @@ def generate_enrollment_hk252() -> Path:
                     record_grade(uid, course_code, class_id, is_retake=(uid in set(retakers_co3093)))
             print(f"   -> Đã gán {len(valid_co3093)} SV vào môn CO3093 ({len(class_ids)} lớp)")
 
-        # Lộ trình sớm 3.5 năm K23: CO3061 và CO4029
-        early_candidates = [
-            uid for uid in student_ids
-            if str(student_profiles.get(uid, {}).get("early_graduation_candidate", "")).lower() == "true"
-        ]
-        if early_candidates:
-            for early_code in ["CO3061", "CO4029"]:
-                valid_early = [uid for uid in early_candidates if can_enroll(uid, early_code)]
-                if not valid_early:
-                    continue
-                class_ids = classes_by_prog_course.get((prog, early_code), [])
-                sizes = balanced_class_sizes(len(valid_early), max_size=40)
-                offset = 0
-                for class_id, size in zip(class_ids, sizes):
-                    assigned_chunk = valid_early[offset : offset + size]
-                    offset += size
-                    for uid in assigned_chunk:
-                        record_grade(uid, early_code, class_id, is_retake=False, seed_suffix="_early")
-                print(f"   -> [K23 Lộ trình sớm] {len(valid_early)} SV hoàn tất {early_code} ({len(class_ids)} lớp)")
-
-        # Tự chọn ngành Group C cho các SV K23 còn lại
-        remaining_uids = [uid for uid in student_ids if uid not in set(early_candidates)]
-        for g_course in GROUP_C_COURSES:
-            seed_course_uids = [
-                uid for uid in remaining_uids
-                if (int(hashlib.sha256(f"{uid}:{g_course}".encode()).hexdigest()[:8], 16) % 100) < 35
+        # Lộ trình sớm 3.5 năm K23 và Tự chọn ngành Group C
+        # Quy tắc: Hệ Tiên tiến (advanced) ghép học chung lớp với Chất lượng cao (high-quality)
+        if prog == "advanced":
+            print(f"   -> [K23 Lộ trình sớm]: Đã ghép học chung lớp với hệ Chất lượng cao (CC)")
+            print(f"   -> [K23 Tự chọn ngành - Group C]: Đã ghép học chung lớp với hệ Chất lượng cao (CC)")
+        elif prog == "high-quality":
+            adv_uids = k23_students[k23_students["program"] == "advanced"]["user_id"].tolist()
+            combined_student_ids = student_ids + adv_uids
+            early_candidates = [
+                uid for uid in combined_student_ids
+                if str(student_profiles.get(uid, {}).get("early_graduation_candidate", "")).lower() == "true"
             ]
-            valid_g = [uid for uid in seed_course_uids if can_enroll(uid, g_course)]
-            if not valid_g:
-                continue
-            class_ids = classes_by_prog_course.get((prog, g_course), [])
-            sizes = balanced_class_sizes(len(valid_g), max_size=40)
-            offset = 0
-            for class_id, size in zip(class_ids, sizes):
-                assigned_chunk = valid_g[offset : offset + size]
-                offset += size
-                for uid in assigned_chunk:
-                    record_grade(uid, g_course, class_id, is_retake=False)
+            if early_candidates:
+                for early_code in ["CO3061", "CO4029"]:
+                    valid_early = [uid for uid in early_candidates if can_enroll(uid, early_code)]
+                    if not valid_early:
+                        continue
+                    class_ids = classes_by_prog_course.get((prog, early_code), [])
+                    sizes = balanced_class_sizes(len(valid_early), max_size=40)
+                    offset = 0
+                    for class_id, size in zip(class_ids, sizes):
+                        assigned_chunk = valid_early[offset : offset + size]
+                        offset += size
+                        for uid in assigned_chunk:
+                            record_grade(uid, early_code, class_id, is_retake=False, seed_suffix="_early")
+                    print(f"   -> [K23 Lộ trình sớm - Gộp CLC+TT] {len(valid_early)} SV hoàn tất {early_code} ({len(class_ids)} lớp)")
+
+            remaining_uids = [uid for uid in combined_student_ids if uid not in set(early_candidates)]
+            if remaining_uids:
+                spec_map = get_student_specialization_map()
+                student_c_choices: Dict[str, List[str]] = defaultdict(list)
+                for uid in remaining_uids:
+                    spec = spec_map.get(uid, "Khoa học Máy tính")
+                    prev_passed = set(history_passed.get(uid, {}).keys())
+                    c1 = select_student_group_c_course(uid, "K23", spec, seed_salt="k23_group_c_1_hk252", exclude_courses=prev_passed)
+                    c2 = select_student_group_c_course(uid, "K23", spec, seed_salt="k23_group_c_2_hk252", exclude_courses=prev_passed | {c1})
+                    if can_enroll(uid, c1):
+                        student_c_choices[c1].append(uid)
+                    if can_enroll(uid, c2):
+                        student_c_choices[c2].append(uid)
+
+                for g_course, valid_g in student_c_choices.items():
+                    if not valid_g:
+                        continue
+                    class_ids = classes_by_prog_course.get((prog, g_course), [])
+                    sizes = balanced_class_sizes(len(valid_g), max_size=40)
+                    offset = 0
+                    for class_id, size in zip(class_ids, sizes):
+                        assigned_chunk = valid_g[offset : offset + size]
+                        offset += size
+                        for uid in assigned_chunk:
+                            record_grade(uid, g_course, class_id, is_retake=False)
+        else:  # standard
+            early_candidates = [
+                uid for uid in student_ids
+                if str(student_profiles.get(uid, {}).get("early_graduation_candidate", "")).lower() == "true"
+            ]
+            if early_candidates:
+                for early_code in ["CO3061", "CO4029"]:
+                    valid_early = [uid for uid in early_candidates if can_enroll(uid, early_code)]
+                    if not valid_early:
+                        continue
+                    class_ids = classes_by_prog_course.get((prog, early_code), [])
+                    sizes = balanced_class_sizes(len(valid_early), max_size=40)
+                    offset = 0
+                    for class_id, size in zip(class_ids, sizes):
+                        assigned_chunk = valid_early[offset : offset + size]
+                        offset += size
+                        for uid in assigned_chunk:
+                            record_grade(uid, early_code, class_id, is_retake=False, seed_suffix="_early")
+                    print(f"   -> [K23 Lộ trình sớm] {len(valid_early)} SV hoàn tất {early_code} ({len(class_ids)} lớp)")
+
+            # Tự chọn ngành Group C cho các SV K23 còn lại (chọn 2 môn theo chuyên ngành)
+            remaining_uids = [uid for uid in student_ids if uid not in set(early_candidates)]
+            if remaining_uids:
+                spec_map = get_student_specialization_map()
+                student_c_choices: Dict[str, List[str]] = defaultdict(list)
+                for uid in remaining_uids:
+                    spec = spec_map.get(uid, "Khoa học Máy tính")
+                    prev_passed = set(history_passed.get(uid, {}).keys())
+                    c1 = select_student_group_c_course(uid, "K23", spec, seed_salt="k23_group_c_1_hk252", exclude_courses=prev_passed)
+                    c2 = select_student_group_c_course(uid, "K23", spec, seed_salt="k23_group_c_2_hk252", exclude_courses=prev_passed | {c1})
+                    if can_enroll(uid, c1):
+                        student_c_choices[c1].append(uid)
+                    if can_enroll(uid, c2):
+                        student_c_choices[c2].append(uid)
+
+                for g_course, valid_g in student_c_choices.items():
+                    if not valid_g:
+                        continue
+                    class_ids = classes_by_prog_course.get((prog, g_course), [])
+                    sizes = balanced_class_sizes(len(valid_g), max_size=40)
+                    offset = 0
+                    for class_id, size in zip(class_ids, sizes):
+                        assigned_chunk = valid_g[offset : offset + size]
+                        offset += size
+                        for uid in assigned_chunk:
+                            record_grade(uid, g_course, class_id, is_retake=False)
 
     # -------------------------------------------------------------------------
     # D. MÔ PHỎNG ĐĂNG KÝ VÀ CHẤM ĐIỂM CHO KHÓA K22 (HỌC KỲ 8 - TỐT NGHIỆP CHUẨN 4 NĂM) & K21/K20 TRẢ NỢ

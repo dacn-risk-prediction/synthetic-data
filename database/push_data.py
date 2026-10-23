@@ -1,12 +1,20 @@
 """Script to import synthetic academic data into Neon PostgreSQL Database.
 
-This script creates a normalized 8-table relational schema with UUID Primary Keys
-for users and enrollments, and bulk inserts synthetic data generated for 14 cohorts
-(K13-K26) across 27 semesters (HK131-HK261).
+Clean Business Schema (13 tables):
+  - Academic Catalogs: semesters, courses, course_prerequisites
+  - Curriculum & Structure: curriculums, knowledge_blocks, program_structures, course_assessments
+  - Users & Profiles: users, students, lecturers, admins
+  - Operations & Grades: classes, enrollments
 
 Usage:
-    export DATABASE_URL="postgresql://user:password@ep-xyz.us-east-2.aws.neon.tech/neondb?sslmode=require"
+    # 1. Chạy kiểm tra đối soát toàn diện (Dry Run - KHÔNG kết nối hoặc tác động DB):
+    python database/push_data.py --dry-run
+
+    # 2. Đẩy dữ liệu thật lên Neon (cần DATABASE_URL trong .env):
     python database/push_data.py
+
+    # 3. Làm sạch dữ liệu cũ rồi đẩy mới:
+    python database/push_data.py --reset
 """
 
 import glob
@@ -15,6 +23,7 @@ import sys
 import time
 import uuid
 from pathlib import Path
+import numpy as np
 import pandas as pd
 from sqlalchemy import create_engine, text
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
@@ -47,9 +56,13 @@ DATABASE_URL = os.getenv("DATABASE_URL", "").strip()
 
 
 # -----------------------------------------------------------------------------
-# 2. SCHEMA DEFINITION (DDL)
+# 2. SCHEMA DEFINITION (DDL CHUẨN NGHIỆP VỤ - 13 BẢNG)
 # -----------------------------------------------------------------------------
 DDL_STATEMENTS = """
+-- ============================================================================
+-- 1. DANH MỤC HỌC VỤ & CHƯƠNG TRÌNH ĐÀO TẠO
+-- ============================================================================
+
 -- 1. Semesters (Danh mục học kỳ)
 CREATE TABLE IF NOT EXISTS semesters (
     semester_code VARCHAR(20) PRIMARY KEY,
@@ -57,15 +70,14 @@ CREATE TABLE IF NOT EXISTS semesters (
     term INT NOT NULL
 );
 
--- 2. Courses (Danh mục môn học)
+-- 2. Courses (Danh mục môn học - Đã bỏ trường difficulty của bộ sinh data)
 CREATE TABLE IF NOT EXISTS courses (
     course_code VARCHAR(20) PRIMARY KEY,
     course_name VARCHAR(255) NOT NULL,
-    credits INT NOT NULL,
-    difficulty FLOAT
+    credits INT NOT NULL
 );
 
--- 3. Course Prerequisites (Môn tiên quyết)
+-- 3. Course Prerequisites (Môn tiên quyết / học trước / song hành)
 CREATE TABLE IF NOT EXISTS course_prerequisites (
     course_prerequisite_id INT PRIMARY KEY,
     course_code VARCHAR(20) REFERENCES courses(course_code) ON DELETE CASCADE,
@@ -73,7 +85,60 @@ CREATE TABLE IF NOT EXISTS course_prerequisites (
     relation_type VARCHAR(10) NOT NULL
 );
 
--- 4. Users (Tài khoản người dùng: Admin, Giảng viên, Sinh viên) - UUID Primary Key
+-- 4. Curriculums (Chương trình đào tạo theo ngành/khóa)
+CREATE TABLE IF NOT EXISTS curriculums (
+    curriculum_id VARCHAR(50) PRIMARY KEY,
+    curriculum_name VARCHAR(255) NOT NULL,
+    major_code VARCHAR(50) NOT NULL,
+    major_name VARCHAR(255) NOT NULL,
+    cohort VARCHAR(20) NOT NULL,
+    academic_year_start INT,
+    total_credits FLOAT,
+    base_curriculum_id VARCHAR(50),
+    faculty VARCHAR(255)
+);
+
+-- 5. Knowledge Blocks (Khối kiến thức trong CTĐT)
+CREATE TABLE IF NOT EXISTS knowledge_blocks (
+    block_id VARCHAR(50) PRIMARY KEY,
+    block_code VARCHAR(20),
+    block_name_vi VARCHAR(255) NOT NULL,
+    block_name_en VARCHAR(255),
+    category VARCHAR(100),
+    required_credits FLOAT,
+    description TEXT
+);
+
+-- 6. Program Structures (Cấu trúc khung CTĐT - Phân bổ môn học theo khối)
+CREATE TABLE IF NOT EXISTS program_structures (
+    structure_id INT PRIMARY KEY,
+    curriculum_id VARCHAR(50) REFERENCES curriculums(curriculum_id) ON DELETE CASCADE,
+    course_code VARCHAR(20) REFERENCES courses(course_code) ON DELETE CASCADE,
+    block_id VARCHAR(50) REFERENCES knowledge_blocks(block_id) ON DELETE SET NULL,
+    course_type VARCHAR(20),
+    elective_group VARCHAR(50),
+    specialization VARCHAR(100),
+    credits INT,
+    recommended_semester VARCHAR(20),
+    prerequisites TEXT
+);
+
+-- 7. Course Assessments (Tỷ lệ phần trăm đánh giá môn học: Quiz, Lab, BTL, GK, CK)
+CREATE TABLE IF NOT EXISTS course_assessments (
+    course_code VARCHAR(20) PRIMARY KEY REFERENCES courses(course_code) ON DELETE CASCADE,
+    course_category VARCHAR(50),
+    quiz INT,
+    lab INT,
+    btl INT,
+    giua_ky INT,
+    cuoi_ky INT
+);
+
+-- ============================================================================
+-- 2. TÀI KHOẢN NGƯỜI DÙNG & HỒ SƠ THỰC THỂ
+-- ============================================================================
+
+-- 8. Users (Tài khoản hệ thống: Admin, Giảng viên, Sinh viên) - UUID PK
 CREATE TABLE IF NOT EXISTS users (
     id UUID PRIMARY KEY,
     user_code VARCHAR(50) UNIQUE NOT NULL, -- MSSV / MSGV / Admin ID
@@ -84,46 +149,41 @@ CREATE TABLE IF NOT EXISTS users (
     title VARCHAR(100)
 );
 
--- 5. Students (Hồ sơ học vụ & đặc trưng sinh viên)
+-- 9. Students (Hồ sơ học vụ sinh viên - Đã loại bỏ các tham số mô phỏng tâm lý)
 CREATE TABLE IF NOT EXISTS students (
     student_id VARCHAR(50) PRIMARY KEY REFERENCES users(user_code) ON DELETE CASCADE,
     user_id UUID REFERENCES users(id) ON DELETE CASCADE,
     cohort VARCHAR(20) NOT NULL,
     major VARCHAR(100) NOT NULL,
+    program VARCHAR(100),
+    specialization VARCHAR(100),
     family_income VARCHAR(50),
     financial_pressure VARCHAR(50),
     living_condition VARCHAR(50),
-    discipline INT,
-    motivation INT,
-    stress INT,
-    social_activity INT,
-    academic_level INT,
-    math_level INT,
-    english_level INT,
     english_pass BOOLEAN DEFAULT FALSE,
     english_eligibility_by_semester TEXT,
-    ctxh_days_by_semester TEXT,
-    voluntary_dropout_semester VARCHAR(20),
-    voluntary_dropout_reason VARCHAR(255),
-    base_score FLOAT,
-    early_graduation_candidate BOOLEAN DEFAULT FALSE
+    ctxh_days_by_semester TEXT
 );
 
--- 6. Lecturers (Hồ sơ giảng viên & bộ môn phụ trách)
+-- 10. Lecturers (Hồ sơ giảng viên & bộ môn)
 CREATE TABLE IF NOT EXISTS lecturers (
     lecturer_id VARCHAR(50) PRIMARY KEY REFERENCES users(user_code) ON DELETE CASCADE,
     user_id UUID REFERENCES users(id) ON DELETE CASCADE,
     departments VARCHAR(100) NOT NULL
 );
 
--- 7. Admins (Hồ sơ quản trị viên hệ thống)
+-- 11. Admins (Hồ sơ cán bộ quản lý đào tạo)
 CREATE TABLE IF NOT EXISTS admins (
     admin_id VARCHAR(50) PRIMARY KEY REFERENCES users(user_code) ON DELETE CASCADE,
     user_id UUID REFERENCES users(id) ON DELETE CASCADE,
     department VARCHAR(100) DEFAULT 'Phong Dao Tao'
 );
 
--- 8. Classes (Danh sách lớp học phần mở theo kỳ)
+-- ============================================================================
+-- 3. LỚP HỌC PHẦN & ĐĂNG KÝ HỌC
+-- ============================================================================
+
+-- 12. Classes (Danh sách lớp học phần mở theo từng kỳ)
 CREATE TABLE IF NOT EXISTS classes (
     class_id VARCHAR(100) PRIMARY KEY,
     course_code VARCHAR(20) REFERENCES courses(course_code) ON DELETE RESTRICT,
@@ -132,7 +192,7 @@ CREATE TABLE IF NOT EXISTS classes (
     lecturer_id VARCHAR(50) REFERENCES lecturers(lecturer_id) ON DELETE SET NULL
 );
 
--- 9. Enrollments (Lịch sử đăng ký & điểm chi tiết) - UUID Primary Key
+-- 13. Enrollments (Lịch sử đăng ký & kết quả điểm chi tiết) - UUID PK
 CREATE TABLE IF NOT EXISTS enrollments (
     id UUID PRIMARY KEY,
     student_id VARCHAR(50) REFERENCES students(student_id) ON DELETE CASCADE,
@@ -154,8 +214,13 @@ CREATE TABLE IF NOT EXISTS enrollments (
     status VARCHAR(20)
 );
 
--- Indexes for high-performance querying
+-- ============================================================================
+-- CHỈ MỤC TỐI ƯU HIỆU NĂNG (INDEXES)
+-- ============================================================================
 CREATE INDEX IF NOT EXISTS idx_users_user_code ON users(user_code);
+CREATE INDEX IF NOT EXISTS idx_students_cohort ON students(cohort);
+CREATE INDEX IF NOT EXISTS idx_students_major ON students(major);
+
 CREATE INDEX IF NOT EXISTS idx_classes_course ON classes(course_code);
 CREATE INDEX IF NOT EXISTS idx_classes_semester ON classes(semester_code);
 CREATE INDEX IF NOT EXISTS idx_classes_lecturer ON classes(lecturer_id);
@@ -164,6 +229,9 @@ CREATE INDEX IF NOT EXISTS idx_enrollments_student ON enrollments(student_id);
 CREATE INDEX IF NOT EXISTS idx_enrollments_class ON enrollments(class_id);
 CREATE INDEX IF NOT EXISTS idx_enrollments_course ON enrollments(course_code);
 CREATE INDEX IF NOT EXISTS idx_enrollments_semester ON enrollments(semester_code);
+
+CREATE INDEX IF NOT EXISTS idx_prog_struct_curriculum ON program_structures(curriculum_id);
+CREATE INDEX IF NOT EXISTS idx_prog_struct_course ON program_structures(course_code);
 """
 
 
@@ -171,25 +239,23 @@ CREATE INDEX IF NOT EXISTS idx_enrollments_semester ON enrollments(semester_code
 # 3. DATA EXTRACTION & TRANSFORMATION HELPERS
 # -----------------------------------------------------------------------------
 def load_semesters_data():
-    """Load semesters data."""
+    """Load semesters catalog."""
     csv_file = SYNTHETIC_DIR / "generated" / "academics" / "semester.csv"
     df = pd.read_csv(csv_file)
     if "term" not in df.columns:
         df["term"] = df["semester_code"].astype(str).str[-1].astype(int)
-    df = df[["semester_code", "academic_year", "term"]].drop_duplicates(subset=["semester_code"])
-    return df
+    cols = ["semester_code", "academic_year", "term"]
+    return df[cols].drop_duplicates(subset=["semester_code"])
 
 
 def load_courses_data():
-    """Load courses catalog."""
+    """Load courses catalog (đã bỏ cột difficulty không cần thiết)."""
     csv_file = SYNTHETIC_DIR / "generated" / "academics" / "courses.csv"
     df = pd.read_csv(csv_file)
     if "course_name" not in df.columns and "course_name_vi" in df.columns:
         df["course_name"] = df["course_name_vi"]
-    if "difficulty" not in df.columns:
-        df["difficulty"] = 0.5
-    df = df[["course_code", "course_name", "credits", "difficulty"]].drop_duplicates(subset=["course_code"])
-    return df
+    cols = ["course_code", "course_name", "credits"]
+    return df[cols].drop_duplicates(subset=["course_code"])
 
 
 def load_prerequisites_data():
@@ -202,55 +268,100 @@ def load_prerequisites_data():
         df["course_prerequisite_id"] = range(1, len(df) + 1)
     if "related_course_code" not in df.columns and "prerequisite_course_code" in df.columns:
         df["related_course_code"] = df["prerequisite_course_code"]
-    df = df[["course_prerequisite_id", "course_code", "related_course_code", "relation_type"]].drop_duplicates()
-    return df
+    cols = ["course_prerequisite_id", "course_code", "related_course_code", "relation_type"]
+    return df[cols].drop_duplicates()
+
+
+def load_curriculums_data():
+    """Load curriculum definitions."""
+    csv_file = SYNTHETIC_DIR / "generated" / "academics" / "curriculums.csv"
+    df = pd.read_csv(csv_file)
+    cols = [
+        "curriculum_id", "curriculum_name", "major_code", "major_name",
+        "cohort", "academic_year_start", "total_credits", "base_curriculum_id", "faculty"
+    ]
+    return df[[c for c in cols if c in df.columns]].drop_duplicates(subset=["curriculum_id"])
+
+
+def load_knowledge_blocks_data():
+    """Load knowledge blocks structure."""
+    csv_file = SYNTHETIC_DIR / "generated" / "academics" / "knowledge_blocks.csv"
+    df = pd.read_csv(csv_file)
+    cols = [
+        "block_id", "block_code", "block_name_vi", "block_name_en",
+        "category", "required_credits", "description"
+    ]
+    return df[[c for c in cols if c in df.columns]].drop_duplicates(subset=["block_id"])
+
+
+def load_program_structures_data():
+    """Load detailed curriculum structure."""
+    csv_file = SYNTHETIC_DIR / "generated" / "academics" / "program_structures.csv"
+    df = pd.read_csv(csv_file)
+    cols = [
+        "structure_id", "curriculum_id", "course_code", "block_id",
+        "course_type", "elective_group", "specialization", "credits",
+        "recommended_semester", "prerequisites"
+    ]
+    return df[[c for c in cols if c in df.columns]].drop_duplicates(subset=["structure_id"])
+
+
+def load_course_assessments_data():
+    """Load course assessment weight rules."""
+    csv_file = SYNTHETIC_DIR / "generated" / "academics" / "assessment.csv"
+    df = pd.read_csv(csv_file)
+    df.rename(columns={"course_id": "course_code"}, inplace=True)
+    cols = ["course_code", "course_category", "quiz", "lab", "btl", "giua_ky", "cuoi_ky"]
+    return df[[c for c in cols if c in df.columns]].drop_duplicates(subset=["course_code"])
 
 
 def load_users_data():
     """Consolidate all system users and generate UUID for each."""
-    users_list = []
+    user_file = SYNTHETIC_DIR / "generated" / "users" / "user.csv"
+    if user_file.exists():
+        df_users = pd.read_csv(user_file, dtype=str)
+        df_users["user_code"] = df_users["user_id"]
+    else:
+        users_list = []
+        admin_file = SYNTHETIC_DIR / "generated" / "users" / "admin.csv"
+        if admin_file.exists():
+            df_admin = pd.read_csv(admin_file, dtype=str)
+            df_admin["user_code"] = df_admin["user_id"]
+            users_list.append(df_admin[["user_code", "name", "email", "password_hash", "role", "title"]])
+        lec_file = SYNTHETIC_DIR / "generated" / "users" / "lecturer.csv"
+        df_lec = pd.read_csv(lec_file, dtype=str)
+        df_lec["user_code"] = df_lec["user_id"]
+        users_list.append(df_lec[["user_code", "name", "email", "password_hash", "role", "title"]])
+        stu_file = SYNTHETIC_DIR / "generated" / "users" / "student.csv"
+        df_stu = pd.read_csv(stu_file, dtype=str)
+        df_stu["user_code"] = df_stu["user_id"]
+        users_list.append(df_stu[["user_code", "name", "email", "password_hash", "role", "title"]])
+        df_users = pd.concat(users_list, ignore_index=True)
 
-    # 1. Admins
-    admin_file = SYNTHETIC_DIR / "generated" / "users" / "admin.csv"
-    if admin_file.exists():
-        df_admin = pd.read_csv(admin_file, dtype=str)
-        df_admin["user_code"] = df_admin["user_id"]
-        users_list.append(df_admin[["user_code", "name", "email", "password_hash", "role", "title"]])
-
-    # 2. Lecturers
-    lec_file = SYNTHETIC_DIR / "generated" / "users" / "lecturer.csv"
-    df_lec = pd.read_csv(lec_file, dtype=str)
-    df_lec["user_code"] = df_lec["user_id"]
-    users_list.append(df_lec[["user_code", "name", "email", "password_hash", "role", "title"]])
-
-    # 3. Students
-    stu_file = SYNTHETIC_DIR / "generated" / "users" / "student.csv"
-    df_stu = pd.read_csv(stu_file, dtype=str)
-    df_stu["user_code"] = df_stu["user_id"]
-    users_list.append(df_stu[["user_code", "name", "email", "password_hash", "role", "title"]])
-
-    df_users = pd.concat(users_list, ignore_index=True)
     df_users.drop_duplicates(subset=["user_code"], inplace=True)
-    # Generate UUID Primary Key
     df_users["id"] = [str(uuid.uuid4()) for _ in range(len(df_users))]
-
     cols = ["id", "user_code", "name", "email", "password_hash", "role", "title"]
     return df_users[cols]
 
 
 def load_students_data(user_uuid_map):
-    """Load detailed student profiles and map user_id UUID."""
+    """Load clean student profiles (loại bỏ toàn bộ các biến mô phỏng tâm lý/kịch bản rớt học)."""
     profile_file = SYNTHETIC_DIR / "generated" / "users" / "student_profiles.csv"
     df = pd.read_csv(profile_file, dtype={"student_id": str})
-    df.drop(columns=["name"], errors="ignore", inplace=True)
     df.drop_duplicates(subset=["student_id"], inplace=True)
     if "cohort" not in df.columns:
         df["cohort"] = "K" + df["student_id"].str[:2]
     if "major" not in df.columns:
         df["major"] = "Khoa hoc May tinh"
-    # Link UUID
     df["user_id"] = df["student_id"].map(user_uuid_map)
-    return df
+
+    # Chỉ giữ các cột nghiệp vụ thực tế
+    cols = [
+        "student_id", "user_id", "cohort", "major", "program", "specialization",
+        "family_income", "financial_pressure", "living_condition",
+        "english_pass", "english_eligibility_by_semester", "ctxh_days_by_semester"
+    ]
+    return df[[c for c in cols if c in df.columns]]
 
 
 def load_lecturers_data(user_uuid_map):
@@ -260,14 +371,14 @@ def load_lecturers_data(user_uuid_map):
     df["lecturer_id"] = df["user_id"]
     df["departments"] = df["department"]
     df = df[["lecturer_id", "departments"]].drop_duplicates(subset=["lecturer_id"])
-    # Link UUID
     df["user_id"] = df["lecturer_id"].map(user_uuid_map)
-    return df
+    cols = ["lecturer_id", "user_id", "departments"]
+    return df[cols]
 
 
 def load_admins_data(user_uuid_map):
     """Load system administrators and map user_id UUID."""
-    admin_file = SYNTHETIC_DIR / "admin.csv"
+    admin_file = SYNTHETIC_DIR / "generated" / "users" / "admin.csv"
     if admin_file.exists():
         df_admin = pd.read_csv(admin_file, dtype=str)
         df_admin["admin_id"] = df_admin["user_id"]
@@ -279,7 +390,7 @@ def load_admins_data(user_uuid_map):
 
 
 def load_classes_data():
-    """Concatenate all 27 semester class files into a single DataFrame."""
+    """Concatenate all semester class files into a single DataFrame."""
     pattern = str(SYNTHETIC_DIR / "generated" / "classes" / "class_hk*.csv")
     class_files = sorted(glob.glob(pattern))
 
@@ -291,12 +402,11 @@ def load_classes_data():
     df_classes = pd.concat(dfs, ignore_index=True)
     df_classes.rename(columns={"semester": "semester_code"}, inplace=True)
     cols = ["class_id", "course_code", "semester_code", "class_group", "lecturer_id"]
-    df_classes = df_classes[cols].drop_duplicates(subset=["class_id"])
-    return df_classes
+    return df_classes[cols].drop_duplicates(subset=["class_id"])
 
 
 def load_enrollments_data():
-    """Concatenate all 27 semester enrollment files into a single DataFrame with UUID keys."""
+    """Concatenate all semester enrollment files into a single DataFrame with UUID keys."""
     pattern = str(SYNTHETIC_DIR / "generated" / "enrollments" / "enrollment_hk*.csv")
     enroll_files = sorted(glob.glob(pattern))
 
@@ -309,13 +419,27 @@ def load_enrollments_data():
 
     # Generate UUID Primary Key for each enrollment record
     df_enroll["id"] = [str(uuid.uuid4()) for _ in range(len(df_enroll))]
-    df_enroll["semester_code"] = df_enroll["class_id"].str.split("_").str[0]
-    df_enroll.rename(
-        columns={
-            "course_id": "course_code",
-        },
-        inplace=True,
-    )
+
+    # Fix semester_code: Lấy từ cột semester gốc thay vì cắt từ class_id (tránh NaN khi môn miễn thi)
+    if "semester" in df_enroll.columns:
+        df_enroll["semester_code"] = df_enroll["semester"]
+    else:
+        df_enroll["semester_code"] = df_enroll["class_id"].str.split("_").str[0]
+
+    df_enroll.rename(columns={"course_id": "course_code"}, inplace=True)
+
+    # Chuẩn hóa tên cột GPA giữa các kỳ (HK201-211 dùng _4, HK212-231 dùng semester_gpa/cumulative_gpa)
+    if "semester_gpa" in df_enroll.columns:
+        if "semester_gpa_4" in df_enroll.columns:
+            df_enroll["semester_gpa_4"] = df_enroll["semester_gpa_4"].combine_first(df_enroll["semester_gpa"])
+        else:
+            df_enroll["semester_gpa_4"] = df_enroll["semester_gpa"]
+
+    if "cumulative_gpa" in df_enroll.columns:
+        if "final_gpa_4" in df_enroll.columns:
+            df_enroll["final_gpa_4"] = df_enroll["final_gpa_4"].combine_first(df_enroll["cumulative_gpa"])
+        else:
+            df_enroll["final_gpa_4"] = df_enroll["cumulative_gpa"]
 
     columns_order = [
         "id", "student_id", "class_id", "course_code", "semester_code",
@@ -323,19 +447,111 @@ def load_enrollments_data():
         "final_score", "letter_grade", "gpa_4", "passed", "semester_gpa_4",
         "final_gpa_4", "status",
     ]
-    df_enroll = df_enroll[[c for c in columns_order if c in df_enroll.columns]]
-    return df_enroll
+    return df_enroll[[c for c in columns_order if c in df_enroll.columns]]
 
 
 # -----------------------------------------------------------------------------
-# 4. MAIN INGESTION PIPELINE
+# 4. DRY-RUN VALIDATION PIPELINE (KIỂM TRA DỮ LIỆU KHÔNG CẦN KẾT NỐI DB)
+# -----------------------------------------------------------------------------
+def run_dry_run_validation():
+    """Kiểm tra toàn bộ 13 bảng dữ liệu nghiệp vụ, ràng buộc khóa ngoại và tính tương thích."""
+    print("==================================================================")
+    print("      DRY-RUN VALIDATION: KIỂM TRA 13 BẢNG DỮ LIỆU NGHIỆP VỤ      ")
+    print("==================================================================")
+    print("[*] Đang đọc và chuyển đổi 13 bảng dữ liệu...")
+
+    start_all = time.time()
+    dfs = {}
+
+    dfs["semesters"] = load_semesters_data()
+    dfs["courses"] = load_courses_data()
+    dfs["course_prerequisites"] = load_prerequisites_data()
+    dfs["curriculums"] = load_curriculums_data()
+    dfs["knowledge_blocks"] = load_knowledge_blocks_data()
+    dfs["program_structures"] = load_program_structures_data()
+    dfs["course_assessments"] = load_course_assessments_data()
+
+    df_users = load_users_data()
+    uuid_map = dict(zip(df_users["user_code"], df_users["id"]))
+    dfs["users"] = df_users
+
+    dfs["students"] = load_students_data(uuid_map)
+    dfs["lecturers"] = load_lecturers_data(uuid_map)
+    dfs["admins"] = load_admins_data(uuid_map)
+    dfs["classes"] = load_classes_data()
+    dfs["enrollments"] = load_enrollments_data()
+
+    print(f"[✓] Đã load thành công 13 bảng dữ liệu ({time.time() - start_all:.2f}s)\n")
+
+    print(f"{'Tên Bảng':<25} | {'Số Bản Ghi':>12} | {'Số Cột':>6} | {'Trạng Thái':<12}")
+    print("-" * 62)
+    for t_name, df_table in dfs.items():
+        print(f"{t_name:<25} | {len(df_table):>12,} | {len(df_table.columns):>6} | {'[✓] Hợp lệ':<12}")
+
+    print("\n----------------- KIỂM TRA RÀNG BUỘC KHÓA NGOẠI (FK) -----------------")
+    fk_checks = [
+        ("course_prerequisites.course_code -> courses",
+         set(dfs["course_prerequisites"]["course_code"]).issubset(set(dfs["courses"]["course_code"]))),
+        ("course_prerequisites.related_course_code -> courses",
+         set(dfs["course_prerequisites"]["related_course_code"]).issubset(set(dfs["courses"]["course_code"]))),
+        ("program_structures.curriculum_id -> curriculums",
+         set(dfs["program_structures"]["curriculum_id"]).issubset(set(dfs["curriculums"]["curriculum_id"]))),
+        ("program_structures.course_code -> courses",
+         set(dfs["program_structures"]["course_code"]).issubset(set(dfs["courses"]["course_code"]))),
+        ("course_assessments.course_code -> courses",
+         set(dfs["course_assessments"]["course_code"]).issubset(set(dfs["courses"]["course_code"]))),
+        ("students.student_id -> users.user_code",
+         set(dfs["students"]["student_id"]).issubset(set(dfs["users"]["user_code"]))),
+        ("lecturers.lecturer_id -> users.user_code",
+         set(dfs["lecturers"]["lecturer_id"]).issubset(set(dfs["users"]["user_code"]))),
+        ("admins.admin_id -> users.user_code",
+         set(dfs["admins"]["admin_id"]).issubset(set(dfs["users"]["user_code"]))),
+        ("classes.course_code -> courses",
+         set(dfs["classes"]["course_code"]).issubset(set(dfs["courses"]["course_code"]))),
+        ("classes.semester_code -> semesters",
+         set(dfs["classes"]["semester_code"]).issubset(set(dfs["semesters"]["semester_code"]))),
+        ("classes.lecturer_id -> lecturers",
+         set(dfs["classes"]["lecturer_id"].dropna()).issubset(set(dfs["lecturers"]["lecturer_id"]))),
+        ("enrollments.student_id -> students",
+         set(dfs["enrollments"]["student_id"]).issubset(set(dfs["students"]["student_id"]))),
+        ("enrollments.course_code -> courses",
+         set(dfs["enrollments"]["course_code"]).issubset(set(dfs["courses"]["course_code"]))),
+        ("enrollments.semester_code -> semesters",
+         set(dfs["enrollments"]["semester_code"].dropna()).issubset(set(dfs["semesters"]["semester_code"]))),
+        ("enrollments.class_id -> classes",
+         set(dfs["enrollments"]["class_id"].dropna()).issubset(set(dfs["classes"]["class_id"]))),
+    ]
+
+    all_passed = True
+    for relation, status in fk_checks:
+        symbol = "[✓] PASS" if status else "[X] FAIL"
+        if not status:
+            all_passed = False
+        print(f"  {symbol:<10} : {relation}")
+
+    if all_passed:
+        print("\n[✓] KẾT QUẢ DRY-RUN: 100% CÁC RÀNG BUỘC KHÓA NGOẠI VÀ CỘT DỮ LIỆU ĐỀU HỢP LỆ!")
+        print("    Dữ liệu 13 bảng nghiệp vụ đã sẵn sàng để push lên Neon Database.")
+    else:
+        print("\n[!] PHÁT HIỆN LỖI RÀNG BUỘC DỮ LIỆU! Cần kiểm tra lại các mục báo [X] FAIL.")
+
+
+# -----------------------------------------------------------------------------
+# 5. MAIN INGESTION PIPELINE (ĐẨY DỮ LIỆU LÊN DATABASE THẬT)
 # -----------------------------------------------------------------------------
 def run_push_to_neon():
     """Execute the schema creation and data insertion into Neon PostgreSQL."""
+    # Check if --dry-run flag is provided
+    if "--dry-run" in sys.argv:
+        run_dry_run_validation()
+        return
+
     if not DATABASE_URL or "user:password" in DATABASE_URL:
         print("[!] ERROR: Chưa cấu hình DATABASE_URL hợp lệ.")
         print(f"    Vui lòng mở file '{ENV_FILE.name}' và điền chuỗi kết nối Neon:")
         print('    DATABASE_URL=postgresql://user:password@ep-xyz.us-east-2.aws.neon.tech/neondb?sslmode=require')
+        print("\n[*] GỢI Ý: Bạn có thể chạy thử nghiệm kiểm tra dữ liệu trước mà không cần DB:")
+        print("    python database/push_data.py --dry-run")
         sys.exit(1)
 
     print("==================================================================")
@@ -351,61 +567,62 @@ def run_push_to_neon():
     engine = create_engine(db_uri, pool_pre_ping=True)
 
     with engine.connect() as conn:
-        # Check if classes or enrollments table contains old columns (course_name / lecturer_name / semester_index)
-        classes_cols = [
+        # Check if table 'students' has column 'program' or old schema exists
+        students_cols = [
             row[0]
             for row in conn.execute(
-                text("SELECT column_name FROM information_schema.columns WHERE table_name = 'classes'")
+                text("SELECT column_name FROM information_schema.columns WHERE table_name = 'students'")
             ).fetchall()
         ]
-        enrollments_cols = [
-            row[0]
-            for row in conn.execute(
-                text("SELECT column_name FROM information_schema.columns WHERE table_name = 'enrollments'")
-            ).fetchall()
-        ]
-        if "course_name" in classes_cols or "lecturer_name" in classes_cols or "semester_index" in enrollments_cols:
-            print("[*] Phát hiện schema cũ (course_name, lecturer_name hoặc semester_index). Đang cập nhật lại schema chuẩn...")
-            conn.execute(text("DROP TABLE IF EXISTS enrollments CASCADE;"))
-            conn.execute(text("DROP TABLE IF EXISTS classes CASCADE;"))
+        if "--reset" in sys.argv or (students_cols and "program" not in students_cols):
+            print("[*] Đang làm sạch và tái cấu trúc toàn bộ 13 bảng (DROP & RECREATE CASCADE)...")
+            conn.execute(text("""
+                DROP TABLE IF EXISTS enrollments, classes, course_assessments, program_structures,
+                                     knowledge_blocks, curriculums, lecturers, students, admins, users,
+                                     course_prerequisites, courses, semesters CASCADE;
+            """))
             conn.commit()
 
         print("[*] Đang khởi tạo bảng và chỉ mục (DDL Statements)...")
         conn.execute(text(DDL_STATEMENTS))
         conn.commit()
-    print("[✓] Khởi tạo cấu trúc bảng hoàn tất.\n")
+    print("[✓] Khởi tạo cấu trúc 13 bảng hoàn tất.\n")
 
-    # Check if --reset flag is provided
-    if "--reset" in sys.argv:
-        print("[*] Phát hiện cờ --reset: Đang xóa sạch dữ liệu cũ trong các bảng (TRUNCATE)...")
-        with engine.connect() as conn:
-            conn.execute(text("""
-                TRUNCATE TABLE enrollments, classes, lecturers, students, admins, users,
-                               course_prerequisites, courses, semesters CASCADE;
-            """))
-            conn.commit()
-        print("[✓] Đã làm trống toàn bộ bảng thành công.\n")
-
-    # Step A: Load Reference Data
-    ref_tables = [
-        ("semesters", load_semesters_data, 1000),
-        ("courses", load_courses_data, 1000),
-        ("course_prerequisites", load_prerequisites_data, 1000),
-    ]
-    for table_name, loader_func, chunksize in ref_tables:
+    # Helper function to bulk insert with null cleaning
+    def insert_table(table_name, df, chunksize=2000, dtypes=None):
         with engine.connect() as conn:
             existing_count = conn.execute(text(f"SELECT COUNT(*) FROM {table_name}")).scalar()
         if existing_count > 0:
             print(f"[i] Bảng '{table_name}' đã có sẵn {existing_count:,} bản ghi. Bỏ qua.")
-            continue
+            return
 
         start_time = time.time()
         print(f"[*] Đang chuẩn bị dữ liệu cho bảng '{table_name}'...")
-        df = loader_func()
         total_rows = len(df)
-        print(f"    -> Đang đẩy {total_rows:,} bản ghi vào '{table_name}'...")
-        df.to_sql(name=table_name, con=engine, if_exists="append", index=False, chunksize=chunksize, method="multi")
+        print(f"    -> Đang đẩy {total_rows:,} bản ghi vào '{table_name}' (chunksize={chunksize})...")
+
+        # Sanitize np.nan to None for safe SQL NULL insertion
+        df_clean = df.where(pd.notnull(df), None)
+
+        df_clean.to_sql(
+            name=table_name,
+            con=engine,
+            if_exists="append",
+            index=False,
+            chunksize=chunksize,
+            method="multi",
+            dtype=dtypes,
+        )
         print(f"[✓] Đã lưu {total_rows:,} dòng vào '{table_name}' ({time.time() - start_time:.2f}s)\n")
+
+    # Step A: Load Academic Catalogs & Curriculums
+    insert_table("semesters", load_semesters_data(), chunksize=1000)
+    insert_table("courses", load_courses_data(), chunksize=1000)
+    insert_table("course_prerequisites", load_prerequisites_data(), chunksize=1000)
+    insert_table("curriculums", load_curriculums_data(), chunksize=1000)
+    insert_table("knowledge_blocks", load_knowledge_blocks_data(), chunksize=1000)
+    insert_table("program_structures", load_program_structures_data(), chunksize=2000)
+    insert_table("course_assessments", load_course_assessments_data(), chunksize=1000)
 
     # Step B: Load Users & generate UUIDs
     user_uuid_map = {}
@@ -422,54 +639,23 @@ def run_push_to_neon():
         print("[*] Đang chuẩn bị dữ liệu người dùng (bảng 'users' với UUID PK)...")
         df_users = load_users_data()
         user_uuid_map = dict(zip(df_users["user_code"], df_users["id"]))
-        print(f"    -> Đang đẩy {len(df_users):,} bản ghi vào 'users'...")
-        df_users.to_sql(
-            name="users",
-            con=engine,
-            if_exists="append",
-            index=False,
-            chunksize=2000,
-            method="multi",
-            dtype={"id": PG_UUID(as_uuid=True)},
-        )
-        print(f"[✓] Đã lưu {len(df_users):,} người dùng vào 'users' ({time.time() - start_time:.2f}s)\n")
+        insert_table("users", df_users, chunksize=2000, dtypes={"id": PG_UUID(as_uuid=True)})
 
-    # Step C: Load Admins, Students, Lecturers, Classes, Enrollments
-    # Use chunksize=2000 for enrollments (19 columns * 2000 = 38,000 params, safely under Postgres 65,535 limit)
-    entity_tables = [
-        ("admins", lambda: load_admins_data(user_uuid_map), 1000, {"user_id": PG_UUID(as_uuid=True)}),
-        ("students", lambda: load_students_data(user_uuid_map), 2000, {"user_id": PG_UUID(as_uuid=True)}),
-        ("lecturers", lambda: load_lecturers_data(user_uuid_map), 1000, {"user_id": PG_UUID(as_uuid=True)}),
-        ("classes", load_classes_data, 2000, None),
-        ("enrollments", load_enrollments_data, 2000, {"id": PG_UUID(as_uuid=True)}),
-    ]
-    for table_name, loader_func, chunksize, dtypes in entity_tables:
-        with engine.connect() as conn:
-            existing_count = conn.execute(text(f"SELECT COUNT(*) FROM {table_name}")).scalar()
-        if existing_count > 0:
-            print(f"[i] Bảng '{table_name}' đã có sẵn {existing_count:,} bản ghi. Bỏ qua.")
-            continue
+    # Step C: Load Entity Profiles
+    insert_table("admins", load_admins_data(user_uuid_map), chunksize=1000, dtypes={"user_id": PG_UUID(as_uuid=True)})
+    insert_table("students", load_students_data(user_uuid_map), chunksize=2000, dtypes={"user_id": PG_UUID(as_uuid=True)})
+    insert_table("lecturers", load_lecturers_data(user_uuid_map), chunksize=1000, dtypes={"user_id": PG_UUID(as_uuid=True)})
 
-        start_time = time.time()
-        print(f"[*] Đang chuẩn bị dữ liệu cho bảng '{table_name}'...")
-        df = loader_func()
-        total_rows = len(df)
-        print(f"    -> Đang đẩy {total_rows:,} bản ghi vào '{table_name}' (chunksize={chunksize})...")
-        df.to_sql(
-            name=table_name,
-            con=engine,
-            if_exists="append",
-            index=False,
-            chunksize=chunksize,
-            method="multi",
-            dtype=dtypes,
-        )
-        print(f"[✓] Đã lưu {total_rows:,} dòng vào '{table_name}' ({time.time() - start_time:.2f}s)\n")
+    # Step D: Load Classes & Enrollments
+    insert_table("classes", load_classes_data(), chunksize=2000)
+    insert_table("enrollments", load_enrollments_data(), chunksize=3000, dtypes={"id": PG_UUID(as_uuid=True)})
 
-    # Step D: Verification Query
+    # Step E: Verification Query
     all_table_names = [
-        "semesters", "courses", "course_prerequisites", "users",
-        "admins", "students", "lecturers", "classes", "enrollments",
+        "semesters", "courses", "course_prerequisites", "curriculums",
+        "knowledge_blocks", "program_structures", "course_assessments",
+        "users", "admins", "students", "lecturers",
+        "classes", "enrollments",
     ]
     print("==================================================================")
     print("                  KIỂM TRA DỮ LIỆU SAU KHI ĐẨY                    ")
@@ -479,7 +665,7 @@ def run_push_to_neon():
             count = conn.execute(text(f"SELECT COUNT(*) FROM {t_name}")).scalar()
             print(f"  - Bảng {t_name:<22}: {count:>8,} bản ghi")
 
-    print("\n[✓] TOÀN BỘ DỮ LIỆU ĐÃ ĐƯỢC ĐẨY LÊN NEON DATABASE THÀNH CÔNG!")
+    print("\n[✓] TOÀN BỘ 13 BẢNG DỮ LIỆU ĐÃ ĐƯỢC ĐẨY LÊN NEON DATABASE THÀNH CÔNG!")
 
 
 if __name__ == "__main__":

@@ -50,6 +50,8 @@ OUTPUT_DIR = ROOT_DIR / "generated" / "enrollments"
 if str(RULES_DIR) not in sys.path:
     sys.path.insert(0, str(RULES_DIR))
 
+from curriculum_rules import select_student_group_c_course, get_student_specialization_map
+
 from academic_rules import (
     GENERATOR_CONFIG,
     balanced_class_sizes,
@@ -639,126 +641,138 @@ def generate_enrollment_hk232() -> Path:
             exempt_str = f", miễn {exempt_cnt} SV" if exempt_cnt > 0 else ""
             print(f"   -> Đã gán {len(eligible_learners)} SV vào môn {course_code} ({len(k21_classes)} lớp{exempt_str})")
 
-        # Lộ trình tốt nghiệp sớm 3.5 năm: CHỈ DÀNH RIÊNG CHO early_graduation_candidate
-        early_candidates = [
-            uid for uid in student_ids
-            if str(student_profiles.get(uid, {}).get("early_graduation_candidate", "")).lower() == "true"
-        ]
-        if early_candidates:
-            for early_code in ["CO3061", "CO4029"]:
-                class_ids = classes_by_prog_course.get((prog, early_code), [])
-                sizes = balanced_class_sizes(len(early_candidates), max_size=40)
-                offset = 0
-                comps = course_assessments.get(early_code, [("cuoi_ky", 1.0)])
+        # Lộ trình tốt nghiệp sớm 3.5 năm & Tự chọn Group C (Hệ Tiên tiến học chung với CLC)
+        if prog == "advanced":
+            print(f"   -> [K21 Tốt nghiệp sớm]: Đã ghép học chung lớp với hệ Chất lượng cao (CC)")
+            print(f"   -> [K21 Tự chọn ngành - Group C]: Đã ghép học chung lớp với hệ Chất lượng cao (CC)")
+        else:
+            if prog == "high-quality":
+                k21_adv_uids = k21_students[k21_students["program"] == "advanced"]["user_id"].tolist()
+                combined_student_ids = student_ids + k21_adv_uids
+            else:
+                combined_student_ids = student_ids
 
-                for class_id, size in zip(class_ids, sizes):
-                    assigned_chunk = early_candidates[offset : offset + size]
-                    offset += size
+            early_candidates = [
+                uid for uid in combined_student_ids
+                if str(student_profiles.get(uid, {}).get("early_graduation_candidate", "")).lower() == "true"
+            ]
+            if early_candidates:
+                for early_code in ["CO3061", "CO4029"]:
+                    class_ids = classes_by_prog_course.get((prog, early_code), [])
+                    sizes = balanced_class_sizes(len(early_candidates), max_size=40)
+                    offset = 0
+                    comps = course_assessments.get(early_code, [("cuoi_ky", 1.0)])
 
-                    for uid in assigned_chunk:
-                        profile = student_profiles[uid]
-                        student_data = {"student_id": uid, **profile}
+                    for class_id, size in zip(class_ids, sizes):
+                        assigned_chunk = early_candidates[offset : offset + size]
+                        offset += size
 
-                        seed_str = f"{uid}:{early_code}:{SEMESTER}_grad"
-                        rng = np.random.default_rng(int(hashlib.sha256(seed_str.encode("utf-8")).hexdigest()[:8], 16))
+                        for uid in assigned_chunk:
+                            profile = student_profiles[uid]
+                            student_data = {"student_id": uid, **profile}
 
-                        component_scores, final_score, letter, gpa = score_course_components(
-                            student=student_data,
-                            course_code=early_code,
-                            components=comps,
-                            catalog_difficulty=0.5,
-                            rng=rng,
-                            config=GENERATOR_CONFIG,
-                            retaken=False,
-                            student_id=uid,
-                        )
+                            seed_str = f"{uid}:{early_code}:{SEMESTER}_grad"
+                            rng = np.random.default_rng(int(hashlib.sha256(seed_str.encode("utf-8")).hexdigest()[:8], 16))
 
-                        rec = {
-                            "enrollment_id": enrollment_id,
-                            "student_id": uid,
-                            "class_id": class_id,
-                            "course_id": early_code,
-                            "semester": SEMESTER,
-                            "retaken": False,
-                            "quiz": component_scores.get("quiz", np.nan),
-                            "lab": component_scores.get("lab", np.nan),
-                            "btl": component_scores.get("btl", np.nan),
-                            "giua_ky": component_scores.get("giua_ky", np.nan),
-                            "cuoi_ky": component_scores.get("cuoi_ky", np.nan),
-                            "final_score": final_score,
-                            "letter_grade": letter,
-                            "gpa_4": gpa,
-                            "passed": letter != "F",
-                            "status": "Pass" if letter != "F" else "Fail",
-                        }
-                        enrollment_records.append(rec)
-                        enrollment_id += 1
+                            component_scores, final_score, letter, gpa = score_course_components(
+                                student=student_data,
+                                course_code=early_code,
+                                components=comps,
+                                catalog_difficulty=0.5,
+                                rng=rng,
+                                config=GENERATOR_CONFIG,
+                                retaken=False,
+                                student_id=uid,
+                            )
 
-                print(f"   -> [K21 Tốt nghiệp sớm] {len(early_candidates)} SV hoàn tất môn {early_code} ({len(sizes)} lớp).")
+                            rec = {
+                                "enrollment_id": enrollment_id,
+                                "student_id": uid,
+                                "class_id": class_id,
+                                "course_id": early_code,
+                                "semester": SEMESTER,
+                                "retaken": False,
+                                "quiz": component_scores.get("quiz", np.nan),
+                                "lab": component_scores.get("lab", np.nan),
+                                "btl": component_scores.get("btl", np.nan),
+                                "giua_ky": component_scores.get("giua_ky", np.nan),
+                                "cuoi_ky": component_scores.get("cuoi_ky", np.nan),
+                                "final_score": final_score,
+                                "letter_grade": letter,
+                                "gpa_4": gpa,
+                                "passed": letter != "F",
+                                "status": "Pass" if letter != "F" else "Fail",
+                            }
+                            enrollment_records.append(rec)
+                            enrollment_id += 1
 
-        # Tự chọn Group C cho sinh viên K21 thông thường
-        regular_k21_uids = [uid for uid in student_ids if uid not in set(early_candidates)]
-        if regular_k21_uids:
-            group_c_pool = ["CO3061", "CO3029", "CO3043", "CO3045", "CO3021", "CO3011"]
-            student_c_choices: Dict[str, List[str]] = defaultdict(list)
-            for uid in regular_k21_uids:
-                seed_val = int(hashlib.sha256(f"{uid}:k21_group_c_hk232".encode()).hexdigest()[:8], 16)
-                c1 = group_c_pool[seed_val % len(group_c_pool)]
-                c2 = group_c_pool[(seed_val + 1) % len(group_c_pool)]
-                student_c_choices[c1].append(uid)
-                student_c_choices[c2].append(uid)
+                    suffix_note = " (CLC+TT)" if prog == "high-quality" else ""
+                    print(f"   -> [K21 Tốt nghiệp sớm] {len(early_candidates)} SV hoàn tất môn {early_code}{suffix_note} ({len(sizes)} lớp).")
 
-            for c_code, uids in student_c_choices.items():
-                if not uids:
-                    continue
-                all_c_classes = classes_by_prog_course.get((prog, c_code), [])
-                sizes = balanced_class_sizes(len(uids), max_size=40)
-                offset = 0
-                comps = course_assessments.get(c_code, [("cuoi_ky", 1.0)])
+            # Tự chọn Group C cho sinh viên K21 thông thường
+            regular_k21_uids = [uid for uid in combined_student_ids if uid not in set(early_candidates)]
+            if regular_k21_uids:
+                spec_map = get_student_specialization_map()
+                student_c_choices: Dict[str, List[str]] = defaultdict(list)
+                for uid in regular_k21_uids:
+                    spec = spec_map.get(uid, "Khoa học Máy tính")
+                    prev_passed = passed_map.get(uid, set())
+                    c1 = select_student_group_c_course(uid, "K21", spec, seed_salt="k21_group_c_1_hk232", exclude_courses=prev_passed)
+                    c2 = select_student_group_c_course(uid, "K21", spec, seed_salt="k21_group_c_2_hk232", exclude_courses=prev_passed | {c1})
+                    student_c_choices[c1].append(uid)
+                    student_c_choices[c2].append(uid)
 
-                c_classes = all_c_classes[-len(sizes):]
-                for class_id, size in zip(c_classes, sizes):
-                    assigned_chunk = uids[offset : offset + size]
-                    offset += size
+                for c_code, uids in student_c_choices.items():
+                    if not uids:
+                        continue
+                    all_c_classes = classes_by_prog_course.get((prog, c_code), [])
+                    sizes = balanced_class_sizes(len(uids), max_size=40)
+                    offset = 0
+                    comps = course_assessments.get(c_code, [("cuoi_ky", 1.0)])
 
-                    for uid in assigned_chunk:
-                        profile = student_profiles[uid]
-                        student_data = {"student_id": uid, **profile}
+                    c_classes = all_c_classes[-len(sizes):]
+                    for class_id, size in zip(c_classes, sizes):
+                        assigned_chunk = uids[offset : offset + size]
+                        offset += size
 
-                        seed_str = f"{uid}:{c_code}:{SEMESTER}_c"
-                        rng = np.random.default_rng(int(hashlib.sha256(seed_str.encode("utf-8")).hexdigest()[:8], 16))
+                        for uid in assigned_chunk:
+                            profile = student_profiles[uid]
+                            student_data = {"student_id": uid, **profile}
 
-                        component_scores, final_score, letter, gpa = score_course_components(
-                            student=student_data,
-                            course_code=c_code,
-                            components=comps,
-                            catalog_difficulty=0.5,
-                            rng=rng,
-                            config=GENERATOR_CONFIG,
-                            retaken=False,
-                            student_id=uid,
-                        )
+                            seed_str = f"{uid}:{c_code}:{SEMESTER}_c"
+                            rng = np.random.default_rng(int(hashlib.sha256(seed_str.encode("utf-8")).hexdigest()[:8], 16))
 
-                        rec = {
-                            "enrollment_id": enrollment_id,
-                            "student_id": uid,
-                            "class_id": class_id,
-                            "course_id": c_code,
-                            "semester": SEMESTER,
-                            "retaken": False,
-                            "quiz": component_scores.get("quiz", np.nan),
-                            "lab": component_scores.get("lab", np.nan),
-                            "btl": component_scores.get("btl", np.nan),
-                            "giua_ky": component_scores.get("giua_ky", np.nan),
-                            "cuoi_ky": component_scores.get("cuoi_ky", np.nan),
-                            "final_score": final_score,
-                            "letter_grade": letter,
-                            "gpa_4": gpa,
-                            "passed": letter != "F",
-                            "status": "Pass" if letter != "F" else "Fail",
-                        }
-                        enrollment_records.append(rec)
-                        enrollment_id += 1
+                            component_scores, final_score, letter, gpa = score_course_components(
+                                student=student_data,
+                                course_code=c_code,
+                                components=comps,
+                                catalog_difficulty=0.5,
+                                rng=rng,
+                                config=GENERATOR_CONFIG,
+                                retaken=False,
+                                student_id=uid,
+                            )
+
+                            rec = {
+                                "enrollment_id": enrollment_id,
+                                "student_id": uid,
+                                "class_id": class_id,
+                                "course_id": c_code,
+                                "semester": SEMESTER,
+                                "retaken": False,
+                                "quiz": component_scores.get("quiz", np.nan),
+                                "lab": component_scores.get("lab", np.nan),
+                                "btl": component_scores.get("btl", np.nan),
+                                "giua_ky": component_scores.get("giua_ky", np.nan),
+                                "cuoi_ky": component_scores.get("cuoi_ky", np.nan),
+                                "final_score": final_score,
+                                "letter_grade": letter,
+                                "gpa_4": gpa,
+                                "passed": letter != "F",
+                                "status": "Pass" if letter != "F" else "Fail",
+                            }
+                            enrollment_records.append(rec)
+                            enrollment_id += 1
 
     # -------------------------------------------------------------------------
     # D. MÔ PHỎNG ĐĂNG KÝ VÀ CHẤM ĐIỂM CHO KHÓA K20 (HỌC KỲ 8 - CHUẨN 4 NĂM)

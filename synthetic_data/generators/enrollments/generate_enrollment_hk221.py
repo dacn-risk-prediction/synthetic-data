@@ -40,6 +40,8 @@ OUTPUT_DIR = ROOT_DIR / "generated" / "enrollments"
 if str(RULES_DIR) not in sys.path:
     sys.path.insert(0, str(RULES_DIR))
 
+from curriculum_rules import select_student_group_c_course, get_student_specialization_map
+
 from academic_rules import (
     GENERATOR_CONFIG,
     balanced_class_sizes,
@@ -86,13 +88,14 @@ def get_k21_acceleration_students(k21_students: pd.DataFrame, df_prof: pd.DataFr
 
 
 def get_k20_group_c_distribution(k20_students: pd.DataFrame) -> Dict[Tuple[str, str], List[str]]:
-    """Distribute K20 students among Group C elective courses."""
+    """Distribute K20 students among Group C elective courses based on specialization."""
+    spec_map = get_student_specialization_map()
     choice_map: Dict[Tuple[str, str], List[str]] = defaultdict(list)
     for _, row in k20_students.iterrows():
         uid = str(row["user_id"])
         prog = row["program"]
-        seed_val = int(hashlib.sha256(f"{uid}:group_c".encode()).hexdigest()[:8], 16)
-        c_code = GROUP_C_COURSES[seed_val % len(GROUP_C_COURSES)]
+        spec = spec_map.get(uid, "Khoa học Máy tính")
+        c_code = select_student_group_c_course(uid, "K20", spec, seed_salt="k20_group_c_hk221")
         choice_map[(prog, c_code)].append(uid)
     return choice_map
 
@@ -728,60 +731,120 @@ def generate_enrollment_hk221() -> Path:
             print(f"   -> Đã gán {len(k20_co2013_learners)} SV vào môn CO2013 ({len(class_ids)} lớp, miễn {len(student_ids)-len(k20_co2013_learners)} SV)")
 
         # Tự chọn Group C cho K20
-        print(f"   -> Phân bổ SV vào Tự chọn Nhóm C (Group C):")
-        for g_course in GROUP_C_COURSES:
-            g_uids = k20_group_c.get((prog, g_course), [])
-            if not g_uids:
-                continue
-            class_ids = classes_by_prog_course.get((prog, g_course), [])
-            sizes = balanced_class_sizes(len(g_uids), max_size=40)
-            offset = 0
-            comps = course_assessments.get(g_course, [("cuoi_ky", 1.0)])
+        if prog == "advanced":
+            print(f"   -> [K20 Tự chọn ngành - Group C]: Đã ghép học chung lớp với hệ Chất lượng cao (CC)")
+        elif prog == "high-quality":
+            print(f"   -> Phân bổ SV vào Tự chọn Nhóm C (Group C - Ghép CLC + Tiên tiến):")
+            all_group_c = sorted(list({c for (p, c) in k20_group_c.keys() if p in ("high-quality", "advanced")}))
+            for g_course in all_group_c:
+                g_uids = k20_group_c.get(("high-quality", g_course), []) + k20_group_c.get(("advanced", g_course), [])
+                if not g_uids:
+                    continue
+                class_ids = classes_by_prog_course.get((prog, g_course), [])
+                sizes = balanced_class_sizes(len(g_uids), max_size=40)
+                offset = 0
+                comps = course_assessments.get(g_course, [("cuoi_ky", 1.0)])
 
-            for class_id, size in zip(class_ids, sizes):
-                assigned_chunk = g_uids[offset : offset + size]
-                offset += size
+                for class_id, size in zip(class_ids, sizes):
+                    assigned_chunk = g_uids[offset : offset + size]
+                    offset += size
 
-                for uid in assigned_chunk:
-                    profile = student_profiles[uid]
-                    student_data = {"student_id": uid, **profile}
+                    for uid in assigned_chunk:
+                        profile = student_profiles[uid]
+                        student_data = {"student_id": uid, **profile}
 
-                    seed_str = f"{uid}:{g_course}:{SEMESTER}"
-                    rng = np.random.default_rng(int(hashlib.sha256(seed_str.encode("utf-8")).hexdigest()[:8], 16))
+                        seed_str = f"{uid}:{g_course}:{SEMESTER}"
+                        rng = np.random.default_rng(int(hashlib.sha256(seed_str.encode("utf-8")).hexdigest()[:8], 16))
 
-                    component_scores, final_score, letter, gpa = score_course_components(
-                        student=student_data,
-                        course_code=g_course,
-                        components=comps,
-                        catalog_difficulty=0.5,
-                        rng=rng,
-                        config=GENERATOR_CONFIG,
-                        retaken=False,
-                        student_id=uid,
-                    )
+                        component_scores, final_score, letter, gpa = score_course_components(
+                            student=student_data,
+                            course_code=g_course,
+                            components=comps,
+                            catalog_difficulty=0.5,
+                            rng=rng,
+                            config=GENERATOR_CONFIG,
+                            retaken=False,
+                            student_id=uid,
+                        )
 
-                    rec = {
-                        "enrollment_id": enrollment_id,
-                        "student_id": uid,
-                        "class_id": class_id,
-                        "course_id": g_course,
-                        "semester": SEMESTER,
-                        "retaken": False,
-                        "quiz": component_scores.get("quiz", np.nan),
-                        "lab": component_scores.get("lab", np.nan),
-                        "btl": component_scores.get("btl", np.nan),
-                        "giua_ky": component_scores.get("giua_ky", np.nan),
-                        "cuoi_ky": component_scores.get("cuoi_ky", np.nan),
-                        "final_score": final_score,
-                        "letter_grade": letter,
-                        "gpa_4": gpa,
-                        "passed": letter != "F",
-                        "status": "Pass" if letter != "F" else "Fail",
-                    }
-                    enrollment_records.append(rec)
-                    enrollment_id += 1
+                        rec = {
+                            "enrollment_id": enrollment_id,
+                            "student_id": uid,
+                            "class_id": class_id,
+                            "course_id": g_course,
+                            "semester": SEMESTER,
+                            "retaken": False,
+                            "quiz": component_scores.get("quiz", np.nan),
+                            "lab": component_scores.get("lab", np.nan),
+                            "btl": component_scores.get("btl", np.nan),
+                            "giua_ky": component_scores.get("giua_ky", np.nan),
+                            "cuoi_ky": component_scores.get("cuoi_ky", np.nan),
+                            "final_score": final_score,
+                            "letter_grade": letter,
+                            "gpa_4": gpa,
+                            "passed": letter != "F",
+                            "status": "Pass" if letter != "F" else "Fail",
+                        }
+                        enrollment_records.append(rec)
+                        enrollment_id += 1
 
-            print(f"      * {g_course}: {len(g_uids)} SV -> {len(class_ids)} lớp")
+                print(f"      * {g_course}: {len(g_uids)} SV (CLC+TT) -> {len(class_ids)} lớp")
+        else:
+            print(f"   -> Phân bổ SV vào Tự chọn Nhóm C (Group C):")
+            all_group_c = sorted(list({c for (p, c) in k20_group_c.keys() if p == prog}))
+            for g_course in all_group_c:
+                g_uids = k20_group_c.get((prog, g_course), [])
+                if not g_uids:
+                    continue
+                class_ids = classes_by_prog_course.get((prog, g_course), [])
+                sizes = balanced_class_sizes(len(g_uids), max_size=40)
+                offset = 0
+                comps = course_assessments.get(g_course, [("cuoi_ky", 1.0)])
+
+                for class_id, size in zip(class_ids, sizes):
+                    assigned_chunk = g_uids[offset : offset + size]
+                    offset += size
+
+                    for uid in assigned_chunk:
+                        profile = student_profiles[uid]
+                        student_data = {"student_id": uid, **profile}
+
+                        seed_str = f"{uid}:{g_course}:{SEMESTER}"
+                        rng = np.random.default_rng(int(hashlib.sha256(seed_str.encode("utf-8")).hexdigest()[:8], 16))
+
+                        component_scores, final_score, letter, gpa = score_course_components(
+                            student=student_data,
+                            course_code=g_course,
+                            components=comps,
+                            catalog_difficulty=0.5,
+                            rng=rng,
+                            config=GENERATOR_CONFIG,
+                            retaken=False,
+                            student_id=uid,
+                        )
+
+                        rec = {
+                            "enrollment_id": enrollment_id,
+                            "student_id": uid,
+                            "class_id": class_id,
+                            "course_id": g_course,
+                            "semester": SEMESTER,
+                            "retaken": False,
+                            "quiz": component_scores.get("quiz", np.nan),
+                            "lab": component_scores.get("lab", np.nan),
+                            "btl": component_scores.get("btl", np.nan),
+                            "giua_ky": component_scores.get("giua_ky", np.nan),
+                            "cuoi_ky": component_scores.get("cuoi_ky", np.nan),
+                            "final_score": final_score,
+                            "letter_grade": letter,
+                            "gpa_4": gpa,
+                            "passed": letter != "F",
+                            "status": "Pass" if letter != "F" else "Fail",
+                        }
+                        enrollment_records.append(rec)
+                        enrollment_id += 1
+
+                print(f"      * {g_course}: {len(g_uids)} SV -> {len(class_ids)} lớp")
 
     # -------------------------------------------------------------------------
     # D. TÍNH GPA HỌC KỲ VÀ TÍCH LŨY
