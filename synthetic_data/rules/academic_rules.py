@@ -114,9 +114,21 @@ def validate_generator_config(config):
         validate_distribution(f"personality.{trait}", personality[trait])
 
     academic = config["academic"]
-    if len(academic["distribution"]) != 5 or len(academic["base_scores"]) != 5:
-        raise ValueError("academic distribution and base_scores must have five values")
-    validate_distribution("academic.distribution", academic["distribution"])
+    acad_dist = academic["distribution"]
+    if isinstance(acad_dist, dict):
+        for prog_key, dist_vals in acad_dist.items():
+            if len(dist_vals) != 5:
+                raise ValueError(f"academic.distribution.{prog_key} must have five values")
+            validate_distribution(f"academic.distribution.{prog_key}", dist_vals)
+    else:
+        if len(acad_dist) != 5:
+            raise ValueError("academic distribution must have five values")
+        validate_distribution("academic.distribution", acad_dist)
+
+    if len(academic["base_scores"]) != 5:
+        raise ValueError("academic base_scores must have five values")
+    if "cohort_shift" in academic and not isinstance(academic["cohort_shift"], dict):
+        raise ValueError("academic.cohort_shift must be a dictionary")
     if (
         academic["subject_sigma"] < 0
         or academic["base_scores"] != sorted(academic["base_scores"])
@@ -585,7 +597,7 @@ def _base_score_for_level(level, config):
     )
 
 
-def generate_student_profile(student_id, config=None):
+def generate_student_profile(student_id, config=None, program=None):
     config = config or GENERATOR_CONFIG
     profile = {}
     for field, distribution in config["background"].items():
@@ -601,10 +613,17 @@ def generate_student_profile(student_id, config=None):
             p=config["personality"][field],
         ))
 
+    acad_dist = config["academic"]["distribution"]
+    if isinstance(acad_dist, dict):
+        prog_key = program if (program and program in acad_dist) else "standard"
+        p_dist = acad_dist.get(prog_key, acad_dist.get("standard"))
+    else:
+        p_dist = acad_dist
+
     rng = np.random.default_rng(_stable_seed(student_id, config, "academic_level"))
     academic_level = int(rng.choice(
         [1, 2, 3, 4, 5],
-        p=config["academic"]["distribution"],
+        p=p_dist,
     ))
     profile["academic_level"] = academic_level
     for field in ("math_level", "english_level"):
@@ -966,7 +985,8 @@ def resolve_student_profile(student, config=None, *, student_id=None):
     if student_id is None or pd.isna(student_id):
         raise ValueError("student_id is required to resolve a student profile")
     student_id = str(student_id)
-    profile = generate_student_profile(student_id, config)
+    program = student.get("program")
+    profile = generate_student_profile(student_id, config, program=program)
     for field in PROFILE_FIELDS:
         value = student.get(field)
         if pd.notna(value):
@@ -1031,6 +1051,10 @@ def course_mean_score(
         weight * _normalized_trait(profile[trait])
         for trait, weight in config["personality_weights"].items()
     )
+    student_id_val = str(student_id or student.get("student_id") or profile.get("student_id") or "")
+    cohort_key = "K" + student_id_val[:2] if len(student_id_val) >= 2 else ""
+    shift = config.get("academic", {}).get("cohort_shift", {}).get(cohort_key, 0.0)
+    mean_score += shift
 
     difficulty_config = config["difficulty"]
     overrides = difficulty_config["course_overrides"]

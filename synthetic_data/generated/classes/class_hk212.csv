@@ -69,6 +69,7 @@ HK212_MT1007_L20,MT1007,Đại số Tuyến tính,HK212,L20,standard,40,GV00068,
 HK212_MT1007_L21,MT1007,Đại số Tuyến tính,HK212,L21,standard,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK212_MT1007_L22,MT1007,Đại số Tuyến tính,HK212,L22,standard,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK212_MT1007_L23,MT1007,Đại số Tuyến tính,HK212,L23,standard,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1007_L24,MT1007,Đại số Tuyến tính,HK212,L24,standard,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK212_PH1007_L01,PH1007,Thí nghiệm Vật lý,HK212,L01,standard,40,GV00093,Huỳnh Hữu Trinh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK212_PH1007_L02,PH1007,Thí nghiệm Vật lý,HK212,L02,standard,40,GV00094,Hồ Anh Quang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK212_PH1007_L03,PH1007,Thí nghiệm Vật lý,HK212,L03,standard,40,GV00095,Dương Tuấn Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
@@ -140,9 +141,6 @@ HK212_CO1027_L21,CO1027,Kỹ thuật Lập trình,HK212,L21,standard,40,GV00045,
 HK212_CO1027_L22,CO1027,Kỹ thuật Lập trình,HK212,L22,standard,40,GV00046,Bùi Quang Khôi,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CO1027_L23,CO1027,Kỹ thuật Lập trình,HK212,L23,standard,40,GV00047,Đỗ Hữu Phát,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CH1003_L01,CH1003,Hóa đại cương (Học vượt),HK212,L01,standard,40,GV00101,Nguyễn Quang Phúc,Khoa Kỹ thuật Hóa học
-HK212_CH1003_L02,CH1003,Hóa đại cương (Học vượt),HK212,L02,standard,40,GV00102,Đặng Anh Phúc,Khoa Kỹ thuật Hóa học
-HK212_CH1003_L03,CH1003,Hóa đại cương (Học vượt),HK212,L03,standard,40,GV00103,Phạm Gia Nam,Khoa Kỹ thuật Hóa học
-HK212_CH1003_L04,CH1003,Hóa đại cương (Học vượt),HK212,L04,standard,40,GV00104,Phan Gia Bảo,Khoa Kỹ thuật Hóa học
 HK212_CO1007_CC01,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK212,CC01,high-quality,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CO1007_CC02,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK212,CC02,high-quality,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CO1007_CC03,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK212,CC03,high-quality,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
@@ -155,30 +153,30 @@ HK212_CO1007_CC09,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK212
 HK212_CO1007_CC10,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK212,CC10,high-quality,40,GV00002,Dương Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CO1007_CC11,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK212,CC11,high-quality,40,GV00003,Lý Hoàng Duy,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CO1007_CC12,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK212,CC12,high-quality,40,GV00004,Phạm Ngọc Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_MT1005_CC01,MT1005,Giải tích 2,HK212,CC01,high-quality,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1005_CC02,MT1005,Giải tích 2,HK212,CC02,high-quality,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1005_CC03,MT1005,Giải tích 2,HK212,CC03,high-quality,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1005_CC04,MT1005,Giải tích 2,HK212,CC04,high-quality,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1005_CC05,MT1005,Giải tích 2,HK212,CC05,high-quality,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1005_CC06,MT1005,Giải tích 2,HK212,CC06,high-quality,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1005_CC07,MT1005,Giải tích 2,HK212,CC07,high-quality,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1005_CC08,MT1005,Giải tích 2,HK212,CC08,high-quality,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1005_CC09,MT1005,Giải tích 2,HK212,CC09,high-quality,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1005_CC10,MT1005,Giải tích 2,HK212,CC10,high-quality,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1005_CC11,MT1005,Giải tích 2,HK212,CC11,high-quality,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1005_CC12,MT1005,Giải tích 2,HK212,CC12,high-quality,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1007_CC01,MT1007,Đại số Tuyến tính,HK212,CC01,high-quality,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1007_CC02,MT1007,Đại số Tuyến tính,HK212,CC02,high-quality,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1007_CC03,MT1007,Đại số Tuyến tính,HK212,CC03,high-quality,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1007_CC04,MT1007,Đại số Tuyến tính,HK212,CC04,high-quality,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1007_CC05,MT1007,Đại số Tuyến tính,HK212,CC05,high-quality,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1007_CC06,MT1007,Đại số Tuyến tính,HK212,CC06,high-quality,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1007_CC07,MT1007,Đại số Tuyến tính,HK212,CC07,high-quality,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1007_CC08,MT1007,Đại số Tuyến tính,HK212,CC08,high-quality,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1007_CC09,MT1007,Đại số Tuyến tính,HK212,CC09,high-quality,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1007_CC10,MT1007,Đại số Tuyến tính,HK212,CC10,high-quality,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1007_CC11,MT1007,Đại số Tuyến tính,HK212,CC11,high-quality,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1007_CC12,MT1007,Đại số Tuyến tính,HK212,CC12,high-quality,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1005_CC01,MT1005,Giải tích 2,HK212,CC01,high-quality,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1005_CC02,MT1005,Giải tích 2,HK212,CC02,high-quality,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1005_CC03,MT1005,Giải tích 2,HK212,CC03,high-quality,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1005_CC04,MT1005,Giải tích 2,HK212,CC04,high-quality,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1005_CC05,MT1005,Giải tích 2,HK212,CC05,high-quality,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1005_CC06,MT1005,Giải tích 2,HK212,CC06,high-quality,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1005_CC07,MT1005,Giải tích 2,HK212,CC07,high-quality,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1005_CC08,MT1005,Giải tích 2,HK212,CC08,high-quality,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1005_CC09,MT1005,Giải tích 2,HK212,CC09,high-quality,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1005_CC10,MT1005,Giải tích 2,HK212,CC10,high-quality,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1005_CC11,MT1005,Giải tích 2,HK212,CC11,high-quality,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1005_CC12,MT1005,Giải tích 2,HK212,CC12,high-quality,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1007_CC01,MT1007,Đại số Tuyến tính,HK212,CC01,high-quality,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1007_CC02,MT1007,Đại số Tuyến tính,HK212,CC02,high-quality,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1007_CC03,MT1007,Đại số Tuyến tính,HK212,CC03,high-quality,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1007_CC04,MT1007,Đại số Tuyến tính,HK212,CC04,high-quality,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1007_CC05,MT1007,Đại số Tuyến tính,HK212,CC05,high-quality,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1007_CC06,MT1007,Đại số Tuyến tính,HK212,CC06,high-quality,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1007_CC07,MT1007,Đại số Tuyến tính,HK212,CC07,high-quality,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1007_CC08,MT1007,Đại số Tuyến tính,HK212,CC08,high-quality,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1007_CC09,MT1007,Đại số Tuyến tính,HK212,CC09,high-quality,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1007_CC10,MT1007,Đại số Tuyến tính,HK212,CC10,high-quality,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1007_CC11,MT1007,Đại số Tuyến tính,HK212,CC11,high-quality,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1007_CC12,MT1007,Đại số Tuyến tính,HK212,CC12,high-quality,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK212_PH1007_CC01,PH1007,Thí nghiệm Vật lý,HK212,CC01,high-quality,40,GV00093,Huỳnh Hữu Trinh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK212_PH1007_CC02,PH1007,Thí nghiệm Vật lý,HK212,CC02,high-quality,40,GV00094,Hồ Anh Quang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK212_PH1007_CC03,PH1007,Thí nghiệm Vật lý,HK212,CC03,high-quality,40,GV00095,Dương Tuấn Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
@@ -203,21 +201,19 @@ HK212_CO1027_CC09,CO1027,Kỹ thuật Lập trình,HK212,CC09,high-quality,40,GV
 HK212_CO1027_CC10,CO1027,Kỹ thuật Lập trình,HK212,CC10,high-quality,40,GV00023,Trần Tuấn Lam,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CO1027_CC11,CO1027,Kỹ thuật Lập trình,HK212,CC11,high-quality,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CO1027_CC12,CO1027,Kỹ thuật Lập trình,HK212,CC12,high-quality,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_CH1003_CC01,CH1003,Hóa đại cương (Học vượt),HK212,CC01,high-quality,40,GV00105,Vũ Đức Long,Khoa Kỹ thuật Hóa học
-HK212_CH1003_CC02,CH1003,Hóa đại cương (Học vượt),HK212,CC02,high-quality,40,GV00106,Vũ Thanh Thảo,Khoa Kỹ thuật Hóa học
-HK212_CH1003_CC03,CH1003,Hóa đại cương (Học vượt),HK212,CC03,high-quality,40,GV00107,Hoàng Quang Quang,Khoa Kỹ thuật Hóa học
+HK212_CH1003_CC01,CH1003,Hóa đại cương (Học vượt),HK212,CC01,high-quality,40,GV00102,Đặng Anh Phúc,Khoa Kỹ thuật Hóa học
 HK212_CO1007_TT01,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK212,TT01,advanced,40,GV00005,Hồ Khánh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CO1007_TT02,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK212,TT02,advanced,40,GV00006,Bùi Hữu Trinh,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CO1007_TT03,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK212,TT03,advanced,40,GV00007,Huỳnh Anh Nam,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CO1007_TT04,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK212,TT04,advanced,40,GV00008,Lê Thanh Hải,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_MT1005_TT01,MT1005,Giải tích 2,HK212,TT01,advanced,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1005_TT02,MT1005,Giải tích 2,HK212,TT02,advanced,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1005_TT03,MT1005,Giải tích 2,HK212,TT03,advanced,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1005_TT04,MT1005,Giải tích 2,HK212,TT04,advanced,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1007_TT01,MT1007,Đại số Tuyến tính,HK212,TT01,advanced,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1007_TT02,MT1007,Đại số Tuyến tính,HK212,TT02,advanced,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1007_TT03,MT1007,Đại số Tuyến tính,HK212,TT03,advanced,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT1007_TT04,MT1007,Đại số Tuyến tính,HK212,TT04,advanced,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1005_TT01,MT1005,Giải tích 2,HK212,TT01,advanced,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1005_TT02,MT1005,Giải tích 2,HK212,TT02,advanced,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1005_TT03,MT1005,Giải tích 2,HK212,TT03,advanced,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1005_TT04,MT1005,Giải tích 2,HK212,TT04,advanced,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1007_TT01,MT1007,Đại số Tuyến tính,HK212,TT01,advanced,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1007_TT02,MT1007,Đại số Tuyến tính,HK212,TT02,advanced,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1007_TT03,MT1007,Đại số Tuyến tính,HK212,TT03,advanced,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT1007_TT04,MT1007,Đại số Tuyến tính,HK212,TT04,advanced,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK212_PH1007_TT01,PH1007,Thí nghiệm Vật lý,HK212,TT01,advanced,40,GV00097,Dương Thị Phúc,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK212_PH1007_TT02,PH1007,Thí nghiệm Vật lý,HK212,TT02,advanced,40,GV00098,Lý Anh Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK212_PH1007_TT03,PH1007,Thí nghiệm Vật lý,HK212,TT03,advanced,40,GV00099,Phạm Khánh Nam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
@@ -226,26 +222,27 @@ HK212_CO1027_TT01,CO1027,Kỹ thuật Lập trình,HK212,TT01,advanced,40,GV0002
 HK212_CO1027_TT02,CO1027,Kỹ thuật Lập trình,HK212,TT02,advanced,40,GV00009,Bùi Anh Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CO1027_TT03,CO1027,Kỹ thuật Lập trình,HK212,TT03,advanced,40,GV00010,Dương Hữu Bảo,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CO1027_TT04,CO1027,Kỹ thuật Lập trình,HK212,TT04,advanced,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_CH1003_TT01,CH1003,Hóa đại cương (Học vượt),HK212,TT01,advanced,40,GV00108,Lý Hoàng Anh,Khoa Kỹ thuật Hóa học
-HK212_MT2013_L01,MT2013,Xác suất và Thống kê,HK212,L01,standard,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L02,MT2013,Xác suất và Thống kê,HK212,L02,standard,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L03,MT2013,Xác suất và Thống kê,HK212,L03,standard,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L04,MT2013,Xác suất và Thống kê,HK212,L04,standard,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L05,MT2013,Xác suất và Thống kê,HK212,L05,standard,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L06,MT2013,Xác suất và Thống kê,HK212,L06,standard,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L07,MT2013,Xác suất và Thống kê,HK212,L07,standard,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L08,MT2013,Xác suất và Thống kê,HK212,L08,standard,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L09,MT2013,Xác suất và Thống kê,HK212,L09,standard,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L10,MT2013,Xác suất và Thống kê,HK212,L10,standard,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L11,MT2013,Xác suất và Thống kê,HK212,L11,standard,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L12,MT2013,Xác suất và Thống kê,HK212,L12,standard,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L13,MT2013,Xác suất và Thống kê,HK212,L13,standard,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L14,MT2013,Xác suất và Thống kê,HK212,L14,standard,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L15,MT2013,Xác suất và Thống kê,HK212,L15,standard,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L16,MT2013,Xác suất và Thống kê,HK212,L16,standard,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L17,MT2013,Xác suất và Thống kê,HK212,L17,standard,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L18,MT2013,Xác suất và Thống kê,HK212,L18,standard,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_L19,MT2013,Xác suất và Thống kê,HK212,L19,standard,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_CH1003_TT01,CH1003,Hóa đại cương (Học vượt),HK212,TT01,advanced,40,GV00103,Phạm Gia Nam,Khoa Kỹ thuật Hóa học
+HK212_MT2013_L01,MT2013,Xác suất và Thống kê,HK212,L01,standard,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L02,MT2013,Xác suất và Thống kê,HK212,L02,standard,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L03,MT2013,Xác suất và Thống kê,HK212,L03,standard,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L04,MT2013,Xác suất và Thống kê,HK212,L04,standard,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L05,MT2013,Xác suất và Thống kê,HK212,L05,standard,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L06,MT2013,Xác suất và Thống kê,HK212,L06,standard,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L07,MT2013,Xác suất và Thống kê,HK212,L07,standard,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L08,MT2013,Xác suất và Thống kê,HK212,L08,standard,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L09,MT2013,Xác suất và Thống kê,HK212,L09,standard,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L10,MT2013,Xác suất và Thống kê,HK212,L10,standard,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L11,MT2013,Xác suất và Thống kê,HK212,L11,standard,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L12,MT2013,Xác suất và Thống kê,HK212,L12,standard,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L13,MT2013,Xác suất và Thống kê,HK212,L13,standard,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L14,MT2013,Xác suất và Thống kê,HK212,L14,standard,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L15,MT2013,Xác suất và Thống kê,HK212,L15,standard,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L16,MT2013,Xác suất và Thống kê,HK212,L16,standard,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L17,MT2013,Xác suất và Thống kê,HK212,L17,standard,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L18,MT2013,Xác suất và Thống kê,HK212,L18,standard,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L19,MT2013,Xác suất và Thống kê,HK212,L19,standard,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_L20,MT2013,Xác suất và Thống kê,HK212,L20,standard,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK212_SP1033_L01,SP1033,Kinh tế Chính trị Mác - Lênin,HK212,L01,standard,120,GV00085,Võ Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
 HK212_SP1033_L02,SP1033,Kinh tế Chính trị Mác - Lênin,HK212,L02,standard,120,GV00086,Hoàng Gia Châu,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
 HK212_SP1033_L03,SP1033,Kinh tế Chính trị Mác - Lênin,HK212,L03,standard,120,GV00087,Lê Khánh Minh,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
@@ -355,16 +352,16 @@ HK212_CO2013_L01,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK212,L01,stan
 HK212_CO2013_L02,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK212,L02,standard,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CO2013_L03,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK212,L03,standard,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CO2013_L04,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK212,L04,standard,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_MT2013_CC01,MT2013,Xác suất và Thống kê,HK212,CC01,high-quality,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_CC02,MT2013,Xác suất và Thống kê,HK212,CC02,high-quality,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_CC03,MT2013,Xác suất và Thống kê,HK212,CC03,high-quality,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_CC04,MT2013,Xác suất và Thống kê,HK212,CC04,high-quality,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_CC05,MT2013,Xác suất và Thống kê,HK212,CC05,high-quality,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_CC06,MT2013,Xác suất và Thống kê,HK212,CC06,high-quality,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_CC07,MT2013,Xác suất và Thống kê,HK212,CC07,high-quality,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_CC08,MT2013,Xác suất và Thống kê,HK212,CC08,high-quality,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_CC09,MT2013,Xác suất và Thống kê,HK212,CC09,high-quality,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_CC10,MT2013,Xác suất và Thống kê,HK212,CC10,high-quality,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_CC01,MT2013,Xác suất và Thống kê,HK212,CC01,high-quality,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_CC02,MT2013,Xác suất và Thống kê,HK212,CC02,high-quality,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_CC03,MT2013,Xác suất và Thống kê,HK212,CC03,high-quality,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_CC04,MT2013,Xác suất và Thống kê,HK212,CC04,high-quality,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_CC05,MT2013,Xác suất và Thống kê,HK212,CC05,high-quality,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_CC06,MT2013,Xác suất và Thống kê,HK212,CC06,high-quality,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_CC07,MT2013,Xác suất và Thống kê,HK212,CC07,high-quality,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_CC08,MT2013,Xác suất và Thống kê,HK212,CC08,high-quality,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_CC09,MT2013,Xác suất và Thống kê,HK212,CC09,high-quality,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_CC10,MT2013,Xác suất và Thống kê,HK212,CC10,high-quality,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK212_SP1033_CC01,SP1033,Kinh tế Chính trị Mác - Lênin,HK212,CC01,high-quality,120,GV00085,Võ Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
 HK212_SP1033_CC02,SP1033,Kinh tế Chính trị Mác - Lênin,HK212,CC02,high-quality,120,GV00086,Hoàng Gia Châu,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
 HK212_SP1033_CC03,SP1033,Kinh tế Chính trị Mác - Lênin,HK212,CC03,high-quality,120,GV00087,Lê Khánh Minh,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
@@ -410,28 +407,32 @@ HK212_IM3001_CC02,IM3001,Quản trị Kinh doanh cho Kỹ sư,HK212,CC02,high-qu
 HK212_IM3001_CC03,IM3001,Quản trị Kinh doanh cho Kỹ sư,HK212,CC03,high-quality,40,GV00022,Bùi Minh Minh,Khoa Quản lý Công nghiệp
 HK212_CO3093_CC01,CO3093,Mạng máy tính (Học vượt),HK212,CC01,high-quality,40,GV00023,Trần Tuấn Lam,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CO3093_CC02,CO3093,Mạng máy tính (Học vượt),HK212,CC02,high-quality,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_CO2013_CC01,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK212,CC01,high-quality,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_CO2013_CC02,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK212,CC02,high-quality,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_MT2013_TT01,MT2013,Xác suất và Thống kê,HK212,TT01,advanced,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_TT02,MT2013,Xác suất và Thống kê,HK212,TT02,advanced,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_MT2013_TT03,MT2013,Xác suất và Thống kê,HK212,TT03,advanced,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_CO3093_CC03,CO3093,Mạng máy tính (Học vượt),HK212,CC03,high-quality,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK212_CO2013_CC01,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK212,CC01,high-quality,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
+HK212_CO2013_CC02,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK212,CC02,high-quality,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK212_CO2013_CC03,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK212,CC03,high-quality,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK212_MT2013_TT01,MT2013,Xác suất và Thống kê,HK212,TT01,advanced,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_TT02,MT2013,Xác suất và Thống kê,HK212,TT02,advanced,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_MT2013_TT03,MT2013,Xác suất và Thống kê,HK212,TT03,advanced,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK212_SP1033_TT01,SP1033,Kinh tế Chính trị Mác - Lênin,HK212,TT01,advanced,120,GV00089,Lý Gia Lam,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
 HK212_SP1033_TT02,SP1033,Kinh tế Chính trị Mác - Lênin,HK212,TT02,advanced,120,GV00090,Võ Minh Châu,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
-HK212_CO2039_TT01,CO2039,Lập trình Nâng cao,HK212,TT01,advanced,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_CO2039_TT02,CO2039,Lập trình Nâng cao,HK212,TT02,advanced,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_CO2039_TT03,CO2039,Lập trình Nâng cao,HK212,TT03,advanced,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_CO2039_TT04,CO2039,Lập trình Nâng cao,HK212,TT04,advanced,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_CO2017_TT01,CO2017,Hệ điều hành,HK212,TT01,advanced,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_CO2017_TT02,CO2017,Hệ điều hành,HK212,TT02,advanced,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_CO2017_TT03,CO2017,Hệ điều hành,HK212,TT03,advanced,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_CO2017_TT04,CO2017,Hệ điều hành,HK212,TT04,advanced,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_IM1013_TT01,IM1013,Kinh tế học Đại cương,HK212,TT01,advanced,40,GV00035,Lê Quang Hiếu,Khoa Quản lý Công nghiệp
-HK212_IM1023_TT01,IM1023,Quản lý Sản xuất cho Kỹ sư,HK212,TT01,advanced,40,GV00036,Nguyễn Ngọc Hải,Khoa Quản lý Công nghiệp
-HK212_IM1025_TT01,IM1025,Quản lý Dự án cho Kỹ sư,HK212,TT01,advanced,40,GV00037,Lý Hoàng Trinh,Khoa Quản lý Công nghiệp
-HK212_IM1027_TT01,IM1027,Kinh tế Kỹ thuật,HK212,TT01,advanced,40,GV00048,Hồ Minh Nam,Khoa Quản lý Công nghiệp
-HK212_IM3001_TT01,IM3001,Quản trị Kinh doanh cho Kỹ sư,HK212,TT01,advanced,40,GV00049,Đỗ Anh Minh,Khoa Quản lý Công nghiệp
-HK212_CO3093_TT01,CO3093,Mạng máy tính (Học vượt),HK212,TT01,advanced,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_CO2013_TT01,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK212,TT01,advanced,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_MT1003_L_HL01,MT1003,Giải tích 1 (Học lại),HK212,L_HL01,standard,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK212_CO1005_L_HL01,CO1005,Nhập môn Điện toán (Học lại),HK212,L_HL01,standard,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
-HK212_CO1023_L_HL01,CO1023,Hệ thống số (Học lại),HK212,L_HL01,standard,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK212_CO2039_TT01,CO2039,Lập trình Nâng cao,HK212,TT01,advanced,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
+HK212_CO2039_TT02,CO2039,Lập trình Nâng cao,HK212,TT02,advanced,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK212_CO2039_TT03,CO2039,Lập trình Nâng cao,HK212,TT03,advanced,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
+HK212_CO2039_TT04,CO2039,Lập trình Nâng cao,HK212,TT04,advanced,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK212_CO2017_TT01,CO2017,Hệ điều hành,HK212,TT01,advanced,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK212_CO2017_TT02,CO2017,Hệ điều hành,HK212,TT02,advanced,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK212_CO2017_TT03,CO2017,Hệ điều hành,HK212,TT03,advanced,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK212_CO2017_TT04,CO2017,Hệ điều hành,HK212,TT04,advanced,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
+HK212_IM1013_TT01,IM1013,Kinh tế học Đại cương,HK212,TT01,advanced,40,GV00037,Lý Hoàng Trinh,Khoa Quản lý Công nghiệp
+HK212_IM1023_TT01,IM1023,Quản lý Sản xuất cho Kỹ sư,HK212,TT01,advanced,40,GV00048,Hồ Minh Nam,Khoa Quản lý Công nghiệp
+HK212_IM1025_TT01,IM1025,Quản lý Dự án cho Kỹ sư,HK212,TT01,advanced,40,GV00049,Đỗ Anh Minh,Khoa Quản lý Công nghiệp
+HK212_IM1027_TT01,IM1027,Kinh tế Kỹ thuật,HK212,TT01,advanced,40,GV00050,Đỗ Tuấn Linh,Khoa Quản lý Công nghiệp
+HK212_IM3001_TT01,IM3001,Quản trị Kinh doanh cho Kỹ sư,HK212,TT01,advanced,40,GV00051,Vũ Ngọc Linh,Khoa Quản lý Công nghiệp
+HK212_CO3093_TT01,CO3093,Mạng máy tính (Học vượt),HK212,TT01,advanced,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
+HK212_CO2013_TT01,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK212,TT01,advanced,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK212_MT1003_L_HL01,MT1003,Giải tích 1 (Học lại),HK212,L_HL01,standard,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK212_CO1005_L_HL01,CO1005,Nhập môn Điện toán (Học lại),HK212,L_HL01,standard,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK212_CO1023_L_HL01,CO1023,Hệ thống số (Học lại),HK212,L_HL01,standard,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK212_PH1003_L_HL01,PH1003,Vật lý 1 (Học lại),HK212,L_HL01,standard,40,GV00093,Huỳnh Hữu Trinh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK212_LA1003_L_HL01,LA1003,Anh văn 1 (Học lại),HK212,L_HL01,standard,40,GV00074,Nguyễn Tuấn Tuấn,Trung tâm Ngoại ngữ

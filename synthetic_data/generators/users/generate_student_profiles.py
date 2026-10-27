@@ -82,7 +82,8 @@ def generate_student_profiles() -> Path:
         prog = row.get("program", "standard")
         cohort = "K" + uid[:2]
 
-        p = generate_student_profile(uid, GENERATOR_CONFIG)
+        p = generate_student_profile(uid, GENERATOR_CONFIG, program=prog)
+        p["student_id"] = uid
 
         # Gán chuyên ngành theo cấu hình generator_config.json
         p["specialization"] = assign_specialization(uid, cohort, GENERATOR_CONFIG)
@@ -145,11 +146,16 @@ def generate_student_profiles() -> Path:
             values = [json.dumps(val, separators=(",", ":")) for val in values]
         result[field] = values
 
-    # Tính điểm nền tảng (base_score 3.0 - 9.5) từ academic_level
-    result["base_score"] = [
-        GENERATOR_CONFIG["academic"]["base_scores"][p["academic_level"] - 1]
-        for p in profiles
-    ]
+    # Tính điểm nền tảng (base_score 3.0 - 9.5) từ academic_level và cohort_shift
+    cohort_shifts = GENERATOR_CONFIG.get("academic", {}).get("cohort_shift", {})
+    base_scores = []
+    for p in profiles:
+        uid = str(p.get("student_id", ""))
+        cohort = "K" + uid[:2] if len(uid) >= 2 else ""
+        shift = cohort_shifts.get(cohort, 0.0)
+        raw_score = GENERATOR_CONFIG["academic"]["base_scores"][p["academic_level"] - 1]
+        base_scores.append(round(float(np.clip(raw_score + shift, 0.0, 10.0)), 2))
+    result["base_score"] = base_scores
     result["early_graduation_candidate"] = result["student_id"].isin(early_graduation_candidates)
 
     # 4. Xuất file CSV hồ sơ sinh viên

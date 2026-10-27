@@ -1,117 +1,117 @@
 ﻿user_id,name,email,password,password_hash,role,title,department,specialization
-GV00001,Ngô Quốc An,ngoquocan.gv00001@hcmut.edu.vn,INkzusxmlP19,INkzusxmlP19,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
-GV00002,Dương Đức Khôi,duongduckhoi.gv00002@hcmut.edu.vn,eT23igKbsNtM,eT23igKbsNtM,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
-GV00003,Lý Hoàng Duy,lyhoangduy.gv00003@hcmut.edu.vn,QpVSWCpGF3qP,QpVSWCpGF3qP,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
-GV00004,Phạm Ngọc Nam,phamngocnam.gv00004@hcmut.edu.vn,mHyNt4C6iPqQ,mHyNt4C6iPqQ,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
-GV00005,Hồ Khánh Trinh,hokhanhtrinh.gv00005@hcmut.edu.vn,zL8CSzXvs8oE,zL8CSzXvs8oE,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
-GV00006,Bùi Hữu Trinh,buihuutrinh.gv00006@hcmut.edu.vn,d3GkQV3H6o8G,d3GkQV3H6o8G,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
-GV00007,Huỳnh Anh Nam,huynhanhnam.gv00007@hcmut.edu.vn,qtwVKW50GDAa,qtwVKW50GDAa,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
-GV00008,Lê Thanh Hải,lethanhhai.gv00008@hcmut.edu.vn,y3vtFU9m9Yi2,y3vtFU9m9Yi2,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
-GV00009,Bùi Anh Hiếu,buianhhieu.gv00009@hcmut.edu.vn,1m1VPLGuKXKG,1m1VPLGuKXKG,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
-GV00010,Dương Hữu Bảo,duonghuubao.gv00010@hcmut.edu.vn,IlZRFLvuugEc,IlZRFLvuugEc,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
-GV00011,Lê Tuấn Nhi,letuannhi.gv00011@hcmut.edu.vn,VsC7ie1TNDqR,VsC7ie1TNDqR,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
-GV00012,Huỳnh Ngọc Khôi,huynhngockhoi.gv00012@hcmut.edu.vn,6PtM7IR0xlKw,6PtM7IR0xlKw,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
-GV00013,Đỗ Đức Khang,doduckhang.gv00013@hcmut.edu.vn,pM2g2BVlC8h7,pM2g2BVlC8h7,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
-GV00014,Võ Khánh An,vokhanhan.gv00014@hcmut.edu.vn,SFpp4M6k1Rv7,SFpp4M6k1Rv7,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
-GV00015,Phan Văn Trang,phanvantrang.gv00015@hcmut.edu.vn,qjs3zgfIJA3T,qjs3zgfIJA3T,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
-GV00016,Lý Quang Phát,lyquangphat.gv00016@hcmut.edu.vn,cU8nemgq0XDL,cU8nemgq0XDL,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
-GV00017,Phạm Đức Nhi,phamducnhi.gv00017@hcmut.edu.vn,ti0MhpVSTzJA,ti0MhpVSTzJA,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
-GV00018,Lê Đức An,leducan.gv00018@hcmut.edu.vn,186k9YeJbpmU,186k9YeJbpmU,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
-GV00019,Bùi Ngọc Anh,buingocanh.gv00019@hcmut.edu.vn,67DxtI90K39Z,67DxtI90K39Z,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
-GV00020,Huỳnh Quốc Linh,huynhquoclinh.gv00020@hcmut.edu.vn,Gahg3rcNd1R1,Gahg3rcNd1R1,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
-GV00021,Bùi Quang Hà,buiquangha.gv00021@hcmut.edu.vn,4OfuxIUDNHI7,4OfuxIUDNHI7,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
-GV00022,Bùi Minh Minh,buiminhminh.gv00022@hcmut.edu.vn,t5Nyiz1KKoqB,t5Nyiz1KKoqB,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
-GV00023,Trần Tuấn Lam,trantuanlam.gv00023@hcmut.edu.vn,qM9XbJiy3cyu,qM9XbJiy3cyu,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
-GV00024,Lê Anh Thảo,leanhthao.gv00024@hcmut.edu.vn,eVWcJUvEvEy6,eVWcJUvEvEy6,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
-GV00025,Ngô Quang Châu,ngoquangchau.gv00025@hcmut.edu.vn,qwv9rA04668U,qwv9rA04668U,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
-GV00026,Hoàng Khánh Long,hoangkhanhlong.gv00026@hcmut.edu.vn,wopZtmvvZw0D,wopZtmvvZw0D,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
-GV00027,Nguyễn Quốc Tuấn,nguyenquoctuan.gv00027@hcmut.edu.vn,o6lMxi0KCJHD,o6lMxi0KCJHD,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
-GV00028,Phạm Hoàng Trinh,phamhoangtrinh.gv00028@hcmut.edu.vn,gx25jKY8kEY9,gx25jKY8kEY9,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
-GV00029,Lê Hoàng Lam,lehoanglam.gv00029@hcmut.edu.vn,wOzkzlFm38ii,wOzkzlFm38ii,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
-GV00030,Đỗ Minh Duy,dominhduy.gv00030@hcmut.edu.vn,bCOKZdikcO8I,bCOKZdikcO8I,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
-GV00031,Lê Khánh Yến,lekhanhyen.gv00031@hcmut.edu.vn,pgl6FMJ6z9iA,pgl6FMJ6z9iA,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
-GV00032,Đặng Gia Hiếu,danggiahieu.gv00032@hcmut.edu.vn,OV0ItReQ4iwg,OV0ItReQ4iwg,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
-GV00033,Đỗ Thanh Châu,dothanhchau.gv00033@hcmut.edu.vn,2nrJBtUUw7OF,2nrJBtUUw7OF,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
-GV00034,Dương Minh Tuấn,duongminhtuan.gv00034@hcmut.edu.vn,7QItX9V5VNSn,7QItX9V5VNSn,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
-GV00035,Lê Quang Hiếu,lequanghieu.gv00035@hcmut.edu.vn,fymOCfuuApGh,fymOCfuuApGh,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
-GV00036,Nguyễn Ngọc Hải,nguyenngochai.gv00036@hcmut.edu.vn,1tz80O4T4g4j,1tz80O4T4g4j,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
-GV00037,Lý Hoàng Trinh,lyhoangtrinh.gv00037@hcmut.edu.vn,1lLEMth4zp6I,1lLEMth4zp6I,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
-GV00038,Hồ Thị Hiếu,hothihieu.gv00038@hcmut.edu.vn,Qxl9xZe82IWy,Qxl9xZe82IWy,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
-GV00039,Nguyễn Quang Tuấn,nguyenquangtuan.gv00039@hcmut.edu.vn,Wz5zKftosfAA,Wz5zKftosfAA,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
-GV00040,Lý Đức Khôi,lyduckhoi.gv00040@hcmut.edu.vn,R2OCE6uQ8lQR,R2OCE6uQ8lQR,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
-GV00041,Nguyễn Anh Trang,nguyenanhtrang.gv00041@hcmut.edu.vn,D43sytj42EUn,D43sytj42EUn,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
-GV00042,Hoàng Thị Hiếu,hoangthihieu.gv00042@hcmut.edu.vn,wUv0M7ruDpj1,wUv0M7ruDpj1,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
-GV00043,Lê Ngọc Nhi,lengocnhi.gv00043@hcmut.edu.vn,VVDHC0qAWame,VVDHC0qAWame,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
-GV00044,Phan Quốc Trinh,phanquoctrinh.gv00044@hcmut.edu.vn,7BosH6PPhs79,7BosH6PPhs79,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
-GV00045,Nguyễn Ngọc Duy,nguyenngocduy.gv00045@hcmut.edu.vn,yyEUAaAFgIvi,yyEUAaAFgIvi,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
-GV00046,Bùi Quang Khôi,buiquangkhoi.gv00046@hcmut.edu.vn,NNsdOwoIVAsv,NNsdOwoIVAsv,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
-GV00047,Đỗ Hữu Phát,dohuuphat.gv00047@hcmut.edu.vn,Otyqo1X3vXz7,Otyqo1X3vXz7,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
-GV00048,Hồ Minh Nam,hominhnam.gv00048@hcmut.edu.vn,i4sRODShd74e,i4sRODShd74e,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ dữ liệu và dữ liệu lớn
-GV00049,Đỗ Anh Minh,doanhminh.gv00049@hcmut.edu.vn,AbVOqsIHc8kW,AbVOqsIHc8kW,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ dữ liệu và dữ liệu lớn
-GV00050,Đỗ Tuấn Linh,dotuanlinh.gv00050@hcmut.edu.vn,CFAfnloR4j7i,CFAfnloR4j7i,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ dữ liệu và dữ liệu lớn
-GV00051,Vũ Ngọc Linh,vungoclinh.gv00051@hcmut.edu.vn,KBtnKoQ0Ys2Y,KBtnKoQ0Ys2Y,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ dữ liệu và dữ liệu lớn
-GV00052,Đỗ Văn Uyên,dovanuyen.gv00052@hcmut.edu.vn,2ywWeEOxV3RP,2ywWeEOxV3RP,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ dữ liệu và dữ liệu lớn
-GV00053,Trần Thị Bảo,tranthibao.gv00053@hcmut.edu.vn,SmjlHSF4m9Tm,SmjlHSF4m9Tm,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ dữ liệu và dữ liệu lớn
-GV00054,Dương Anh Thảo,duonganhthao.gv00054@hcmut.edu.vn,iujyr01SznlK,iujyr01SznlK,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ dữ liệu và dữ liệu lớn
-GV00055,Bùi Anh Trinh,buianhtrinh.gv00055@hcmut.edu.vn,DdZsTFFs2fPo,DdZsTFFs2fPo,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ dữ liệu và dữ liệu lớn
-GV00056,Nguyễn Hoàng Hùng,nguyenhoanghung.gv00056@hcmut.edu.vn,k8ub1BH7AgP6,k8ub1BH7AgP6,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
-GV00057,Hồ Khánh Phúc,hokhanhphuc.gv00057@hcmut.edu.vn,LtPYyGh81AUh,LtPYyGh81AUh,lecturer,doctor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
-GV00058,Võ Hữu Mai,vohuumai.gv00058@hcmut.edu.vn,bTEpte26dMVs,bTEpte26dMVs,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
-GV00059,Ngô Hữu Duy,ngohuuduy.gv00059@hcmut.edu.vn,aKObBrjbDhOU,aKObBrjbDhOU,lecturer,master,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
-GV00060,Huỳnh Phương Long,huynhphuonglong.gv00060@hcmut.edu.vn,7SrvJgTkuyjV,7SrvJgTkuyjV,lecturer,bachelor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
-GV00061,Dương Quang Hà,duongquangha.gv00061@hcmut.edu.vn,TV26aYCXOS1T,TV26aYCXOS1T,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
-GV00062,Trần Minh Hiếu,tranminhhieu.gv00062@hcmut.edu.vn,J1cnNO0AvYFa,J1cnNO0AvYFa,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
-GV00063,Đặng Phương Hùng,dangphuonghung.gv00063@hcmut.edu.vn,XTJddTiOKjAj,XTJddTiOKjAj,lecturer,bachelor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
-GV00064,Phạm Gia Anh,phamgiaanh.gv00064@hcmut.edu.vn,lQJESEG6HBnv,lQJESEG6HBnv,lecturer,master,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
-GV00065,Hoàng Quang Hiếu,hoangquanghieu.gv00065@hcmut.edu.vn,rIxn8ZeL7dxE,rIxn8ZeL7dxE,lecturer,professor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
-GV00066,Võ Ngọc Lam,vongoclam.gv00066@hcmut.edu.vn,wp0nOAjajufY,wp0nOAjajufY,lecturer,bachelor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
-GV00067,Đặng Quốc Trang,dangquoctrang.gv00067@hcmut.edu.vn,xTX7ALTFRNuW,xTX7ALTFRNuW,lecturer,professor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
-GV00068,Lê Quốc Yến,lequocyen.gv00068@hcmut.edu.vn,6vfeQ179oFGr,6vfeQ179oFGr,lecturer,master,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
-GV00069,Bùi Ngọc Bảo,buingocbao.gv00069@hcmut.edu.vn,uU7QuwUQHpdU,uU7QuwUQHpdU,lecturer,professor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
-GV00070,Nguyễn Gia Thảo,nguyengiathao.gv00070@hcmut.edu.vn,NV9ese7Uz2oo,NV9ese7Uz2oo,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
-GV00071,Đặng Đức Châu,dangducchau.gv00071@hcmut.edu.vn,ELqPcnFLGDsU,ELqPcnFLGDsU,lecturer,doctor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
-GV00072,Vũ Quốc Châu,vuquocchau.gv00072@hcmut.edu.vn,iMm7R8MGudCH,iMm7R8MGudCH,lecturer,associate_professor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
-GV00073,Võ Khánh Việt,vokhanhviet.gv00073@hcmut.edu.vn,Dj8G56TvBxOn,Dj8G56TvBxOn,lecturer,associate_professor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
-GV00074,Nguyễn Tuấn Tuấn,nguyentuantuan.gv00074@hcmut.edu.vn,ww2imhfM9Kv5,ww2imhfM9Kv5,lecturer,bachelor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
-GV00075,Dương Anh An,duonganhan.gv00075@hcmut.edu.vn,9a83LHWu8ATi,9a83LHWu8ATi,lecturer,master,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
-GV00076,Đặng Quang Hải,dangquanghai.gv00076@hcmut.edu.vn,gIL1ZyrCqH2b,gIL1ZyrCqH2b,lecturer,doctor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
-GV00077,Đỗ Hữu Quân,dohuuquan.gv00077@hcmut.edu.vn,zR8DY2YP8mw9,zR8DY2YP8mw9,lecturer,bachelor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
-GV00078,Võ Gia Nhi,vogianhi.gv00078@hcmut.edu.vn,2YJJyFQueDsM,2YJJyFQueDsM,lecturer,doctor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
-GV00079,Võ Ngọc Quân,vongocquan.gv00079@hcmut.edu.vn,AN40MwPyytLY,AN40MwPyytLY,lecturer,bachelor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
-GV00080,Ngô Thị Yến,ngothiyen.gv00080@hcmut.edu.vn,cNlSJutfuOAd,cNlSJutfuOAd,lecturer,professor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
-GV00081,Đỗ Hữu Long,dohuulong.gv00081@hcmut.edu.vn,JgDyfSY6u8ge,JgDyfSY6u8ge,lecturer,bachelor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
-GV00082,Lý Khánh Hiếu,lykhanhhieu.gv00082@hcmut.edu.vn,WN6HokMFLk9L,WN6HokMFLk9L,lecturer,associate_professor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
-GV00083,Võ Phương Khôi,vophuongkhoi.gv00083@hcmut.edu.vn,XVP9wouGKQEe,XVP9wouGKQEe,lecturer,bachelor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
-GV00084,Đỗ Minh Trang,dominhtrang.gv00084@hcmut.edu.vn,erMT3sB3nC7e,erMT3sB3nC7e,lecturer,doctor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
-GV00085,Võ Quang Hà,voquangha.gv00085@hcmut.edu.vn,5sfNcST6jZXZ,5sfNcST6jZXZ,lecturer,bachelor,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị,Lý luận Chính trị & Pháp luật
-GV00086,Hoàng Gia Châu,hoanggiachau.gv00086@hcmut.edu.vn,PEbUjpPlLkQo,PEbUjpPlLkQo,lecturer,professor,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị,Lý luận Chính trị & Pháp luật
-GV00087,Lê Khánh Minh,lekhanhminh.gv00087@hcmut.edu.vn,wBzkoYa6doRA,wBzkoYa6doRA,lecturer,bachelor,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị,Lý luận Chính trị & Pháp luật
-GV00088,Nguyễn Thanh Hùng,nguyenthanhhung.gv00088@hcmut.edu.vn,j0mHzXJskcDB,j0mHzXJskcDB,lecturer,professor,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị,Lý luận Chính trị & Pháp luật
-GV00089,Lý Gia Lam,lygialam.gv00089@hcmut.edu.vn,F3PLDezokErb,F3PLDezokErb,lecturer,professor,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị,Lý luận Chính trị & Pháp luật
-GV00090,Võ Minh Châu,vominhchau.gv00090@hcmut.edu.vn,eETb7cmfPdyW,eETb7cmfPdyW,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị,Lý luận Chính trị & Pháp luật
-GV00091,Lý Đức Anh,lyducanh.gv00091@hcmut.edu.vn,EogaABRhrtaI,EogaABRhrtaI,lecturer,bachelor,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị,Lý luận Chính trị & Pháp luật
-GV00092,Lê Đức Nam,leducnam.gv00092@hcmut.edu.vn,WqO9OqD3pcTJ,WqO9OqD3pcTJ,lecturer,doctor,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị,Lý luận Chính trị & Pháp luật
-GV00093,Huỳnh Hữu Trinh,huynhhuutrinh.gv00093@hcmut.edu.vn,J85PGDXfW3qN,J85PGDXfW3qN,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng,Vật lý & Khoa học Tự nhiên
-GV00094,Hồ Anh Quang,hoanhquang.gv00094@hcmut.edu.vn,IS2ue2Vp38As,IS2ue2Vp38As,lecturer,master,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng,Vật lý & Khoa học Tự nhiên
-GV00095,Dương Tuấn Tú,duongtuantu.gv00095@hcmut.edu.vn,EB8WrYaOtIh8,EB8WrYaOtIh8,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng,Vật lý & Khoa học Tự nhiên
-GV00096,Đỗ Ngọc Duy,dongocduy.gv00096@hcmut.edu.vn,lwdVBTlgkw11,lwdVBTlgkw11,lecturer,professor,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng,Vật lý & Khoa học Tự nhiên
-GV00097,Dương Thị Phúc,duongthiphuc.gv00097@hcmut.edu.vn,JKbhckUJJ0G5,JKbhckUJJ0G5,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng,Vật lý & Khoa học Tự nhiên
-GV00098,Lý Anh Quân,lyanhquan.gv00098@hcmut.edu.vn,Z0GNuyp7GgTl,Z0GNuyp7GgTl,lecturer,bachelor,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng,Vật lý & Khoa học Tự nhiên
-GV00099,Phạm Khánh Nam,phamkhanhnam.gv00099@hcmut.edu.vn,ywjuaKGs9yax,ywjuaKGs9yax,lecturer,doctor,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng,Vật lý & Khoa học Tự nhiên
-GV00100,Ngô Thanh Lam,ngothanhlam.gv00100@hcmut.edu.vn,rhzKzLlXuDaT,rhzKzLlXuDaT,lecturer,doctor,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng,Vật lý & Khoa học Tự nhiên
-GV00101,Nguyễn Quang Phúc,nguyenquangphuc.gv00101@hcmut.edu.vn,zow0A1c1aWbF,zow0A1c1aWbF,lecturer,master,Khoa Kỹ thuật Hóa học,Hóa học Đại cương
-GV00102,Đặng Anh Phúc,danganhphuc.gv00102@hcmut.edu.vn,0YSVaRLw2p23,0YSVaRLw2p23,lecturer,associate_professor,Khoa Kỹ thuật Hóa học,Hóa học Đại cương
-GV00103,Phạm Gia Nam,phamgianam.gv00103@hcmut.edu.vn,QVkBPasWRGxX,QVkBPasWRGxX,lecturer,associate_professor,Khoa Kỹ thuật Hóa học,Hóa học Đại cương
-GV00104,Phan Gia Bảo,phangiabao.gv00104@hcmut.edu.vn,UHliHcybv6Fj,UHliHcybv6Fj,lecturer,doctor,Khoa Kỹ thuật Hóa học,Hóa học Đại cương
-GV00105,Vũ Đức Long,vuduclong.gv00105@hcmut.edu.vn,PD5dkMpk8RHX,PD5dkMpk8RHX,lecturer,bachelor,Khoa Kỹ thuật Hóa học,Hóa học Đại cương
-GV00106,Vũ Thanh Thảo,vuthanhthao.gv00106@hcmut.edu.vn,xNSMQBfeBGba,xNSMQBfeBGba,lecturer,master,Khoa Kỹ thuật Hóa học,Hóa học Đại cương
-GV00107,Hoàng Quang Quang,hoangquangquang.gv00107@hcmut.edu.vn,M3CnJhurI2yw,M3CnJhurI2yw,lecturer,bachelor,Khoa Kỹ thuật Hóa học,Hóa học Đại cương
-GV00108,Lý Hoàng Anh,lyhoanganh.gv00108@hcmut.edu.vn,I6mlXdVQCVKl,I6mlXdVQCVKl,lecturer,bachelor,Khoa Kỹ thuật Hóa học,Hóa học Đại cương
-GV00109,Đỗ Hữu Khang,dohuukhang.gv00109@hcmut.edu.vn,XoJ7h1iFrirw,XoJ7h1iFrirw,lecturer,bachelor,Bộ môn Giáo dục Thể chất,Giáo dục Thể chất & Thể thao
-GV00110,Huỳnh Hoàng Yến,huynhhoangyen.gv00110@hcmut.edu.vn,qo1KMgmSchzx,qo1KMgmSchzx,lecturer,bachelor,Bộ môn Giáo dục Thể chất,Giáo dục Thể chất & Thể thao
-GV00111,Vũ Ngọc Hùng,vungochung.gv00111@hcmut.edu.vn,bavTCAtbUhrN,bavTCAtbUhrN,lecturer,doctor,Bộ môn Giáo dục Thể chất,Giáo dục Thể chất & Thể thao
-GV00112,Phạm Phương Nam,phamphuongnam.gv00112@hcmut.edu.vn,3iRzEnG2Xb6j,3iRzEnG2Xb6j,lecturer,master,Bộ môn Giáo dục Thể chất,Giáo dục Thể chất & Thể thao
-GV00113,Vũ Hữu Hùng,vuhuuhung.gv00113@hcmut.edu.vn,hIs94htVPdO2,hIs94htVPdO2,lecturer,master,Bộ môn Giáo dục Thể chất,Giáo dục Thể chất & Thể thao
-GV00114,Đặng Quang Quân,dangquangquan.gv00114@hcmut.edu.vn,VGdTiUK76ROq,VGdTiUK76ROq,lecturer,master,Bộ môn Giáo dục Thể chất,Giáo dục Thể chất & Thể thao
-GV00115,Huỳnh Quốc Châu,huynhquocchau.gv00115@hcmut.edu.vn,b0CoKPPlBARy,b0CoKPPlBARy,lecturer,bachelor,Bộ môn Giáo dục Thể chất,Giáo dục Thể chất & Thể thao
-GV00116,Phạm Khánh Linh,phamkhanhlinh.gv00116@hcmut.edu.vn,hMwoTNBYHx4f,hMwoTNBYHx4f,lecturer,associate_professor,Bộ môn Giáo dục Thể chất,Giáo dục Thể chất & Thể thao
+GV00001,Ngô Quốc An,ngoquocan.gv00001@hcmut.edu.vn,wR3VODZz03zv,wR3VODZz03zv,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
+GV00002,Dương Đức Khôi,duongduckhoi.gv00002@hcmut.edu.vn,2GNe4jbNHCBn,2GNe4jbNHCBn,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
+GV00003,Lý Hoàng Duy,lyhoangduy.gv00003@hcmut.edu.vn,lENwVnFnnZOM,lENwVnFnnZOM,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
+GV00004,Phạm Ngọc Nam,phamngocnam.gv00004@hcmut.edu.vn,ridSlYiOMXbZ,ridSlYiOMXbZ,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
+GV00005,Hồ Khánh Trinh,hokhanhtrinh.gv00005@hcmut.edu.vn,KHY8rYT4GUcl,KHY8rYT4GUcl,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
+GV00006,Bùi Hữu Trinh,buihuutrinh.gv00006@hcmut.edu.vn,keXGyNFU3ZXN,keXGyNFU3ZXN,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
+GV00007,Huỳnh Anh Nam,huynhanhnam.gv00007@hcmut.edu.vn,3PuQmHkYLRAQ,3PuQmHkYLRAQ,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
+GV00008,Lê Thanh Hải,lethanhhai.gv00008@hcmut.edu.vn,AfYvSmaYxhEk,AfYvSmaYxhEk,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
+GV00009,Bùi Anh Hiếu,buianhhieu.gv00009@hcmut.edu.vn,mqz4hejb16Wd,mqz4hejb16Wd,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
+GV00010,Dương Hữu Bảo,duonghuubao.gv00010@hcmut.edu.vn,ppntdadsMywk,ppntdadsMywk,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
+GV00011,Lê Tuấn Nhi,letuannhi.gv00011@hcmut.edu.vn,X887wtH7wGTn,X887wtH7wGTn,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
+GV00012,Huỳnh Ngọc Khôi,huynhngockhoi.gv00012@hcmut.edu.vn,iTdLJZPRnsVx,iTdLJZPRnsVx,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
+GV00013,Đỗ Đức Khang,doduckhang.gv00013@hcmut.edu.vn,oTuRMem69cq3,oTuRMem69cq3,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Trí tuệ nhân tạo
+GV00014,Võ Khánh An,vokhanhan.gv00014@hcmut.edu.vn,A8Fh2ckGgBU2,A8Fh2ckGgBU2,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
+GV00015,Phan Văn Trang,phanvantrang.gv00015@hcmut.edu.vn,o1GTzFoqhs1K,o1GTzFoqhs1K,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
+GV00016,Lý Quang Phát,lyquangphat.gv00016@hcmut.edu.vn,8OX76CCyJtb9,8OX76CCyJtb9,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
+GV00017,Phạm Đức Nhi,phamducnhi.gv00017@hcmut.edu.vn,ETn83wk4Zy0g,ETn83wk4Zy0g,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
+GV00018,Lê Đức An,leducan.gv00018@hcmut.edu.vn,WM9wRAnQOE3Y,WM9wRAnQOE3Y,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
+GV00019,Bùi Ngọc Anh,buingocanh.gv00019@hcmut.edu.vn,ltn3uRNRnDYw,ltn3uRNRnDYw,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
+GV00020,Huỳnh Quốc Linh,huynhquoclinh.gv00020@hcmut.edu.vn,nEVZQQK6LUED,nEVZQQK6LUED,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
+GV00021,Bùi Quang Hà,buiquangha.gv00021@hcmut.edu.vn,w8jyk9OrbAN0,w8jyk9OrbAN0,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
+GV00022,Bùi Minh Minh,buiminhminh.gv00022@hcmut.edu.vn,H0a0b0oQZ7WC,H0a0b0oQZ7WC,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
+GV00023,Trần Tuấn Lam,trantuanlam.gv00023@hcmut.edu.vn,f2nxU8AfTgcw,f2nxU8AfTgcw,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
+GV00024,Lê Anh Thảo,leanhthao.gv00024@hcmut.edu.vn,lzB6jmoOTrZb,lzB6jmoOTrZb,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
+GV00025,Ngô Quang Châu,ngoquangchau.gv00025@hcmut.edu.vn,EhjkdBggFBda,EhjkdBggFBda,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
+GV00026,Hoàng Khánh Long,hoangkhanhlong.gv00026@hcmut.edu.vn,5t7W6gJphfzw,5t7W6gJphfzw,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ Phần mềm
+GV00027,Nguyễn Quốc Tuấn,nguyenquoctuan.gv00027@hcmut.edu.vn,j6p3jtrgTFyF,j6p3jtrgTFyF,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
+GV00028,Phạm Hoàng Trinh,phamhoangtrinh.gv00028@hcmut.edu.vn,hRBfI2kiD01I,hRBfI2kiD01I,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
+GV00029,Lê Hoàng Lam,lehoanglam.gv00029@hcmut.edu.vn,gIlXBEbYOm5n,gIlXBEbYOm5n,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
+GV00030,Đỗ Minh Duy,dominhduy.gv00030@hcmut.edu.vn,Yl4ixZ5bKgDn,Yl4ixZ5bKgDn,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
+GV00031,Lê Khánh Yến,lekhanhyen.gv00031@hcmut.edu.vn,SSZo7J7BBGg3,SSZo7J7BBGg3,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
+GV00032,Đặng Gia Hiếu,danggiahieu.gv00032@hcmut.edu.vn,pDqncloNectS,pDqncloNectS,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
+GV00033,Đỗ Thanh Châu,dothanhchau.gv00033@hcmut.edu.vn,AX6cu9kp739i,AX6cu9kp739i,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
+GV00034,Dương Minh Tuấn,duongminhtuan.gv00034@hcmut.edu.vn,r7TUGawHTjOi,r7TUGawHTjOi,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
+GV00035,Lê Quang Hiếu,lequanghieu.gv00035@hcmut.edu.vn,7zXZL1s9ngnB,7zXZL1s9ngnB,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
+GV00036,Nguyễn Ngọc Hải,nguyenngochai.gv00036@hcmut.edu.vn,6qkkKftrLkbj,6qkkKftrLkbj,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
+GV00037,Lý Hoàng Trinh,lyhoangtrinh.gv00037@hcmut.edu.vn,96B8wNj4WRg7,96B8wNj4WRg7,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,An ninh hệ thống và mạng
+GV00038,Hồ Thị Hiếu,hothihieu.gv00038@hcmut.edu.vn,blSSRsNPYUsl,blSSRsNPYUsl,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
+GV00039,Nguyễn Quang Tuấn,nguyenquangtuan.gv00039@hcmut.edu.vn,jcdwf6EqbfMb,jcdwf6EqbfMb,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
+GV00040,Lý Đức Khôi,lyduckhoi.gv00040@hcmut.edu.vn,lI1ziQiINgG9,lI1ziQiINgG9,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
+GV00041,Nguyễn Anh Trang,nguyenanhtrang.gv00041@hcmut.edu.vn,eTXTO9teQV8W,eTXTO9teQV8W,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
+GV00042,Hoàng Thị Hiếu,hoangthihieu.gv00042@hcmut.edu.vn,OWMaw1FBVLr0,OWMaw1FBVLr0,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
+GV00043,Lê Ngọc Nhi,lengocnhi.gv00043@hcmut.edu.vn,uhuWio5D3dZz,uhuWio5D3dZz,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
+GV00044,Phan Quốc Trinh,phanquoctrinh.gv00044@hcmut.edu.vn,obtGhQLPGTXg,obtGhQLPGTXg,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
+GV00045,Nguyễn Ngọc Duy,nguyenngocduy.gv00045@hcmut.edu.vn,elfqarqD8DGp,elfqarqD8DGp,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
+GV00046,Bùi Quang Khôi,buiquangkhoi.gv00046@hcmut.edu.vn,MUAXpb179fxL,MUAXpb179fxL,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
+GV00047,Đỗ Hữu Phát,dohuuphat.gv00047@hcmut.edu.vn,v2NFA7PA8PEU,v2NFA7PA8PEU,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Kỹ thuật Máy tính
+GV00048,Hồ Minh Nam,hominhnam.gv00048@hcmut.edu.vn,W9g4fdzB8aSB,W9g4fdzB8aSB,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ dữ liệu và dữ liệu lớn
+GV00049,Đỗ Anh Minh,doanhminh.gv00049@hcmut.edu.vn,hjLqFZIJfAGf,hjLqFZIJfAGf,lecturer,bachelor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ dữ liệu và dữ liệu lớn
+GV00050,Đỗ Tuấn Linh,dotuanlinh.gv00050@hcmut.edu.vn,rMJgp8hPhTTK,rMJgp8hPhTTK,lecturer,master,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ dữ liệu và dữ liệu lớn
+GV00051,Vũ Ngọc Linh,vungoclinh.gv00051@hcmut.edu.vn,WtfujIh3eEpr,WtfujIh3eEpr,lecturer,professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ dữ liệu và dữ liệu lớn
+GV00052,Đỗ Văn Uyên,dovanuyen.gv00052@hcmut.edu.vn,NR1YJRrFtpQX,NR1YJRrFtpQX,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ dữ liệu và dữ liệu lớn
+GV00053,Trần Thị Bảo,tranthibao.gv00053@hcmut.edu.vn,guJNb8LCfUb7,guJNb8LCfUb7,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ dữ liệu và dữ liệu lớn
+GV00054,Dương Anh Thảo,duonganhthao.gv00054@hcmut.edu.vn,DyI6ZPnB1jir,DyI6ZPnB1jir,lecturer,doctor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ dữ liệu và dữ liệu lớn
+GV00055,Bùi Anh Trinh,buianhtrinh.gv00055@hcmut.edu.vn,CFv4hfUu75ux,CFv4hfUu75ux,lecturer,associate_professor,Khoa Khoa học và Kỹ thuật Máy tính,Công nghệ dữ liệu và dữ liệu lớn
+GV00056,Nguyễn Hoàng Hùng,nguyenhoanghung.gv00056@hcmut.edu.vn,n92vVyynpOCt,n92vVyynpOCt,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
+GV00057,Hồ Khánh Phúc,hokhanhphuc.gv00057@hcmut.edu.vn,qXcxur7ngWOs,qXcxur7ngWOs,lecturer,doctor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
+GV00058,Võ Hữu Mai,vohuumai.gv00058@hcmut.edu.vn,6Eri5Wp7UuTy,6Eri5Wp7UuTy,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
+GV00059,Ngô Hữu Duy,ngohuuduy.gv00059@hcmut.edu.vn,06jVunPSyZOS,06jVunPSyZOS,lecturer,master,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
+GV00060,Huỳnh Phương Long,huynhphuonglong.gv00060@hcmut.edu.vn,PAZmfU7HKnu8,PAZmfU7HKnu8,lecturer,bachelor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
+GV00061,Dương Quang Hà,duongquangha.gv00061@hcmut.edu.vn,K6OyOS3iBlIa,K6OyOS3iBlIa,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
+GV00062,Trần Minh Hiếu,tranminhhieu.gv00062@hcmut.edu.vn,3HXVr7eMHblg,3HXVr7eMHblg,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
+GV00063,Đặng Phương Hùng,dangphuonghung.gv00063@hcmut.edu.vn,8EYdxIoYUSNy,8EYdxIoYUSNy,lecturer,bachelor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
+GV00064,Phạm Gia Anh,phamgiaanh.gv00064@hcmut.edu.vn,ppkTTWW1hqhx,ppkTTWW1hqhx,lecturer,master,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
+GV00065,Hoàng Quang Hiếu,hoangquanghieu.gv00065@hcmut.edu.vn,GGytL71AVYyY,GGytL71AVYyY,lecturer,professor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
+GV00066,Võ Ngọc Lam,vongoclam.gv00066@hcmut.edu.vn,ythw0rf7HDiH,ythw0rf7HDiH,lecturer,bachelor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
+GV00067,Đặng Quốc Trang,dangquoctrang.gv00067@hcmut.edu.vn,7MQBcX4DFzej,7MQBcX4DFzej,lecturer,professor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
+GV00068,Lê Quốc Yến,lequocyen.gv00068@hcmut.edu.vn,XvoyorHHm17L,XvoyorHHm17L,lecturer,master,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
+GV00069,Bùi Ngọc Bảo,buingocbao.gv00069@hcmut.edu.vn,5Ir1BRqZu23h,5Ir1BRqZu23h,lecturer,professor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
+GV00070,Nguyễn Gia Thảo,nguyengiathao.gv00070@hcmut.edu.vn,YRxDBaR02gEG,YRxDBaR02gEG,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng,Toán Ứng dụng & Thống kê
+GV00071,Đặng Đức Châu,dangducchau.gv00071@hcmut.edu.vn,Kfm6g91C67mn,Kfm6g91C67mn,lecturer,doctor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
+GV00072,Vũ Quốc Châu,vuquocchau.gv00072@hcmut.edu.vn,eVkIf6DMvaAR,eVkIf6DMvaAR,lecturer,associate_professor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
+GV00073,Võ Khánh Việt,vokhanhviet.gv00073@hcmut.edu.vn,vcyN6iOaYTBA,vcyN6iOaYTBA,lecturer,associate_professor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
+GV00074,Nguyễn Tuấn Tuấn,nguyentuantuan.gv00074@hcmut.edu.vn,2RuG0V71Yz3P,2RuG0V71Yz3P,lecturer,bachelor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
+GV00075,Dương Anh An,duonganhan.gv00075@hcmut.edu.vn,LvjTOoZDuHJw,LvjTOoZDuHJw,lecturer,master,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
+GV00076,Đặng Quang Hải,dangquanghai.gv00076@hcmut.edu.vn,aYssVIY38RxT,aYssVIY38RxT,lecturer,doctor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
+GV00077,Đỗ Hữu Quân,dohuuquan.gv00077@hcmut.edu.vn,3x9eDdY19kMz,3x9eDdY19kMz,lecturer,bachelor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
+GV00078,Võ Gia Nhi,vogianhi.gv00078@hcmut.edu.vn,3uS2iqDzYICi,3uS2iqDzYICi,lecturer,doctor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
+GV00079,Võ Ngọc Quân,vongocquan.gv00079@hcmut.edu.vn,xOPzVdX2LCPz,xOPzVdX2LCPz,lecturer,bachelor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
+GV00080,Ngô Thị Yến,ngothiyen.gv00080@hcmut.edu.vn,L9mSViZaNW5N,L9mSViZaNW5N,lecturer,professor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
+GV00081,Đỗ Hữu Long,dohuulong.gv00081@hcmut.edu.vn,NJHpeROZCuXn,NJHpeROZCuXn,lecturer,bachelor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
+GV00082,Lý Khánh Hiếu,lykhanhhieu.gv00082@hcmut.edu.vn,krJO5TFMTLfx,krJO5TFMTLfx,lecturer,associate_professor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
+GV00083,Võ Phương Khôi,vophuongkhoi.gv00083@hcmut.edu.vn,hKzzyxEvvCcg,hKzzyxEvvCcg,lecturer,bachelor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
+GV00084,Đỗ Minh Trang,dominhtrang.gv00084@hcmut.edu.vn,qlgp23jt3sgQ,qlgp23jt3sgQ,lecturer,doctor,Trung tâm Ngoại ngữ,Tiếng Anh học thuật
+GV00085,Võ Quang Hà,voquangha.gv00085@hcmut.edu.vn,NbdYXvSlPRrx,NbdYXvSlPRrx,lecturer,bachelor,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị,Lý luận Chính trị & Pháp luật
+GV00086,Hoàng Gia Châu,hoanggiachau.gv00086@hcmut.edu.vn,zkfj4JFCwDzR,zkfj4JFCwDzR,lecturer,professor,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị,Lý luận Chính trị & Pháp luật
+GV00087,Lê Khánh Minh,lekhanhminh.gv00087@hcmut.edu.vn,zpro2aBNgm5G,zpro2aBNgm5G,lecturer,bachelor,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị,Lý luận Chính trị & Pháp luật
+GV00088,Nguyễn Thanh Hùng,nguyenthanhhung.gv00088@hcmut.edu.vn,LRX0x2gKjoTe,LRX0x2gKjoTe,lecturer,professor,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị,Lý luận Chính trị & Pháp luật
+GV00089,Lý Gia Lam,lygialam.gv00089@hcmut.edu.vn,YDTRQsfdzXbx,YDTRQsfdzXbx,lecturer,professor,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị,Lý luận Chính trị & Pháp luật
+GV00090,Võ Minh Châu,vominhchau.gv00090@hcmut.edu.vn,6e4bnJKgN5pK,6e4bnJKgN5pK,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị,Lý luận Chính trị & Pháp luật
+GV00091,Lý Đức Anh,lyducanh.gv00091@hcmut.edu.vn,94bUn6hQktdl,94bUn6hQktdl,lecturer,bachelor,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị,Lý luận Chính trị & Pháp luật
+GV00092,Lê Đức Nam,leducnam.gv00092@hcmut.edu.vn,Ez9xUacLDyVu,Ez9xUacLDyVu,lecturer,doctor,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị,Lý luận Chính trị & Pháp luật
+GV00093,Huỳnh Hữu Trinh,huynhhuutrinh.gv00093@hcmut.edu.vn,FoqIwT8fBwcQ,FoqIwT8fBwcQ,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng,Vật lý & Khoa học Tự nhiên
+GV00094,Hồ Anh Quang,hoanhquang.gv00094@hcmut.edu.vn,plnrTyEPWYbR,plnrTyEPWYbR,lecturer,master,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng,Vật lý & Khoa học Tự nhiên
+GV00095,Dương Tuấn Tú,duongtuantu.gv00095@hcmut.edu.vn,kiDZdCVK6nzn,kiDZdCVK6nzn,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng,Vật lý & Khoa học Tự nhiên
+GV00096,Đỗ Ngọc Duy,dongocduy.gv00096@hcmut.edu.vn,YGMZZQml9EPv,YGMZZQml9EPv,lecturer,professor,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng,Vật lý & Khoa học Tự nhiên
+GV00097,Dương Thị Phúc,duongthiphuc.gv00097@hcmut.edu.vn,DAgCfaxR2Z2B,DAgCfaxR2Z2B,lecturer,associate_professor,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng,Vật lý & Khoa học Tự nhiên
+GV00098,Lý Anh Quân,lyanhquan.gv00098@hcmut.edu.vn,K9A2uLm7UVjs,K9A2uLm7UVjs,lecturer,bachelor,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng,Vật lý & Khoa học Tự nhiên
+GV00099,Phạm Khánh Nam,phamkhanhnam.gv00099@hcmut.edu.vn,StefajVm9qFN,StefajVm9qFN,lecturer,doctor,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng,Vật lý & Khoa học Tự nhiên
+GV00100,Ngô Thanh Lam,ngothanhlam.gv00100@hcmut.edu.vn,hfujMA6uqi1m,hfujMA6uqi1m,lecturer,doctor,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng,Vật lý & Khoa học Tự nhiên
+GV00101,Nguyễn Quang Phúc,nguyenquangphuc.gv00101@hcmut.edu.vn,hMbc1sdeB53m,hMbc1sdeB53m,lecturer,master,Khoa Kỹ thuật Hóa học,Hóa học Đại cương
+GV00102,Đặng Anh Phúc,danganhphuc.gv00102@hcmut.edu.vn,NhkjXjv51Bsy,NhkjXjv51Bsy,lecturer,associate_professor,Khoa Kỹ thuật Hóa học,Hóa học Đại cương
+GV00103,Phạm Gia Nam,phamgianam.gv00103@hcmut.edu.vn,5r9HPrLdPgVd,5r9HPrLdPgVd,lecturer,associate_professor,Khoa Kỹ thuật Hóa học,Hóa học Đại cương
+GV00104,Phan Gia Bảo,phangiabao.gv00104@hcmut.edu.vn,aPYphyGZsNvc,aPYphyGZsNvc,lecturer,doctor,Khoa Kỹ thuật Hóa học,Hóa học Đại cương
+GV00105,Vũ Đức Long,vuduclong.gv00105@hcmut.edu.vn,Q5LbPdpuTp7B,Q5LbPdpuTp7B,lecturer,bachelor,Khoa Kỹ thuật Hóa học,Hóa học Đại cương
+GV00106,Vũ Thanh Thảo,vuthanhthao.gv00106@hcmut.edu.vn,vGY1R217HZQc,vGY1R217HZQc,lecturer,master,Khoa Kỹ thuật Hóa học,Hóa học Đại cương
+GV00107,Hoàng Quang Quang,hoangquangquang.gv00107@hcmut.edu.vn,evK1xaii4sxA,evK1xaii4sxA,lecturer,bachelor,Khoa Kỹ thuật Hóa học,Hóa học Đại cương
+GV00108,Lý Hoàng Anh,lyhoanganh.gv00108@hcmut.edu.vn,S9PovTLRl7hV,S9PovTLRl7hV,lecturer,bachelor,Khoa Kỹ thuật Hóa học,Hóa học Đại cương
+GV00109,Đỗ Hữu Khang,dohuukhang.gv00109@hcmut.edu.vn,VvjS3jFEEvKn,VvjS3jFEEvKn,lecturer,bachelor,Bộ môn Giáo dục Thể chất,Giáo dục Thể chất & Thể thao
+GV00110,Huỳnh Hoàng Yến,huynhhoangyen.gv00110@hcmut.edu.vn,Snn3wUcP4z3c,Snn3wUcP4z3c,lecturer,bachelor,Bộ môn Giáo dục Thể chất,Giáo dục Thể chất & Thể thao
+GV00111,Vũ Ngọc Hùng,vungochung.gv00111@hcmut.edu.vn,23JlV9mThmOP,23JlV9mThmOP,lecturer,doctor,Bộ môn Giáo dục Thể chất,Giáo dục Thể chất & Thể thao
+GV00112,Phạm Phương Nam,phamphuongnam.gv00112@hcmut.edu.vn,LlWmWmiTnNUn,LlWmWmiTnNUn,lecturer,master,Bộ môn Giáo dục Thể chất,Giáo dục Thể chất & Thể thao
+GV00113,Vũ Hữu Hùng,vuhuuhung.gv00113@hcmut.edu.vn,YCJyRUnT1gpM,YCJyRUnT1gpM,lecturer,master,Bộ môn Giáo dục Thể chất,Giáo dục Thể chất & Thể thao
+GV00114,Đặng Quang Quân,dangquangquan.gv00114@hcmut.edu.vn,J09N37vA0GTY,J09N37vA0GTY,lecturer,master,Bộ môn Giáo dục Thể chất,Giáo dục Thể chất & Thể thao
+GV00115,Huỳnh Quốc Châu,huynhquocchau.gv00115@hcmut.edu.vn,57cTWB8wtBWO,57cTWB8wtBWO,lecturer,bachelor,Bộ môn Giáo dục Thể chất,Giáo dục Thể chất & Thể thao
+GV00116,Phạm Khánh Linh,phamkhanhlinh.gv00116@hcmut.edu.vn,qzFz9tiplkzH,qzFz9tiplkzH,lecturer,associate_professor,Bộ môn Giáo dục Thể chất,Giáo dục Thể chất & Thể thao

@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS users (
     title VARCHAR(100)
 );
 
--- 9. Students (Hồ sơ học vụ sinh viên - Đã loại bỏ các tham số mô phỏng tâm lý)
+-- 9. Students (Hồ sơ học vụ sinh viên - Đã tinh gọn chuẩn học vụ)
 CREATE TABLE IF NOT EXISTS students (
     student_id VARCHAR(50) PRIMARY KEY REFERENCES users(user_code) ON DELETE CASCADE,
     user_id UUID REFERENCES users(id) ON DELETE CASCADE,
@@ -158,12 +158,8 @@ CREATE TABLE IF NOT EXISTS students (
     major VARCHAR(100) NOT NULL,
     program VARCHAR(100),
     specialization VARCHAR(100),
-    family_income VARCHAR(50),
-    financial_pressure VARCHAR(50),
-    living_condition VARCHAR(50),
     english_pass BOOLEAN DEFAULT FALSE,
-    english_eligibility_by_semester TEXT,
-    ctxh_days_by_semester TEXT
+    ctxh_days INT DEFAULT 0
 );
 
 -- 10. Lecturers (Hồ sơ giảng viên & bộ môn)
@@ -350,7 +346,8 @@ def load_users_data():
 
 
 def load_students_data(user_uuid_map):
-    """Load clean student profiles (loại bỏ toàn bộ các biến mô phỏng tâm lý/kịch bản rớt học)."""
+    """Load clean student profiles (chuẩn học vụ tinh gọn: giữ english_pass và ctxh_days, bỏ các trường khảo sát)."""
+    import json
     profile_file = SYNTHETIC_DIR / "generated" / "users" / "student_profiles.csv"
     df = pd.read_csv(profile_file, dtype={"student_id": str})
     df.drop_duplicates(subset=["student_id"], inplace=True)
@@ -360,11 +357,33 @@ def load_students_data(user_uuid_map):
         df["major"] = "Khoa hoc May tinh"
     df["user_id"] = df["student_id"].map(user_uuid_map)
 
-    # Chỉ giữ các cột nghiệp vụ thực tế
+    # Trích xuất số ngày CTXH tích lũy từ ctxh_days_by_semester nếu chưa có cột ctxh_days
+    if "ctxh_days" not in df.columns:
+        def extract_ctxh_days(val):
+            if pd.isna(val):
+                return 0
+            try:
+                arr = json.loads(val)
+                if isinstance(arr, list) and len(arr) > 0:
+                    last = arr[-1]
+                    return int(last.get("cumulative_days", last.get("days", 0)))
+                elif isinstance(arr, (int, float)):
+                    return int(arr)
+            except Exception:
+                pass
+            return 0
+
+        df["ctxh_days"] = df["ctxh_days_by_semester"].apply(extract_ctxh_days) if "ctxh_days_by_semester" in df.columns else 0
+
+    if "english_pass" not in df.columns:
+        df["english_pass"] = False
+    else:
+        df["english_pass"] = df["english_pass"].astype(bool)
+
+    # Chỉ giữ các cột học vụ thực tế tinh gọn
     cols = [
         "student_id", "user_id", "cohort", "major", "program", "specialization",
-        "family_income", "financial_pressure", "living_condition",
-        "english_pass", "english_eligibility_by_semester", "ctxh_days_by_semester"
+        "english_pass", "ctxh_days"
     ]
     return df[[c for c in cols if c in df.columns]]
 
@@ -587,7 +606,7 @@ def run_push_to_neon():
         ]
         if (
             "--reset" in sys.argv
-            or (students_cols and "program" not in students_cols)
+            or (students_cols and ("program" not in students_cols or "ctxh_days" not in students_cols or "family_income" in students_cols))
             or (semesters_cols and "is_active" not in semesters_cols)
         ):
             print("[*] Đang làm sạch và tái cấu trúc toàn bộ 13 bảng (DROP & RECREATE CASCADE)...")
