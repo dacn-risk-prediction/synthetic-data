@@ -125,24 +125,33 @@ def _profile_graduation_state(
     student_history["final_score"] = pd.to_numeric(
         student_history["final_score"], errors="coerce"
     )
-    completed = student_history[student_history["status"].astype(str).str.casefold() == "pass"]
+    completed = student_history[
+        student_history["status"].astype(str).str.casefold().isin(["pass", "exempted"])
+        | student_history["passed"].eq(True)
+    ]
     passed_courses = set(completed["course_code"])
     passed_credits_by_course = {}
     for code in passed_courses:
-        passed_credits_by_course[code] = float(credits[code])
+        if code in credits:
+            passed_credits_by_course[code] = float(credits[code])
     credit_total = sum(passed_credits_by_course.values())
-    if credit_total:
+
+    gpa_courses = [
+        code for code in passed_courses
+        if not completed.loc[completed["course_code"] == code, "gpa_4"].dropna().empty
+        and float(completed.loc[completed["course_code"] == code, "final_score"].dropna().iloc[-1] or 0) != 12.0
+        and code in credits
+    ]
+    gpa_credit_total = sum(float(credits[c]) for c in gpa_courses)
+    if gpa_credit_total > 0:
         gpa4 = sum(
             float(
                 completed.loc[completed["course_code"] == code, "gpa_4"]
                 .dropna()
                 .iloc[-1]
             ) * credits[code]
-            for code in passed_courses
-            if not completed.loc[
-                completed["course_code"] == code, "gpa_4"
-            ].dropna().empty
-        ) / credit_total
+            for code in gpa_courses
+        ) / gpa_credit_total
     else:
         gpa4 = pd.NA
 
@@ -176,7 +185,10 @@ def _profile_graduation_state(
             break
         completed_through_term = student_history[
             student_history["semester_index"].le(semester_index(semester))
-            & student_history["status"].astype(str).str.casefold().eq("pass")
+            & (
+                student_history["status"].astype(str).str.casefold().isin(["pass", "exempted"])
+                | student_history["passed"].eq(True)
+            )
         ]
         term_ctxh_days = _ctxh_days_for_semester(progress, semester)
         term_passed = set(completed_through_term["course_code"])
@@ -187,9 +199,14 @@ def _profile_graduation_state(
             profile, GENERATOR_CONFIG, semester
         )
         term_effective_required = required_courses - term_exempted_english
+        term_passed_credits = sum(float(credits.get(c, 0.0)) for c in term_passed)
+        min_grad_credits = float(graduation_config.get("minimum_credits_for_graduation", 128.0))
         term_academic_ok = (
-            term_effective_required.issubset(term_passed)
-            or {"CO4337", "SP1007"}.issubset(term_passed)
+            (
+                term_effective_required.issubset(term_passed)
+                or {"CO4337", "SP1007"}.issubset(term_passed)
+            )
+            and term_passed_credits >= min_grad_credits
         )
         if (
             term_academic_ok
@@ -320,7 +337,8 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
             ]
             complete = semester_complete.get(semester, False)
             passed = term[
-                term["status"].astype(str).str.casefold() == "pass"
+                term["status"].astype(str).str.casefold().isin(["pass", "exempted"])
+                | term["passed"].eq(True)
             ]
             passed_credits = sum(
                 float(credits[code])
@@ -332,7 +350,10 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
             academic_suspension = semester in suspension_semesters
             completed_through_term = student_history[
                 student_history["semester_index"].le(semester_index(semester))
-                & student_history["status"].astype(str).str.casefold().eq("pass")
+                & (
+                    student_history["status"].astype(str).str.casefold().isin(["pass", "exempted"])
+                    | student_history["passed"].eq(True)
+                )
             ]
             term_english_pass = is_english_passed(
                 profile,
@@ -342,7 +363,10 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
             )
             completed_before_term = student_history[
                 student_history["semester_index"].lt(semester_index(semester))
-                & student_history["status"].astype(str).str.casefold().eq("pass")
+                & (
+                    student_history["status"].astype(str).str.casefold().isin(["pass", "exempted"])
+                    | student_history["passed"].eq(True)
+                )
             ]
             before_english_pass = is_english_passed(
                 profile,

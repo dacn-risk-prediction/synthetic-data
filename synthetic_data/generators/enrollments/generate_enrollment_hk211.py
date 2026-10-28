@@ -121,10 +121,8 @@ def generate_enrollment_hk211() -> Path:
             cid = str(r["course_id"])
             score = r["final_score"]
             gpa4 = r["gpa_4"]
-            if pd.isna(score) or float(score) == 12.0 or pd.isna(gpa4):
-                continue
-            if r["passed"] == True:
-                k20_history_passed[sid][cid] = float(gpa4)
+            if r["passed"] == True or str(r.get("status", "")).lower() in ["pass", "exempted"]:
+                k20_history_passed[sid][cid] = float(gpa4) if (pd.notna(gpa4) and not (pd.notna(score) and float(score) == 12.0)) else 0.0
 
     # Sinh viên K20 đủ điều kiện học LA1007 (đạt LA1005 ở HK202)
     k20_la1005_passed = set(

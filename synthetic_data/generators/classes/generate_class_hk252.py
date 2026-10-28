@@ -82,7 +82,13 @@ if str(ANALYSIS_DIR) not in sys.path:
 if str(RULES_DIR) not in sys.path:
     sys.path.insert(0, str(RULES_DIR))
 
-from curriculum_rules import select_student_group_c_course, get_student_specialization_map
+from curriculum_rules import (
+    create_elective_classes_for_program,
+    get_student_specialization_map,
+    get_term8_student_electives,
+    select_student_group_a_course,
+    select_student_group_c_course,
+)
 
 from academic_rules import balanced_class_sizes
 from analysis_helpers import (
@@ -692,8 +698,10 @@ def generate_class_hk252() -> Path:
                     prev_passed = passed_map.get(uid, set())
                     c1 = select_student_group_c_course(uid, "K23", spec, seed_salt="k23_group_c_1_hk252", exclude_courses=prev_passed)
                     c2 = select_student_group_c_course(uid, "K23", spec, seed_salt="k23_group_c_2_hk252", exclude_courses=prev_passed | {c1})
+                    c_ga = select_student_group_a_course(spec)
                     c_demand_map[c1] += 1
                     c_demand_map[c2] += 1
+                    c_demand_map[c_ga] += 1
 
                 print(f"   + [K23 Tự chọn ngành - Group C - Gộp CLC+TT ({len(c_demand_map)} môn có SV đăng ký)] ({len(regular_k23_uids)} SV):")
                 for c_code, c_demand in c_demand_map.items():
@@ -777,8 +785,10 @@ def generate_class_hk252() -> Path:
                     prev_passed = passed_map.get(uid, set())
                     c1 = select_student_group_c_course(uid, "K23", spec, seed_salt="k23_group_c_1_hk252", exclude_courses=prev_passed)
                     c2 = select_student_group_c_course(uid, "K23", spec, seed_salt="k23_group_c_2_hk252", exclude_courses=prev_passed | {c1})
+                    c_ga = select_student_group_a_course(spec)
                     c_demand_map[c1] += 1
                     c_demand_map[c2] += 1
+                    c_demand_map[c_ga] += 1
 
                 print(f"   + [K23 Tự chọn ngành - Group C ({len(c_demand_map)} môn có SV đăng ký)] ({len(regular_k23_uids)} SV):")
                 for c_code, c_demand in c_demand_map.items():
@@ -898,6 +908,39 @@ def generate_class_hk252() -> Path:
                 "department": dept,
             })
         print(f"   + [K22 & Trả nợ] SP1007 ({c_name}): demand={total_sp1007} ({p_total} K22 + {len(older_prog_retakers_sp1007)} trả nợ) -> {len(sizes_sp1007)} lớp ({prefix}{existing_count+1:02d}..{prefix}{existing_count+len(sizes_sp1007):02d}) [Giảng đường lớn 120]")
+
+        # Tự chọn tự do (2 môn) cho K22
+        if prog == "advanced":
+            print(f"   + [K22 Tự chọn tự do]: Ghép học chung lớp với hệ Chất lượng cao (CC)")
+        else:
+            if prog == "high-quality":
+                k22_adv_uids = set(k22_active_students[k22_active_students["program"] == "advanced"]["user_id"])
+                combined_k22_uids = set(p_k22["user_id"]) | k22_adv_uids
+            else:
+                combined_k22_uids = set(p_k22["user_id"])
+
+            if combined_k22_uids:
+                c_demand_map: Dict[str, int] = defaultdict(int)
+                for uid in combined_k22_uids:
+                    prev_passed = passed_map.get(uid, set())
+                    elecs = get_term8_student_electives(uid, "K22", prev_passed)
+                    for ec in elecs:
+                        c_demand_map[ec] += 1
+
+                suffix_note = " (CLC+TT)" if prog == "high-quality" else ""
+                print(f"   + [K22 Tự chọn tự do ({len(c_demand_map)} môn)]{suffix_note} ({len(combined_k22_uids)} SV):")
+                create_elective_classes_for_program(
+                    prog=prog,
+                    prefix=prefix,
+                    course_demand_map=c_demand_map,
+                    classes=classes,
+                    all_lecturers=all_lecturers,
+                    assigned_count=assigned_count,
+                    semester=SEMESTER,
+                    get_all_lecturers_with_fallback=get_all_lecturers_with_fallback,
+                    course_spec_preference=course_spec_preference,
+                    max_cap=REGULAR_CLASS_MAX_CAPACITY,
+                )
 
     # -------------------------------------------------------------------------
     # E. TẠO LỚP HỌC LẠI CHO CÁC MÔN HK1/LẺ (NHU CẦU >= 15 SV) -> LỚP L_HL

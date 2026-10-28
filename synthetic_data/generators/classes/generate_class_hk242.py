@@ -79,7 +79,13 @@ if str(ANALYSIS_DIR) not in sys.path:
 if str(RULES_DIR) not in sys.path:
     sys.path.insert(0, str(RULES_DIR))
 
-from curriculum_rules import select_student_group_c_course, get_student_specialization_map
+from curriculum_rules import (
+    create_elective_classes_for_program,
+    get_student_specialization_map,
+    get_term8_student_electives,
+    select_student_group_a_course,
+    select_student_group_c_course,
+)
 
 from academic_rules import balanced_class_sizes
 from analysis_helpers import (
@@ -681,8 +687,10 @@ def generate_class_hk242() -> Path:
                     prev_passed = passed_map.get(uid, set())
                     c1 = select_student_group_c_course(uid, "K22", spec, seed_salt="k22_group_c_1_hk242", exclude_courses=prev_passed)
                     c2 = select_student_group_c_course(uid, "K22", spec, seed_salt="k22_group_c_2_hk242", exclude_courses=prev_passed | {c1})
+                    c_ga = select_student_group_a_course(spec)
                     c_demand_map[c1] += 1
                     c_demand_map[c2] += 1
+                    c_demand_map[c_ga] += 1
 
                 suffix_note = " (CLC+TT)" if prog == "high-quality" else ""
                 print(f"   + [K22 Tự chọn ngành - Group C ({len(c_demand_map)} môn có SV đăng ký)]{suffix_note} ({len(regular_k22_uids)} SV):")
@@ -783,6 +791,39 @@ def generate_class_hk242() -> Path:
             cap_note = " [Giảng đường lớn 120]" if is_politics else ""
             retake_str = f" (+{retakers_cnt} SV K20 trả nợ)" if retakers_cnt > 0 else ""
             print(f"   + [K21 Chuẩn 4 năm] {course_code} ({c_name}): demand={demand}{retake_str} -> {len(sizes)} lớp ({prefix}{existing_count+1:02d}..{prefix}{existing_count+len(sizes):02d}){cap_note}")
+
+        # Tự chọn tự do (2 môn) cho K21
+        if prog == "advanced":
+            print(f"   + [K21 Tự chọn tự do]: Ghép học chung lớp với hệ Chất lượng cao (CC)")
+        else:
+            if prog == "high-quality":
+                k21_adv_uids = set(k21_active_students[k21_active_students["program"] == "advanced"]["user_id"])
+                combined_k21_uids = set(p_k21["user_id"]) | k21_adv_uids
+            else:
+                combined_k21_uids = set(p_k21["user_id"])
+
+            if combined_k21_uids:
+                c_demand_map: Dict[str, int] = defaultdict(int)
+                for uid in combined_k21_uids:
+                    prev_passed = passed_map.get(uid, set())
+                    elecs = get_term8_student_electives(uid, "K21", prev_passed)
+                    for ec in elecs:
+                        c_demand_map[ec] += 1
+
+                suffix_note = " (CLC+TT)" if prog == "high-quality" else ""
+                print(f"   + [K21 Tự chọn tự do ({len(c_demand_map)} môn)]{suffix_note} ({len(combined_k21_uids)} SV):")
+                create_elective_classes_for_program(
+                    prog=prog,
+                    prefix=prefix,
+                    course_demand_map=c_demand_map,
+                    classes=classes,
+                    all_lecturers=all_lecturers,
+                    assigned_count=assigned_count,
+                    semester=SEMESTER,
+                    get_all_lecturers_with_fallback=get_all_lecturers_with_fallback,
+                    course_spec_preference=course_spec_preference,
+                    max_cap=REGULAR_CLASS_MAX_CAPACITY,
+                )
 
     # -------------------------------------------------------------------------
     # E. PHÂN BỔ LỚP HỌC LẠI CHO CÁC MÔN LẺ/HK1 (NHU CẦU >= 15 SV)

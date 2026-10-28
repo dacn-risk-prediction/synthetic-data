@@ -53,7 +53,12 @@ OUTPUT_DIR = ROOT_DIR / "generated" / "enrollments"
 if str(RULES_DIR) not in sys.path:
     sys.path.insert(0, str(RULES_DIR))
 
-from curriculum_rules import select_student_group_c_course, get_student_specialization_map
+from curriculum_rules import (
+    enroll_students_in_electives,
+    get_student_specialization_map,
+    get_term7_student_electives,
+    select_student_group_c_course,
+)
 
 from academic_rules import (
     GENERATOR_CONFIG,
@@ -151,10 +156,8 @@ def generate_enrollment_hk241() -> Path:
             all_attempted[sid].add(cid)
             score = r["final_score"]
             gpa4 = r["gpa_4"]
-            if pd.isna(score) or float(score) == 12.0 or pd.isna(gpa4):
-                continue
-            if r["passed"] == True:
-                history_passed[sid][cid] = float(gpa4)
+            if r["passed"] == True or str(r.get("status", "")).lower() in ["pass", "exempted"]:
+                history_passed[sid][cid] = float(gpa4) if (pd.notna(gpa4) and not (pd.notna(score) and float(score) == 12.0)) else 0.0
 
     # Đọc profiles
     profiles_file = USERS_DIR / "student_profiles.csv"
@@ -691,6 +694,42 @@ def generate_enrollment_hk241() -> Path:
                     record_grade(uid, course_code, class_id, is_retake=(uid in set(k20_prog_retakers_sp1007)), seed_suffix="_grad")
 
             print(f"   -> [SP1007] {len(valid_sp1007)} SV hoàn tất đăng ký ({len(class_ids)} lớp)")
+
+        # Tự chọn Group C, Free & Group B cho K21
+        if prog == "advanced":
+            print(f"   -> [K21 Tự chọn ngành - Group C, Free & B]: Đã ghép học chung lớp với hệ Chất lượng cao (CC)")
+        else:
+            if prog == "high-quality":
+                k21_adv_uids = set(k21_students[k21_students["program"] == "advanced"]["user_id"])
+                combined_student_ids = student_ids + [uid for uid in k21_adv_uids if uid not in set(student_ids)]
+            else:
+                combined_student_ids = student_ids
+
+            regular_k21_uids = [uid for uid in combined_student_ids if uid not in set(early_candidates)]
+            if regular_k21_uids:
+                spec_map = get_student_specialization_map()
+                student_c_choices: Dict[str, List[str]] = defaultdict(list)
+                for uid in regular_k21_uids:
+                    spec = spec_map.get(uid, "Khoa học Máy tính")
+                    prev_passed = set(history_passed[uid].keys())
+                    elecs = get_term7_student_electives(uid, "K21", spec, prev_passed)
+                    for ec in elecs:
+                        student_c_choices[ec].append(uid)
+
+                enrollment_id = enroll_students_in_electives(
+                    student_choices=student_c_choices,
+                    prog=prog,
+                    classes_by_prog_course=classes_by_prog_course,
+                    course_assessments=course_assessments,
+                    student_profiles=student_profiles,
+                    semester=SEMESTER,
+                    config=GENERATOR_CONFIG,
+                    enrollment_records=enrollment_records,
+                    start_enrollment_id=enrollment_id,
+                    max_cap=40,
+                )
+                suffix_note = " (CLC+TT)" if prog == "high-quality" else ""
+                print(f"   -> [K21 Tự chọn ngành - Group C, Free & B]{suffix_note}: Đã phân bổ {len(regular_k21_uids)} SV vào {len(student_c_choices)} môn học.")
 
     # -------------------------------------------------------------------------
     # E. MÔ PHỎNG ĐĂNG KÝ VÀ CHẤM ĐIỂM CHO LỚP HỌC LẠI MÔN CHẴN/HK2 (L_HL)

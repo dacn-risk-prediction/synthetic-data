@@ -165,6 +165,222 @@ def get_specialization_group_c_courses(specialization: str, cohort: Optional[str
     return fallback_map.get(specialization, ["CO3011", "CO3021", "CO3029", "CO3043", "CO3045"])
 
 
+GROUP_A_SPEC_MAP = {
+    "Trí tuệ nhân tạo": "CO3101",
+    "Trí tuệ nhân tạo ứng dụng": "CO3101",
+    "Xử lý ảnh và Thị giác máy tính": "CO3101",
+    "Công nghệ Phần mềm": "CO3103",
+    "Hệ thống thông tin": "CO3105",
+    "An ninh hệ thống và mạng": "CO3105",
+    "Mật mã và An ninh mạng": "CO3105",
+    "Công nghệ dữ liệu và dữ liệu lớn": "CO3127",
+    "Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh": "CO3127",
+    "Khoa học Máy tính": "CO3103",
+}
+
+GROUP_B_SPEC_MAP = {
+    "Trí tuệ nhân tạo": "CO3107",
+    "Trí tuệ nhân tạo ứng dụng": "CO3107",
+    "Xử lý ảnh và Thị giác máy tính": "CO3107",
+    "Khoa học Máy tính": "CO3107",
+    "Công nghệ Phần mềm": "CO3109",
+    "Hệ thống thông tin": "CO3111",
+    "An ninh hệ thống và mạng": "CO3111",
+    "Mật mã và An ninh mạng": "CO3111",
+    "Công nghệ dữ liệu và dữ liệu lớn": "CO3111",
+    "Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh": "CO3111",
+}
+
+FREE_ELECTIVE_LIST = ["CO3049", "CO3027", "CO3071", "CO3139", "CO3043", "CO3045", "CO3033"]
+
+
+def select_student_group_a_course(specialization: str) -> str:
+    """Select a Group A (1 credit project) course matching student specialization."""
+    return GROUP_A_SPEC_MAP.get(specialization, "CO3103")
+
+
+def select_student_group_b_course(specialization: str) -> str:
+    """Select a Group B (1 credit project) course matching student specialization."""
+    return GROUP_B_SPEC_MAP.get(specialization, "CO3109")
+
+
+def select_student_free_elective_course(
+    student_id: str,
+    seed_salt: str = "free_elec",
+    exclude_courses: Optional[Set[str]] = None,
+) -> str:
+    """Select a Free Elective course deterministically for a student."""
+    exclude = exclude_courses or set()
+    available = [c for c in FREE_ELECTIVE_LIST if c not in exclude]
+    if not available:
+        available = FREE_ELECTIVE_LIST
+    seed_val = int(hashlib.sha256(f"{student_id}:{seed_salt}".encode("utf-8")).hexdigest()[:8], 16)
+    return available[seed_val % len(available)]
+
+
+def get_term6_student_electives(uid: str, cohort: str, spec: str, prev_passed: Set[str]) -> List[str]:
+    """Return the 3 elective courses for Term 6: 2 Group C courses (6 TC) + 1 Group A project (1 TC)."""
+    c1 = select_student_group_c_course(uid, cohort, spec, seed_salt=f"{cohort}_group_c_1_term6", exclude_courses=prev_passed)
+    c2 = select_student_group_c_course(uid, cohort, spec, seed_salt=f"{cohort}_group_c_2_term6", exclude_courses=prev_passed | {c1})
+    c_ga = select_student_group_a_course(spec)
+    return [c1, c2, c_ga]
+
+
+def get_term7_student_electives(uid: str, cohort: str, spec: str, prev_passed: Set[str]) -> List[str]:
+    """Return the 4 elective courses for Term 7: 2 Group C courses (6 TC) + 1 Free elective (3 TC) + 1 Group B project (1 TC)."""
+    c1 = select_student_group_c_course(uid, cohort, spec, seed_salt=f"{cohort}_group_c_3_term7", exclude_courses=prev_passed)
+    c2 = select_student_group_c_course(uid, cohort, spec, seed_salt=f"{cohort}_group_c_4_term7", exclude_courses=prev_passed | {c1})
+    c_free = select_student_free_elective_course(uid, seed_salt=f"{cohort}_free_1_term7", exclude_courses=prev_passed | {c1, c2})
+    c_gb = select_student_group_b_course(spec)
+    return [c1, c2, c_free, c_gb]
+
+
+def get_term8_student_electives(uid: str, cohort: str, prev_passed: Set[str]) -> List[str]:
+    """Return the 2 Free elective courses for Term 8 (6 TC)."""
+    c_free1 = select_student_free_elective_course(uid, seed_salt=f"{cohort}_free_2_term8", exclude_courses=prev_passed)
+    c_free2 = select_student_free_elective_course(uid, seed_salt=f"{cohort}_free_3_term8", exclude_courses=prev_passed | {c_free1})
+    return [c_free1, c_free2]
+
+
+import numpy as np
+
+
+def create_elective_classes_for_program(
+    prog: str,
+    prefix: str,
+    course_demand_map: Dict[str, int],
+    classes: List[Dict[str, Any]],
+    all_lecturers: List[Dict[str, Any]],
+    assigned_count: Dict[str, int],
+    semester: str,
+    get_all_lecturers_with_fallback,
+    course_spec_preference: Optional[Dict[str, List[str]]] = None,
+    max_cap: int = 40,
+) -> None:
+    """Create class sections for elective courses according to student demand."""
+    from academic_rules import balanced_class_sizes
+    pref_map = course_spec_preference or {}
+    for c_code, c_demand in course_demand_map.items():
+        if c_demand <= 0:
+            continue
+        sizes = balanced_class_sizes(c_demand, max_size=max_cap)
+        eligible_gvs, dept, c_name = get_all_lecturers_with_fallback(c_code, all_lecturers)
+        pref_specs = pref_map.get(c_code, [])
+
+        existing_count = sum(1 for cl in classes if cl["course_code"] == c_code and cl["program"] == prog)
+        for idx, size in enumerate(sizes, start=existing_count + 1):
+            group_code = f"{prefix}{idx:02d}"
+            best_gv = min(
+                eligible_gvs,
+                key=lambda g: (
+                    assigned_count[g["user_id"]],
+                    0 if g.get("specialization") in pref_specs else 1,
+                    g["user_id"],
+                ),
+            )
+            assigned_count[best_gv["user_id"]] += 1
+
+            classes.append({
+                "class_id": f"{semester}_{c_code}_{group_code}",
+                "course_code": c_code,
+                "course_name": c_name,
+                "semester": semester,
+                "class_group": group_code,
+                "program": prog,
+                "max_capacity": max_cap,
+                "lecturer_id": best_gv["user_id"],
+                "lecturer_name": best_gv["name"],
+                "department": dept,
+            })
+
+
+def enroll_students_in_electives(
+    student_choices: Dict[str, List[str]],
+    prog: str,
+    classes_by_prog_course: Dict[Tuple[str, str], List[str]],
+    course_assessments: Dict[str, List[Tuple[str, float]]],
+    student_profiles: Dict[str, Dict[str, Any]],
+    semester: str,
+    config: Dict[str, Any],
+    enrollment_records: List[Dict[str, Any]],
+    start_enrollment_id: int,
+    max_cap: int = 40,
+    is_active: bool = False,
+) -> int:
+    """Enroll students into elective classes and record assessment results."""
+    from academic_rules import balanced_class_sizes, score_course_components
+    enrollment_id = start_enrollment_id
+    for c_code, uids in student_choices.items():
+        if not uids:
+            continue
+        all_c_classes = classes_by_prog_course.get((prog, c_code), [])
+        if not all_c_classes:
+            continue
+        sizes = balanced_class_sizes(len(uids), max_size=max_cap)
+        offset = 0
+        comps = course_assessments.get(c_code, [("cuoi_ky", 1.0)])
+        c_classes = all_c_classes[-len(sizes):]
+        for class_id, size in zip(c_classes, sizes):
+            assigned_chunk = uids[offset : offset + size]
+            offset += size
+            for uid in assigned_chunk:
+                if is_active:
+                    rec = {
+                        "enrollment_id": enrollment_id,
+                        "student_id": uid,
+                        "class_id": class_id,
+                        "course_id": c_code,
+                        "semester": semester,
+                        "retaken": False,
+                        "quiz": np.nan,
+                        "lab": np.nan,
+                        "btl": np.nan,
+                        "giua_ky": np.nan,
+                        "cuoi_ky": np.nan,
+                        "final_score": np.nan,
+                        "letter_grade": np.nan,
+                        "gpa_4": np.nan,
+                        "passed": np.nan,
+                        "status": np.nan,
+                    }
+                else:
+                    profile = student_profiles.get(uid, {})
+                    student_data = {"student_id": uid, **profile}
+                    seed_str = f"{uid}:{c_code}:{semester}"
+                    rng = np.random.default_rng(int(hashlib.sha256(seed_str.encode("utf-8")).hexdigest()[:8], 16))
+                    component_scores, final_score, letter, gpa = score_course_components(
+                        student=student_data,
+                        course_code=c_code,
+                        components=comps,
+                        catalog_difficulty=0.5,
+                        rng=rng,
+                        config=config,
+                        retaken=False,
+                        student_id=uid,
+                    )
+                    rec = {
+                        "enrollment_id": enrollment_id,
+                        "student_id": uid,
+                        "class_id": class_id,
+                        "course_id": c_code,
+                        "semester": semester,
+                        "retaken": False,
+                        "quiz": component_scores.get("quiz", np.nan),
+                        "lab": component_scores.get("lab", np.nan),
+                        "btl": component_scores.get("btl", np.nan),
+                        "giua_ky": component_scores.get("giua_ky", np.nan),
+                        "cuoi_ky": component_scores.get("cuoi_ky", np.nan),
+                        "final_score": final_score,
+                        "letter_grade": letter,
+                        "gpa_4": gpa,
+                        "passed": letter != "F",
+                        "status": "Pass" if letter != "F" else "Fail",
+                    }
+                enrollment_records.append(rec)
+                enrollment_id += 1
+    return enrollment_id
+
+
 def select_student_group_c_course(
     student_id: str,
     cohort: str,

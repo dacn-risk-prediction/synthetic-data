@@ -57,7 +57,12 @@ if str(ANALYSIS_DIR) not in sys.path:
 if str(RULES_DIR) not in sys.path:
     sys.path.insert(0, str(RULES_DIR))
 
-from curriculum_rules import select_student_group_c_course, get_student_specialization_map
+from curriculum_rules import (
+    create_elective_classes_for_program,
+    get_student_specialization_map,
+    get_term7_student_electives,
+    select_student_group_c_course,
+)
 
 from academic_rules import balanced_class_sizes
 from analysis_helpers import (
@@ -715,6 +720,41 @@ def generate_class_hk251() -> Path:
                     "department": dept,
                 })
             print(f"   + [SP1007 Pháp luật ({prog})]: {len(early_candidates)} K22 sớm + {len(retakers_sp1007)} trả nợ -> {len(sizes)} lớp")
+
+        # Tự chọn ngành Group C (2 môn), Tự do (1 môn), Group B (1 môn) cho K22
+        if prog == "advanced":
+            print(f"   + [K22 Tự chọn ngành - Group C, Free & B]: Ghép học chung lớp với hệ Chất lượng cao (CC)")
+        else:
+            if prog == "high-quality":
+                k22_adv_uids = set(k22_students[k22_students["program"] == "advanced"]["user_id"])
+                combined_k22_uids = prog_uids | k22_adv_uids
+            else:
+                combined_k22_uids = prog_uids
+
+            regular_k22_uids = [uid for uid in combined_k22_uids if uid not in set(early_candidates)]
+            if regular_k22_uids:
+                spec_map = get_student_specialization_map()
+                c_demand_map: Dict[str, int] = defaultdict(int)
+                for uid in regular_k22_uids:
+                    spec = spec_map.get(uid, "Khoa học Máy tính")
+                    prev_passed = passed_map.get(uid, set())
+                    elecs = get_term7_student_electives(uid, "K22", spec, prev_passed)
+                    for ec in elecs:
+                        c_demand_map[ec] += 1
+
+                suffix_note = " (CLC+TT)" if prog == "high-quality" else ""
+                print(f"   + [K22 Tự chọn ngành - Group C, Free & B ({len(c_demand_map)} môn)]{suffix_note} ({len(regular_k22_uids)} SV):")
+                create_elective_classes_for_program(
+                    prog=prog,
+                    prefix=prefix,
+                    course_demand_map=c_demand_map,
+                    classes=classes,
+                    all_lecturers=all_lecturers,
+                    assigned_count=assigned_count,
+                    semester=SEMESTER,
+                    course_spec_preference=course_spec_preference,
+                    get_all_lecturers_with_fallback=get_all_lecturers_with_fallback,
+                )
 
     # -------------------------------------------------------------------------
     # E. PHÂN BỔ LỚP HỌC LẠI CHO CÁC MÔN CHẴN/HK2 (NHU CẦU >= 15 SV)

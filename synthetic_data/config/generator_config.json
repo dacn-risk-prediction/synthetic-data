@@ -141,6 +141,7 @@
       "max_late_semesters": 4,
       "dismissal_after_semesters": 12,
       "minimum_passed_credits_per_semester": 11,
+      "minimum_credits_for_graduation": 128,
       "ineligible_thesis_empty_semester_probability": 0.8,
       "thesis_course_codes": [
         "CO4029",

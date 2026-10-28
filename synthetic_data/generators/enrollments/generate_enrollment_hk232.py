@@ -50,7 +50,13 @@ OUTPUT_DIR = ROOT_DIR / "generated" / "enrollments"
 if str(RULES_DIR) not in sys.path:
     sys.path.insert(0, str(RULES_DIR))
 
-from curriculum_rules import select_student_group_c_course, get_student_specialization_map
+from curriculum_rules import (
+    enroll_students_in_electives,
+    get_student_specialization_map,
+    get_term8_student_electives,
+    select_student_group_a_course,
+    select_student_group_c_course,
+)
 
 from academic_rules import (
     GENERATOR_CONFIG,
@@ -719,8 +725,10 @@ def generate_enrollment_hk232() -> Path:
                     prev_passed = passed_map.get(uid, set())
                     c1 = select_student_group_c_course(uid, "K21", spec, seed_salt="k21_group_c_1_hk232", exclude_courses=prev_passed)
                     c2 = select_student_group_c_course(uid, "K21", spec, seed_salt="k21_group_c_2_hk232", exclude_courses=prev_passed | {c1})
+                    c_ga = select_student_group_a_course(spec)
                     student_c_choices[c1].append(uid)
                     student_c_choices[c2].append(uid)
+                    student_c_choices[c_ga].append(uid)
 
                 for c_code, uids in student_c_choices.items():
                     if not uids:
@@ -842,6 +850,39 @@ def generate_enrollment_hk232() -> Path:
                     enrollment_id += 1
 
             print(f"   -> [K20 Chuẩn 4 năm] {len(student_ids)} SV hoàn tất môn {course_code} ({len(class_ids)} lớp)")
+
+        # Tự chọn tự do (2 môn) cho K20
+        if prog == "advanced":
+            print(f"   -> [K20 Tự chọn tự do]: Đã ghép học chung lớp với hệ Chất lượng cao (CC)")
+        else:
+            if prog == "high-quality":
+                k20_adv_uids = set(k20_active_students[k20_active_students["program"] == "advanced"]["user_id"])
+                combined_student_ids = student_ids + [uid for uid in k20_adv_uids if uid not in set(student_ids)]
+            else:
+                combined_student_ids = student_ids
+
+            if combined_student_ids:
+                student_c_choices: Dict[str, List[str]] = defaultdict(list)
+                for uid in combined_student_ids:
+                    prev_passed = passed_map.get(uid, set())
+                    elecs = get_term8_student_electives(uid, "K20", prev_passed)
+                    for ec in elecs:
+                        student_c_choices[ec].append(uid)
+
+                enrollment_id = enroll_students_in_electives(
+                    student_choices=student_c_choices,
+                    prog=prog,
+                    classes_by_prog_course=classes_by_prog_course,
+                    course_assessments=course_assessments,
+                    student_profiles=student_profiles,
+                    semester=SEMESTER,
+                    config=GENERATOR_CONFIG,
+                    enrollment_records=enrollment_records,
+                    start_enrollment_id=enrollment_id,
+                    max_cap=40,
+                )
+                suffix_note = " (CLC+TT)" if prog == "high-quality" else ""
+                print(f"   -> [K20 Tự chọn tự do]{suffix_note}: Đã phân bổ {len(combined_student_ids)} SV vào {len(student_c_choices)} môn học.")
 
     # -------------------------------------------------------------------------
     # E. MÔ PHỎNG ĐĂNG KÝ VÀ CHẤM ĐIỂM CHO LỚP HỌC LẠI MÔN LẺ/HK1

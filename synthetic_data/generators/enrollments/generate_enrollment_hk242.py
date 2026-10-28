@@ -51,7 +51,13 @@ OUTPUT_DIR = ROOT_DIR / "generated" / "enrollments"
 if str(RULES_DIR) not in sys.path:
     sys.path.insert(0, str(RULES_DIR))
 
-from curriculum_rules import select_student_group_c_course, get_student_specialization_map
+from curriculum_rules import (
+    enroll_students_in_electives,
+    get_student_specialization_map,
+    get_term8_student_electives,
+    select_student_group_a_course,
+    select_student_group_c_course,
+)
 
 from academic_rules import (
     GENERATOR_CONFIG,
@@ -174,10 +180,8 @@ def generate_enrollment_hk242() -> Path:
             all_attempted[sid].add(cid)
             score = r["final_score"]
             gpa4 = r["gpa_4"]
-            if pd.isna(score) or float(score) == 12.0 or pd.isna(gpa4):
-                continue
-            if r["passed"] == True:
-                history_passed[sid][cid] = float(gpa4)
+            if r["passed"] == True or str(r.get("status", "")).lower() in ["pass", "exempted"]:
+                history_passed[sid][cid] = float(gpa4) if (pd.notna(gpa4) and not (pd.notna(score) and float(score) == 12.0)) else 0.0
 
     # Đọc profiles
     profiles_file = USERS_DIR / "student_profiles.csv"
@@ -634,10 +638,13 @@ def generate_enrollment_hk242() -> Path:
                     prev_passed = set(history_passed.get(uid, {}).keys())
                     c1 = select_student_group_c_course(uid, "K22", spec, seed_salt="k22_group_c_1_hk242", exclude_courses=prev_passed)
                     c2 = select_student_group_c_course(uid, "K22", spec, seed_salt="k22_group_c_2_hk242", exclude_courses=prev_passed | {c1})
+                    c_ga = select_student_group_a_course(spec)
                     if can_enroll(uid, c1):
                         student_c_choices[c1].append(uid)
                     if can_enroll(uid, c2):
                         student_c_choices[c2].append(uid)
+                    if can_enroll(uid, c_ga):
+                        student_c_choices[c_ga].append(uid)
 
                 for g_course, valid_g in student_c_choices.items():
                     if not valid_g:
@@ -695,6 +702,39 @@ def generate_enrollment_hk242() -> Path:
             for uid in assigned_chunk:
                 record_grade(uid, "SP1007", class_id, is_retake=(uid in set(k20_prog_retakers_sp1007)), seed_suffix="_grad")
         print(f"   -> [SP1007] {len(valid_sp1007)} SV hoàn tất đăng ký ({len(class_ids)} lớp)")
+
+        # Tự chọn tự do (2 môn) cho K21
+        if prog == "advanced":
+            print(f"   -> [K21 Tự chọn tự do]: Đã ghép học chung lớp với hệ Chất lượng cao (CC)")
+        else:
+            if prog == "high-quality":
+                k21_adv_uids = set(k21_active_students[k21_active_students["program"] == "advanced"]["user_id"])
+                combined_student_ids = student_ids + [uid for uid in k21_adv_uids if uid not in set(student_ids)]
+            else:
+                combined_student_ids = student_ids
+
+            if combined_student_ids:
+                student_c_choices: Dict[str, List[str]] = defaultdict(list)
+                for uid in combined_student_ids:
+                    prev_passed = set(history_passed[uid].keys())
+                    elecs = get_term8_student_electives(uid, "K21", prev_passed)
+                    for ec in elecs:
+                        student_c_choices[ec].append(uid)
+
+                enrollment_id = enroll_students_in_electives(
+                    student_choices=student_c_choices,
+                    prog=prog,
+                    classes_by_prog_course=classes_by_prog_course,
+                    course_assessments=course_assessments,
+                    student_profiles=student_profiles,
+                    semester=SEMESTER,
+                    config=GENERATOR_CONFIG,
+                    enrollment_records=enrollment_records,
+                    start_enrollment_id=enrollment_id,
+                    max_cap=40,
+                )
+                suffix_note = " (CLC+TT)" if prog == "high-quality" else ""
+                print(f"   -> [K21 Tự chọn tự do]{suffix_note}: Đã phân bổ {len(combined_student_ids)} SV vào {len(student_c_choices)} môn học.")
 
     # -------------------------------------------------------------------------
     # E. MÔ PHỎNG ĐĂNG KÝ VÀ CHẤM ĐIỂM CHO LỚP HỌC LẠI MÔN LẺ/HK1 (L_HL)

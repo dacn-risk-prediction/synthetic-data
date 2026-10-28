@@ -135,10 +135,8 @@ def generate_enrollment_hk221() -> Path:
             cid = str(r["course_id"])
             score = r["final_score"]
             gpa4 = r["gpa_4"]
-            if pd.isna(score) or float(score) == 12.0 or pd.isna(gpa4):
-                continue
-            if r["passed"] == True:
-                history_passed[sid][cid] = float(gpa4)
+            if r["passed"] == True or str(r.get("status", "")).lower() in ["pass", "exempted"]:
+                history_passed[sid][cid] = float(gpa4) if (pd.notna(gpa4) and not (pd.notna(score) and float(score) == 12.0)) else 0.0
 
     # K20 đã học vượt CO2001 ở HK202 và CO2013 ở HK212
     k20_passed_co2001 = {uid for uid in k20_students["user_id"] if "CO2001" in history_passed[uid]}
@@ -573,12 +571,16 @@ def generate_enrollment_hk221() -> Path:
             class_ids = classes_by_prog_course.get((prog, course_code), [])
             is_politics = course_code.startswith("SP")
             max_cap = 120 if is_politics else 40
-            sizes = balanced_class_sizes(len(student_ids), max_size=max_cap)
+            valid_uids = [
+                uid for uid in student_ids
+                if (course_code != "CO3005" or ("CO2003" in history_passed[uid] and "CO1027" in history_passed[uid]))
+            ]
+            sizes = balanced_class_sizes(len(valid_uids), max_size=max_cap)
             offset = 0
             comps = course_assessments.get(course_code, [("cuoi_ky", 1.0)])
 
             for class_id, size in zip(class_ids, sizes):
-                assigned_chunk = student_ids[offset : offset + size]
+                assigned_chunk = valid_uids[offset : offset + size]
                 offset += size
 
                 for uid in assigned_chunk:
@@ -620,10 +622,13 @@ def generate_enrollment_hk221() -> Path:
                     enrollment_records.append(rec)
                     enrollment_id += 1
 
-            print(f"   -> Đã gán {len(student_ids)} SV vào môn {course_code} ({len(class_ids)} lớp)")
+            print(f"   -> Đã gán {len(valid_uids)} SV vào môn {course_code} ({len(class_ids)} lớp)")
 
-        # CO2001 (chỉ cho SV K20 chưa học ở HK202)
-        k20_co2001_learners = [uid for uid in student_ids if uid not in k20_passed_co2001]
+        # CO2001 (chỉ cho SV K20 chưa học ở HK202 và đã đạt CO1005)
+        k20_co2001_learners = [
+            uid for uid in student_ids
+            if uid not in k20_passed_co2001 and "CO1005" in history_passed[uid]
+        ]
         if k20_co2001_learners:
             course_code = "CO2001"
             class_ids = classes_by_prog_course.get((prog, course_code), [])

@@ -44,7 +44,12 @@ OUTPUT_DIR = ROOT_DIR / "generated" / "enrollments"
 if str(RULES_DIR) not in sys.path:
     sys.path.insert(0, str(RULES_DIR))
 
-from curriculum_rules import select_student_group_c_course, get_student_specialization_map
+from curriculum_rules import (
+    enroll_students_in_electives,
+    get_student_specialization_map,
+    get_term7_student_electives,
+    select_student_group_c_course,
+)
 
 from academic_rules import (
     GENERATOR_CONFIG,
@@ -140,10 +145,8 @@ def generate_enrollment_hk231() -> Path:
             cid = str(r["course_id"])
             score = r["final_score"]
             gpa4 = r["gpa_4"]
-            if pd.isna(score) or float(score) == 12.0 or pd.isna(gpa4):
-                continue
-            if r["passed"] == True:
-                history_passed[sid][cid] = float(gpa4)
+            if r["passed"] == True or str(r.get("status", "")).lower() in ["pass", "exempted"]:
+                history_passed[sid][cid] = float(gpa4) if (pd.notna(gpa4) and not (pd.notna(score) and float(score) == 12.0)) else 0.0
 
     # K20 đã học vượt CO4029 ở HK222
     k20_passed_co4029 = {uid for uid in k20_students["user_id"] if "CO4029" in history_passed[uid]}
@@ -976,6 +979,42 @@ def generate_enrollment_hk231() -> Path:
                         enrollment_id += 1
 
                 print(f"   -> [K20 Tốt nghiệp sớm 3.5 năm] {len(early_candidates)} SV hoàn tất môn {early_code} ({len(class_ids)} lớp).")
+
+        # Tự chọn Group C, Free & Group B cho K20
+        if prog == "advanced":
+            print(f"   -> [K20 Tự chọn ngành - Group C, Free & B]: Đã ghép học chung lớp với hệ Chất lượng cao (CC)")
+        else:
+            if prog == "high-quality":
+                k20_adv_uids = set(k20_students[k20_students["program"] == "advanced"]["user_id"])
+                combined_student_ids = student_ids + [uid for uid in k20_adv_uids if uid not in set(student_ids)]
+            else:
+                combined_student_ids = student_ids
+
+            regular_k20_uids = [uid for uid in combined_student_ids if uid not in set(early_candidates)]
+            if regular_k20_uids:
+                spec_map = get_student_specialization_map()
+                student_c_choices: Dict[str, List[str]] = defaultdict(list)
+                for uid in regular_k20_uids:
+                    spec = spec_map.get(uid, "Khoa học Máy tính")
+                    prev_passed = set(history_passed[uid].keys())
+                    elecs = get_term7_student_electives(uid, "K20", spec, prev_passed)
+                    for ec in elecs:
+                        student_c_choices[ec].append(uid)
+
+                enrollment_id = enroll_students_in_electives(
+                    student_choices=student_c_choices,
+                    prog=prog,
+                    classes_by_prog_course=classes_by_prog_course,
+                    course_assessments=course_assessments,
+                    student_profiles=student_profiles,
+                    semester=SEMESTER,
+                    config=GENERATOR_CONFIG,
+                    enrollment_records=enrollment_records,
+                    start_enrollment_id=enrollment_id,
+                    max_cap=40,
+                )
+                suffix_note = " (CLC+TT)" if prog == "high-quality" else ""
+                print(f"   -> [K20 Tự chọn ngành - Group C, Free & B]{suffix_note}: Đã phân bổ {len(regular_k20_uids)} SV vào {len(student_c_choices)} môn học.")
 
     # -------------------------------------------------------------------------
     # E. TÍNH GPA HỌC KỲ VÀ TÍCH LŨY
