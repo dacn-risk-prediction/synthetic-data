@@ -53,10 +53,16 @@ OUTPUT_DIR = ROOT_DIR / "generated" / "enrollments"
 if str(RULES_DIR) not in sys.path:
     sys.path.insert(0, str(RULES_DIR))
 
+ENROLLMENTS_DIR = Path(__file__).resolve().parent
+if str(ENROLLMENTS_DIR) not in sys.path:
+    sys.path.insert(0, str(ENROLLMENTS_DIR))
+from retake_improvement_helper import generate_grade_improvement_retakes
+
 from curriculum_rules import (
     enroll_students_in_electives,
     get_student_specialization_map,
     get_term7_student_electives,
+    get_term8_student_electives,
     select_student_group_c_course,
 )
 
@@ -705,7 +711,7 @@ def generate_enrollment_hk241() -> Path:
             else:
                 combined_student_ids = student_ids
 
-            regular_k21_uids = [uid for uid in combined_student_ids if uid not in set(early_candidates)]
+            regular_k21_uids = combined_student_ids
             if regular_k21_uids:
                 spec_map = get_student_specialization_map()
                 student_c_choices: Dict[str, List[str]] = defaultdict(list)
@@ -713,6 +719,8 @@ def generate_enrollment_hk241() -> Path:
                     spec = spec_map.get(uid, "Khoa học Máy tính")
                     prev_passed = set(history_passed[uid].keys())
                     elecs = get_term7_student_electives(uid, "K21", spec, prev_passed)
+                    if uid in set(early_candidates):
+                        elecs += get_term8_student_electives(uid, "K21", prev_passed | set(elecs))
                     for ec in elecs:
                         student_c_choices[ec].append(uid)
 
@@ -759,6 +767,26 @@ def generate_enrollment_hk241() -> Path:
                 record_grade(uid, retake_code, class_id, is_retake=True, seed_suffix="_retake")
 
         print(f"   -> [Lớp học lại L_HL] {retake_code}: {len(valid_retakers)} SV vào {len(hl_classes)} lớp")
+
+    # -------------------------------------------------------------------------
+    # HỌC LẠI CẢI THIỆN ĐIỂM (D, D+) CHO SINH VIÊN KỲ 7+ CÓ GPA DỰ KIẾN < 2.0
+    # -------------------------------------------------------------------------
+    improvement_records = generate_grade_improvement_retakes(
+        semester=SEMESTER,
+        prev_enrollments=all_prev_enrollments,
+        df_classes=df_classes,
+        course_assessments=course_assessments,
+        credits_map=credits_map,
+        student_profiles=student_profiles,
+        df_students=df_students,
+        current_records=enrollment_records,
+        start_enrollment_id=enrollment_id,
+        max_courses_per_student=2,
+    )
+    if improvement_records:
+        enrollment_records.extend(improvement_records)
+        enrollment_id += len(improvement_records)
+        print(f"   -> [Học cải thiện điểm] Đã xếp {len(improvement_records)} lượt học cải thiện cho sinh viên có GPA < 2.0.")
 
     # -------------------------------------------------------------------------
     # F. TÍNH GPA HỌC KỲ VÀ TÍCH LŨY

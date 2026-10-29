@@ -139,7 +139,8 @@ def _profile_graduation_state(
     gpa_courses = [
         code for code in passed_courses
         if not completed.loc[completed["course_code"] == code, "gpa_4"].dropna().empty
-        and float(completed.loc[completed["course_code"] == code, "final_score"].dropna().iloc[-1] or 0) != 12.0
+        and not completed.loc[completed["course_code"] == code, "final_score"].dropna().empty
+        and float(completed.loc[completed["course_code"] == code, "final_score"].dropna().max() or 0) != 12.0
         and code in credits
     ]
     gpa_credit_total = sum(float(credits[c]) for c in gpa_courses)
@@ -148,12 +149,21 @@ def _profile_graduation_state(
             float(
                 completed.loc[completed["course_code"] == code, "gpa_4"]
                 .dropna()
-                .iloc[-1]
+                .max()
+            ) * credits[code]
+            for code in gpa_courses
+        ) / gpa_credit_total
+        gpa10 = sum(
+            float(
+                completed.loc[completed["course_code"] == code, "final_score"]
+                .dropna()
+                .max()
             ) * credits[code]
             for code in gpa_courses
         ) / gpa_credit_total
     else:
         gpa4 = pd.NA
+        gpa10 = pd.NA
 
     progress = _parse_ctxh_progress(profile.get("ctxh_days_by_semester", "[]"))
     current_semester = semesters[-1] if semesters else None
@@ -201,12 +211,30 @@ def _profile_graduation_state(
         term_effective_required = required_courses - term_exempted_english
         term_passed_credits = sum(float(credits.get(c, 0.0)) for c in term_passed)
         min_grad_credits = float(graduation_config.get("minimum_credits_for_graduation", 128.0))
+        min_gpa = float(graduation_config.get("minimum_gpa4_for_graduation", 2.0))
+
+        term_gpa_courses = [
+            c for c in term_passed
+            if not completed_through_term.loc[completed_through_term["course_code"] == c, "gpa_4"].dropna().empty
+            and float(completed_through_term.loc[completed_through_term["course_code"] == c, "final_score"].dropna().max() or 0) != 12.0
+            and c in credits
+        ]
+        term_gpa_credits = sum(float(credits[c]) for c in term_gpa_courses)
+        term_gpa4 = (
+            sum(
+                float(completed_through_term.loc[completed_through_term["course_code"] == c, "gpa_4"].dropna().max()) * credits[c]
+                for c in term_gpa_courses
+            ) / term_gpa_credits
+            if term_gpa_credits > 0 else 0.0
+        )
+
         term_academic_ok = (
             (
                 term_effective_required.issubset(term_passed)
                 or {"CO4337", "SP1007"}.issubset(term_passed)
             )
             and term_passed_credits >= min_grad_credits
+            and term_gpa4 >= min_gpa
         )
         if (
             term_academic_ok
@@ -225,6 +253,7 @@ def _profile_graduation_state(
     return {
         "passed_credits": credit_total,
         "gpa_4": gpa4,
+        "gpa_10": gpa10,
         "ctxh_days": ctxh_days,
         "english_pass": english_pass,
         "thesis_eligible": (
@@ -460,7 +489,11 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
         degree_classification = "not_graduated"
         if graduation_semester and pd.notna(details["gpa_4"]):
             for band in graduation_config["degree_classification_gpa4"]:
-                if band["min"] <= float(details["gpa_4"]) <= band["max"]:
+                if band.get("label") == "excellent":
+                    if band["min"] <= float(details["gpa_4"]) <= band["max"]:
+                        degree_classification = band["label"]
+                        break
+                elif band["min"] <= float(details["gpa_4"]) < band["max"]:
                     degree_classification = band["label"]
                     break
         if dropout_reason == "overdue_more_than_two_years":
@@ -522,6 +555,7 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
             "thesis_eligible": details["thesis_eligible"],
             "passed_credits": details["passed_credits"],
             "gpa_4": details["gpa_4"],
+            "gpa_10": details["gpa_10"],
             "graduation_ready": details["graduation_ready"] and not dropped_out,
             "academic_suspension_count": sum(
                 semester in suspension_semesters
@@ -629,6 +663,7 @@ def _summary_metrics(student_metrics, history):
         "ctxh_days_cumulative",
         "passed_credits",
         "gpa_4",
+        "gpa_10",
     ):
         values = pd.to_numeric(student_metrics[field], errors="coerce").dropna()
         add(
@@ -758,7 +793,7 @@ def _normalize_cohort(cohort):
     if value.startswith("K"):
         value = value[1:]
     if len(value) != 2 or not value.isdigit():
-        raise ValueError("Cohort must be a two-digit year such as 13 or K13")
+        raise ValueError("Cohort must be a two-digit year such as 20 or K20")
     return value
 
 
@@ -835,6 +870,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--cohort",
-        help="Limit reports to one cohort (for example, 13 or K13)",
+        help="Limit reports to one cohort (for example, 20 or K20)",
     )
     generate_academic_metrics(parser.parse_args().cohort)

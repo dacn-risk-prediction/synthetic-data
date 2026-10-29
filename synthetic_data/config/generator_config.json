@@ -66,7 +66,7 @@
   "score": {
     "min": 0.0,
     "max": 10.0,
-    "retake_bonus": 0.0
+    "retake_bonus": 2.0
   },
   "student_progress": {
     "observed_semesters": [
@@ -96,8 +96,22 @@
     "ctxh": {
       "minimum_for_thesis": 12,
       "minimum_for_graduation": 15,
-      "minimum_expected_days_per_semester": 1.0,
+      "minimum_expected_days_per_semester": 1.6,
       "maximum_expected_days_per_semester": 2.4,
+      "program_expected_days_per_semester": {
+        "standard": {
+          "min": 1.6,
+          "max": 2.4
+        },
+        "high-quality": {
+          "min": 2.5,
+          "max": 3.5
+        },
+        "advanced": {
+          "min": 2.8,
+          "max": 4.0
+        }
+      },
       "personality_weights": {
         "discipline": 0.3,
         "motivation": 0.3,
@@ -142,6 +156,7 @@
       "dismissal_after_semesters": 12,
       "minimum_passed_credits_per_semester": 11,
       "minimum_credits_for_graduation": 128,
+      "minimum_gpa4_for_graduation": 2.0,
       "ineligible_thesis_empty_semester_probability": 0.8,
       "thesis_course_codes": [
         "CO4029",
@@ -166,27 +181,27 @@
       "degree_classification_gpa4": [
         {
           "min": 0.0,
-          "max": 1.999,
+          "max": 2.0,
           "label": "below_average"
         },
         {
           "min": 2.0,
-          "max": 2.399,
+          "max": 2.4,
           "label": "average"
         },
         {
           "min": 2.4,
-          "max": 2.799,
+          "max": 2.8,
           "label": "fairly_average"
         },
         {
           "min": 2.8,
-          "max": 3.199,
+          "max": 3.2,
           "label": "fair"
         },
         {
           "min": 3.2,
-          "max": 3.5999,
+          "max": 3.6,
           "label": "good"
         },
         {

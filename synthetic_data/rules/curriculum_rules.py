@@ -316,10 +316,15 @@ def enroll_students_in_electives(
         all_c_classes = classes_by_prog_course.get((prog, c_code), [])
         if not all_c_classes:
             continue
-        sizes = balanced_class_sizes(len(uids), max_size=max_cap)
+        if len(uids) > len(all_c_classes) * max_cap:
+            k, m = divmod(len(uids), len(all_c_classes))
+            sizes = [k + 1 if i < m else k for i in range(len(all_c_classes))]
+            c_classes = all_c_classes
+        else:
+            sizes = balanced_class_sizes(len(uids), max_size=max_cap)
+            c_classes = all_c_classes[-len(sizes):]
         offset = 0
         comps = course_assessments.get(c_code, [("cuoi_ky", 1.0)])
-        c_classes = all_c_classes[-len(sizes):]
         for class_id, size in zip(c_classes, sizes):
             assigned_chunk = uids[offset : offset + size]
             offset += size

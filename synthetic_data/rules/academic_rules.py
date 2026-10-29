@@ -600,6 +600,8 @@ def _base_score_for_level(level, config):
 def generate_student_profile(student_id, config=None, program=None):
     config = config or GENERATOR_CONFIG
     profile = {}
+    if program:
+        profile["program"] = program
     for field, distribution in config["background"].items():
         rng = np.random.default_rng(_stable_seed(student_id, config, field))
         profile[field] = rng.choice(
@@ -766,16 +768,22 @@ def _generate_ctxh_progress(student_id, profile, config):
         if semester_index(semester) >= start_index
     ]
     ctxh_config = progress_config["ctxh"]
+    prog = profile.get("program", "standard")
+    prog_cfg = ctxh_config.get("program_expected_days_per_semester", {}).get(prog)
+    if prog_cfg and isinstance(prog_cfg, dict):
+        min_days = prog_cfg.get("min", ctxh_config["minimum_expected_days_per_semester"])
+        max_days = prog_cfg.get("max", ctxh_config["maximum_expected_days_per_semester"])
+    else:
+        min_days = ctxh_config["minimum_expected_days_per_semester"]
+        max_days = ctxh_config["maximum_expected_days_per_semester"]
+
     personality_strength = _progress_personality_strength(
         profile, progress_config
     )
     expected_days = (
-        ctxh_config["minimum_expected_days_per_semester"]
+        min_days
         + personality_strength
-        * (
-            ctxh_config["maximum_expected_days_per_semester"]
-            - ctxh_config["minimum_expected_days_per_semester"]
-        )
+        * (max_days - min_days)
     )
     cumulative_days = 0
     progress = []
@@ -794,6 +802,10 @@ def _generate_ctxh_progress(student_id, profile, config):
 
 
 def _generate_voluntary_dropout(student_id, profile, config):
+    # Miễn trừ rủi ro bỏ học tự nguyện cho hệ Chất lượng cao và Tiên tiến
+    if profile.get("program") in ("high-quality", "advanced"):
+        return None, None
+
     progress_config = config["student_progress"]
     dropout_config = progress_config["dropout"]
     background_scores = progress_config["english"]["background_scores"]

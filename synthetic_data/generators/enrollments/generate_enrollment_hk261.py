@@ -59,6 +59,11 @@ OUTPUT_DIR = ROOT_DIR / "generated" / "enrollments"
 if str(RULES_DIR) not in sys.path:
     sys.path.insert(0, str(RULES_DIR))
 
+ENROLLMENTS_DIR = Path(__file__).resolve().parent
+if str(ENROLLMENTS_DIR) not in sys.path:
+    sys.path.insert(0, str(ENROLLMENTS_DIR))
+from retake_improvement_helper import generate_grade_improvement_retakes
+
 from curriculum_rules import (
     enroll_students_in_electives,
     get_student_specialization_map,
@@ -813,6 +818,26 @@ def generate_enrollment_hk261() -> Path:
                 record_grade(uid, retake_code, class_id, is_retake=True, seed_suffix="_retake")
 
         print(f"   -> [Lớp học lại L_HL] {retake_code}: {len(valid_retakers)} SV vào {len(hl_classes)} lớp")
+
+    # -------------------------------------------------------------------------
+    # HỌC LẠI CẢI THIỆN ĐIỂM (D, D+) CHO SINH VIÊN KỲ 7+ CÓ GPA DỰ KIẾN < 2.0
+    # -------------------------------------------------------------------------
+    improvement_records = generate_grade_improvement_retakes(
+        semester=SEMESTER,
+        prev_enrollments=all_prev_enrollments,
+        df_classes=df_classes,
+        course_assessments=course_assessments,
+        credits_map=credits_map,
+        student_profiles=student_profiles,
+        df_students=df_students,
+        current_records=enrollment_records,
+        start_enrollment_id=enrollment_id,
+        max_courses_per_student=2,
+    )
+    if improvement_records:
+        enrollment_records.extend(improvement_records)
+        enrollment_id += len(improvement_records)
+        print(f"   -> [Học cải thiện điểm] Đã xếp {len(improvement_records)} lượt học cải thiện cho sinh viên có GPA < 2.0.")
 
     # -------------------------------------------------------------------------
     # F. XUẤT FILE KẾT QUẢ CHO HỌC KỲ HIỆN TẠI

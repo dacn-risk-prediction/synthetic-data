@@ -24,7 +24,6 @@ HK232_CO1007_L22,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,
 HK232_CO1007_L23,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,L23,standard,40,GV00023,Trần Tuấn Lam,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO1007_L24,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,L24,standard,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO1007_L25,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,L25,standard,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1007_L26,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,L26,standard,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_MT1005_L01,MT1005,Giải tích 2,HK232,L01,standard,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK232_MT1005_L02,MT1005,Giải tích 2,HK232,L02,standard,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK232_MT1005_L03,MT1005,Giải tích 2,HK232,L03,standard,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
@@ -50,33 +49,31 @@ HK232_MT1005_L22,MT1005,Giải tích 2,HK232,L22,standard,40,GV00062,Trần Minh
 HK232_MT1005_L23,MT1005,Giải tích 2,HK232,L23,standard,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK232_MT1005_L24,MT1005,Giải tích 2,HK232,L24,standard,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK232_MT1005_L25,MT1005,Giải tích 2,HK232,L25,standard,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1005_L26,MT1005,Giải tích 2,HK232,L26,standard,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L01,MT1007,Đại số Tuyến tính,HK232,L01,standard,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L02,MT1007,Đại số Tuyến tính,HK232,L02,standard,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L03,MT1007,Đại số Tuyến tính,HK232,L03,standard,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L04,MT1007,Đại số Tuyến tính,HK232,L04,standard,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L05,MT1007,Đại số Tuyến tính,HK232,L05,standard,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L06,MT1007,Đại số Tuyến tính,HK232,L06,standard,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L07,MT1007,Đại số Tuyến tính,HK232,L07,standard,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L08,MT1007,Đại số Tuyến tính,HK232,L08,standard,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L09,MT1007,Đại số Tuyến tính,HK232,L09,standard,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L10,MT1007,Đại số Tuyến tính,HK232,L10,standard,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L11,MT1007,Đại số Tuyến tính,HK232,L11,standard,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L12,MT1007,Đại số Tuyến tính,HK232,L12,standard,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L13,MT1007,Đại số Tuyến tính,HK232,L13,standard,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L14,MT1007,Đại số Tuyến tính,HK232,L14,standard,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L15,MT1007,Đại số Tuyến tính,HK232,L15,standard,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L16,MT1007,Đại số Tuyến tính,HK232,L16,standard,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L17,MT1007,Đại số Tuyến tính,HK232,L17,standard,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L18,MT1007,Đại số Tuyến tính,HK232,L18,standard,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L19,MT1007,Đại số Tuyến tính,HK232,L19,standard,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L20,MT1007,Đại số Tuyến tính,HK232,L20,standard,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L21,MT1007,Đại số Tuyến tính,HK232,L21,standard,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L22,MT1007,Đại số Tuyến tính,HK232,L22,standard,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L23,MT1007,Đại số Tuyến tính,HK232,L23,standard,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L24,MT1007,Đại số Tuyến tính,HK232,L24,standard,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L25,MT1007,Đại số Tuyến tính,HK232,L25,standard,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_L26,MT1007,Đại số Tuyến tính,HK232,L26,standard,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L01,MT1007,Đại số Tuyến tính,HK232,L01,standard,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L02,MT1007,Đại số Tuyến tính,HK232,L02,standard,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L03,MT1007,Đại số Tuyến tính,HK232,L03,standard,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L04,MT1007,Đại số Tuyến tính,HK232,L04,standard,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L05,MT1007,Đại số Tuyến tính,HK232,L05,standard,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L06,MT1007,Đại số Tuyến tính,HK232,L06,standard,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L07,MT1007,Đại số Tuyến tính,HK232,L07,standard,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L08,MT1007,Đại số Tuyến tính,HK232,L08,standard,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L09,MT1007,Đại số Tuyến tính,HK232,L09,standard,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L10,MT1007,Đại số Tuyến tính,HK232,L10,standard,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L11,MT1007,Đại số Tuyến tính,HK232,L11,standard,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L12,MT1007,Đại số Tuyến tính,HK232,L12,standard,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L13,MT1007,Đại số Tuyến tính,HK232,L13,standard,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L14,MT1007,Đại số Tuyến tính,HK232,L14,standard,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L15,MT1007,Đại số Tuyến tính,HK232,L15,standard,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L16,MT1007,Đại số Tuyến tính,HK232,L16,standard,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L17,MT1007,Đại số Tuyến tính,HK232,L17,standard,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L18,MT1007,Đại số Tuyến tính,HK232,L18,standard,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L19,MT1007,Đại số Tuyến tính,HK232,L19,standard,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L20,MT1007,Đại số Tuyến tính,HK232,L20,standard,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L21,MT1007,Đại số Tuyến tính,HK232,L21,standard,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L22,MT1007,Đại số Tuyến tính,HK232,L22,standard,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L23,MT1007,Đại số Tuyến tính,HK232,L23,standard,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L24,MT1007,Đại số Tuyến tính,HK232,L24,standard,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_L25,MT1007,Đại số Tuyến tính,HK232,L25,standard,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK232_PH1007_L01,PH1007,Thí nghiệm Vật lý,HK232,L01,standard,40,GV00093,Huỳnh Hữu Trinh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK232_PH1007_L02,PH1007,Thí nghiệm Vật lý,HK232,L02,standard,40,GV00094,Hồ Anh Quang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK232_PH1007_L03,PH1007,Thí nghiệm Vật lý,HK232,L03,standard,40,GV00095,Dương Tuấn Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
@@ -102,7 +99,6 @@ HK232_PH1007_L22,PH1007,Thí nghiệm Vật lý,HK232,L22,standard,40,GV00098,L�
 HK232_PH1007_L23,PH1007,Thí nghiệm Vật lý,HK232,L23,standard,40,GV00099,Phạm Khánh Nam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK232_PH1007_L24,PH1007,Thí nghiệm Vật lý,HK232,L24,standard,40,GV00100,Ngô Thanh Lam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK232_PH1007_L25,PH1007,Thí nghiệm Vật lý,HK232,L25,standard,40,GV00093,Huỳnh Hữu Trinh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK232_PH1007_L26,PH1007,Thí nghiệm Vật lý,HK232,L26,standard,40,GV00094,Hồ Anh Quang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK232_LA1005_L01,LA1005,Anh văn 2,HK232,L01,standard,40,GV00071,Đặng Đức Châu,Trung tâm Ngoại ngữ
 HK232_LA1005_L02,LA1005,Anh văn 2,HK232,L02,standard,40,GV00072,Vũ Quốc Châu,Trung tâm Ngoại ngữ
 HK232_LA1005_L03,LA1005,Anh văn 2,HK232,L03,standard,40,GV00073,Võ Khánh Việt,Trung tâm Ngoại ngữ
@@ -128,57 +124,56 @@ HK232_LA1005_L22,LA1005,Anh văn 2,HK232,L22,standard,40,GV00078,Võ Gia Nhi,Tru
 HK232_LA1005_L23,LA1005,Anh văn 2,HK232,L23,standard,40,GV00079,Võ Ngọc Quân,Trung tâm Ngoại ngữ
 HK232_LA1005_L24,LA1005,Anh văn 2,HK232,L24,standard,40,GV00080,Ngô Thị Yến,Trung tâm Ngoại ngữ
 HK232_LA1005_L25,LA1005,Anh văn 2,HK232,L25,standard,40,GV00081,Đỗ Hữu Long,Trung tâm Ngoại ngữ
-HK232_CO1027_L01,CO1027,Kỹ thuật Lập trình,HK232,L01,standard,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L02,CO1027,Kỹ thuật Lập trình,HK232,L02,standard,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L03,CO1027,Kỹ thuật Lập trình,HK232,L03,standard,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L04,CO1027,Kỹ thuật Lập trình,HK232,L04,standard,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L05,CO1027,Kỹ thuật Lập trình,HK232,L05,standard,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L06,CO1027,Kỹ thuật Lập trình,HK232,L06,standard,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L07,CO1027,Kỹ thuật Lập trình,HK232,L07,standard,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L08,CO1027,Kỹ thuật Lập trình,HK232,L08,standard,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L09,CO1027,Kỹ thuật Lập trình,HK232,L09,standard,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L10,CO1027,Kỹ thuật Lập trình,HK232,L10,standard,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L11,CO1027,Kỹ thuật Lập trình,HK232,L11,standard,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L12,CO1027,Kỹ thuật Lập trình,HK232,L12,standard,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L13,CO1027,Kỹ thuật Lập trình,HK232,L13,standard,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L14,CO1027,Kỹ thuật Lập trình,HK232,L14,standard,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L15,CO1027,Kỹ thuật Lập trình,HK232,L15,standard,40,GV00041,Nguyễn Anh Trang,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L16,CO1027,Kỹ thuật Lập trình,HK232,L16,standard,40,GV00042,Hoàng Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L17,CO1027,Kỹ thuật Lập trình,HK232,L17,standard,40,GV00043,Lê Ngọc Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L18,CO1027,Kỹ thuật Lập trình,HK232,L18,standard,40,GV00044,Phan Quốc Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L19,CO1027,Kỹ thuật Lập trình,HK232,L19,standard,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L20,CO1027,Kỹ thuật Lập trình,HK232,L20,standard,40,GV00046,Bùi Quang Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L21,CO1027,Kỹ thuật Lập trình,HK232,L21,standard,40,GV00047,Đỗ Hữu Phát,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L22,CO1027,Kỹ thuật Lập trình,HK232,L22,standard,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L23,CO1027,Kỹ thuật Lập trình,HK232,L23,standard,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L24,CO1027,Kỹ thuật Lập trình,HK232,L24,standard,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L25,CO1027,Kỹ thuật Lập trình,HK232,L25,standard,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_L26,CO1027,Kỹ thuật Lập trình,HK232,L26,standard,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_MI1003_L01,MI1003,Giáo dục Quốc phòng,HK232,L01,standard,40,GV00053,Trần Thị Bảo,Trung tâm GDQP và AN
-HK232_MI1003_L02,MI1003,Giáo dục Quốc phòng,HK232,L02,standard,40,GV00054,Dương Anh Thảo,Trung tâm GDQP và AN
-HK232_MI1003_L03,MI1003,Giáo dục Quốc phòng,HK232,L03,standard,40,GV00055,Bùi Anh Trinh,Trung tâm GDQP và AN
-HK232_MI1003_L04,MI1003,Giáo dục Quốc phòng,HK232,L04,standard,40,GV00001,Ngô Quốc An,Trung tâm GDQP và AN
-HK232_MI1003_L05,MI1003,Giáo dục Quốc phòng,HK232,L05,standard,40,GV00002,Dương Đức Khôi,Trung tâm GDQP và AN
-HK232_MI1003_L06,MI1003,Giáo dục Quốc phòng,HK232,L06,standard,40,GV00003,Lý Hoàng Duy,Trung tâm GDQP và AN
-HK232_MI1003_L07,MI1003,Giáo dục Quốc phòng,HK232,L07,standard,40,GV00004,Phạm Ngọc Nam,Trung tâm GDQP và AN
-HK232_MI1003_L08,MI1003,Giáo dục Quốc phòng,HK232,L08,standard,40,GV00005,Hồ Khánh Trinh,Trung tâm GDQP và AN
-HK232_MI1003_L09,MI1003,Giáo dục Quốc phòng,HK232,L09,standard,40,GV00006,Bùi Hữu Trinh,Trung tâm GDQP và AN
-HK232_MI1003_L10,MI1003,Giáo dục Quốc phòng,HK232,L10,standard,40,GV00007,Huỳnh Anh Nam,Trung tâm GDQP và AN
-HK232_MI1003_L11,MI1003,Giáo dục Quốc phòng,HK232,L11,standard,40,GV00008,Lê Thanh Hải,Trung tâm GDQP và AN
-HK232_MI1003_L12,MI1003,Giáo dục Quốc phòng,HK232,L12,standard,40,GV00009,Bùi Anh Hiếu,Trung tâm GDQP và AN
-HK232_MI1003_L13,MI1003,Giáo dục Quốc phòng,HK232,L13,standard,40,GV00010,Dương Hữu Bảo,Trung tâm GDQP và AN
-HK232_MI1003_L14,MI1003,Giáo dục Quốc phòng,HK232,L14,standard,40,GV00011,Lê Tuấn Nhi,Trung tâm GDQP và AN
-HK232_MI1003_L15,MI1003,Giáo dục Quốc phòng,HK232,L15,standard,40,GV00012,Huỳnh Ngọc Khôi,Trung tâm GDQP và AN
-HK232_MI1003_L16,MI1003,Giáo dục Quốc phòng,HK232,L16,standard,40,GV00013,Đỗ Đức Khang,Trung tâm GDQP và AN
-HK232_MI1003_L17,MI1003,Giáo dục Quốc phòng,HK232,L17,standard,40,GV00014,Võ Khánh An,Trung tâm GDQP và AN
-HK232_MI1003_L18,MI1003,Giáo dục Quốc phòng,HK232,L18,standard,40,GV00015,Phan Văn Trang,Trung tâm GDQP và AN
-HK232_MI1003_L19,MI1003,Giáo dục Quốc phòng,HK232,L19,standard,40,GV00016,Lý Quang Phát,Trung tâm GDQP và AN
-HK232_MI1003_L20,MI1003,Giáo dục Quốc phòng,HK232,L20,standard,40,GV00017,Phạm Đức Nhi,Trung tâm GDQP và AN
-HK232_MI1003_L21,MI1003,Giáo dục Quốc phòng,HK232,L21,standard,40,GV00018,Lê Đức An,Trung tâm GDQP và AN
-HK232_MI1003_L22,MI1003,Giáo dục Quốc phòng,HK232,L22,standard,40,GV00019,Bùi Ngọc Anh,Trung tâm GDQP và AN
-HK232_MI1003_L23,MI1003,Giáo dục Quốc phòng,HK232,L23,standard,40,GV00020,Huỳnh Quốc Linh,Trung tâm GDQP và AN
-HK232_MI1003_L24,MI1003,Giáo dục Quốc phòng,HK232,L24,standard,40,GV00021,Bùi Quang Hà,Trung tâm GDQP và AN
-HK232_MI1003_L25,MI1003,Giáo dục Quốc phòng,HK232,L25,standard,40,GV00022,Bùi Minh Minh,Trung tâm GDQP và AN
+HK232_CO1027_L01,CO1027,Kỹ thuật Lập trình,HK232,L01,standard,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L02,CO1027,Kỹ thuật Lập trình,HK232,L02,standard,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L03,CO1027,Kỹ thuật Lập trình,HK232,L03,standard,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L04,CO1027,Kỹ thuật Lập trình,HK232,L04,standard,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L05,CO1027,Kỹ thuật Lập trình,HK232,L05,standard,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L06,CO1027,Kỹ thuật Lập trình,HK232,L06,standard,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L07,CO1027,Kỹ thuật Lập trình,HK232,L07,standard,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L08,CO1027,Kỹ thuật Lập trình,HK232,L08,standard,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L09,CO1027,Kỹ thuật Lập trình,HK232,L09,standard,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L10,CO1027,Kỹ thuật Lập trình,HK232,L10,standard,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L11,CO1027,Kỹ thuật Lập trình,HK232,L11,standard,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L12,CO1027,Kỹ thuật Lập trình,HK232,L12,standard,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L13,CO1027,Kỹ thuật Lập trình,HK232,L13,standard,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L14,CO1027,Kỹ thuật Lập trình,HK232,L14,standard,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L15,CO1027,Kỹ thuật Lập trình,HK232,L15,standard,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L16,CO1027,Kỹ thuật Lập trình,HK232,L16,standard,40,GV00041,Nguyễn Anh Trang,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L17,CO1027,Kỹ thuật Lập trình,HK232,L17,standard,40,GV00042,Hoàng Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L18,CO1027,Kỹ thuật Lập trình,HK232,L18,standard,40,GV00043,Lê Ngọc Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L19,CO1027,Kỹ thuật Lập trình,HK232,L19,standard,40,GV00044,Phan Quốc Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L20,CO1027,Kỹ thuật Lập trình,HK232,L20,standard,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L21,CO1027,Kỹ thuật Lập trình,HK232,L21,standard,40,GV00046,Bùi Quang Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L22,CO1027,Kỹ thuật Lập trình,HK232,L22,standard,40,GV00047,Đỗ Hữu Phát,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L23,CO1027,Kỹ thuật Lập trình,HK232,L23,standard,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L24,CO1027,Kỹ thuật Lập trình,HK232,L24,standard,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_L25,CO1027,Kỹ thuật Lập trình,HK232,L25,standard,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_MI1003_L01,MI1003,Giáo dục Quốc phòng,HK232,L01,standard,40,GV00051,Vũ Ngọc Linh,Trung tâm GDQP và AN
+HK232_MI1003_L02,MI1003,Giáo dục Quốc phòng,HK232,L02,standard,40,GV00052,Đỗ Văn Uyên,Trung tâm GDQP và AN
+HK232_MI1003_L03,MI1003,Giáo dục Quốc phòng,HK232,L03,standard,40,GV00053,Trần Thị Bảo,Trung tâm GDQP và AN
+HK232_MI1003_L04,MI1003,Giáo dục Quốc phòng,HK232,L04,standard,40,GV00054,Dương Anh Thảo,Trung tâm GDQP và AN
+HK232_MI1003_L05,MI1003,Giáo dục Quốc phòng,HK232,L05,standard,40,GV00055,Bùi Anh Trinh,Trung tâm GDQP và AN
+HK232_MI1003_L06,MI1003,Giáo dục Quốc phòng,HK232,L06,standard,40,GV00001,Ngô Quốc An,Trung tâm GDQP và AN
+HK232_MI1003_L07,MI1003,Giáo dục Quốc phòng,HK232,L07,standard,40,GV00002,Dương Đức Khôi,Trung tâm GDQP và AN
+HK232_MI1003_L08,MI1003,Giáo dục Quốc phòng,HK232,L08,standard,40,GV00003,Lý Hoàng Duy,Trung tâm GDQP và AN
+HK232_MI1003_L09,MI1003,Giáo dục Quốc phòng,HK232,L09,standard,40,GV00004,Phạm Ngọc Nam,Trung tâm GDQP và AN
+HK232_MI1003_L10,MI1003,Giáo dục Quốc phòng,HK232,L10,standard,40,GV00005,Hồ Khánh Trinh,Trung tâm GDQP và AN
+HK232_MI1003_L11,MI1003,Giáo dục Quốc phòng,HK232,L11,standard,40,GV00006,Bùi Hữu Trinh,Trung tâm GDQP và AN
+HK232_MI1003_L12,MI1003,Giáo dục Quốc phòng,HK232,L12,standard,40,GV00007,Huỳnh Anh Nam,Trung tâm GDQP và AN
+HK232_MI1003_L13,MI1003,Giáo dục Quốc phòng,HK232,L13,standard,40,GV00008,Lê Thanh Hải,Trung tâm GDQP và AN
+HK232_MI1003_L14,MI1003,Giáo dục Quốc phòng,HK232,L14,standard,40,GV00009,Bùi Anh Hiếu,Trung tâm GDQP và AN
+HK232_MI1003_L15,MI1003,Giáo dục Quốc phòng,HK232,L15,standard,40,GV00010,Dương Hữu Bảo,Trung tâm GDQP và AN
+HK232_MI1003_L16,MI1003,Giáo dục Quốc phòng,HK232,L16,standard,40,GV00011,Lê Tuấn Nhi,Trung tâm GDQP và AN
+HK232_MI1003_L17,MI1003,Giáo dục Quốc phòng,HK232,L17,standard,40,GV00012,Huỳnh Ngọc Khôi,Trung tâm GDQP và AN
+HK232_MI1003_L18,MI1003,Giáo dục Quốc phòng,HK232,L18,standard,40,GV00013,Đỗ Đức Khang,Trung tâm GDQP và AN
+HK232_MI1003_L19,MI1003,Giáo dục Quốc phòng,HK232,L19,standard,40,GV00014,Võ Khánh An,Trung tâm GDQP và AN
+HK232_MI1003_L20,MI1003,Giáo dục Quốc phòng,HK232,L20,standard,40,GV00015,Phan Văn Trang,Trung tâm GDQP và AN
+HK232_MI1003_L21,MI1003,Giáo dục Quốc phòng,HK232,L21,standard,40,GV00016,Lý Quang Phát,Trung tâm GDQP và AN
+HK232_MI1003_L22,MI1003,Giáo dục Quốc phòng,HK232,L22,standard,40,GV00017,Phạm Đức Nhi,Trung tâm GDQP và AN
+HK232_MI1003_L23,MI1003,Giáo dục Quốc phòng,HK232,L23,standard,40,GV00018,Lê Đức An,Trung tâm GDQP và AN
+HK232_MI1003_L24,MI1003,Giáo dục Quốc phòng,HK232,L24,standard,40,GV00019,Bùi Ngọc Anh,Trung tâm GDQP và AN
+HK232_MI1003_L25,MI1003,Giáo dục Quốc phòng,HK232,L25,standard,40,GV00020,Huỳnh Quốc Linh,Trung tâm GDQP và AN
 HK232_PE1005_L01,PE1005,Giáo dục thể chất 2,HK232,L01,standard,40,GV00109,Đỗ Hữu Khang,Bộ môn Giáo dục Thể chất
 HK232_PE1005_L02,PE1005,Giáo dục thể chất 2,HK232,L02,standard,40,GV00110,Huỳnh Hoàng Yến,Bộ môn Giáo dục Thể chất
 HK232_PE1005_L03,PE1005,Giáo dục thể chất 2,HK232,L03,standard,40,GV00111,Vũ Ngọc Hùng,Bộ môn Giáo dục Thể chất
@@ -208,73 +203,72 @@ HK232_CH1003_L01,CH1003,Hóa đại cương (Học vượt),HK232,L01,standard,4
 HK232_CH1003_L02,CH1003,Hóa đại cương (Học vượt),HK232,L02,standard,40,GV00102,Đặng Anh Phúc,Khoa Kỹ thuật Hóa học
 HK232_CH1003_L03,CH1003,Hóa đại cương (Học vượt),HK232,L03,standard,40,GV00103,Phạm Gia Nam,Khoa Kỹ thuật Hóa học
 HK232_CH1003_L04,CH1003,Hóa đại cương (Học vượt),HK232,L04,standard,40,GV00104,Phan Gia Bảo,Khoa Kỹ thuật Hóa học
-HK232_CO1007_CC01,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC01,high-quality,40,GV00023,Trần Tuấn Lam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1007_CC02,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC02,high-quality,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1007_CC03,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC03,high-quality,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1007_CC04,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC04,high-quality,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1007_CC05,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC05,high-quality,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1007_CC06,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC06,high-quality,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1007_CC07,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC07,high-quality,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1007_CC08,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC08,high-quality,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1007_CC09,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC09,high-quality,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1007_CC10,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC10,high-quality,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1007_CC11,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC11,high-quality,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_MT1005_CC01,MT1005,Giải tích 2,HK232,CC01,high-quality,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1005_CC02,MT1005,Giải tích 2,HK232,CC02,high-quality,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1005_CC03,MT1005,Giải tích 2,HK232,CC03,high-quality,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1005_CC04,MT1005,Giải tích 2,HK232,CC04,high-quality,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1005_CC05,MT1005,Giải tích 2,HK232,CC05,high-quality,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1005_CC06,MT1005,Giải tích 2,HK232,CC06,high-quality,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1005_CC07,MT1005,Giải tích 2,HK232,CC07,high-quality,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1005_CC08,MT1005,Giải tích 2,HK232,CC08,high-quality,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1005_CC09,MT1005,Giải tích 2,HK232,CC09,high-quality,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1005_CC10,MT1005,Giải tích 2,HK232,CC10,high-quality,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1005_CC11,MT1005,Giải tích 2,HK232,CC11,high-quality,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_CC01,MT1007,Đại số Tuyến tính,HK232,CC01,high-quality,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_CC02,MT1007,Đại số Tuyến tính,HK232,CC02,high-quality,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_CC03,MT1007,Đại số Tuyến tính,HK232,CC03,high-quality,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_CC04,MT1007,Đại số Tuyến tính,HK232,CC04,high-quality,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_CC05,MT1007,Đại số Tuyến tính,HK232,CC05,high-quality,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_CC06,MT1007,Đại số Tuyến tính,HK232,CC06,high-quality,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_CC07,MT1007,Đại số Tuyến tính,HK232,CC07,high-quality,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_CC08,MT1007,Đại số Tuyến tính,HK232,CC08,high-quality,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_CC09,MT1007,Đại số Tuyến tính,HK232,CC09,high-quality,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_CC10,MT1007,Đại số Tuyến tính,HK232,CC10,high-quality,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_CC11,MT1007,Đại số Tuyến tính,HK232,CC11,high-quality,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_PH1007_CC01,PH1007,Thí nghiệm Vật lý,HK232,CC01,high-quality,40,GV00095,Dương Tuấn Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK232_PH1007_CC02,PH1007,Thí nghiệm Vật lý,HK232,CC02,high-quality,40,GV00096,Đỗ Ngọc Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK232_PH1007_CC03,PH1007,Thí nghiệm Vật lý,HK232,CC03,high-quality,40,GV00097,Dương Thị Phúc,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK232_PH1007_CC04,PH1007,Thí nghiệm Vật lý,HK232,CC04,high-quality,40,GV00098,Lý Anh Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK232_PH1007_CC05,PH1007,Thí nghiệm Vật lý,HK232,CC05,high-quality,40,GV00099,Phạm Khánh Nam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK232_PH1007_CC06,PH1007,Thí nghiệm Vật lý,HK232,CC06,high-quality,40,GV00100,Ngô Thanh Lam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK232_PH1007_CC07,PH1007,Thí nghiệm Vật lý,HK232,CC07,high-quality,40,GV00093,Huỳnh Hữu Trinh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK232_PH1007_CC08,PH1007,Thí nghiệm Vật lý,HK232,CC08,high-quality,40,GV00094,Hồ Anh Quang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK232_PH1007_CC09,PH1007,Thí nghiệm Vật lý,HK232,CC09,high-quality,40,GV00095,Dương Tuấn Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK232_PH1007_CC10,PH1007,Thí nghiệm Vật lý,HK232,CC10,high-quality,40,GV00096,Đỗ Ngọc Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK232_PH1007_CC11,PH1007,Thí nghiệm Vật lý,HK232,CC11,high-quality,40,GV00097,Dương Thị Phúc,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK232_CO1027_CC01,CO1027,Kỹ thuật Lập trình,HK232,CC01,high-quality,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_CC02,CO1027,Kỹ thuật Lập trình,HK232,CC02,high-quality,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_CC03,CO1027,Kỹ thuật Lập trình,HK232,CC03,high-quality,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_CC04,CO1027,Kỹ thuật Lập trình,HK232,CC04,high-quality,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_CC05,CO1027,Kỹ thuật Lập trình,HK232,CC05,high-quality,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_CC06,CO1027,Kỹ thuật Lập trình,HK232,CC06,high-quality,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_CC07,CO1027,Kỹ thuật Lập trình,HK232,CC07,high-quality,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_CC08,CO1027,Kỹ thuật Lập trình,HK232,CC08,high-quality,40,GV00041,Nguyễn Anh Trang,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_CC09,CO1027,Kỹ thuật Lập trình,HK232,CC09,high-quality,40,GV00042,Hoàng Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_CC10,CO1027,Kỹ thuật Lập trình,HK232,CC10,high-quality,40,GV00043,Lê Ngọc Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_CC11,CO1027,Kỹ thuật Lập trình,HK232,CC11,high-quality,40,GV00044,Phan Quốc Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1027_CC12,CO1027,Kỹ thuật Lập trình,HK232,CC12,high-quality,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_MI1003_CC01,MI1003,Giáo dục Quốc phòng,HK232,CC01,high-quality,40,GV00046,Bùi Quang Khôi,Trung tâm GDQP và AN
-HK232_MI1003_CC02,MI1003,Giáo dục Quốc phòng,HK232,CC02,high-quality,40,GV00047,Đỗ Hữu Phát,Trung tâm GDQP và AN
-HK232_MI1003_CC03,MI1003,Giáo dục Quốc phòng,HK232,CC03,high-quality,40,GV00048,Hồ Minh Nam,Trung tâm GDQP và AN
-HK232_MI1003_CC04,MI1003,Giáo dục Quốc phòng,HK232,CC04,high-quality,40,GV00049,Đỗ Anh Minh,Trung tâm GDQP và AN
-HK232_MI1003_CC05,MI1003,Giáo dục Quốc phòng,HK232,CC05,high-quality,40,GV00050,Đỗ Tuấn Linh,Trung tâm GDQP và AN
-HK232_MI1003_CC06,MI1003,Giáo dục Quốc phòng,HK232,CC06,high-quality,40,GV00051,Vũ Ngọc Linh,Trung tâm GDQP và AN
-HK232_MI1003_CC07,MI1003,Giáo dục Quốc phòng,HK232,CC07,high-quality,40,GV00052,Đỗ Văn Uyên,Trung tâm GDQP và AN
-HK232_MI1003_CC08,MI1003,Giáo dục Quốc phòng,HK232,CC08,high-quality,40,GV00053,Trần Thị Bảo,Trung tâm GDQP và AN
-HK232_MI1003_CC09,MI1003,Giáo dục Quốc phòng,HK232,CC09,high-quality,40,GV00054,Dương Anh Thảo,Trung tâm GDQP và AN
-HK232_MI1003_CC10,MI1003,Giáo dục Quốc phòng,HK232,CC10,high-quality,40,GV00055,Bùi Anh Trinh,Trung tâm GDQP và AN
-HK232_MI1003_CC11,MI1003,Giáo dục Quốc phòng,HK232,CC11,high-quality,40,GV00001,Ngô Quốc An,Trung tâm GDQP và AN
+HK232_CO1007_CC01,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC01,high-quality,40,GV00021,Bùi Quang Hà,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1007_CC02,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC02,high-quality,40,GV00022,Bùi Minh Minh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1007_CC03,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC03,high-quality,40,GV00023,Trần Tuấn Lam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1007_CC04,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC04,high-quality,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1007_CC05,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC05,high-quality,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1007_CC06,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC06,high-quality,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1007_CC07,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC07,high-quality,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1007_CC08,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC08,high-quality,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1007_CC09,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC09,high-quality,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1007_CC10,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC10,high-quality,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1007_CC11,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,CC11,high-quality,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_MT1005_CC01,MT1005,Giải tích 2,HK232,CC01,high-quality,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1005_CC02,MT1005,Giải tích 2,HK232,CC02,high-quality,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1005_CC03,MT1005,Giải tích 2,HK232,CC03,high-quality,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1005_CC04,MT1005,Giải tích 2,HK232,CC04,high-quality,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1005_CC05,MT1005,Giải tích 2,HK232,CC05,high-quality,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1005_CC06,MT1005,Giải tích 2,HK232,CC06,high-quality,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1005_CC07,MT1005,Giải tích 2,HK232,CC07,high-quality,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1005_CC08,MT1005,Giải tích 2,HK232,CC08,high-quality,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1005_CC09,MT1005,Giải tích 2,HK232,CC09,high-quality,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1005_CC10,MT1005,Giải tích 2,HK232,CC10,high-quality,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1005_CC11,MT1005,Giải tích 2,HK232,CC11,high-quality,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_CC01,MT1007,Đại số Tuyến tính,HK232,CC01,high-quality,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_CC02,MT1007,Đại số Tuyến tính,HK232,CC02,high-quality,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_CC03,MT1007,Đại số Tuyến tính,HK232,CC03,high-quality,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_CC04,MT1007,Đại số Tuyến tính,HK232,CC04,high-quality,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_CC05,MT1007,Đại số Tuyến tính,HK232,CC05,high-quality,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_CC06,MT1007,Đại số Tuyến tính,HK232,CC06,high-quality,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_CC07,MT1007,Đại số Tuyến tính,HK232,CC07,high-quality,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_CC08,MT1007,Đại số Tuyến tính,HK232,CC08,high-quality,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_CC09,MT1007,Đại số Tuyến tính,HK232,CC09,high-quality,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_CC10,MT1007,Đại số Tuyến tính,HK232,CC10,high-quality,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_CC11,MT1007,Đại số Tuyến tính,HK232,CC11,high-quality,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_PH1007_CC01,PH1007,Thí nghiệm Vật lý,HK232,CC01,high-quality,40,GV00094,Hồ Anh Quang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK232_PH1007_CC02,PH1007,Thí nghiệm Vật lý,HK232,CC02,high-quality,40,GV00095,Dương Tuấn Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK232_PH1007_CC03,PH1007,Thí nghiệm Vật lý,HK232,CC03,high-quality,40,GV00096,Đỗ Ngọc Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK232_PH1007_CC04,PH1007,Thí nghiệm Vật lý,HK232,CC04,high-quality,40,GV00097,Dương Thị Phúc,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK232_PH1007_CC05,PH1007,Thí nghiệm Vật lý,HK232,CC05,high-quality,40,GV00098,Lý Anh Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK232_PH1007_CC06,PH1007,Thí nghiệm Vật lý,HK232,CC06,high-quality,40,GV00099,Phạm Khánh Nam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK232_PH1007_CC07,PH1007,Thí nghiệm Vật lý,HK232,CC07,high-quality,40,GV00100,Ngô Thanh Lam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK232_PH1007_CC08,PH1007,Thí nghiệm Vật lý,HK232,CC08,high-quality,40,GV00093,Huỳnh Hữu Trinh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK232_PH1007_CC09,PH1007,Thí nghiệm Vật lý,HK232,CC09,high-quality,40,GV00094,Hồ Anh Quang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK232_PH1007_CC10,PH1007,Thí nghiệm Vật lý,HK232,CC10,high-quality,40,GV00095,Dương Tuấn Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK232_PH1007_CC11,PH1007,Thí nghiệm Vật lý,HK232,CC11,high-quality,40,GV00096,Đỗ Ngọc Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK232_CO1027_CC01,CO1027,Kỹ thuật Lập trình,HK232,CC01,high-quality,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_CC02,CO1027,Kỹ thuật Lập trình,HK232,CC02,high-quality,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_CC03,CO1027,Kỹ thuật Lập trình,HK232,CC03,high-quality,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_CC04,CO1027,Kỹ thuật Lập trình,HK232,CC04,high-quality,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_CC05,CO1027,Kỹ thuật Lập trình,HK232,CC05,high-quality,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_CC06,CO1027,Kỹ thuật Lập trình,HK232,CC06,high-quality,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_CC07,CO1027,Kỹ thuật Lập trình,HK232,CC07,high-quality,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_CC08,CO1027,Kỹ thuật Lập trình,HK232,CC08,high-quality,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_CC09,CO1027,Kỹ thuật Lập trình,HK232,CC09,high-quality,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_CC10,CO1027,Kỹ thuật Lập trình,HK232,CC10,high-quality,40,GV00041,Nguyễn Anh Trang,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1027_CC11,CO1027,Kỹ thuật Lập trình,HK232,CC11,high-quality,40,GV00042,Hoàng Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_MI1003_CC01,MI1003,Giáo dục Quốc phòng,HK232,CC01,high-quality,40,GV00043,Lê Ngọc Nhi,Trung tâm GDQP và AN
+HK232_MI1003_CC02,MI1003,Giáo dục Quốc phòng,HK232,CC02,high-quality,40,GV00044,Phan Quốc Trinh,Trung tâm GDQP và AN
+HK232_MI1003_CC03,MI1003,Giáo dục Quốc phòng,HK232,CC03,high-quality,40,GV00045,Nguyễn Ngọc Duy,Trung tâm GDQP và AN
+HK232_MI1003_CC04,MI1003,Giáo dục Quốc phòng,HK232,CC04,high-quality,40,GV00046,Bùi Quang Khôi,Trung tâm GDQP và AN
+HK232_MI1003_CC05,MI1003,Giáo dục Quốc phòng,HK232,CC05,high-quality,40,GV00047,Đỗ Hữu Phát,Trung tâm GDQP và AN
+HK232_MI1003_CC06,MI1003,Giáo dục Quốc phòng,HK232,CC06,high-quality,40,GV00048,Hồ Minh Nam,Trung tâm GDQP và AN
+HK232_MI1003_CC07,MI1003,Giáo dục Quốc phòng,HK232,CC07,high-quality,40,GV00049,Đỗ Anh Minh,Trung tâm GDQP và AN
+HK232_MI1003_CC08,MI1003,Giáo dục Quốc phòng,HK232,CC08,high-quality,40,GV00050,Đỗ Tuấn Linh,Trung tâm GDQP và AN
+HK232_MI1003_CC09,MI1003,Giáo dục Quốc phòng,HK232,CC09,high-quality,40,GV00051,Vũ Ngọc Linh,Trung tâm GDQP và AN
+HK232_MI1003_CC10,MI1003,Giáo dục Quốc phòng,HK232,CC10,high-quality,40,GV00052,Đỗ Văn Uyên,Trung tâm GDQP và AN
+HK232_MI1003_CC11,MI1003,Giáo dục Quốc phòng,HK232,CC11,high-quality,40,GV00053,Trần Thị Bảo,Trung tâm GDQP và AN
 HK232_PE1005_CC01,PE1005,Giáo dục thể chất 2,HK232,CC01,high-quality,40,GV00110,Huỳnh Hoàng Yến,Bộ môn Giáo dục Thể chất
 HK232_PE1005_CC02,PE1005,Giáo dục thể chất 2,HK232,CC02,high-quality,40,GV00111,Vũ Ngọc Hùng,Bộ môn Giáo dục Thể chất
 HK232_PE1005_CC03,PE1005,Giáo dục thể chất 2,HK232,CC03,high-quality,40,GV00112,Phạm Phương Nam,Bộ môn Giáo dục Thể chất
@@ -289,57 +283,57 @@ HK232_PE1005_CC11,PE1005,Giáo dục thể chất 2,HK232,CC11,high-quality,40,G
 HK232_CH1003_CC01,CH1003,Hóa đại cương (Học vượt),HK232,CC01,high-quality,40,GV00105,Vũ Đức Long,Khoa Kỹ thuật Hóa học
 HK232_CH1003_CC02,CH1003,Hóa đại cương (Học vượt),HK232,CC02,high-quality,40,GV00106,Vũ Thanh Thảo,Khoa Kỹ thuật Hóa học
 HK232_CH1003_CC03,CH1003,Hóa đại cương (Học vượt),HK232,CC03,high-quality,40,GV00107,Hoàng Quang Quang,Khoa Kỹ thuật Hóa học
-HK232_CO1007_TT01,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,TT01,advanced,40,GV00002,Dương Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1007_TT02,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,TT02,advanced,40,GV00003,Lý Hoàng Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1007_TT03,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,TT03,advanced,40,GV00004,Phạm Ngọc Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1007_TT04,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,TT04,advanced,40,GV00005,Hồ Khánh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_MT1005_TT01,MT1005,Giải tích 2,HK232,TT01,advanced,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1005_TT02,MT1005,Giải tích 2,HK232,TT02,advanced,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1005_TT03,MT1005,Giải tích 2,HK232,TT03,advanced,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1005_TT04,MT1005,Giải tích 2,HK232,TT04,advanced,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_TT01,MT1007,Đại số Tuyến tính,HK232,TT01,advanced,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_TT02,MT1007,Đại số Tuyến tính,HK232,TT02,advanced,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_TT03,MT1007,Đại số Tuyến tính,HK232,TT03,advanced,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT1007_TT04,MT1007,Đại số Tuyến tính,HK232,TT04,advanced,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_PH1007_TT01,PH1007,Thí nghiệm Vật lý,HK232,TT01,advanced,40,GV00098,Lý Anh Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK232_PH1007_TT02,PH1007,Thí nghiệm Vật lý,HK232,TT02,advanced,40,GV00099,Phạm Khánh Nam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK232_PH1007_TT03,PH1007,Thí nghiệm Vật lý,HK232,TT03,advanced,40,GV00100,Ngô Thanh Lam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK232_PH1007_TT04,PH1007,Thí nghiệm Vật lý,HK232,TT04,advanced,40,GV00093,Huỳnh Hữu Trinh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK232_CO1007_TT01,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,TT01,advanced,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1007_TT02,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,TT02,advanced,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1007_TT03,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,TT03,advanced,40,GV00001,Ngô Quốc An,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1007_TT04,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK232,TT04,advanced,40,GV00002,Dương Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_MT1005_TT01,MT1005,Giải tích 2,HK232,TT01,advanced,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1005_TT02,MT1005,Giải tích 2,HK232,TT02,advanced,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1005_TT03,MT1005,Giải tích 2,HK232,TT03,advanced,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1005_TT04,MT1005,Giải tích 2,HK232,TT04,advanced,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_TT01,MT1007,Đại số Tuyến tính,HK232,TT01,advanced,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_TT02,MT1007,Đại số Tuyến tính,HK232,TT02,advanced,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_TT03,MT1007,Đại số Tuyến tính,HK232,TT03,advanced,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT1007_TT04,MT1007,Đại số Tuyến tính,HK232,TT04,advanced,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_PH1007_TT01,PH1007,Thí nghiệm Vật lý,HK232,TT01,advanced,40,GV00097,Dương Thị Phúc,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK232_PH1007_TT02,PH1007,Thí nghiệm Vật lý,HK232,TT02,advanced,40,GV00098,Lý Anh Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK232_PH1007_TT03,PH1007,Thí nghiệm Vật lý,HK232,TT03,advanced,40,GV00099,Phạm Khánh Nam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK232_PH1007_TT04,PH1007,Thí nghiệm Vật lý,HK232,TT04,advanced,40,GV00100,Ngô Thanh Lam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK232_CO1027_TT01,CO1027,Kỹ thuật Lập trình,HK232,TT01,advanced,40,GV00014,Võ Khánh An,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO1027_TT02,CO1027,Kỹ thuật Lập trình,HK232,TT02,advanced,40,GV00015,Phan Văn Trang,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO1027_TT03,CO1027,Kỹ thuật Lập trình,HK232,TT03,advanced,40,GV00016,Lý Quang Phát,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO1027_TT04,CO1027,Kỹ thuật Lập trình,HK232,TT04,advanced,40,GV00017,Phạm Đức Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_MI1003_TT01,MI1003,Giáo dục Quốc phòng,HK232,TT01,advanced,40,GV00006,Bùi Hữu Trinh,Trung tâm GDQP và AN
-HK232_MI1003_TT02,MI1003,Giáo dục Quốc phòng,HK232,TT02,advanced,40,GV00007,Huỳnh Anh Nam,Trung tâm GDQP và AN
-HK232_MI1003_TT03,MI1003,Giáo dục Quốc phòng,HK232,TT03,advanced,40,GV00008,Lê Thanh Hải,Trung tâm GDQP và AN
-HK232_MI1003_TT04,MI1003,Giáo dục Quốc phòng,HK232,TT04,advanced,40,GV00009,Bùi Anh Hiếu,Trung tâm GDQP và AN
+HK232_MI1003_TT01,MI1003,Giáo dục Quốc phòng,HK232,TT01,advanced,40,GV00003,Lý Hoàng Duy,Trung tâm GDQP và AN
+HK232_MI1003_TT02,MI1003,Giáo dục Quốc phòng,HK232,TT02,advanced,40,GV00004,Phạm Ngọc Nam,Trung tâm GDQP và AN
+HK232_MI1003_TT03,MI1003,Giáo dục Quốc phòng,HK232,TT03,advanced,40,GV00005,Hồ Khánh Trinh,Trung tâm GDQP và AN
+HK232_MI1003_TT04,MI1003,Giáo dục Quốc phòng,HK232,TT04,advanced,40,GV00006,Bùi Hữu Trinh,Trung tâm GDQP và AN
 HK232_PE1005_TT01,PE1005,Giáo dục thể chất 2,HK232,TT01,advanced,40,GV00113,Vũ Hữu Hùng,Bộ môn Giáo dục Thể chất
 HK232_PE1005_TT02,PE1005,Giáo dục thể chất 2,HK232,TT02,advanced,40,GV00114,Đặng Quang Quân,Bộ môn Giáo dục Thể chất
 HK232_PE1005_TT03,PE1005,Giáo dục thể chất 2,HK232,TT03,advanced,40,GV00115,Huỳnh Quốc Châu,Bộ môn Giáo dục Thể chất
 HK232_PE1005_TT04,PE1005,Giáo dục thể chất 2,HK232,TT04,advanced,40,GV00116,Phạm Khánh Linh,Bộ môn Giáo dục Thể chất
 HK232_CH1003_TT01,CH1003,Hóa đại cương (Học vượt),HK232,TT01,advanced,40,GV00108,Lý Hoàng Anh,Khoa Kỹ thuật Hóa học
 HK232_CH1003_TT02,CH1003,Hóa đại cương (Học vượt),HK232,TT02,advanced,40,GV00101,Nguyễn Quang Phúc,Khoa Kỹ thuật Hóa học
-HK232_MT2013_L01,MT2013,Xác suất và Thống kê,HK232,L01,standard,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L02,MT2013,Xác suất và Thống kê,HK232,L02,standard,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L03,MT2013,Xác suất và Thống kê,HK232,L03,standard,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L04,MT2013,Xác suất và Thống kê,HK232,L04,standard,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L05,MT2013,Xác suất và Thống kê,HK232,L05,standard,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L06,MT2013,Xác suất và Thống kê,HK232,L06,standard,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L07,MT2013,Xác suất và Thống kê,HK232,L07,standard,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L08,MT2013,Xác suất và Thống kê,HK232,L08,standard,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L09,MT2013,Xác suất và Thống kê,HK232,L09,standard,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L10,MT2013,Xác suất và Thống kê,HK232,L10,standard,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L11,MT2013,Xác suất và Thống kê,HK232,L11,standard,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L12,MT2013,Xác suất và Thống kê,HK232,L12,standard,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L13,MT2013,Xác suất và Thống kê,HK232,L13,standard,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L14,MT2013,Xác suất và Thống kê,HK232,L14,standard,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L15,MT2013,Xác suất và Thống kê,HK232,L15,standard,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L16,MT2013,Xác suất và Thống kê,HK232,L16,standard,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L17,MT2013,Xác suất và Thống kê,HK232,L17,standard,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L18,MT2013,Xác suất và Thống kê,HK232,L18,standard,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L19,MT2013,Xác suất và Thống kê,HK232,L19,standard,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L20,MT2013,Xác suất và Thống kê,HK232,L20,standard,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_L21,MT2013,Xác suất và Thống kê,HK232,L21,standard,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L01,MT2013,Xác suất và Thống kê,HK232,L01,standard,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L02,MT2013,Xác suất và Thống kê,HK232,L02,standard,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L03,MT2013,Xác suất và Thống kê,HK232,L03,standard,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L04,MT2013,Xác suất và Thống kê,HK232,L04,standard,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L05,MT2013,Xác suất và Thống kê,HK232,L05,standard,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L06,MT2013,Xác suất và Thống kê,HK232,L06,standard,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L07,MT2013,Xác suất và Thống kê,HK232,L07,standard,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L08,MT2013,Xác suất và Thống kê,HK232,L08,standard,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L09,MT2013,Xác suất và Thống kê,HK232,L09,standard,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L10,MT2013,Xác suất và Thống kê,HK232,L10,standard,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L11,MT2013,Xác suất và Thống kê,HK232,L11,standard,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L12,MT2013,Xác suất và Thống kê,HK232,L12,standard,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L13,MT2013,Xác suất và Thống kê,HK232,L13,standard,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L14,MT2013,Xác suất và Thống kê,HK232,L14,standard,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L15,MT2013,Xác suất và Thống kê,HK232,L15,standard,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L16,MT2013,Xác suất và Thống kê,HK232,L16,standard,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L17,MT2013,Xác suất và Thống kê,HK232,L17,standard,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L18,MT2013,Xác suất và Thống kê,HK232,L18,standard,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L19,MT2013,Xác suất và Thống kê,HK232,L19,standard,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L20,MT2013,Xác suất và Thống kê,HK232,L20,standard,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_L21,MT2013,Xác suất và Thống kê,HK232,L21,standard,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK232_SP1033_L01,SP1033,Kinh tế Chính trị Mác - Lênin,HK232,L01,standard,120,GV00085,Võ Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
 HK232_SP1033_L02,SP1033,Kinh tế Chính trị Mác - Lênin,HK232,L02,standard,120,GV00086,Hoàng Gia Châu,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
 HK232_SP1033_L03,SP1033,Kinh tế Chính trị Mác - Lênin,HK232,L03,standard,120,GV00087,Lê Khánh Minh,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
@@ -380,21 +374,21 @@ HK232_CO2039_L06,CO2039,Lập trình Nâng cao,HK232,L06,standard,40,GV00023,Tr�
 HK232_CO2039_L07,CO2039,Lập trình Nâng cao,HK232,L07,standard,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO2039_L08,CO2039,Lập trình Nâng cao,HK232,L08,standard,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO2039_L09,CO2039,Lập trình Nâng cao,HK232,L09,standard,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_L10,CO2039,Lập trình Nâng cao,HK232,L10,standard,40,GV00010,Dương Hữu Bảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_L11,CO2039,Lập trình Nâng cao,HK232,L11,standard,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_L12,CO2039,Lập trình Nâng cao,HK232,L12,standard,40,GV00012,Huỳnh Ngọc Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_L13,CO2039,Lập trình Nâng cao,HK232,L13,standard,40,GV00013,Đỗ Đức Khang,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_L14,CO2039,Lập trình Nâng cao,HK232,L14,standard,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_L15,CO2039,Lập trình Nâng cao,HK232,L15,standard,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_L16,CO2039,Lập trình Nâng cao,HK232,L16,standard,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_L17,CO2039,Lập trình Nâng cao,HK232,L17,standard,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_L18,CO2039,Lập trình Nâng cao,HK232,L18,standard,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_L19,CO2039,Lập trình Nâng cao,HK232,L19,standard,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_L20,CO2039,Lập trình Nâng cao,HK232,L20,standard,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_L21,CO2039,Lập trình Nâng cao,HK232,L21,standard,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_L22,CO2039,Lập trình Nâng cao,HK232,L22,standard,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_L23,CO2039,Lập trình Nâng cao,HK232,L23,standard,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_L24,CO2039,Lập trình Nâng cao,HK232,L24,standard,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_L10,CO2039,Lập trình Nâng cao,HK232,L10,standard,40,GV00007,Huỳnh Anh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_L11,CO2039,Lập trình Nâng cao,HK232,L11,standard,40,GV00008,Lê Thanh Hải,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_L12,CO2039,Lập trình Nâng cao,HK232,L12,standard,40,GV00009,Bùi Anh Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_L13,CO2039,Lập trình Nâng cao,HK232,L13,standard,40,GV00010,Dương Hữu Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_L14,CO2039,Lập trình Nâng cao,HK232,L14,standard,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_L15,CO2039,Lập trình Nâng cao,HK232,L15,standard,40,GV00012,Huỳnh Ngọc Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_L16,CO2039,Lập trình Nâng cao,HK232,L16,standard,40,GV00013,Đỗ Đức Khang,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_L17,CO2039,Lập trình Nâng cao,HK232,L17,standard,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_L18,CO2039,Lập trình Nâng cao,HK232,L18,standard,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_L19,CO2039,Lập trình Nâng cao,HK232,L19,standard,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_L20,CO2039,Lập trình Nâng cao,HK232,L20,standard,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_L21,CO2039,Lập trình Nâng cao,HK232,L21,standard,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_L22,CO2039,Lập trình Nâng cao,HK232,L22,standard,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_L23,CO2039,Lập trình Nâng cao,HK232,L23,standard,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_L24,CO2039,Lập trình Nâng cao,HK232,L24,standard,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO2017_L01,CO2017,Hệ điều hành,HK232,L01,standard,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO2017_L02,CO2017,Hệ điều hành,HK232,L02,standard,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO2017_L03,CO2017,Hệ điều hành,HK232,L03,standard,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
@@ -405,20 +399,20 @@ HK232_CO2017_L07,CO2017,Hệ điều hành,HK232,L07,standard,40,GV00044,Phan Qu
 HK232_CO2017_L08,CO2017,Hệ điều hành,HK232,L08,standard,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO2017_L09,CO2017,Hệ điều hành,HK232,L09,standard,40,GV00046,Bùi Quang Khôi,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO2017_L10,CO2017,Hệ điều hành,HK232,L10,standard,40,GV00047,Đỗ Hữu Phát,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_L11,CO2017,Hệ điều hành,HK232,L11,standard,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_L12,CO2017,Hệ điều hành,HK232,L12,standard,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_L13,CO2017,Hệ điều hành,HK232,L13,standard,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_L14,CO2017,Hệ điều hành,HK232,L14,standard,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_L15,CO2017,Hệ điều hành,HK232,L15,standard,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_L16,CO2017,Hệ điều hành,HK232,L16,standard,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_L17,CO2017,Hệ điều hành,HK232,L17,standard,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_L18,CO2017,Hệ điều hành,HK232,L18,standard,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_L19,CO2017,Hệ điều hành,HK232,L19,standard,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_L20,CO2017,Hệ điều hành,HK232,L20,standard,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_L21,CO2017,Hệ điều hành,HK232,L21,standard,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_L22,CO2017,Hệ điều hành,HK232,L22,standard,40,GV00041,Nguyễn Anh Trang,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_L23,CO2017,Hệ điều hành,HK232,L23,standard,40,GV00042,Hoàng Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_L24,CO2017,Hệ điều hành,HK232,L24,standard,40,GV00043,Lê Ngọc Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_L11,CO2017,Hệ điều hành,HK232,L11,standard,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_L12,CO2017,Hệ điều hành,HK232,L12,standard,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_L13,CO2017,Hệ điều hành,HK232,L13,standard,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_L14,CO2017,Hệ điều hành,HK232,L14,standard,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_L15,CO2017,Hệ điều hành,HK232,L15,standard,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_L16,CO2017,Hệ điều hành,HK232,L16,standard,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_L17,CO2017,Hệ điều hành,HK232,L17,standard,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_L18,CO2017,Hệ điều hành,HK232,L18,standard,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_L19,CO2017,Hệ điều hành,HK232,L19,standard,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_L20,CO2017,Hệ điều hành,HK232,L20,standard,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_L21,CO2017,Hệ điều hành,HK232,L21,standard,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_L22,CO2017,Hệ điều hành,HK232,L22,standard,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_L23,CO2017,Hệ điều hành,HK232,L23,standard,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_L24,CO2017,Hệ điều hành,HK232,L24,standard,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_IM1013_L01,IM1013,Kinh tế học Đại cương,HK232,L01,standard,40,GV00001,Ngô Quốc An,Khoa Quản lý Công nghiệp
 HK232_IM1013_L02,IM1013,Kinh tế học Đại cương,HK232,L02,standard,40,GV00002,Dương Đức Khôi,Khoa Quản lý Công nghiệp
 HK232_IM1013_L03,IM1013,Kinh tế học Đại cương,HK232,L03,standard,40,GV00003,Lý Hoàng Duy,Khoa Quản lý Công nghiệp
@@ -453,15 +447,15 @@ HK232_CO2013_L01,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK232,L01,stan
 HK232_CO2013_L02,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK232,L02,standard,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO2013_L03,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK232,L03,standard,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO2013_L04,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK232,L04,standard,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_MT2013_CC01,MT2013,Xác suất và Thống kê,HK232,CC01,high-quality,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_CC02,MT2013,Xác suất và Thống kê,HK232,CC02,high-quality,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_CC03,MT2013,Xác suất và Thống kê,HK232,CC03,high-quality,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_CC04,MT2013,Xác suất và Thống kê,HK232,CC04,high-quality,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_CC05,MT2013,Xác suất và Thống kê,HK232,CC05,high-quality,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_CC06,MT2013,Xác suất và Thống kê,HK232,CC06,high-quality,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_CC07,MT2013,Xác suất và Thống kê,HK232,CC07,high-quality,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_CC08,MT2013,Xác suất và Thống kê,HK232,CC08,high-quality,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_CC09,MT2013,Xác suất và Thống kê,HK232,CC09,high-quality,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_CC01,MT2013,Xác suất và Thống kê,HK232,CC01,high-quality,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_CC02,MT2013,Xác suất và Thống kê,HK232,CC02,high-quality,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_CC03,MT2013,Xác suất và Thống kê,HK232,CC03,high-quality,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_CC04,MT2013,Xác suất và Thống kê,HK232,CC04,high-quality,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_CC05,MT2013,Xác suất và Thống kê,HK232,CC05,high-quality,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_CC06,MT2013,Xác suất và Thống kê,HK232,CC06,high-quality,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_CC07,MT2013,Xác suất và Thống kê,HK232,CC07,high-quality,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_CC08,MT2013,Xác suất và Thống kê,HK232,CC08,high-quality,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_CC09,MT2013,Xác suất và Thống kê,HK232,CC09,high-quality,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK232_SP1033_CC01,SP1033,Kinh tế Chính trị Mác - Lênin,HK232,CC01,high-quality,120,GV00085,Võ Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
 HK232_SP1033_CC02,SP1033,Kinh tế Chính trị Mác - Lênin,HK232,CC02,high-quality,120,GV00086,Hoàng Gia Châu,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
 HK232_SP1033_CC03,SP1033,Kinh tế Chính trị Mác - Lênin,HK232,CC03,high-quality,120,GV00087,Lê Khánh Minh,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
@@ -469,27 +463,27 @@ HK232_SP1033_CC04,SP1033,Kinh tế Chính trị Mác - Lênin,HK232,CC04,high-qu
 HK232_CO2039_CC01,CO2039,Lập trình Nâng cao,HK232,CC01,high-quality,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO2039_CC02,CO2039,Lập trình Nâng cao,HK232,CC02,high-quality,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO2039_CC03,CO2039,Lập trình Nâng cao,HK232,CC03,high-quality,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_CC04,CO2039,Lập trình Nâng cao,HK232,CC04,high-quality,40,GV00044,Phan Quốc Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_CC05,CO2039,Lập trình Nâng cao,HK232,CC05,high-quality,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_CC06,CO2039,Lập trình Nâng cao,HK232,CC06,high-quality,40,GV00046,Bùi Quang Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_CC07,CO2039,Lập trình Nâng cao,HK232,CC07,high-quality,40,GV00047,Đỗ Hữu Phát,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_CC08,CO2039,Lập trình Nâng cao,HK232,CC08,high-quality,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_CC09,CO2039,Lập trình Nâng cao,HK232,CC09,high-quality,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_CC10,CO2039,Lập trình Nâng cao,HK232,CC10,high-quality,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_CC11,CO2039,Lập trình Nâng cao,HK232,CC11,high-quality,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2039_CC12,CO2039,Lập trình Nâng cao,HK232,CC12,high-quality,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_CC01,CO2017,Hệ điều hành,HK232,CC01,high-quality,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_CC02,CO2017,Hệ điều hành,HK232,CC02,high-quality,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_CC03,CO2017,Hệ điều hành,HK232,CC03,high-quality,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_CC04,CO2017,Hệ điều hành,HK232,CC04,high-quality,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_CC05,CO2017,Hệ điều hành,HK232,CC05,high-quality,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_CC06,CO2017,Hệ điều hành,HK232,CC06,high-quality,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_CC07,CO2017,Hệ điều hành,HK232,CC07,high-quality,40,GV00041,Nguyễn Anh Trang,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_CC08,CO2017,Hệ điều hành,HK232,CC08,high-quality,40,GV00042,Hoàng Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_CC09,CO2017,Hệ điều hành,HK232,CC09,high-quality,40,GV00043,Lê Ngọc Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_CC10,CO2017,Hệ điều hành,HK232,CC10,high-quality,40,GV00044,Phan Quốc Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_CC11,CO2017,Hệ điều hành,HK232,CC11,high-quality,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_CC12,CO2017,Hệ điều hành,HK232,CC12,high-quality,40,GV00046,Bùi Quang Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_CC04,CO2039,Lập trình Nâng cao,HK232,CC04,high-quality,40,GV00041,Nguyễn Anh Trang,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_CC05,CO2039,Lập trình Nâng cao,HK232,CC05,high-quality,40,GV00042,Hoàng Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_CC06,CO2039,Lập trình Nâng cao,HK232,CC06,high-quality,40,GV00043,Lê Ngọc Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_CC07,CO2039,Lập trình Nâng cao,HK232,CC07,high-quality,40,GV00044,Phan Quốc Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_CC08,CO2039,Lập trình Nâng cao,HK232,CC08,high-quality,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_CC09,CO2039,Lập trình Nâng cao,HK232,CC09,high-quality,40,GV00046,Bùi Quang Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_CC10,CO2039,Lập trình Nâng cao,HK232,CC10,high-quality,40,GV00047,Đỗ Hữu Phát,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_CC11,CO2039,Lập trình Nâng cao,HK232,CC11,high-quality,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2039_CC12,CO2039,Lập trình Nâng cao,HK232,CC12,high-quality,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_CC01,CO2017,Hệ điều hành,HK232,CC01,high-quality,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_CC02,CO2017,Hệ điều hành,HK232,CC02,high-quality,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_CC03,CO2017,Hệ điều hành,HK232,CC03,high-quality,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_CC04,CO2017,Hệ điều hành,HK232,CC04,high-quality,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_CC05,CO2017,Hệ điều hành,HK232,CC05,high-quality,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_CC06,CO2017,Hệ điều hành,HK232,CC06,high-quality,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_CC07,CO2017,Hệ điều hành,HK232,CC07,high-quality,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_CC08,CO2017,Hệ điều hành,HK232,CC08,high-quality,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_CC09,CO2017,Hệ điều hành,HK232,CC09,high-quality,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_CC10,CO2017,Hệ điều hành,HK232,CC10,high-quality,40,GV00041,Nguyễn Anh Trang,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_CC11,CO2017,Hệ điều hành,HK232,CC11,high-quality,40,GV00042,Hoàng Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_CC12,CO2017,Hệ điều hành,HK232,CC12,high-quality,40,GV00043,Lê Ngọc Nhi,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_IM1013_CC01,IM1013,Kinh tế học Đại cương,HK232,CC01,high-quality,40,GV00001,Ngô Quốc An,Khoa Quản lý Công nghiệp
 HK232_IM1013_CC02,IM1013,Kinh tế học Đại cương,HK232,CC02,high-quality,40,GV00002,Dương Đức Khôi,Khoa Quản lý Công nghiệp
 HK232_IM1013_CC03,IM1013,Kinh tế học Đại cương,HK232,CC03,high-quality,40,GV00003,Lý Hoàng Duy,Khoa Quản lý Công nghiệp
@@ -511,29 +505,29 @@ HK232_CO3093_CC03,CO3093,Mạng máy tính (Học vượt),HK232,CC03,high-quali
 HK232_CO2013_CC01,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK232,CC01,high-quality,40,GV00019,Bùi Ngọc Anh,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO2013_CC02,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK232,CC02,high-quality,40,GV00020,Huỳnh Quốc Linh,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO2013_CC03,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK232,CC03,high-quality,40,GV00021,Bùi Quang Hà,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_MT2013_TT01,MT2013,Xác suất và Thống kê,HK232,TT01,advanced,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_TT02,MT2013,Xác suất và Thống kê,HK232,TT02,advanced,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_MT2013_TT03,MT2013,Xác suất và Thống kê,HK232,TT03,advanced,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_TT01,MT2013,Xác suất và Thống kê,HK232,TT01,advanced,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_TT02,MT2013,Xác suất và Thống kê,HK232,TT02,advanced,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK232_MT2013_TT03,MT2013,Xác suất và Thống kê,HK232,TT03,advanced,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK232_SP1033_TT01,SP1033,Kinh tế Chính trị Mác - Lênin,HK232,TT01,advanced,120,GV00089,Lý Gia Lam,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
 HK232_SP1033_TT02,SP1033,Kinh tế Chính trị Mác - Lênin,HK232,TT02,advanced,120,GV00090,Võ Minh Châu,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
 HK232_CO2039_TT01,CO2039,Lập trình Nâng cao,HK232,TT01,advanced,40,GV00022,Bùi Minh Minh,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO2039_TT02,CO2039,Lập trình Nâng cao,HK232,TT02,advanced,40,GV00023,Trần Tuấn Lam,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO2039_TT03,CO2039,Lập trình Nâng cao,HK232,TT03,advanced,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO2039_TT04,CO2039,Lập trình Nâng cao,HK232,TT04,advanced,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_TT01,CO2017,Hệ điều hành,HK232,TT01,advanced,40,GV00047,Đỗ Hữu Phát,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_TT02,CO2017,Hệ điều hành,HK232,TT02,advanced,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_TT03,CO2017,Hệ điều hành,HK232,TT03,advanced,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2017_TT04,CO2017,Hệ điều hành,HK232,TT04,advanced,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_IM1013_TT01,IM1013,Kinh tế học Đại cương,HK232,TT01,advanced,40,GV00029,Lê Hoàng Lam,Khoa Quản lý Công nghiệp
-HK232_IM1023_TT01,IM1023,Quản lý Sản xuất cho Kỹ sư,HK232,TT01,advanced,40,GV00030,Đỗ Minh Duy,Khoa Quản lý Công nghiệp
-HK232_IM1025_TT01,IM1025,Quản lý Dự án cho Kỹ sư,HK232,TT01,advanced,40,GV00031,Lê Khánh Yến,Khoa Quản lý Công nghiệp
-HK232_IM1027_TT01,IM1027,Kinh tế Kỹ thuật,HK232,TT01,advanced,40,GV00032,Đặng Gia Hiếu,Khoa Quản lý Công nghiệp
-HK232_IM3001_TT01,IM3001,Quản trị Kinh doanh cho Kỹ sư,HK232,TT01,advanced,40,GV00033,Đỗ Thanh Châu,Khoa Quản lý Công nghiệp
-HK232_IM3001_TT02,IM3001,Quản trị Kinh doanh cho Kỹ sư,HK232,TT02,advanced,40,GV00034,Dương Minh Tuấn,Khoa Quản lý Công nghiệp
-HK232_CO3093_TT01,CO3093,Mạng máy tính (Học vượt),HK232,TT01,advanced,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_TT02,CO3093,Mạng máy tính (Học vượt),HK232,TT02,advanced,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2013_TT01,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK232,TT01,advanced,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2013_TT02,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK232,TT02,advanced,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_TT01,CO2017,Hệ điều hành,HK232,TT01,advanced,40,GV00044,Phan Quốc Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_TT02,CO2017,Hệ điều hành,HK232,TT02,advanced,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_TT03,CO2017,Hệ điều hành,HK232,TT03,advanced,40,GV00046,Bùi Quang Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2017_TT04,CO2017,Hệ điều hành,HK232,TT04,advanced,40,GV00047,Đỗ Hữu Phát,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_IM1013_TT01,IM1013,Kinh tế học Đại cương,HK232,TT01,advanced,40,GV00026,Hoàng Khánh Long,Khoa Quản lý Công nghiệp
+HK232_IM1023_TT01,IM1023,Quản lý Sản xuất cho Kỹ sư,HK232,TT01,advanced,40,GV00027,Nguyễn Quốc Tuấn,Khoa Quản lý Công nghiệp
+HK232_IM1025_TT01,IM1025,Quản lý Dự án cho Kỹ sư,HK232,TT01,advanced,40,GV00028,Phạm Hoàng Trinh,Khoa Quản lý Công nghiệp
+HK232_IM1027_TT01,IM1027,Kinh tế Kỹ thuật,HK232,TT01,advanced,40,GV00029,Lê Hoàng Lam,Khoa Quản lý Công nghiệp
+HK232_IM3001_TT01,IM3001,Quản trị Kinh doanh cho Kỹ sư,HK232,TT01,advanced,40,GV00030,Đỗ Minh Duy,Khoa Quản lý Công nghiệp
+HK232_IM3001_TT02,IM3001,Quản trị Kinh doanh cho Kỹ sư,HK232,TT02,advanced,40,GV00031,Lê Khánh Yến,Khoa Quản lý Công nghiệp
+HK232_CO3093_TT01,CO3093,Mạng máy tính (Học vượt),HK232,TT01,advanced,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_TT02,CO3093,Mạng máy tính (Học vượt),HK232,TT02,advanced,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2013_TT01,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK232,TT01,advanced,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO2013_TT02,CO2013,Hệ cơ sở Dữ liệu (Học vượt),HK232,TT02,advanced,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CH1003_L05,CH1003,Hóa đại cương,HK232,L05,standard,40,GV00102,Đặng Anh Phúc,Khoa Kỹ thuật Hóa học
 HK232_CH1003_L06,CH1003,Hóa đại cương,HK232,L06,standard,40,GV00103,Phạm Gia Nam,Khoa Kỹ thuật Hóa học
 HK232_CH1003_L07,CH1003,Hóa đại cương,HK232,L07,standard,40,GV00104,Phan Gia Bảo,Khoa Kỹ thuật Hóa học
@@ -565,112 +559,112 @@ HK232_SP1037_L05,SP1037,Tư tưởng Hồ Chí Minh,HK232,L05,standard,120,GV000
 HK232_SP1037_L06,SP1037,Tư tưởng Hồ Chí Minh,HK232,L06,standard,120,GV00088,Nguyễn Thanh Hùng,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
 HK232_SP1037_L07,SP1037,Tư tưởng Hồ Chí Minh,HK232,L07,standard,120,GV00089,Lý Gia Lam,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
 HK232_SP1037_L08,SP1037,Tư tưởng Hồ Chí Minh,HK232,L08,standard,120,GV00090,Võ Minh Châu,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
-HK232_CO3093_L05,CO3093,Mạng máy tính,HK232,L05,standard,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L06,CO3093,Mạng máy tính,HK232,L06,standard,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L07,CO3093,Mạng máy tính,HK232,L07,standard,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L08,CO3093,Mạng máy tính,HK232,L08,standard,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L09,CO3093,Mạng máy tính,HK232,L09,standard,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L10,CO3093,Mạng máy tính,HK232,L10,standard,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L11,CO3093,Mạng máy tính,HK232,L11,standard,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L12,CO3093,Mạng máy tính,HK232,L12,standard,40,GV00001,Ngô Quốc An,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L13,CO3093,Mạng máy tính,HK232,L13,standard,40,GV00002,Dương Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L14,CO3093,Mạng máy tính,HK232,L14,standard,40,GV00003,Lý Hoàng Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L15,CO3093,Mạng máy tính,HK232,L15,standard,40,GV00004,Phạm Ngọc Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L16,CO3093,Mạng máy tính,HK232,L16,standard,40,GV00005,Hồ Khánh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L17,CO3093,Mạng máy tính,HK232,L17,standard,40,GV00006,Bùi Hữu Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L18,CO3093,Mạng máy tính,HK232,L18,standard,40,GV00007,Huỳnh Anh Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L19,CO3093,Mạng máy tính,HK232,L19,standard,40,GV00008,Lê Thanh Hải,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L20,CO3093,Mạng máy tính,HK232,L20,standard,40,GV00009,Bùi Anh Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L21,CO3093,Mạng máy tính,HK232,L21,standard,40,GV00010,Dương Hữu Bảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L22,CO3093,Mạng máy tính,HK232,L22,standard,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L23,CO3093,Mạng máy tính,HK232,L23,standard,40,GV00012,Huỳnh Ngọc Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L24,CO3093,Mạng máy tính,HK232,L24,standard,40,GV00013,Đỗ Đức Khang,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L25,CO3093,Mạng máy tính,HK232,L25,standard,40,GV00014,Võ Khánh An,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L26,CO3093,Mạng máy tính,HK232,L26,standard,40,GV00015,Phan Văn Trang,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_L27,CO3093,Mạng máy tính,HK232,L27,standard,40,GV00016,Lý Quang Phát,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L05,CO3093,Mạng máy tính,HK232,L05,standard,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L06,CO3093,Mạng máy tính,HK232,L06,standard,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L07,CO3093,Mạng máy tính,HK232,L07,standard,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L08,CO3093,Mạng máy tính,HK232,L08,standard,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L09,CO3093,Mạng máy tính,HK232,L09,standard,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L10,CO3093,Mạng máy tính,HK232,L10,standard,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L11,CO3093,Mạng máy tính,HK232,L11,standard,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L12,CO3093,Mạng máy tính,HK232,L12,standard,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L13,CO3093,Mạng máy tính,HK232,L13,standard,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L14,CO3093,Mạng máy tính,HK232,L14,standard,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L15,CO3093,Mạng máy tính,HK232,L15,standard,40,GV00001,Ngô Quốc An,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L16,CO3093,Mạng máy tính,HK232,L16,standard,40,GV00002,Dương Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L17,CO3093,Mạng máy tính,HK232,L17,standard,40,GV00003,Lý Hoàng Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L18,CO3093,Mạng máy tính,HK232,L18,standard,40,GV00004,Phạm Ngọc Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L19,CO3093,Mạng máy tính,HK232,L19,standard,40,GV00005,Hồ Khánh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L20,CO3093,Mạng máy tính,HK232,L20,standard,40,GV00006,Bùi Hữu Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L21,CO3093,Mạng máy tính,HK232,L21,standard,40,GV00007,Huỳnh Anh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L22,CO3093,Mạng máy tính,HK232,L22,standard,40,GV00008,Lê Thanh Hải,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L23,CO3093,Mạng máy tính,HK232,L23,standard,40,GV00009,Bùi Anh Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L24,CO3093,Mạng máy tính,HK232,L24,standard,40,GV00010,Dương Hữu Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L25,CO3093,Mạng máy tính,HK232,L25,standard,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L26,CO3093,Mạng máy tính,HK232,L26,standard,40,GV00012,Huỳnh Ngọc Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_L27,CO3093,Mạng máy tính,HK232,L27,standard,40,GV00013,Đỗ Đức Khang,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3061_L01,CO3061,Nhập môn Trí tuệ Nhân tạo (Học sớm),HK232,L01,standard,40,GV00001,Ngô Quốc An,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4029_L01,CO4029,Đồ án Chuyên ngành (Học sớm),HK232,L01,standard,40,GV00017,Phạm Đức Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3035_L01,CO3035,Hệ thời gian thực,HK232,L01,standard,40,GV00002,Dương Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3017_L01,CO3017,Kiến trúc Phần mềm,HK232,L01,standard,40,GV00018,Lê Đức An,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3017_L02,CO3017,Kiến trúc Phần mềm,HK232,L02,standard,40,GV00019,Bùi Ngọc Anh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_L01,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L01,standard,40,GV00020,Huỳnh Quốc Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_L02,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L02,standard,40,GV00021,Bùi Quang Hà,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_L03,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L03,standard,40,GV00022,Bùi Minh Minh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_L04,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L04,standard,40,GV00023,Trần Tuấn Lam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_L05,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L05,standard,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_L06,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L06,standard,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_L07,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L07,standard,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_L08,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L08,standard,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_L09,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L09,standard,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_L10,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L10,standard,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_L11,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L11,standard,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3013_L01,CO3013,Xây dựng Chương trình Dịch,HK232,L01,standard,40,GV00014,Võ Khánh An,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3013_L02,CO3013,Xây dựng Chương trình Dịch,HK232,L02,standard,40,GV00015,Phan Văn Trang,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3041_L01,CO3041,Hệ thống Thông minh,HK232,L01,standard,40,GV00003,Lý Hoàng Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3041_L02,CO3041,Hệ thống Thông minh,HK232,L02,standard,40,GV00004,Phạm Ngọc Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3041_L03,CO3041,Hệ thống Thông minh,HK232,L03,standard,40,GV00005,Hồ Khánh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3117_L01,CO3117,Học máy,HK232,L01,standard,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3117_L02,CO3117,Học máy,HK232,L02,standard,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3045_L01,CO3045,Lập trình Game,HK232,L01,standard,40,GV00006,Bùi Hữu Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3045_L02,CO3045,Lập trình Game,HK232,L02,standard,40,GV00007,Huỳnh Anh Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3101_L01,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,L01,standard,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3101_L02,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,L02,standard,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3101_L03,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,L03,standard,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3101_L04,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,L04,standard,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3101_L05,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,L05,standard,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3101_L06,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,L06,standard,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3101_L07,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,L07,standard,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3083_L01,CO3083,Mật mã học và Mã hóa Thông tin,HK232,L01,standard,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3047_L01,CO3047,Mạng máy tính nâng cao,HK232,L01,standard,40,GV00041,Nguyễn Anh Trang,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3105_L01,CO3105,Đồ án Tổng hợp - Hướng Hệ thống Thông tin,HK232,L01,standard,40,GV00042,Hoàng Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3105_L02,CO3105,Đồ án Tổng hợp - Hướng Hệ thống Thông tin,HK232,L02,standard,40,GV00043,Lê Ngọc Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3105_L03,CO3105,Đồ án Tổng hợp - Hướng Hệ thống Thông tin,HK232,L03,standard,40,GV00044,Phan Quốc Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3085_L01,CO3085,Xử lý Ngôn ngữ Tự nhiên,HK232,L01,standard,40,GV00008,Lê Thanh Hải,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3085_L02,CO3085,Xử lý Ngôn ngữ Tự nhiên,HK232,L02,standard,40,GV00009,Bùi Anh Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3115_L01,CO3115,Phân tích và Thiết kế Hệ thống,HK232,L01,standard,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3115_L02,CO3115,Phân tích và Thiết kế Hệ thống,HK232,L02,standard,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4035_L01,CO4035,Hệ hoạch Định tài Nguyên tổ chức,HK232,L01,standard,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3059_L01,CO3059,Đồ họa Máy tính,HK232,L01,standard,40,GV00010,Dương Hữu Bảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3065_L01,CO3065,Công nghệ Phần mềm Nâng cao,HK232,L01,standard,40,GV00016,Lý Quang Phát,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3065_L02,CO3065,Công nghệ Phần mềm Nâng cao,HK232,L02,standard,40,GV00017,Phạm Đức Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3089_L01,CO3089,Những Chủ đề Nâng cao trong Khoa học Máy tính,HK232,L01,standard,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3089_L02,CO3089,Những Chủ đề Nâng cao trong Khoa học Máy tính,HK232,L02,standard,40,GV00012,Huỳnh Ngọc Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3089_L03,CO3089,Những Chủ đề Nâng cao trong Khoa học Máy tính,HK232,L03,standard,40,GV00013,Đỗ Đức Khang,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3089_L04,CO3089,Những Chủ đề Nâng cao trong Khoa học Máy tính,HK232,L04,standard,40,GV00018,Lê Đức An,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3037_L01,CO3037,Phát triển Ứng dụng Internet of Things,HK232,L01,standard,40,GV00001,Ngô Quốc An,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3037_L02,CO3037,Phát triển Ứng dụng Internet of Things,HK232,L02,standard,40,GV00002,Dương Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3011_L01,CO3011,Quản lý Dự án Phần mềm,HK232,L01,standard,40,GV00019,Bùi Ngọc Anh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3011_L02,CO3011,Quản lý Dự án Phần mềm,HK232,L02,standard,40,GV00020,Huỳnh Quốc Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3061_L02,CO3061,Nhập môn Trí tuệ Nhân tạo,HK232,L02,standard,40,GV00003,Lý Hoàng Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3029_L01,CO3029,Khai phá Dữ liệu,HK232,L01,standard,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3029_L02,CO3029,Khai phá Dữ liệu,HK232,L02,standard,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3015_L01,CO3015,Kiểm tra Phần mềm,HK232,L01,standard,40,GV00021,Bùi Quang Hà,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3015_L02,CO3015,Kiểm tra Phần mềm,HK232,L02,standard,40,GV00022,Bùi Minh Minh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3021_L01,CO3021,Hệ Quản trị Cơ sở Dữ Liệu,HK232,L01,standard,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3127_L01,CO3127,Đồ án tổng hợp - hướng kỹ thuật dữ liệu,HK232,L01,standard,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3127_L02,CO3127,Đồ án tổng hợp - hướng kỹ thuật dữ liệu,HK232,L02,standard,40,GV00046,Bùi Quang Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3127_L03,CO3127,Đồ án tổng hợp - hướng kỹ thuật dữ liệu,HK232,L03,standard,40,GV00047,Đỗ Hữu Phát,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3049_L01,CO3049,Lập trình Web,HK232,L01,standard,40,GV00023,Trần Tuấn Lam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3049_L02,CO3049,Lập trình Web,HK232,L02,standard,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3049_L03,CO3049,Lập trình Web,HK232,L03,standard,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3051_L01,CO3051,Hệ thống thiết bị di động,HK232,L01,standard,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3051_L02,CO3051,Hệ thống thiết bị di động,HK232,L02,standard,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3051_L03,CO3051,Hệ thống thiết bị di động,HK232,L03,standard,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4025_L01,CO4025,Mạng xã hội và Thông tin,HK232,L01,standard,40,GV00004,Phạm Ngọc Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3043_L01,CO3043,Phát triển Ứng dụng trên Thiết bị Di động,HK232,L01,standard,40,GV00005,Hồ Khánh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3043_L02,CO3043,Phát triển Ứng dụng trên Thiết bị Di động,HK232,L02,standard,40,GV00006,Bùi Hữu Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3069_L01,CO3069,Mật mã và An ninh mạng,HK232,L01,standard,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4039_L01,CO4039,Bảo mật sinh trắc,HK232,L01,standard,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3057_L01,CO3057,Xử lý Ảnh số và Thị giác Máy tính,HK232,L01,standard,40,GV00007,Huỳnh Anh Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3031_L01,CO3031,Phân tích và Thiết kế Giải Thuật,HK232,L01,standard,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3067_L01,CO3067,Tính toán Song song,HK232,L01,standard,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4029_L01,CO4029,Đồ án Chuyên ngành (Học sớm),HK232,L01,standard,40,GV00014,Võ Khánh An,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3011_L01,CO3011,Quản lý Dự án Phần mềm,HK232,L01,standard,40,GV00015,Phan Văn Trang,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3011_L02,CO3011,Quản lý Dự án Phần mềm,HK232,L02,standard,40,GV00016,Lý Quang Phát,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3115_L01,CO3115,Phân tích và Thiết kế Hệ thống,HK232,L01,standard,40,GV00017,Phạm Đức Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3115_L02,CO3115,Phân tích và Thiết kế Hệ thống,HK232,L02,standard,40,GV00018,Lê Đức An,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_L01,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L01,standard,40,GV00019,Bùi Ngọc Anh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_L02,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L02,standard,40,GV00020,Huỳnh Quốc Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_L03,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L03,standard,40,GV00021,Bùi Quang Hà,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_L04,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L04,standard,40,GV00022,Bùi Minh Minh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_L05,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L05,standard,40,GV00023,Trần Tuấn Lam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_L06,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L06,standard,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_L07,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L07,standard,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_L08,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L08,standard,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_L09,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L09,standard,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_L10,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L10,standard,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_L11,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,L11,standard,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4025_L01,CO4025,Mạng xã hội và Thông tin,HK232,L01,standard,40,GV00002,Dương Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3045_L01,CO3045,Lập trình Game,HK232,L01,standard,40,GV00003,Lý Hoàng Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3045_L02,CO3045,Lập trình Game,HK232,L02,standard,40,GV00004,Phạm Ngọc Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3083_L01,CO3083,Mật mã học và Mã hóa Thông tin,HK232,L01,standard,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4039_L01,CO4039,Bảo mật sinh trắc,HK232,L01,standard,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3035_L01,CO3035,Hệ thời gian thực,HK232,L01,standard,40,GV00005,Hồ Khánh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3041_L01,CO3041,Hệ thống Thông minh,HK232,L01,standard,40,GV00006,Bùi Hữu Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3041_L02,CO3041,Hệ thống Thông minh,HK232,L02,standard,40,GV00007,Huỳnh Anh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3041_L03,CO3041,Hệ thống Thông minh,HK232,L03,standard,40,GV00008,Lê Thanh Hải,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3017_L01,CO3017,Kiến trúc Phần mềm,HK232,L01,standard,40,GV00014,Võ Khánh An,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3017_L02,CO3017,Kiến trúc Phần mềm,HK232,L02,standard,40,GV00015,Phan Văn Trang,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3089_L01,CO3089,Những Chủ đề Nâng cao trong Khoa học Máy tính,HK232,L01,standard,40,GV00009,Bùi Anh Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3089_L02,CO3089,Những Chủ đề Nâng cao trong Khoa học Máy tính,HK232,L02,standard,40,GV00010,Dương Hữu Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3089_L03,CO3089,Những Chủ đề Nâng cao trong Khoa học Máy tính,HK232,L03,standard,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3089_L04,CO3089,Những Chủ đề Nâng cao trong Khoa học Máy tính,HK232,L04,standard,40,GV00012,Huỳnh Ngọc Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4037_L01,CO4037,Hệ thống thông tin quản lý,HK232,L01,standard,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3033_L01,CO3033,Bảo mật Hệ thống Thông tin,HK232,L01,standard,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4033_L01,CO4033,Phân tích Dữ liệu lớn và Trí tuệ Kinh doanh,HK232,L01,standard,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4037_L01,CO4037,Hệ thống thông tin quản lý,HK232,L01,standard,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3027_L01,CO3027,Thương mại Điện tử,HK232,L01,standard,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4031_L01,CO4031,Kho dữ Liệu và Hệ hỗ trợ Quyết định,HK232,L01,standard,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3071_L01,CO3071,Hệ phân bố,HK232,L01,standard,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3023_L01,CO3023,Cơ sở Dữ liệu Phân tán và Hướng đối tượng,HK232,L01,standard,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3127_L01,CO3127,Đồ án tổng hợp - hướng kỹ thuật dữ liệu,HK232,L01,standard,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3127_L02,CO3127,Đồ án tổng hợp - hướng kỹ thuật dữ liệu,HK232,L02,standard,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3127_L03,CO3127,Đồ án tổng hợp - hướng kỹ thuật dữ liệu,HK232,L03,standard,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3029_L01,CO3029,Khai phá Dữ liệu,HK232,L01,standard,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3029_L02,CO3029,Khai phá Dữ liệu,HK232,L02,standard,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3049_L01,CO3049,Lập trình Web,HK232,L01,standard,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3049_L02,CO3049,Lập trình Web,HK232,L02,standard,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3049_L03,CO3049,Lập trình Web,HK232,L03,standard,40,GV00013,Đỗ Đức Khang,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3101_L01,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,L01,standard,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3101_L02,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,L02,standard,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3101_L03,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,L03,standard,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3101_L04,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,L04,standard,40,GV00041,Nguyễn Anh Trang,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3101_L05,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,L05,standard,40,GV00042,Hoàng Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3101_L06,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,L06,standard,40,GV00043,Lê Ngọc Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3101_L07,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,L07,standard,40,GV00044,Phan Quốc Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3061_L02,CO3061,Nhập môn Trí tuệ Nhân tạo,HK232,L02,standard,40,GV00001,Ngô Quốc An,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3013_L01,CO3013,Xây dựng Chương trình Dịch,HK232,L01,standard,40,GV00016,Lý Quang Phát,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3013_L02,CO3013,Xây dựng Chương trình Dịch,HK232,L02,standard,40,GV00017,Phạm Đức Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3047_L01,CO3047,Mạng máy tính nâng cao,HK232,L01,standard,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3117_L01,CO3117,Học máy,HK232,L01,standard,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3117_L02,CO3117,Học máy,HK232,L02,standard,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3051_L01,CO3051,Hệ thống thiết bị di động,HK232,L01,standard,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3051_L02,CO3051,Hệ thống thiết bị di động,HK232,L02,standard,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3051_L03,CO3051,Hệ thống thiết bị di động,HK232,L03,standard,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3023_L01,CO3023,Cơ sở Dữ liệu Phân tán và Hướng đối tượng,HK232,L01,standard,40,GV00046,Bùi Quang Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3015_L01,CO3015,Kiểm tra Phần mềm,HK232,L01,standard,40,GV00018,Lê Đức An,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3015_L02,CO3015,Kiểm tra Phần mềm,HK232,L02,standard,40,GV00019,Bùi Ngọc Anh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3069_L01,CO3069,Mật mã và An ninh mạng,HK232,L01,standard,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4033_L01,CO4033,Phân tích Dữ liệu lớn và Trí tuệ Kinh doanh,HK232,L01,standard,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3085_L01,CO3085,Xử lý Ngôn ngữ Tự nhiên,HK232,L01,standard,40,GV00002,Dương Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3085_L02,CO3085,Xử lý Ngôn ngữ Tự nhiên,HK232,L02,standard,40,GV00003,Lý Hoàng Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3043_L01,CO3043,Phát triển Ứng dụng trên Thiết bị Di động,HK232,L01,standard,40,GV00004,Phạm Ngọc Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3043_L02,CO3043,Phát triển Ứng dụng trên Thiết bị Di động,HK232,L02,standard,40,GV00005,Hồ Khánh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3065_L01,CO3065,Công nghệ Phần mềm Nâng cao,HK232,L01,standard,40,GV00020,Huỳnh Quốc Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3065_L02,CO3065,Công nghệ Phần mềm Nâng cao,HK232,L02,standard,40,GV00021,Bùi Quang Hà,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3105_L01,CO3105,Đồ án Tổng hợp - Hướng Hệ thống Thông tin,HK232,L01,standard,40,GV00047,Đỗ Hữu Phát,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3105_L02,CO3105,Đồ án Tổng hợp - Hướng Hệ thống Thông tin,HK232,L02,standard,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3105_L03,CO3105,Đồ án Tổng hợp - Hướng Hệ thống Thông tin,HK232,L03,standard,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3059_L01,CO3059,Đồ họa Máy tính,HK232,L01,standard,40,GV00006,Bùi Hữu Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3057_L01,CO3057,Xử lý Ảnh số và Thị giác Máy tính,HK232,L01,standard,40,GV00007,Huỳnh Anh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4035_L01,CO4035,Hệ hoạch Định tài Nguyên tổ chức,HK232,L01,standard,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3021_L01,CO3021,Hệ Quản trị Cơ sở Dữ Liệu,HK232,L01,standard,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3031_L01,CO3031,Phân tích và Thiết kế Giải Thuật,HK232,L01,standard,40,GV00022,Bùi Minh Minh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3027_L01,CO3027,Thương mại Điện tử,HK232,L01,standard,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3037_L01,CO3037,Phát triển Ứng dụng Internet of Things,HK232,L01,standard,40,GV00008,Lê Thanh Hải,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3037_L02,CO3037,Phát triển Ứng dụng Internet of Things,HK232,L02,standard,40,GV00009,Bùi Anh Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4031_L01,CO4031,Kho dữ Liệu và Hệ hỗ trợ Quyết định,HK232,L01,standard,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3067_L01,CO3067,Tính toán Song song,HK232,L01,standard,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3071_L01,CO3071,Hệ phân bố,HK232,L01,standard,40,GV00023,Trần Tuấn Lam,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CH1003_CC04,CH1003,Hóa đại cương,HK232,CC04,high-quality,40,GV00101,Nguyễn Quang Phúc,Khoa Kỹ thuật Hóa học
 HK232_CH1003_CC05,CH1003,Hóa đại cương,HK232,CC05,high-quality,40,GV00102,Đặng Anh Phúc,Khoa Kỹ thuật Hóa học
 HK232_CH1003_CC06,CH1003,Hóa đại cương,HK232,CC06,high-quality,40,GV00103,Phạm Gia Nam,Khoa Kỹ thuật Hóa học
@@ -687,84 +681,84 @@ HK232_SP1037_CC01,SP1037,Tư tưởng Hồ Chí Minh,HK232,CC01,high-quality,120
 HK232_SP1037_CC02,SP1037,Tư tưởng Hồ Chí Minh,HK232,CC02,high-quality,120,GV00092,Lê Đức Nam,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
 HK232_SP1037_CC03,SP1037,Tư tưởng Hồ Chí Minh,HK232,CC03,high-quality,120,GV00085,Võ Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
 HK232_SP1037_CC04,SP1037,Tư tưởng Hồ Chí Minh,HK232,CC04,high-quality,120,GV00086,Hoàng Gia Châu,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
-HK232_CO3093_CC04,CO3093,Mạng máy tính,HK232,CC04,high-quality,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_CC05,CO3093,Mạng máy tính,HK232,CC05,high-quality,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_CC06,CO3093,Mạng máy tính,HK232,CC06,high-quality,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_CC07,CO3093,Mạng máy tính,HK232,CC07,high-quality,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_CC08,CO3093,Mạng máy tính,HK232,CC08,high-quality,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_CC09,CO3093,Mạng máy tính,HK232,CC09,high-quality,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_CC10,CO3093,Mạng máy tính,HK232,CC10,high-quality,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_CC11,CO3093,Mạng máy tính,HK232,CC11,high-quality,40,GV00041,Nguyễn Anh Trang,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_CC12,CO3093,Mạng máy tính,HK232,CC12,high-quality,40,GV00042,Hoàng Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_CC13,CO3093,Mạng máy tính,HK232,CC13,high-quality,40,GV00043,Lê Ngọc Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3093_CC14,CO3093,Mạng máy tính,HK232,CC14,high-quality,40,GV00044,Phan Quốc Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3061_CC01,CO3061,Nhập môn Trí tuệ Nhân tạo (Học sớm),HK232,CC01,high-quality,40,GV00008,Lê Thanh Hải,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4029_CC01,CO4029,Đồ án Chuyên ngành (Học sớm),HK232,CC01,high-quality,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3037_CC01,CO3037,Phát triển Ứng dụng Internet of Things,HK232,CC01,high-quality,40,GV00009,Bùi Anh Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3041_CC01,CO3041,Hệ thống Thông minh,HK232,CC01,high-quality,40,GV00010,Dương Hữu Bảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3041_CC02,CO3041,Hệ thống Thông minh,HK232,CC02,high-quality,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3101_CC01,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,CC01,high-quality,40,GV00046,Bùi Quang Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3101_CC02,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,CC02,high-quality,40,GV00047,Đỗ Hữu Phát,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3101_CC03,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,CC03,high-quality,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3101_CC04,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,CC04,high-quality,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3101_CC05,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,CC05,high-quality,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3047_CC01,CO3047,Mạng máy tính nâng cao,HK232,CC01,high-quality,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3069_CC01,CO3069,Mật mã và An ninh mạng,HK232,CC01,high-quality,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3105_CC01,CO3105,Đồ án Tổng hợp - Hướng Hệ thống Thông tin,HK232,CC01,high-quality,40,GV00012,Huỳnh Ngọc Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3105_CC02,CO3105,Đồ án Tổng hợp - Hướng Hệ thống Thông tin,HK232,CC02,high-quality,40,GV00013,Đỗ Đức Khang,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_CC04,CO3093,Mạng máy tính,HK232,CC04,high-quality,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_CC05,CO3093,Mạng máy tính,HK232,CC05,high-quality,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_CC06,CO3093,Mạng máy tính,HK232,CC06,high-quality,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_CC07,CO3093,Mạng máy tính,HK232,CC07,high-quality,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_CC08,CO3093,Mạng máy tính,HK232,CC08,high-quality,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_CC09,CO3093,Mạng máy tính,HK232,CC09,high-quality,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_CC10,CO3093,Mạng máy tính,HK232,CC10,high-quality,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_CC11,CO3093,Mạng máy tính,HK232,CC11,high-quality,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_CC12,CO3093,Mạng máy tính,HK232,CC12,high-quality,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_CC13,CO3093,Mạng máy tính,HK232,CC13,high-quality,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3093_CC14,CO3093,Mạng máy tính,HK232,CC14,high-quality,40,GV00041,Nguyễn Anh Trang,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3061_CC01,CO3061,Nhập môn Trí tuệ Nhân tạo (Học sớm),HK232,CC01,high-quality,40,GV00010,Dương Hữu Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4029_CC01,CO4029,Đồ án Chuyên ngành (Học sớm),HK232,CC01,high-quality,40,GV00042,Hoàng Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3015_CC01,CO3015,Kiểm tra Phần mềm,HK232,CC01,high-quality,40,GV00014,Võ Khánh An,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3015_CC02,CO3015,Kiểm tra Phần mềm,HK232,CC02,high-quality,40,GV00015,Phan Văn Trang,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_CC01,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,CC01,high-quality,40,GV00016,Lý Quang Phát,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_CC02,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,CC02,high-quality,40,GV00017,Phạm Đức Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_CC03,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,CC03,high-quality,40,GV00018,Lê Đức An,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_CC04,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,CC04,high-quality,40,GV00019,Bùi Ngọc Anh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_CC05,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,CC05,high-quality,40,GV00020,Huỳnh Quốc Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_CC06,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,CC06,high-quality,40,GV00021,Bùi Quang Hà,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_CC07,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,CC07,high-quality,40,GV00022,Bùi Minh Minh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3103_CC08,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,CC08,high-quality,40,GV00023,Trần Tuấn Lam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3035_CC01,CO3035,Hệ thời gian thực,HK232,CC01,high-quality,40,GV00001,Ngô Quốc An,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3017_CC01,CO3017,Kiến trúc Phần mềm,HK232,CC01,high-quality,40,GV00016,Lý Quang Phát,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3017_CC02,CO3017,Kiến trúc Phần mềm,HK232,CC02,high-quality,40,GV00017,Phạm Đức Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_CC01,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,CC01,high-quality,40,GV00043,Lê Ngọc Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_CC02,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,CC02,high-quality,40,GV00044,Phan Quốc Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_CC03,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,CC03,high-quality,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_CC04,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,CC04,high-quality,40,GV00046,Bùi Quang Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_CC05,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,CC05,high-quality,40,GV00047,Đỗ Hữu Phát,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_CC06,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,CC06,high-quality,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_CC07,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,CC07,high-quality,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3103_CC08,CO3103,Đồ án Tổng hợp - hướng Công nghệ Phần mềm,HK232,CC08,high-quality,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3041_CC01,CO3041,Hệ thống Thông minh,HK232,CC01,high-quality,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3041_CC02,CO3041,Hệ thống Thông minh,HK232,CC02,high-quality,40,GV00012,Huỳnh Ngọc Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3033_CC01,CO3033,Bảo mật Hệ thống Thông tin,HK232,CC01,high-quality,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4025_CC01,CO4025,Mạng xã hội và Thông tin,HK232,CC01,high-quality,40,GV00013,Đỗ Đức Khang,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3037_CC01,CO3037,Phát triển Ứng dụng Internet of Things,HK232,CC01,high-quality,40,GV00001,Ngô Quốc An,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3101_CC01,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,CC01,high-quality,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3101_CC02,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,CC02,high-quality,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3101_CC03,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,CC03,high-quality,40,GV00018,Lê Đức An,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3101_CC04,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,CC04,high-quality,40,GV00019,Bùi Ngọc Anh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3101_CC05,CO3101,Đồ án Tổng hợp - Hướng Trí tuệ Nhân tạo,HK232,CC05,high-quality,40,GV00020,Huỳnh Quốc Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3029_CC01,CO3029,Khai phá Dữ liệu,HK232,CC01,high-quality,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3085_CC01,CO3085,Xử lý Ngôn ngữ Tự nhiên,HK232,CC01,high-quality,40,GV00002,Dương Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3065_CC01,CO3065,Công nghệ Phần mềm Nâng cao,HK232,CC01,high-quality,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3065_CC02,CO3065,Công nghệ Phần mềm Nâng cao,HK232,CC02,high-quality,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3049_CC01,CO3049,Lập trình Web,HK232,CC01,high-quality,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3049_CC02,CO3049,Lập trình Web,HK232,CC02,high-quality,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3051_CC01,CO3051,Hệ thống thiết bị di động,HK232,CC01,high-quality,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3051_CC02,CO3051,Hệ thống thiết bị di động,HK232,CC02,high-quality,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4025_CC01,CO4025,Mạng xã hội và Thông tin,HK232,CC01,high-quality,40,GV00003,Lý Hoàng Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3017_CC01,CO3017,Kiến trúc Phần mềm,HK232,CC01,high-quality,40,GV00014,Võ Khánh An,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3017_CC02,CO3017,Kiến trúc Phần mềm,HK232,CC02,high-quality,40,GV00015,Phan Văn Trang,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3047_CC01,CO3047,Mạng máy tính nâng cao,HK232,CC01,high-quality,40,GV00021,Bùi Quang Hà,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3089_CC01,CO3089,Những Chủ đề Nâng cao trong Khoa học Máy tính,HK232,CC01,high-quality,40,GV00022,Bùi Minh Minh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3089_CC02,CO3089,Những Chủ đề Nâng cao trong Khoa học Máy tính,HK232,CC02,high-quality,40,GV00023,Trần Tuấn Lam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3089_CC03,CO3089,Những Chủ đề Nâng cao trong Khoa học Máy tính,HK232,CC03,high-quality,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3105_CC01,CO3105,Đồ án Tổng hợp - Hướng Hệ thống Thông tin,HK232,CC01,high-quality,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3105_CC02,CO3105,Đồ án Tổng hợp - Hướng Hệ thống Thông tin,HK232,CC02,high-quality,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3013_CC01,CO3013,Xây dựng Chương trình Dịch,HK232,CC01,high-quality,40,GV00014,Võ Khánh An,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3013_CC02,CO3013,Xây dựng Chương trình Dịch,HK232,CC02,high-quality,40,GV00015,Phan Văn Trang,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3059_CC01,CO3059,Đồ họa Máy tính,HK232,CC01,high-quality,40,GV00003,Lý Hoàng Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3045_CC01,CO3045,Lập trình Game,HK232,CC01,high-quality,40,GV00004,Phạm Ngọc Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3051_CC01,CO3051,Hệ thống thiết bị di động,HK232,CC01,high-quality,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3051_CC02,CO3051,Hệ thống thiết bị di động,HK232,CC02,high-quality,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3043_CC01,CO3043,Phát triển Ứng dụng trên Thiết bị Di động,HK232,CC01,high-quality,40,GV00005,Hồ Khánh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3049_CC01,CO3049,Lập trình Web,HK232,CC01,high-quality,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3049_CC02,CO3049,Lập trình Web,HK232,CC02,high-quality,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3021_CC01,CO3021,Hệ Quản trị Cơ sở Dữ Liệu,HK232,CC01,high-quality,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3117_CC01,CO3117,Học máy,HK232,CC01,high-quality,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3117_CC02,CO3117,Học máy,HK232,CC02,high-quality,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3059_CC01,CO3059,Đồ họa Máy tính,HK232,CC01,high-quality,40,GV00004,Phạm Ngọc Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3061_CC02,CO3061,Nhập môn Trí tuệ Nhân tạo,HK232,CC02,high-quality,40,GV00005,Hồ Khánh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3013_CC01,CO3013,Xây dựng Chương trình Dịch,HK232,CC01,high-quality,40,GV00016,Lý Quang Phát,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3013_CC02,CO3013,Xây dựng Chương trình Dịch,HK232,CC02,high-quality,40,GV00017,Phạm Đức Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3115_CC01,CO3115,Phân tích và Thiết kế Hệ thống,HK232,CC01,high-quality,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3115_CC02,CO3115,Phân tích và Thiết kế Hệ thống,HK232,CC02,high-quality,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3083_CC01,CO3083,Mật mã học và Mã hóa Thông tin,HK232,CC01,high-quality,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3067_CC01,CO3067,Tính toán Song song,HK232,CC01,high-quality,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3057_CC01,CO3057,Xử lý Ảnh số và Thị giác Máy tính,HK232,CC01,high-quality,40,GV00006,Bùi Hữu Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3089_CC01,CO3089,Những Chủ đề Nâng cao trong Khoa học Máy tính,HK232,CC01,high-quality,40,GV00007,Huỳnh Anh Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3089_CC02,CO3089,Những Chủ đề Nâng cao trong Khoa học Máy tính,HK232,CC02,high-quality,40,GV00008,Lê Thanh Hải,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3089_CC03,CO3089,Những Chủ đề Nâng cao trong Khoa học Máy tính,HK232,CC03,high-quality,40,GV00009,Bùi Anh Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3021_CC01,CO3021,Hệ Quản trị Cơ sở Dữ Liệu,HK232,CC01,high-quality,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3127_CC01,CO3127,Đồ án tổng hợp - hướng kỹ thuật dữ liệu,HK232,CC01,high-quality,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3127_CC02,CO3127,Đồ án tổng hợp - hướng kỹ thuật dữ liệu,HK232,CC02,high-quality,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3011_CC01,CO3011,Quản lý Dự án Phần mềm,HK232,CC01,high-quality,40,GV00016,Lý Quang Phát,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3011_CC02,CO3011,Quản lý Dự án Phần mềm,HK232,CC02,high-quality,40,GV00017,Phạm Đức Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4037_CC01,CO4037,Hệ thống thông tin quản lý,HK232,CC01,high-quality,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO4033_CC01,CO4033,Phân tích Dữ liệu lớn và Trí tuệ Kinh doanh,HK232,CC01,high-quality,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3127_CC01,CO3127,Đồ án tổng hợp - hướng kỹ thuật dữ liệu,HK232,CC01,high-quality,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3127_CC02,CO3127,Đồ án tổng hợp - hướng kỹ thuật dữ liệu,HK232,CC02,high-quality,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3045_CC01,CO3045,Lập trình Game,HK232,CC01,high-quality,40,GV00010,Dương Hữu Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4039_CC01,CO4039,Bảo mật sinh trắc,HK232,CC01,high-quality,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3027_CC01,CO3027,Thương mại Điện tử,HK232,CC01,high-quality,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4035_CC01,CO4035,Hệ hoạch Định tài Nguyên tổ chức,HK232,CC01,high-quality,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3033_CC01,CO3033,Bảo mật Hệ thống Thông tin,HK232,CC01,high-quality,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4039_CC01,CO4039,Bảo mật sinh trắc,HK232,CC01,high-quality,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3023_CC01,CO3023,Cơ sở Dữ liệu Phân tán và Hướng đối tượng,HK232,CC01,high-quality,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3043_CC01,CO3043,Phát triển Ứng dụng trên Thiết bị Di động,HK232,CC01,high-quality,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3035_CC01,CO3035,Hệ thời gian thực,HK232,CC01,high-quality,40,GV00006,Bùi Hữu Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3083_CC01,CO3083,Mật mã học và Mã hóa Thông tin,HK232,CC01,high-quality,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4031_CC01,CO4031,Kho dữ Liệu và Hệ hỗ trợ Quyết định,HK232,CC01,high-quality,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3061_CC02,CO3061,Nhập môn Trí tuệ Nhân tạo,HK232,CC02,high-quality,40,GV00007,Huỳnh Anh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3115_CC01,CO3115,Phân tích và Thiết kế Hệ thống,HK232,CC01,high-quality,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3115_CC02,CO3115,Phân tích và Thiết kế Hệ thống,HK232,CC02,high-quality,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3065_CC01,CO3065,Công nghệ Phần mềm Nâng cao,HK232,CC01,high-quality,40,GV00018,Lê Đức An,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3065_CC02,CO3065,Công nghệ Phần mềm Nâng cao,HK232,CC02,high-quality,40,GV00019,Bùi Ngọc Anh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3067_CC01,CO3067,Tính toán Song song,HK232,CC01,high-quality,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3071_CC01,CO3071,Hệ phân bố,HK232,CC01,high-quality,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3031_CC01,CO3031,Phân tích và Thiết kế Giải Thuật,HK232,CC01,high-quality,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3071_CC01,CO3071,Hệ phân bố,HK232,CC01,high-quality,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3029_CC01,CO3029,Khai phá Dữ liệu,HK232,CC01,high-quality,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4031_CC01,CO4031,Kho dữ Liệu và Hệ hỗ trợ Quyết định,HK232,CC01,high-quality,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4037_CC01,CO4037,Hệ thống thông tin quản lý,HK232,CC01,high-quality,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3011_CC01,CO3011,Quản lý Dự án Phần mềm,HK232,CC01,high-quality,40,GV00018,Lê Đức An,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3011_CC02,CO3011,Quản lý Dự án Phần mềm,HK232,CC02,high-quality,40,GV00019,Bùi Ngọc Anh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4035_CC01,CO4035,Hệ hoạch Định tài Nguyên tổ chức,HK232,CC01,high-quality,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3023_CC01,CO3023,Cơ sở Dữ liệu Phân tán và Hướng đối tượng,HK232,CC01,high-quality,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3069_CC01,CO3069,Mật mã và An ninh mạng,HK232,CC01,high-quality,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3057_CC01,CO3057,Xử lý Ảnh số và Thị giác Máy tính,HK232,CC01,high-quality,40,GV00008,Lê Thanh Hải,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CH1003_TT03,CH1003,Hóa đại cương,HK232,TT03,advanced,40,GV00105,Vũ Đức Long,Khoa Kỹ thuật Hóa học
 HK232_CH1003_TT04,CH1003,Hóa đại cương,HK232,TT04,advanced,40,GV00106,Vũ Thanh Thảo,Khoa Kỹ thuật Hóa học
 HK232_CH1003_TT05,CH1003,Hóa đại cương,HK232,TT05,advanced,40,GV00107,Hoàng Quang Quang,Khoa Kỹ thuật Hóa học
@@ -793,46 +787,48 @@ HK232_CO4337_L07,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L
 HK232_CO4337_L08,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L08,standard,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO4337_L09,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L09,standard,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO4337_L10,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L10,standard,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4337_L11,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L11,standard,40,GV00012,Huỳnh Ngọc Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4337_L12,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L12,standard,40,GV00013,Đỗ Đức Khang,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4337_L13,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L13,standard,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4337_L14,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L14,standard,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4337_L15,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L15,standard,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4337_L16,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L16,standard,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4337_L17,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L17,standard,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4337_L18,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L18,standard,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4337_L19,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L19,standard,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4337_L20,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L20,standard,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4337_L21,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L21,standard,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4337_L22,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L22,standard,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4337_L23,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L23,standard,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3049_L04,CO3049,Lập trình Web,HK232,L04,standard,40,GV00001,Ngô Quốc An,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3049_L05,CO3049,Lập trình Web,HK232,L05,standard,40,GV00002,Dương Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3049_L06,CO3049,Lập trình Web,HK232,L06,standard,40,GV00003,Lý Hoàng Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3049_L07,CO3049,Lập trình Web,HK232,L07,standard,40,GV00004,Phạm Ngọc Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3049_L08,CO3049,Lập trình Web,HK232,L08,standard,40,GV00005,Hồ Khánh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3139_L01,CO3139,Chuyển đổi số,HK232,L01,standard,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3139_L02,CO3139,Chuyển đổi số,HK232,L02,standard,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3139_L03,CO3139,Chuyển đổi số,HK232,L03,standard,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3139_L04,CO3139,Chuyển đổi số,HK232,L04,standard,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3139_L05,CO3139,Chuyển đổi số,HK232,L05,standard,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3139_L06,CO3139,Chuyển đổi số,HK232,L06,standard,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3139_L07,CO3139,Chuyển đổi số,HK232,L07,standard,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3139_L08,CO3139,Chuyển đổi số,HK232,L08,standard,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3033_L02,CO3033,Bảo mật Hệ thống Thông tin,HK232,L02,standard,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3033_L03,CO3033,Bảo mật Hệ thống Thông tin,HK232,L03,standard,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3033_L04,CO3033,Bảo mật Hệ thống Thông tin,HK232,L04,standard,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3033_L05,CO3033,Bảo mật Hệ thống Thông tin,HK232,L05,standard,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3033_L06,CO3033,Bảo mật Hệ thống Thông tin,HK232,L06,standard,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3033_L07,CO3033,Bảo mật Hệ thống Thông tin,HK232,L07,standard,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3033_L08,CO3033,Bảo mật Hệ thống Thông tin,HK232,L08,standard,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3027_L02,CO3027,Thương mại Điện tử,HK232,L02,standard,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3027_L03,CO3027,Thương mại Điện tử,HK232,L03,standard,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3027_L04,CO3027,Thương mại Điện tử,HK232,L04,standard,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3027_L05,CO3027,Thương mại Điện tử,HK232,L05,standard,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3027_L06,CO3027,Thương mại Điện tử,HK232,L06,standard,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3027_L07,CO3027,Thương mại Điện tử,HK232,L07,standard,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3027_L08,CO3027,Thương mại Điện tử,HK232,L08,standard,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4337_L11,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L11,standard,40,GV00009,Bùi Anh Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4337_L12,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L12,standard,40,GV00010,Dương Hữu Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4337_L13,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L13,standard,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4337_L14,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L14,standard,40,GV00012,Huỳnh Ngọc Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4337_L15,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L15,standard,40,GV00013,Đỗ Đức Khang,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4337_L16,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L16,standard,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4337_L17,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L17,standard,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4337_L18,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L18,standard,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4337_L19,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L19,standard,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4337_L20,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L20,standard,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4337_L21,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L21,standard,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4337_L22,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L22,standard,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4337_L23,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,L23,standard,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3045_L03,CO3045,Lập trình Game,HK232,L03,standard,40,GV00001,Ngô Quốc An,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3045_L04,CO3045,Lập trình Game,HK232,L04,standard,40,GV00002,Dương Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3045_L05,CO3045,Lập trình Game,HK232,L05,standard,40,GV00003,Lý Hoàng Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3045_L06,CO3045,Lập trình Game,HK232,L06,standard,40,GV00004,Phạm Ngọc Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3045_L07,CO3045,Lập trình Game,HK232,L07,standard,40,GV00005,Hồ Khánh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3045_L08,CO3045,Lập trình Game,HK232,L08,standard,40,GV00006,Bùi Hữu Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3045_L09,CO3045,Lập trình Game,HK232,L09,standard,40,GV00007,Huỳnh Anh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3027_L02,CO3027,Thương mại Điện tử,HK232,L02,standard,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3027_L03,CO3027,Thương mại Điện tử,HK232,L03,standard,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3027_L04,CO3027,Thương mại Điện tử,HK232,L04,standard,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3027_L05,CO3027,Thương mại Điện tử,HK232,L05,standard,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3027_L06,CO3027,Thương mại Điện tử,HK232,L06,standard,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3027_L07,CO3027,Thương mại Điện tử,HK232,L07,standard,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3027_L08,CO3027,Thương mại Điện tử,HK232,L08,standard,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3033_L02,CO3033,Bảo mật Hệ thống Thông tin,HK232,L02,standard,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3033_L03,CO3033,Bảo mật Hệ thống Thông tin,HK232,L03,standard,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3033_L04,CO3033,Bảo mật Hệ thống Thông tin,HK232,L04,standard,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3033_L05,CO3033,Bảo mật Hệ thống Thông tin,HK232,L05,standard,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3033_L06,CO3033,Bảo mật Hệ thống Thông tin,HK232,L06,standard,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3033_L07,CO3033,Bảo mật Hệ thống Thông tin,HK232,L07,standard,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3033_L08,CO3033,Bảo mật Hệ thống Thông tin,HK232,L08,standard,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3139_L01,CO3139,Chuyển đổi số,HK232,L01,standard,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3139_L02,CO3139,Chuyển đổi số,HK232,L02,standard,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3139_L03,CO3139,Chuyển đổi số,HK232,L03,standard,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3139_L04,CO3139,Chuyển đổi số,HK232,L04,standard,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3139_L05,CO3139,Chuyển đổi số,HK232,L05,standard,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3139_L06,CO3139,Chuyển đổi số,HK232,L06,standard,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3139_L07,CO3139,Chuyển đổi số,HK232,L07,standard,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3139_L08,CO3139,Chuyển đổi số,HK232,L08,standard,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3071_L02,CO3071,Hệ phân bố,HK232,L02,standard,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3071_L03,CO3071,Hệ phân bố,HK232,L03,standard,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3071_L04,CO3071,Hệ phân bố,HK232,L04,standard,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
@@ -841,13 +837,11 @@ HK232_CO3071_L06,CO3071,Hệ phân bố,HK232,L06,standard,40,GV00042,Hoàng Th�
 HK232_CO3071_L07,CO3071,Hệ phân bố,HK232,L07,standard,40,GV00043,Lê Ngọc Nhi,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3071_L08,CO3071,Hệ phân bố,HK232,L08,standard,40,GV00044,Phan Quốc Trinh,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3071_L09,CO3071,Hệ phân bố,HK232,L09,standard,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3045_L03,CO3045,Lập trình Game,HK232,L03,standard,40,GV00006,Bùi Hữu Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3045_L04,CO3045,Lập trình Game,HK232,L04,standard,40,GV00007,Huỳnh Anh Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3045_L05,CO3045,Lập trình Game,HK232,L05,standard,40,GV00008,Lê Thanh Hải,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3045_L06,CO3045,Lập trình Game,HK232,L06,standard,40,GV00009,Bùi Anh Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3045_L07,CO3045,Lập trình Game,HK232,L07,standard,40,GV00010,Dương Hữu Bảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3045_L08,CO3045,Lập trình Game,HK232,L08,standard,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3045_L09,CO3045,Lập trình Game,HK232,L09,standard,40,GV00012,Huỳnh Ngọc Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3049_L04,CO3049,Lập trình Web,HK232,L04,standard,40,GV00008,Lê Thanh Hải,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3049_L05,CO3049,Lập trình Web,HK232,L05,standard,40,GV00009,Bùi Anh Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3049_L06,CO3049,Lập trình Web,HK232,L06,standard,40,GV00010,Dương Hữu Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3049_L07,CO3049,Lập trình Web,HK232,L07,standard,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3049_L08,CO3049,Lập trình Web,HK232,L08,standard,40,GV00012,Huỳnh Ngọc Khôi,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3043_L03,CO3043,Phát triển Ứng dụng trên Thiết bị Di động,HK232,L03,standard,40,GV00013,Đỗ Đức Khang,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3043_L04,CO3043,Phát triển Ứng dụng trên Thiết bị Di động,HK232,L04,standard,40,GV00001,Ngô Quốc An,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3043_L05,CO3043,Phát triển Ứng dụng trên Thiết bị Di động,HK232,L05,standard,40,GV00002,Dương Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
@@ -870,49 +864,43 @@ HK232_CO4337_CC09,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,
 HK232_CO4337_CC10,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,CC10,high-quality,40,GV00021,Bùi Quang Hà,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO4337_CC11,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,CC11,high-quality,40,GV00022,Bùi Minh Minh,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO4337_CC12,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,CC12,high-quality,40,GV00023,Trần Tuấn Lam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3071_CC02,CO3071,Hệ phân bố,HK232,CC02,high-quality,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3071_CC03,CO3071,Hệ phân bố,HK232,CC03,high-quality,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3071_CC04,CO3071,Hệ phân bố,HK232,CC04,high-quality,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3071_CC05,CO3071,Hệ phân bố,HK232,CC05,high-quality,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3071_CC06,CO3071,Hệ phân bố,HK232,CC06,high-quality,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3071_CC07,CO3071,Hệ phân bố,HK232,CC07,high-quality,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3139_CC01,CO3139,Chuyển đổi số,HK232,CC01,high-quality,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3139_CC02,CO3139,Chuyển đổi số,HK232,CC02,high-quality,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3139_CC03,CO3139,Chuyển đổi số,HK232,CC03,high-quality,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3139_CC04,CO3139,Chuyển đổi số,HK232,CC04,high-quality,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3139_CC05,CO3139,Chuyển đổi số,HK232,CC05,high-quality,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3027_CC02,CO3027,Thương mại Điện tử,HK232,CC02,high-quality,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3027_CC03,CO3027,Thương mại Điện tử,HK232,CC03,high-quality,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3027_CC04,CO3027,Thương mại Điện tử,HK232,CC04,high-quality,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3027_CC05,CO3027,Thương mại Điện tử,HK232,CC05,high-quality,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3027_CC06,CO3027,Thương mại Điện tử,HK232,CC06,high-quality,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3033_CC02,CO3033,Bảo mật Hệ thống Thông tin,HK232,CC02,high-quality,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3033_CC03,CO3033,Bảo mật Hệ thống Thông tin,HK232,CC03,high-quality,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3033_CC04,CO3033,Bảo mật Hệ thống Thông tin,HK232,CC04,high-quality,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3033_CC05,CO3033,Bảo mật Hệ thống Thông tin,HK232,CC05,high-quality,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3033_CC02,CO3033,Bảo mật Hệ thống Thông tin,HK232,CC02,high-quality,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3033_CC03,CO3033,Bảo mật Hệ thống Thông tin,HK232,CC03,high-quality,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3033_CC04,CO3033,Bảo mật Hệ thống Thông tin,HK232,CC04,high-quality,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3033_CC05,CO3033,Bảo mật Hệ thống Thông tin,HK232,CC05,high-quality,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3043_CC02,CO3043,Phát triển Ứng dụng trên Thiết bị Di động,HK232,CC02,high-quality,40,GV00006,Bùi Hữu Trinh,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3043_CC03,CO3043,Phát triển Ứng dụng trên Thiết bị Di động,HK232,CC03,high-quality,40,GV00007,Huỳnh Anh Nam,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3043_CC04,CO3043,Phát triển Ứng dụng trên Thiết bị Di động,HK232,CC04,high-quality,40,GV00008,Lê Thanh Hải,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_CO3043_CC05,CO3043,Phát triển Ứng dụng trên Thiết bị Di động,HK232,CC05,high-quality,40,GV00009,Bùi Anh Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3049_CC03,CO3049,Lập trình Web,HK232,CC03,high-quality,40,GV00010,Dương Hữu Bảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3049_CC04,CO3049,Lập trình Web,HK232,CC04,high-quality,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3049_CC05,CO3049,Lập trình Web,HK232,CC05,high-quality,40,GV00012,Huỳnh Ngọc Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3049_CC06,CO3049,Lập trình Web,HK232,CC06,high-quality,40,GV00013,Đỗ Đức Khang,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3045_CC02,CO3045,Lập trình Game,HK232,CC02,high-quality,40,GV00001,Ngô Quốc An,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3045_CC03,CO3045,Lập trình Game,HK232,CC03,high-quality,40,GV00002,Dương Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3045_CC04,CO3045,Lập trình Game,HK232,CC04,high-quality,40,GV00003,Lý Hoàng Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO3045_CC05,CO3045,Lập trình Game,HK232,CC05,high-quality,40,GV00004,Phạm Ngọc Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3139_CC01,CO3139,Chuyển đổi số,HK232,CC01,high-quality,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3139_CC02,CO3139,Chuyển đổi số,HK232,CC02,high-quality,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3139_CC03,CO3139,Chuyển đổi số,HK232,CC03,high-quality,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3139_CC04,CO3139,Chuyển đổi số,HK232,CC04,high-quality,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3139_CC05,CO3139,Chuyển đổi số,HK232,CC05,high-quality,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3027_CC02,CO3027,Thương mại Điện tử,HK232,CC02,high-quality,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3027_CC03,CO3027,Thương mại Điện tử,HK232,CC03,high-quality,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3027_CC04,CO3027,Thương mại Điện tử,HK232,CC04,high-quality,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3027_CC05,CO3027,Thương mại Điện tử,HK232,CC05,high-quality,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3027_CC06,CO3027,Thương mại Điện tử,HK232,CC06,high-quality,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3049_CC03,CO3049,Lập trình Web,HK232,CC03,high-quality,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3049_CC04,CO3049,Lập trình Web,HK232,CC04,high-quality,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3049_CC05,CO3049,Lập trình Web,HK232,CC05,high-quality,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3049_CC06,CO3049,Lập trình Web,HK232,CC06,high-quality,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3045_CC02,CO3045,Lập trình Game,HK232,CC02,high-quality,40,GV00010,Dương Hữu Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3045_CC03,CO3045,Lập trình Game,HK232,CC03,high-quality,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3045_CC04,CO3045,Lập trình Game,HK232,CC04,high-quality,40,GV00012,Huỳnh Ngọc Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3045_CC05,CO3045,Lập trình Game,HK232,CC05,high-quality,40,GV00013,Đỗ Đức Khang,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3071_CC02,CO3071,Hệ phân bố,HK232,CC02,high-quality,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3071_CC03,CO3071,Hệ phân bố,HK232,CC03,high-quality,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3071_CC04,CO3071,Hệ phân bố,HK232,CC04,high-quality,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3071_CC05,CO3071,Hệ phân bố,HK232,CC05,high-quality,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3071_CC06,CO3071,Hệ phân bố,HK232,CC06,high-quality,40,GV00041,Nguyễn Anh Trang,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO3071_CC07,CO3071,Hệ phân bố,HK232,CC07,high-quality,40,GV00042,Hoàng Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
 HK232_SP1007_TT01,SP1007,Pháp luật Việt Nam Đại cương,HK232,TT01,advanced,120,GV00085,Võ Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
 HK232_SP1007_TT02,SP1007,Pháp luật Việt Nam Đại cương,HK232,TT02,advanced,120,GV00086,Hoàng Gia Châu,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
-HK232_CO4337_TT01,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,TT01,advanced,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4337_TT02,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,TT02,advanced,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4337_TT03,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,TT03,advanced,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO4337_TT04,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,TT04,advanced,40,GV00041,Nguyễn Anh Trang,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_MT1003_L_HL01,MT1003,Giải tích 1 (Học lại),HK232,L_HL01,standard,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK232_PH1003_L_HL01,PH1003,Vật lý 1 (Học lại),HK232,L_HL01,standard,40,GV00094,Hồ Anh Quang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK232_CO1005_L_HL01,CO1005,Nhập môn Điện toán (Học lại),HK232,L_HL01,standard,40,GV00042,Hoàng Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO1023_L_HL01,CO1023,Hệ thống số (Học lại),HK232,L_HL01,standard,40,GV00043,Lê Ngọc Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2011_L_HL01,CO2011,Mô hình hóa Toán học (Học lại),HK232,L_HL01,standard,40,GV00044,Phan Quốc Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2003_L_HL01,CO2003,Cấu trúc Dữ liệu và Giải Thuật (Học lại),HK232,L_HL01,standard,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_CO2007_L_HL01,CO2007,Kiến trúc Máy tính (Học lại),HK232,L_HL01,standard,40,GV00046,Bùi Quang Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK232_SP1031_L_HL01,SP1031,Triết học Mác - Lênin (Học lại),HK232,L_HL01,standard,40,GV00087,Lê Khánh Minh,Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị
+HK232_CO4337_TT01,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,TT01,advanced,40,GV00043,Lê Ngọc Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4337_TT02,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,TT02,advanced,40,GV00044,Phan Quốc Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4337_TT03,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,TT03,advanced,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO4337_TT04,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),HK232,TT04,advanced,40,GV00046,Bùi Quang Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1005_L_HL01,CO1005,Nhập môn Điện toán (Học lại),HK232,L_HL01,standard,40,GV00047,Đỗ Hữu Phát,Khoa Khoa học và Kỹ thuật Máy tính
+HK232_CO1023_L_HL01,CO1023,Hệ thống số (Học lại),HK232,L_HL01,standard,40,GV00014,Võ Khánh An,Khoa Khoa học và Kỹ thuật Máy tính

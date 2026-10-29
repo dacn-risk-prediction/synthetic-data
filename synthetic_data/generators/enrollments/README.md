@@ -90,7 +90,7 @@ Mỗi môn học có đề cương chi tiết quy định tỷ lệ phần trăm
    - Môn Chuyên ngành: Ảnh hưởng bởi `discipline` (sự chăm chỉ) và `motivation` (động lực học tập).
 3. **Kỳ vọng điểm môn học ($\mu$):**
    $$\mu = \text{clip}\left(\text{base\_score} - \text{difficulty\_penalty} + \text{retake\_bonus}, 2.0, 9.8\right)$$
-   - $\text{retake\_bonus} = +0.3$ nếu sinh viên học lại môn này (đã có kinh nghiệm học từ kỳ trước).
+   - $\text{retake\_bonus} = +2.0$ nếu sinh viên học lại môn này (bao gồm trả nợ môn F hoặc đăng ký học lại cải thiện điểm D/D+ để đạt chuẩn tốt nghiệp $\text{GPA}_4 \ge 2.0$).
 4. **Điểm thành phần ($S_{\text{comp}}$):**
    Được lấy mẫu ngẫu nhiên từ phân phối chuẩn với tâm là $\mu$ và độ lệch chuẩn $\sigma$ (mô phỏng sự trồi sụt phong độ thi cử):
    $$S_{\text{comp}} = \text{round}\left(\text{clip}\left(\mathcal{N}(\mu, \sigma^2), 0.0, 10.0\right), 1\right)$$
@@ -174,8 +174,10 @@ sequenceDiagram
    - **Sinh viên năm 1 (HK1):** Mặc định đăng ký toàn bộ 5 môn của HK1.
      - Kiểm tra nếu sinh viên được miễn Anh văn 1 (`LA1003`): Đưa vào danh sách hưởng điểm 12, **không xếp vào lớp học phần `LA1003`**.
    - **Sinh viên từ HK2 trở đi:**
-     - **Ưu tiên 1 (Trả nợ môn):** Bắt buộc đăng ký lại các môn đã thi rớt (`passed == False`) nếu học kỳ này có mở lớp.
-     - **Ưu tiên 2 (Môn mới theo tiến độ):** Đăng ký các môn mới của học kỳ khuyến nghị nếu đã thỏa mãn toàn bộ điều kiện tiên quyết (`TQ`) hoặc học trước (`KN`) từ các kỳ trước.
+     - **Ưu tiên 1 (Trả nợ môn & Cải thiện điểm):**
+       * *Trả nợ môn rớt:* Bắt buộc đăng ký lại các môn đã thi rớt (`passed == False`) nếu học kỳ này có mở lớp (`retaken = True`).
+       * *Cải thiện điểm (`retake_improvement_helper.py`):* Ở các học kỳ muộn (Kỳ 7, 8 hoặc giai đoạn kéo dài Kỳ 9–12), nếu sinh viên có GPA 4 tích lũy dự kiến $< 2.0$, hệ thống tự động cho phép sinh viên đăng ký học lại 1–2 môn đã đạt nhưng điểm thấp nhất (D: 1.0, D+: 1.5) với `retaken = True`. Lần học sau được cộng `retake_bonus = +2.0` nhằm giúp sinh viên kéo GPA tích lũy $\ge 2.0$ để tốt nghiệp hợp lệ.
+     - **Ưu tiên 2 (Môn mới theo tiến độ):** Đăng ký các môn mới của học kỳ khuyến nghị nếu đã thỏa mãn toàn bộ điều kiện tiên quyết (`TQ`) hoặc học trước (`KN`) từ các kỳ trước. Đối với sinh viên lộ trình 3.5 năm (tốt nghiệp sớm), học kỳ HK7 sẽ đăng ký cả môn tự chọn của Kỳ 7 và Kỳ 8 để hoàn thành đủ 128 tín chỉ.
      - **Ràng buộc:** Tổng số tín chỉ đăng ký không vượt quá trần $22$ tín chỉ/kỳ.
 2. **Phân bổ vào danh sách lớp theo đúng hệ đào tạo (`allocate_course_rosters`):**
    - **Phân tách tuyệt đối theo hệ (`program`):**

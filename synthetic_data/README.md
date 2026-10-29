@@ -45,20 +45,20 @@ synthetic_data/
 - `assessment.csv`: Đề cương tỷ lệ điểm thành phần của các môn học (`quiz`, `lab`, `btl`, `giua_ky`, `cuoi_ky`).
 
 ### 2. `generated/users/` — Người dùng & Hồ sơ năng lực
-- `user.csv`: Danh sách tài khoản người dùng của toàn hệ thống.
-- `admin.csv`: Thông tin quản trị viên.
-- `lecturer.csv`: Danh sách 100 giảng viên với đơn vị (`department`) và chuyên môn (`specialization`).
-- `student.csv`: 11,092 sinh viên trải dài các khóa K20–K26, kèm phân hệ đào tạo (`standard`, `high-quality`, `advanced`).
-- `student_profiles.csv`: Hồ sơ năng lực ẩn của 11,092 sinh viên (`academic_level`, `base_score`, `discipline`, `motivation`, `stress`, `english_pass`, `ctxh_days_by_semester`).
+- `user.csv`: Danh sách tài khoản người dùng của toàn hệ thống (11,177 tài khoản).
+- `admin.csv`: 10 quản trị viên.
+- `lecturer.csv`: Danh sách 116 giảng viên với đơn vị (`department`) và chuyên môn (`specialization`).
+- `student.csv`: 11,051 sinh viên trải dài các khóa K20–K26, kèm phân hệ đào tạo (`standard`, `high-quality`, `advanced`).
+- `student_profiles.csv`: Hồ sơ năng lực ẩn của 11,051 sinh viên (`academic_level`, `base_score`, `discipline`, `motivation`, `stress`, `english_pass`, `ctxh_days_by_semester`).
 
 ### 3. `rules/` — Luật học vụ & Chương trình
-- `academic_rules.py`: Luật học vụ, mô phỏng điểm số, quy tắc miễn giảm và xếp lớp.
-- `curriculum_rules.py`: Các quy tắc ràng buộc chương trình và tín chỉ tự chọn.
+- `academic_rules.py`: Luật học vụ, mô phỏng điểm số, quy tắc miễn giảm tiếng Anh (điểm 12.0), cơ chế học lại cải thiện điểm (`retaken = True`, `retake_bonus = 2.0`), miễn trừ thôi học tự nguyện cho CLC & Tiên tiến.
+- `curriculum_rules.py`: Các quy tắc ràng buộc chương trình, tín chỉ tự chọn và lộ trình tốt nghiệp sớm 3.5 năm (128 tín chỉ).
 - `additional_course_rules.csv`: Luật học phần bổ sung/vượt cấp (CO3061, CO4029, CO4337) và điều kiện kích hoạt.
 
 ### 4. `generated/classes/` & `generated/enrollments/`
-- `classes/class_hk*.csv`: Các lớp học phần mở theo học kỳ, phân tách rõ nhóm lớp (`L01..L23` đại trà, `CC01..CC12` chất lượng cao, `TT01..TT05` tiên tiến), cân bằng tải giảng viên.
-- `enrollments/enrollment_hk*.csv`: Đăng ký học phần và kết quả học tập chi tiết (điểm thành phần, `final_score`, `gpa_4`, `letter_grade`, `status`). Sinh viên CLC và Tiên tiến được miễn toàn bộ 4 học phần tiếng Anh theo điểm 12.0.
+- `classes/class_hk*.csv`: 8,816 lớp học phần mở theo học kỳ từ HK201 đến HK261, phân tách rõ nhóm lớp (`L01..L23` đại trà, `CC01..CC12` chất lượng cao, `TT01..TT05` tiên tiến), cân bằng tải giảng viên.
+- `enrollments/enrollment_hk*.csv`: 369,592 bản ghi đăng ký học phần và kết quả học tập chi tiết (điểm thành phần, `final_score`, `gpa_4`, `letter_grade`, `status`). Sinh viên CLC và Tiên tiến được miễn toàn bộ 4 học phần tiếng Anh theo điểm 12.0.
 
 ---
 
@@ -79,7 +79,7 @@ source .venv/bin/activate
 python synthetic_data/tools/run_all.py
 ```
 
-Lệnh trên tạo danh mục và hồ sơ sinh viên trước, sau đó chạy tuần tự từng cặp `class_hk*` → `enrollment_hk*` theo thứ tự từ **HK201 đến HK232**, đảm bảo lịch sử học tập của kỳ trước là cơ sở xét tiên quyết cho kỳ sau.
+Lệnh trên tạo danh mục và hồ sơ sinh viên trước, sau đó chạy tuần tự từng cặp `class_hk*` → `enrollment_hk*` theo thứ tự từ **HK201 đến HK261**, đảm bảo lịch sử học tập của kỳ trước là cơ sở xét tiên quyết cho kỳ sau.
 
 ---
 
@@ -140,24 +140,28 @@ Sau khi chỉnh sửa, thực hiện:
 
 ---
 
-## 6. Kết quả mô phỏng thực tế (Khóa K20 sau 8 học kỳ)
+## 6. Kết quả mô phỏng thực tế (Khóa K20 sau 12 học kỳ đào tạo)
 
 ```text
 ================================================================================================
 ============== BÁO CÁO THỐNG KÊ TIẾN ĐỘ & TỶ LỆ TỐT NGHIỆP - KHÓA K20 (KHMT_K20) ===============
 ================================================================================================
- Khóa tuyển sinh: K20 | Tổng số sinh viên: 1,500 SV | Học kỳ quan sát: HK201 -> HK232 (8 kỳ)
- Đã tốt nghiệp: 714 SV (47.60%) | Chưa tốt nghiệp / Nợ chuẩn: 786 SV (52.40%)
+ Khóa tuyển sinh: K20 | Tổng số sinh viên: 1,500 SV | Học kỳ quan sát: HK201 -> HK252 (12 kỳ)
+ Đã tốt nghiệp: 1,413 SV (94.20%) | Thôi học (Quá hạn 12 kỳ): 87 SV (5.80%) | Đang học: 0 SV
 ------------------------------------------------------------------------------------------------
- ★ Tốt nghiệp sớm (Kỳ 7 - 3.5 năm):       18 SV  (1.20%)  - Nhóm xuất sắc học vượt KLTN (CO4337)
- ● Tốt nghiệp đúng hạn (Kỳ 8 - 4.0 năm): 696 SV (46.40%)  - Hoàn tất CTĐT + Tiếng Anh + >= 15 ngày CTXH
- ⚠ Chưa tốt nghiệp / Nợ chuẩn (HK232):   786 SV (52.40%)  - Nợ KLTN/môn BB hoặc nợ chuẩn TA / CTXH
+ ★ Tốt nghiệp sớm (Kỳ 7 - 3.5 năm):       18 SV  (1.20%)  - Nhóm học vượt KLTN (CO4337), đạt 128 TC
+ ● Tốt nghiệp đúng hạn (Kỳ 8 - 4.0 năm): 777 SV (51.80%)  - Hoàn tất CTĐT + Tiếng Anh + >= 15 ngày CTXH
+ ▲ Tốt nghiệp trễ hạn (Kỳ 9–12):         618 SV (41.20%)  - Trả nợ môn, tích lũy đủ CTXH & học cải thiện GPA
+ ✖ Buộc thôi học (Quá 12 kỳ):             87 SV  (5.80%)  - Không kịp tích lũy đủ 128 tín chỉ sau 6 năm
 ------------------------------------------------------------------------------------------------
  Chi tiết theo hệ đào tạo:
-  - Đại trà (Tiêu chuẩn):   895 SV  | Sớm:  9 (1.01%) | Đúng hạn: 373 (41.68%) | Nợ chuẩn: 513 (57.32%)
-  - Chất lượng cao (CLC):   443 SV  | Sớm:  6 (1.35%) | Đúng hạn: 243 (54.85%) | Nợ chuẩn: 194 (43.79%)
-  - Chương trình Tiên tiến: 162 SV  | Sớm:  3 (1.85%) | Đúng hạn:  80 (49.38%) | Nợ chuẩn:  79 (48.77%)
+  - Đại trà (Tiêu chuẩn):   894 SV  | Tốt nghiệp: 831 (93.0%) | Thôi học: 63 (7.0%)
+  - Chất lượng cao (CLC):   466 SV  | Tốt nghiệp: 445 (95.5%) | Thôi học: 21 (4.5%)
+  - Chương trình Tiên tiến: 140 SV  | Tốt nghiệp: 137 (97.9%) | Thôi học:  3 (2.1%)
+------------------------------------------------------------------------------------------------
+ Chất lượng tốt nghiệp: 100% sinh viên tốt nghiệp có GPA_4 >= 2.0 (không có sinh viên dưới chuẩn)
+ Phân loại bằng K20: Xuất sắc: 2.1% | Giỏi: 23.9% | Khá: 59.8% | Trung bình: 14.2%
 ================================================================================================
 ```
 
-Tỷ lệ tốt nghiệp đúng hạn **46.40%** mô phỏng chân thực tỷ lệ thực tế tại các trường đại học kỹ thuật hàng đầu.
+Tỷ lệ tốt nghiệp chung đạt **94.20%**, tỷ lệ thôi học thấp chỉ **5.80%** (chỉ còn do quá hạn đào tạo 12 học kỳ, hệ CLC & Tiên tiến không còn thôi học do kinh tế) và 100% sinh viên tốt nghiệp đạt chuẩn $\text{GPA}_4 \ge 2.0$.

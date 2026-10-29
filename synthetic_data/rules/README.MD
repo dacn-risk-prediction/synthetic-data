@@ -87,13 +87,13 @@ một cấu hình để điều chỉnh nhất quán giữa các học kỳ.
   giúp hồ sơ sinh viên có thể tái tạo giữa các lần chạy.
 - `grade_scale` dùng khoảng lower-inclusive, upper-exclusive; riêng mốc tối đa
   được tính vào grade cuối. F dưới 4.0 là trượt; từ 4.0 trở lên là qua môn.
-  `retake_bonus` mặc định bằng 0.
+  `retake_bonus` được áp dụng khi sinh viên học lại môn (bao gồm trả nợ môn F hoặc học lại cải thiện điểm D/D+), mặc định cộng +2.0 điểm kỳ vọng để mô phỏng sự tích lũy kiến thức và nỗ lực cải thiện điểm.
 
 Chạy `python synthetic_data/tools/add_base_score.py` để tạo lại
 `student_base_score.csv` cùng các trường hồ sơ. Khi thay đổi rule hoặc config,
 chạy `python synthetic_data/tools/run_all.py` để sinh lại các học kỳ nhất quán.
 
-### Điều kiện tiến độ, đồ án và dropout
+### Điều kiện tiến độ, đồ án, CTXH và dropout
 
 `student_progress` cấu hình các kỳ được theo dõi, kỳ bắt đầu theo khóa, ngưỡng
 CTXH, xác suất tiếng Anh ban đầu/chuyển trạng thái và chính sách dropout/tốt
@@ -102,21 +102,35 @@ nghiệp. Profile xuất ra `english_pass` ban đầu,
 chuyển từ chưa đạt sang đạt, và `ctxh_days_by_semester` dạng JSON array với
 ngày CTXH cộng dồn. Xác suất tiếng Anh ban đầu và xác suất chuyển theo mỗi kỳ
 cùng phụ thuộc background, English level, academic level và personality; các
-trọng số được cấu hình trong `student_progress.english`. Ngày CTXH tăng theo
-từng kỳ với kỳ vọng phụ thuộc discipline, motivation, social activity và stress.
-Báo cáo `english_eligibility_by_semester.csv` tổng hợp tỷ lệ theo từng kỳ.
+trọng số được cấu hình trong `student_progress.english`.
 
+**Tăng ngày CTXH theo hệ đào tạo (`program_expected_days_per_semester`):**
+Cấu hình trong `generator_config.json` cho phép phân bổ kỳ vọng ngày CTXH tích lũy mỗi học kỳ theo hệ đào tạo:
+- Đại trà (`standard`): 1.6 – 2.4 ngày/kỳ (đạt mốc 15 ngày quanh kỳ 7–8).
+- Chất lượng cao (`high-quality`): 2.5 – 3.5 ngày/kỳ (đạt mốc 15 ngày sớm ở kỳ 5–6).
+- Tiên tiến (`advanced`): 2.8 – 4.0 ngày/kỳ (đạt mốc 15 ngày sớm ở kỳ 5–6).
+Cơ chế này đảm bảo sinh viên CLC và Tiên tiến có đủ điều kiện ngày CTXH để làm đồ án tốt nghiệp và xét tốt nghiệp sớm (lộ trình 3.5 năm).
+
+**Quy định đồ án và tốt nghiệp:**
 Các môn đồ án trong `thesis_course_codes` bị loại khỏi eligibility nếu tiếng
 Anh chưa đạt hoặc CTXH tích lũy trước kỳ học chưa đủ 12 ngày. Tốt nghiệp yêu cầu
-15 ngày CTXH, tiếng Anh, các môn `required` trong curriculum và mã đồ án tốt
+đủ 128 tín chỉ, $\ge 15$ ngày CTXH, chuẩn tiếng Anh, điểm trung bình tích lũy $\text{GPA}_4 \ge 2.0$, các môn `required` trong curriculum và mã đồ án tốt
 nghiệp cấu hình. Nếu đến kỳ có môn đồ án nhưng chưa đủ điều kiện, profile có
 xác suất cấu hình được (mặc định 80%) không đăng ký môn nào trong kỳ đó, mô
-phỏng việc phải chờ và tốt nghiệp trễ. Tốt nghiệp chuẩn sau 8 học kỳ; buộc thôi
-học khi đã qua 12 học kỳ hoặc có hai kỳ liên tiếp dưới 10 tín chỉ pass. Dropout
-tự nguyện dùng xác suất 30% trong nhóm background/học lực thấp và trọng số
-nguyên nhân background 95%, academic 5%.
+phỏng việc phải chờ và tốt nghiệp trễ.
 
-`generate_academic_metrics.py` tạo tiến độ từng kỳ, metric từng sinh viên,
+**Chính sách thôi học (Dropout):**
+- **Buộc thôi học do học vụ / quá hạn:** Khi sinh viên học vượt quá thời gian tối đa (12 học kỳ) hoặc có hai kỳ liên tiếp dưới 10 tín chỉ pass.
+- **Thôi học tự nguyện (`_generate_voluntary_dropout`):** Dùng xác suất trong nhóm background khó khăn / học lực thấp. **Đặc biệt, sinh viên thuộc hệ Chất lượng cao (`high-quality`) và Tiên tiến (`advanced`) được miễn trừ hoàn toàn nguy cơ thôi học tự nguyện do kinh tế** (hàm trả về `None, None`), phản ánh đúng thực tế gia đình có điều kiện kinh tế vững vàng khi theo học các hệ này. Nhờ đó, tỷ lệ thôi học ở CLC và Tiên tiến được giữ ở mức cực thấp (0% ở các khóa bình thường).
+
+### Cơ chế học lại cải thiện điểm (Grade Improvement Retake)
+
+Nhằm đảm bảo chuẩn đầu ra $\text{GPA}_4 \ge 2.0$ để tốt nghiệp:
+- **Điều kiện kích hoạt:** Ở các học kỳ muộn (Kỳ 7, 8 hoặc giai đoạn kéo dài Kỳ 9–12), nếu sinh viên có GPA 4 tích lũy dự kiến $< 2.0$, hệ thống tự động cho phép sinh viên đăng ký học lại 1–2 môn đã đạt nhưng có điểm thấp nhất (điểm D hệ 1.0 hoặc D+ hệ 1.5) với cờ `retaken = True`.
+- **Cộng điểm học lại:** Lần học cải thiện được hưởng `retake_bonus = 2.0` giúp điểm số mới cao hơn rõ rệt (thường đạt B, B+, A).
+- **Cập nhật CPA:** Điểm thang 4 cao nhất giữa các lần học sẽ thay thế điểm cũ, kéo GPA tích lũy của sinh viên vượt mốc 2.0 để tốt nghiệp hợp lệ.
+
+`generate_academic_metrics.py` tạo tiến độ từng kỳ, metric từng sinh viên (bổ sung cột `gpa_10` tích lũy),
 phân phối điểm theo course/toàn trường và tổng hợp dropout/tốt nghiệp. Mẫu số
 chỉ gồm sinh viên có enrollment trong các kỳ đã sinh; điểm chưa chấm ở kỳ đang
 diễn ra bị loại khỏi phân phối điểm.

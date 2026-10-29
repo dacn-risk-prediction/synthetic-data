@@ -12,8 +12,11 @@ Structure for each sheet:
 3. BẢNG 2: Tỷ lệ Điểm & Xếp loại của những sinh viên đã tốt nghiệp (Khóa K20, K21, K22).
    - GPA TB Hệ 10, CPA TB Hệ 4 và tỷ lệ % phân bố 6 mức xếp loại điểm.
    - Dòng hướng dẫn công thức / logic tính trên dữ liệu thực tế.
-4. BIỂU ĐỒ TRỰC QUAN DUY NHẤT (Khung A19):
+4. BIỂU ĐỒ TRỰC QUAN CỦA BẢNG 2 (Khung A19):
    - Biểu đồ Cột chồng 100% (100% Stacked Column Chart) so sánh cơ cấu điểm tốt nghiệp K20, K21, K22.
+5. BẢNG 3: Tỷ lệ Bỏ học từng khóa (Khóa K20 đến K26 - Khung A44).
+   - Sĩ số tuyển sinh, số lượng sinh viên bỏ học và tỷ lệ % bỏ học.
+   - Dòng hướng dẫn công thức / logic tính trên dữ liệu thực tế.
 """
 
 from pathlib import Path
@@ -48,28 +51,29 @@ def load_all_datasets() -> Tuple[pd.DataFrame, pd.DataFrame]:
     if not df_user_st.empty and "program" in df_user_st.columns:
         df_students = df_students.merge(df_user_st[["user_id", "program"]], left_on="student_id", right_on="user_id", how="left")
 
-    # Compute cumulative GPA 10 from enrollments for all students
-    if courses_file.exists() and enrollment_dir.exists():
-        df_courses = pd.read_csv(courses_file, usecols=["course_code", "credits"])
-        credits_map = dict(zip(df_courses["course_code"], df_courses["credits"]))
+    # Use precomputed gpa_10 from student_metrics if available, otherwise compute from enrollments
+    if "gpa_10" not in df_students.columns or df_students["gpa_10"].isna().all():
+        if courses_file.exists() and enrollment_dir.exists():
+            df_courses = pd.read_csv(courses_file, usecols=["course_code", "credits"])
+            credits_map = dict(zip(df_courses["course_code"], df_courses["credits"]))
 
-        enr_files = sorted(enrollment_dir.glob("enrollment_hk*.csv"))
-        if enr_files:
-            dfs = [pd.read_csv(f, usecols=["student_id", "course_id", "final_score", "passed"], dtype=str) for f in enr_files]
-            df_enr = pd.concat(dfs, ignore_index=True)
-            df_enr = df_enr[df_enr["passed"] == "True"]
-            df_enr["final_score"] = pd.to_numeric(df_enr["final_score"], errors="coerce")
-            df_enr = df_enr[df_enr["final_score"] <= 10.0]
-            df_enr["credits"] = df_enr["course_id"].map(credits_map).fillna(0)
-            df_enr["weighted_score"] = df_enr["final_score"] * df_enr["credits"]
+            enr_files = sorted(enrollment_dir.glob("enrollment_hk*.csv"))
+            if enr_files:
+                dfs = [pd.read_csv(f, usecols=["student_id", "course_id", "final_score", "passed"], dtype=str) for f in enr_files]
+                df_enr = pd.concat(dfs, ignore_index=True)
+                df_enr = df_enr[df_enr["passed"] == "True"]
+                df_enr["final_score"] = pd.to_numeric(df_enr["final_score"], errors="coerce")
+                df_enr = df_enr[df_enr["final_score"] <= 10.0]
+                df_enr["credits"] = df_enr["course_id"].map(credits_map).fillna(0)
+                df_enr["weighted_score"] = df_enr["final_score"] * df_enr["credits"]
 
-            grouped = df_enr.groupby("student_id")[["weighted_score", "credits"]].sum()
-            grouped["gpa_10"] = grouped["weighted_score"] / grouped["credits"]
-            df_students["gpa_10"] = df_students["student_id"].map(grouped["gpa_10"])
+                grouped = df_enr.groupby("student_id")[["weighted_score", "credits"]].sum()
+                grouped["gpa_10"] = grouped["weighted_score"] / grouped["credits"]
+                df_students["gpa_10"] = df_students["student_id"].map(grouped["gpa_10"])
+            else:
+                df_students["gpa_10"] = np.nan
         else:
             df_students["gpa_10"] = np.nan
-    else:
-        df_students["gpa_10"] = np.nan
 
     return df_students, df_user_st
 
@@ -130,7 +134,7 @@ def build_program_characteristic_1_sheet(
     ws.merge_cells("A3:J3")
     c3 = ws["A3"]
     pct_total = (n_prog / total_univ_students * 100) if total_univ_students > 0 else 0.0
-    c3.value = f"ĐẶC TRƯNG 1: TIẾN ĐỘ TỐT NGHIỆP VÀ PHÂN BỐ ĐIỂM SỐ SINH VIÊN (K20, K21, K22) | Quy mô: {n_prog:,} SV ({pct_total:.1f}% toàn trường)"
+    c3.value = f"BÁO CÁO HỌC VỤ: TIẾN ĐỘ TỐT NGHIỆP, XẾP LOẠI ĐIỂM & TỶ LỆ BỎ HỌC (K20 - K26) | Quy mô: {n_prog:,} SV ({pct_total:.1f}% toàn trường)"
     c3.font = Font(name="Arial", size=9.5, bold=True, color="1F4E78")
     c3.alignment = Alignment(horizontal="left", vertical="center")
     ws.row_dimensions[3].height = 22
@@ -298,7 +302,7 @@ def build_program_characteristic_1_sheet(
     ws.row_dimensions[17].height = 24
 
     # =========================================================================
-    # PHẦN 4: BIỂU ĐỒ TRỰC QUAN CHO K20, K21, K22 TRONG CÙNG MỘT KHUNG
+    # PHẦN 4: BIỂU ĐỒ TRỰC QUAN CỦA BẢNG 2 (ĐẶT NGAY DƯỚI BẢNG 2 - KHUNG A19)
     # =========================================================================
     chart = BarChart()
     chart.type = "col"
@@ -306,7 +310,7 @@ def build_program_characteristic_1_sheet(
     chart.overlap = 100
     chart.title = "So sánh Cơ cấu Xếp loại Điểm Tốt nghiệp (Khóa K20, K21, K22)"
     chart.width = 22.0
-    chart.height = 11.5
+    chart.height = 10.8
     chart.y_axis.title = "Tỷ lệ sinh viên tốt nghiệp (%)"
     chart.x_axis.title = "Khóa tốt nghiệp"
 
@@ -316,6 +320,82 @@ def build_program_characteristic_1_sheet(
     chart.set_categories(cats)
 
     ws.add_chart(chart, "A19")
+
+    # =========================================================================
+    # PHẦN 5: BẢNG 3 - TỶ LỆ BỎ HỌC TỪNG KHÓA (KHÓA K20 ĐẾN K26 - BẮT ĐẦU TỪ DÒNG 44)
+    # =========================================================================
+    ws.merge_cells("A44:E44")
+    s3 = ws["A44"]
+    s3.value = "III. BẢNG 3: TỶ LỆ BỎ HỌC TỪNG KHÓA (KHÓA K20 ĐẾN K26)"
+    s3.font = font_section
+    s3.fill = ice_blue_section
+    s3.alignment = Alignment(horizontal="left", vertical="center", indent=1)
+    ws.row_dimensions[44].height = 26
+
+    table3_headers = [
+        "STT", "Khóa học", "Sĩ số tuyển sinh (SV)", "Sinh viên bỏ học (SV)",
+        "Tỷ lệ bỏ học (%)"
+    ]
+    ws.row_dimensions[45].height = 28
+    for c_i, h in enumerate(table3_headers, 1):
+        cell = ws.cell(row=45, column=c_i, value=h)
+        cell.font = font_header
+        cell.fill = navy_header
+        cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+
+    cohorts_all = ["K20", "K21", "K22", "K23", "K24", "K25", "K26"]
+    table3_data = []
+    for idx, coh in enumerate(cohorts_all, 1):
+        c_sub = prog_students[prog_students["cohort"] == coh]
+        tot = len(c_sub)
+        if "dropout" in c_sub.columns:
+            if c_sub["dropout"].dtype == bool:
+                drop_cnt = int((c_sub["dropout"] == True).sum())
+            else:
+                drop_cnt = int((c_sub["dropout"].astype(str).str.lower() == "true").sum())
+        else:
+            drop_cnt = 0
+        pct = (drop_cnt / tot) if tot > 0 else 0.0
+        table3_data.append((idx, f"Khóa {coh}", tot, drop_cnt, pct))
+
+    for r_i, (stt, c_name, n, drop_cnt, pct) in enumerate(table3_data, 46):
+        ws.row_dimensions[r_i].height = 22
+        is_even = (r_i % 2 == 0)
+
+        c_stt = ws.cell(row=r_i, column=1, value=stt)
+        c_stt.alignment = Alignment(horizontal="center", vertical="center")
+
+        c_cohort = ws.cell(row=r_i, column=2, value=c_name)
+        c_cohort.alignment = Alignment(horizontal="center", vertical="center")
+        c_cohort.font = font_bold
+
+        c_n = ws.cell(row=r_i, column=3, value=n)
+        c_n.alignment = Alignment(horizontal="right", vertical="center")
+        c_n.number_format = "#,##0"
+
+        c_drop = ws.cell(row=r_i, column=4, value=drop_cnt)
+        c_drop.alignment = Alignment(horizontal="right", vertical="center")
+        c_drop.number_format = "#,##0"
+
+        c_pct = ws.cell(row=r_i, column=5, value=pct)
+        c_pct.alignment = Alignment(horizontal="right", vertical="center")
+        c_pct.number_format = "0.0%"
+        c_pct.font = font_bold
+
+        for col_idx in range(1, 6):
+            cell = ws.cell(row=r_i, column=col_idx)
+            cell.border = thin_border
+            cell.font = font_bold if col_idx in [2, 5] else font_data
+            if is_even: cell.fill = zebra_fill
+
+    # Dòng hướng dẫn cách tính Metric Bảng 3
+    ws.merge_cells("A53:E53")
+    g3 = ws["A53"]
+    g3.value = "💡 Cách tính: Tỷ lệ bỏ học = Số sinh viên bỏ học (dropout = True) / Tổng sĩ số sinh viên của khóa."
+    g3.font = font_guidance
+    g3.fill = guidance_fill
+    g3.alignment = Alignment(horizontal="left", vertical="center")
+    ws.row_dimensions[53].height = 24
 
     # Column Widths Configuration (10 cột chuẩn khít với bảng số liệu và khung biểu đồ)
     col_widths = {
