@@ -51,12 +51,64 @@ generator class và enrollment dùng cùng một chương trình đào tạo.
 - `TUITION_BASELINE_CREDITS = 18`: mốc tín chỉ generator cố gắng bổ sung cho
   sinh viên đủ điều kiện.
 
-## `academic_rules.py` — quy tắc học vụ và điều kiện đăng ký
+## `academic_rules.py` & package `academic/` — quy tắc học vụ và điều kiện đăng ký
 
-Module này ghép lịch sử enrollment với lớp đã tạo để biết môn học, đọc kết quả
-`Pass`/`Fail`, rồi chọn danh sách môn một sinh viên có thể đăng ký trong học kỳ
-tiếp theo. Các generator class và enrollment gọi cùng hàm này để danh sách lớp
-mở và dữ liệu đăng ký không mâu thuẫn.
+Để đảm bảo khả năng bảo trì, kiểm thử và mở rộng, toàn bộ quy tắc học vụ được tái cấu trúc thành package chuyên biệt `synthetic_data/rules/academic/` chia thành **6 nhóm nghiệp vụ cốt lõi**, trong khi `academic_rules.py` đóng vai trò **Facade Gateway** đảm bảo tương thích ngược 100% cho toàn bộ các file generator hiện hữu:
+
+```text
+synthetic_data/rules/
+├── academic/                          # Package chứa các rule chuyên biệt
+│   ├── __init__.py                    # Re-export API của package
+│   ├── common.py                      # Tiện ích chung, hash seed, load lịch sử
+│   ├── config.py                      # Load & validate generator_config.json
+│   ├── profile_rules.py               # [Nhóm 1] Hồ sơ SV, CTXH, tiếng Anh, dropout
+│   ├── scoring_rules.py               # [Nhóm 2] Điểm số thành phần, thang chữ, GPA/CPA
+│   ├── standing_rules.py              # [Nhóm 3] Kỷ luật, thôi học vụ, thời gian học
+│   ├── retake_rules.py                # [Nhóm 4] Trả nợ môn rớt & học cải thiện điểm
+│   ├── eligibility_rules.py           # [Nhóm 5] Tiên quyết, học trước, điều kiện môn
+│   └── allocation_rules.py            # [Nhóm 6] Phân bổ lớp & phân công giảng viên
+│
+├── academic_rules.py                  # [FACADE GATEWAY] Re-export đầy đủ API cũ
+├── curriculum_rules.py                # Quy tắc chương trình khung các kỳ
+└── README.MD                          # Tài liệu kiến trúc
+```
+
+### Chi tiết 6 nhóm nghiệp vụ trong `rules/academic/`:
+
+1. **`profile_rules.py` (Đặc tính & Hồ sơ sinh viên):**
+   - Sinh đặc tính cá nhân (`discipline`, `motivation`, `stress`, `social_activity`), học lực (`academic_level`), điểm gốc (`base_score`).
+   - Mô phỏng tích lũy ngày CTXH (`_generate_ctxh_progress`, `ctxh_days_before_semester`).
+   - Tiến trình đạt chuẩn tiếng Anh (`_generate_english_eligibility_progress`).
+   - Sàng lọc ứng viên học vượt / tốt nghiệp sớm (`select_early_graduation_candidates`, `wants_acceleration`).
+   - Mô phỏng thôi học tự nguyện (`_generate_voluntary_dropout`) với cơ chế miễn trừ rủi ro bỏ học vì kinh tế cho hệ CLC và Tiên tiến.
+
+2. **`scoring_rules.py` (Mô hình điểm số & GPA):**
+   - Tính điểm kỳ vọng môn học dựa trên tương quan năng lực và độ khó (`course_mean_score`).
+   - Sinh điểm ngẫu nhiên có kiểm soát sai số và bonus học lại (`generate_observed_score`).
+   - Quy đổi điểm 10 sang thang chữ và GPA thang 4 (`convert_score_to_grade`).
+   - Chấm điểm chi tiết các cột thành phần BT, BTL, GK, CK (`score_course_components`).
+   - Tổng hợp GPA học kỳ và CPA tích lũy (`add_gpa_summaries`).
+
+3. **`standing_rules.py` (Quy chế học vụ, Kỷ luật & Buộc thôi học):**
+   - Chuyển đổi và định vị chỉ mục học kỳ (`semester_index`, `semester_from_index`).
+   - Kiểm soát thời gian đào tạo: chuẩn 8 kỳ (`STANDARD_SEMESTERS`), kéo dài tối đa 4 kỳ (`MAX_LATE_SEMESTERS`), quá hạn 12 kỳ (`DISMISSAL_AFTER_SEMESTERS`).
+   - Xử lý thôi học vụ quá hạn (`is_academic_dismissal`, `get_academic_dismissal_semester`).
+   - Xử lý tạm dừng học vụ do nợ tín chỉ liên tiếp (`academic_suspension_semesters`).
+
+4. **`retake_rules.py` (Học lại, Trả nợ môn & Cải thiện điểm):**
+   - Ràng buộc trần tín chỉ học lại (`filter_retake_demand_by_credit_limit`): tối đa 1 môn / 4.0 TC ở kỳ 1–8; tối đa 22.0 TC ở kỳ 9–12.
+   - Thuật toán tự động học lại cải thiện điểm D/D+ cho sinh viên cuối khóa có GPA < 2.0 (`generate_grade_improvement_retakes`) đảm bảo tổng tải $\le 22.0$ tín chỉ.
+
+5. **`eligibility_rules.py` (Điều kiện tiên quyết & Tiến độ môn học):**
+   - Thẩm định môn tiên quyết (`TQ`), học trước (`KN`), song hành (`SH`).
+   - Kiểm tra miễn giảm Anh văn 1 (`can_skip_la1003`) và chuẩn ngoại ngữ ra trường (`is_english_passed`).
+   - Tính toán danh sách môn đủ điều kiện mở lớp và đăng ký (`calculate_eligibility`, `calculate_eligibility_for_schedule`).
+   - Quản lý hạn ngạch môn tự chọn nhóm C (`GROUP_C_CREDIT_LIMIT = 15`) và môn tự do (`FREE_CREDIT_LIMIT = 9`).
+
+6. **`allocation_rules.py` (Phân bổ danh sách lớp & Giảng viên):**
+   - Cân bằng sĩ số các lớp học phần (`balanced_class_sizes`).
+   - Phân công giảng viên bộ môn phụ trách lớp xoay vòng công bằng (`assign_balanced_lecturers`).
+   - Ghép sinh viên vào từng lớp học phần theo đúng hệ (`allocate_course_rosters`).
 
 Module cũng cung cấp rule dùng chung để tạo hồ sơ sinh viên, tính điểm môn,
 noise, grade và GPA. Tham số được đọc từ
@@ -129,6 +181,10 @@ Nhằm đảm bảo chuẩn đầu ra $\text{GPA}_4 \ge 2.0$ để tốt nghiệ
 - **Điều kiện kích hoạt:** Ở các học kỳ muộn (Kỳ 7, 8 hoặc giai đoạn kéo dài Kỳ 9–12), nếu sinh viên có GPA 4 tích lũy dự kiến $< 2.0$, hệ thống tự động cho phép sinh viên đăng ký học lại 1–2 môn đã đạt nhưng có điểm thấp nhất (điểm D hệ 1.0 hoặc D+ hệ 1.5) với cờ `retaken = True`.
 - **Cộng điểm học lại:** Lần học cải thiện được hưởng `retake_bonus = 2.0` giúp điểm số mới cao hơn rõ rệt (thường đạt B, B+, A).
 - **Cập nhật CPA:** Điểm thang 4 cao nhất giữa các lần học sẽ thay thế điểm cũ, kéo GPA tích lũy của sinh viên vượt mốc 2.0 để tốt nghiệp hợp lệ.
+- **Ràng buộc trần tín chỉ (`filter_retake_demand_by_credit_limit`):**
+  * Trong các kỳ học chính khóa (Kỳ 1–8): Sinh viên đã có 14–18 tín chỉ môn chính khóa, do đó môn học lại được giới hạn tối đa 1 môn / 4.0 tín chỉ nhằm đảm bảo tổng tải học tập mỗi kỳ không vượt trần quy chế ($\le 22.0$ tín chỉ).
+  * Trong các kỳ kéo dài (Kỳ 9–12): Sinh viên không còn môn chính khóa theo lớp nên được phép đăng ký học lại tối đa 22.0 tín chỉ (lên đến 6 môn) để kịp hoàn tất trả nợ tốt nghiệp.
+  * Trong hàm `generate_grade_improvement_retakes` (`academic_rules.py`): Kiểm tra tải tín chỉ hiện có của sinh viên trong kỳ (`current_credits`), chỉ cho phép đăng ký cải thiện nếu `current_credits + candidate_credits <= 22.0`.
 
 `generate_academic_metrics.py` tạo tiến độ từng kỳ, metric từng sinh viên (bổ sung cột `gpa_10` tích lũy),
 phân phối điểm theo course/toàn trường và tổng hợp dropout/tốt nghiệp. Mẫu số

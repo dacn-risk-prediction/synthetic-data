@@ -33,14 +33,16 @@ from curriculum_rules import (
 
 
 SEMESTERS = (
-    "HK131", "HK132", "HK141", "HK142", "HK151", "HK152",
-    "HK161", "HK162", "HK171", "HK172", "HK181", "HK182",
-    "HK191", "HK192", "HK201", "HK202", "HK211", "HK212",
-    "HK221", "HK222", "HK231", "HK232", "HK241", "HK242",
-    "HK251", "HK252", "HK261", "HK262",
+    "HK201", "HK202", "HK211", "HK212",
+    "HK221", "HK222", "HK231", "HK232",
+    "HK241", "HK242", "HK251", "HK252",
+    "HK261",
 )
 NEW_SEMESTERS = (
-    "HK221", "HK222", "HK231", "HK232", "HK241", "HK242", "HK251", "HK252", "HK261"
+    "HK201", "HK202", "HK211", "HK212",
+    "HK221", "HK222", "HK231", "HK232",
+    "HK241", "HK242", "HK251", "HK252",
+    "HK261",
 )
 ACTIVE_SEMESTER = "HK261"
 PROJECT_OPTIONS = ["CO3107", "CO3109", "CO3111"]

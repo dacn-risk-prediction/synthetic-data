@@ -44,8 +44,12 @@ from curriculum_rules import select_student_group_c_course, get_student_speciali
 
 from academic_rules import (
     GENERATOR_CONFIG,
+    filter_active_students_for_semester,
+    is_student_active_for_semester,
+    is_thesis_eligible,
     balanced_class_sizes,
     convert_score_to_grade,
+    filter_retake_demand_by_credit_limit,
     score_course_components,
 )
 
@@ -87,17 +91,26 @@ def get_k21_acceleration_students(k21_students: pd.DataFrame, df_prof: pd.DataFr
     return accelerating_by_prog
 
 
-def get_k20_group_c_distribution(k20_students: pd.DataFrame) -> Dict[Tuple[str, str], List[str]]:
-    """Distribute K20 students among Group C elective courses based on specialization."""
-    spec_map = get_student_specialization_map()
-    choice_map: Dict[Tuple[str, str], List[str]] = defaultdict(list)
-    for _, row in k20_students.iterrows():
-        uid = str(row["user_id"])
-        prog = row["program"]
-        spec = spec_map.get(uid, "Khoa học Máy tính")
-        c_code = select_student_group_c_course(uid, "K20", spec, seed_salt="k20_group_c_hk221")
-        choice_map[(prog, c_code)].append(uid)
-    return choice_map
+def get_k20_group_c_distribution(
+    k20_students: pd.DataFrame,
+    passed_map: Optional[Dict[str, Any]] = None,
+    enrolled_map: Optional[Dict[str, Set[str]]] = None,
+    retake_demand: Optional[Dict[str, Any]] = None,
+    profiles: Optional[Dict[str, Dict[str, Any]]] = None,
+    credits_map: Optional[Dict[str, float]] = None,
+) -> Dict[Tuple[str, str], List[str]]:
+    """Distribute K20 students among Group C elective courses based on specialization and acceleration."""
+    from curriculum_rules import get_term5_group_c_distribution
+    return get_term5_group_c_distribution(
+        cohort_students=k20_students,
+        cohort="K20",
+        semester="HK221",
+        passed_map=passed_map,
+        enrolled_map=enrolled_map,
+        retake_demand=retake_demand,
+        profiles=profiles,
+        credits_map=credits_map,
+    )
 
 
 def generate_enrollment_hk221() -> Path:
@@ -147,6 +160,12 @@ def generate_enrollment_hk221() -> Path:
 
     # Sinh viên khóa trước còn nợ môn HK1 hoặc HK3 cần học lại
     all_prev_enrollments = pd.concat(prev_dfs)
+
+    # Lịch sử tất cả các môn đã từng đăng ký ở các kỳ trước
+    history_enrolled: Dict[str, Set[str]] = defaultdict(set)
+    for df_prev in prev_dfs:
+        for _, r in df_prev.iterrows():
+            history_enrolled[str(r["student_id"])].add(str(r["course_id"]))
     retake_demand: Dict[str, List[str]] = defaultdict(list)
     for _, r in all_prev_enrollments[all_prev_enrollments["passed"] == False].iterrows():
         sid = str(r["student_id"])
@@ -173,12 +192,23 @@ def generate_enrollment_hk221() -> Path:
     df_courses = pd.read_csv(courses_file, encoding="utf-8-sig")
     credits_map: Dict[str, float] = dict(zip(df_courses["course_code"], df_courses["credits"].astype(float)))
 
+    # Ràng buộc trần tín chỉ: Lọc môn học lại để không vượt quá trần tín chỉ học kỳ
+    retake_demand = filter_retake_demand_by_credit_limit(retake_demand, credits_map, SEMESTER)
+
     profiles_file = USERS_DIR / "student_profiles.csv"
     df_profiles = pd.read_csv(profiles_file, encoding="utf-8-sig", dtype={"student_id": str})
     student_profiles: Dict[str, Dict[str, Any]] = df_profiles.set_index("student_id").to_dict(orient="index")
 
+    # Lọc sinh viên còn hoạt động (loại bỏ voluntary_dropout và academic_dismissal)
+    k20_students = filter_active_students_for_semester(k20_students, SEMESTER, df_profiles)
+    k21_students = filter_active_students_for_semester(k21_students, SEMESTER, df_profiles)
+    k22_students = filter_active_students_for_semester(k22_students, SEMESTER, df_profiles)
+
     k21_accel = get_k21_acceleration_students(k21_students, df_profiles)
-    k20_group_c = get_k20_group_c_distribution(k20_students)
+    k20_group_c = get_k20_group_c_distribution(
+        k20_students, history_passed, history_enrolled,
+        retake_demand=retake_demand, profiles=student_profiles, credits_map=credits_map
+    )
 
     k22_compulsory = get_curriculum_for_cohort_semester("K22", 1)["compulsory_courses"]
     k22_core_courses = [c["course_code"] for c in k22_compulsory if not c["course_code"].startswith("LA")]
@@ -855,6 +885,11 @@ def generate_enrollment_hk221() -> Path:
     # D. TÍNH GPA HỌC KỲ VÀ TÍCH LŨY
     # -------------------------------------------------------------------------
     print("\n7. Đang tính điểm trung bình học kỳ và GPA tích lũy cho cả K20, K21 và K22...")
+    # Chuẩn hóa cờ retaken dựa trên lịch sử
+    for r in enrollment_records:
+        if r.get("status") != "Exempted" and str(r.get("course_id")) in history_enrolled.get(str(r.get("student_id")), set()):
+            r["retaken"] = True
+
     df_enrollment = pd.DataFrame(enrollment_records)
 
     semester_gpas: Dict[str, float] = {}

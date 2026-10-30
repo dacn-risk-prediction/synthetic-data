@@ -176,7 +176,7 @@ sequenceDiagram
    - **Sinh viên từ HK2 trở đi:**
      - **Ưu tiên 1 (Trả nợ môn & Cải thiện điểm):**
        * *Trả nợ môn rớt:* Bắt buộc đăng ký lại các môn đã thi rớt (`passed == False`) nếu học kỳ này có mở lớp (`retaken = True`).
-       * *Cải thiện điểm (`retake_improvement_helper.py`):* Ở các học kỳ muộn (Kỳ 7, 8 hoặc giai đoạn kéo dài Kỳ 9–12), nếu sinh viên có GPA 4 tích lũy dự kiến $< 2.0$, hệ thống tự động cho phép sinh viên đăng ký học lại 1–2 môn đã đạt nhưng điểm thấp nhất (D: 1.0, D+: 1.5) với `retaken = True`. Lần học sau được cộng `retake_bonus = +2.0` nhằm giúp sinh viên kéo GPA tích lũy $\ge 2.0$ để tốt nghiệp hợp lệ.
+       * *Cải thiện điểm (`academic_rules.py (hàm generate_grade_improvement_retakes)`):* Ở các học kỳ muộn (Kỳ 7, 8 hoặc giai đoạn kéo dài Kỳ 9–12), nếu sinh viên có GPA 4 tích lũy dự kiến $< 2.0$, hệ thống tự động cho phép sinh viên đăng ký học lại 1–2 môn đã đạt nhưng điểm thấp nhất (D: 1.0, D+: 1.5) với `retaken = True`. Lần học sau được cộng `retake_bonus = +2.0` nhằm giúp sinh viên kéo GPA tích lũy $\ge 2.0$ để tốt nghiệp hợp lệ.
      - **Ưu tiên 2 (Môn mới theo tiến độ):** Đăng ký các môn mới của học kỳ khuyến nghị nếu đã thỏa mãn toàn bộ điều kiện tiên quyết (`TQ`) hoặc học trước (`KN`) từ các kỳ trước. Đối với sinh viên lộ trình 3.5 năm (tốt nghiệp sớm), học kỳ HK7 sẽ đăng ký cả môn tự chọn của Kỳ 7 và Kỳ 8 để hoàn thành đủ 128 tín chỉ.
      - **Ràng buộc:** Tổng số tín chỉ đăng ký không vượt quá trần $22$ tín chỉ/kỳ.
 2. **Phân bổ vào danh sách lớp theo đúng hệ đào tạo (`allocate_course_rosters`):**

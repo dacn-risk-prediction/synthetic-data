@@ -5,8 +5,8 @@
 4,KHMT_K20,CO2011,Mô hình hóa Toán học,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO1007 (Cấu trúc Rời rạc cho Khoa học Máy tính)
 5,KHMT_K20,SP1033,Kinh tế Chính trị Mác - Lênin,SP1031,Triết học Mác - Lênin,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1031 (Triết học Mác - Lênin)
 6,KHMT_K20,SP1035,Chủ nghĩa Xã hội Khoa học,SP1033,Kinh tế Chính trị Mác - Lênin,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1033 (Kinh tế Chính trị Mác - Lênin)
-7,KHMT_K20,SP1037,Tư tưởng Hồ Chí Minh,SP1039,Lịch sử Đảng Cộng sản Việt Nam,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1039 (Lịch sử Đảng Cộng sản Việt Nam)
-8,KHMT_K20,SP1039,Lịch sử Đảng Cộng sản Việt Nam,SP1035,Chủ nghĩa Xã hội Khoa học,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1035 (Chủ nghĩa Xã hội Khoa học)
+7,KHMT_K20,SP1039,Lịch sử Đảng Cộng sản Việt Nam,SP1037,Tư tưởng Hồ Chí Minh,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1037 (Tư tưởng Hồ Chí Minh)
+8,KHMT_K20,SP1037,Tư tưởng Hồ Chí Minh,SP1035,Chủ nghĩa Xã hội Khoa học,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1035 (Chủ nghĩa Xã hội Khoa học)
 9,KHMT_K20,LA1005,Anh văn 2,LA1003,Anh văn 1,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn LA1003 (Anh văn 1) với điểm >= 5.0
 10,KHMT_K20,LA1007,Anh văn 3,LA1005,Anh văn 2,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn LA1005 (Anh văn 2) với điểm >= 5.0
 11,KHMT_K20,LA1009,Anh văn 4,LA1007,Anh văn 3,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn LA1007 (Anh văn 3) với điểm >= 5.0
@@ -22,7 +22,7 @@
 21,KHMT_K20,CO3033,Bảo mật Hệ thống Thông tin,CO2013,Hệ cơ sở Dữ liệu,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO2013 (Hệ cơ sở Dữ liệu)
 22,KHMT_K20,CO4031,Kho dữ Liệu và Hệ hỗ trợ Quyết định,CO2013,Hệ cơ sở Dữ liệu,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO2013 (Hệ cơ sở Dữ liệu)
 23,KHMT_K20,CO4035,Hệ hoạch Định tài Nguyên tổ chức,CO2013,Hệ cơ sở Dữ liệu,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO2013 (Hệ cơ sở Dữ liệu)
-24,KHMT_K20,CO4029,Đồ án Chuyên ngành,CO3335,Thực tập Ngoài trường,SH,SH,0.0,Song hành: Được phép học cùng học kỳ hoặc trước môn CO3335 (Thực tập Ngoài trường)
+24,KHMT_K20,CO4029,Đồ án Chuyên ngành,CO3335,Thực tập Ngoài trường,SHT,SHT,0.0,Song hành trước: Được phép học cùng học kỳ hoặc trước môn CO3335 (Thực tập Ngoài trường)
 25,KHMT_K20,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),CO3335,Thực tập Ngoài trường,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO3335 (Thực tập Ngoài trường) với điểm >= 5.0
 26,KHMT_K20,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),CO4029,Đồ án Chuyên ngành,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO4029 (Đồ án Chuyên ngành) với điểm >= 5.0
 27,KHMT_K21,MT1005,Giải tích 2,MT1003,Giải tích 1,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn MT1003 (Giải tích 1)
@@ -31,8 +31,8 @@
 30,KHMT_K21,CO2011,Mô hình hóa Toán học,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO1007 (Cấu trúc Rời rạc cho Khoa học Máy tính)
 31,KHMT_K21,SP1033,Kinh tế Chính trị Mác - Lênin,SP1031,Triết học Mác - Lênin,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1031 (Triết học Mác - Lênin)
 32,KHMT_K21,SP1035,Chủ nghĩa Xã hội Khoa học,SP1033,Kinh tế Chính trị Mác - Lênin,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1033 (Kinh tế Chính trị Mác - Lênin)
-33,KHMT_K21,SP1037,Tư tưởng Hồ Chí Minh,SP1039,Lịch sử Đảng Cộng sản Việt Nam,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1039 (Lịch sử Đảng Cộng sản Việt Nam)
-34,KHMT_K21,SP1039,Lịch sử Đảng Cộng sản Việt Nam,SP1035,Chủ nghĩa Xã hội Khoa học,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1035 (Chủ nghĩa Xã hội Khoa học)
+33,KHMT_K21,SP1039,Lịch sử Đảng Cộng sản Việt Nam,SP1037,Tư tưởng Hồ Chí Minh,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1037 (Tư tưởng Hồ Chí Minh)
+34,KHMT_K21,SP1037,Tư tưởng Hồ Chí Minh,SP1035,Chủ nghĩa Xã hội Khoa học,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1035 (Chủ nghĩa Xã hội Khoa học)
 35,KHMT_K21,LA1005,Anh văn 2,LA1003,Anh văn 1,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn LA1003 (Anh văn 1) với điểm >= 5.0
 36,KHMT_K21,LA1007,Anh văn 3,LA1005,Anh văn 2,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn LA1005 (Anh văn 2) với điểm >= 5.0
 37,KHMT_K21,LA1009,Anh văn 4,LA1007,Anh văn 3,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn LA1007 (Anh văn 3) với điểm >= 5.0
@@ -48,7 +48,7 @@
 47,KHMT_K21,CO3033,Bảo mật Hệ thống Thông tin,CO2013,Hệ cơ sở Dữ liệu,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO2013 (Hệ cơ sở Dữ liệu)
 48,KHMT_K21,CO4031,Kho dữ Liệu và Hệ hỗ trợ Quyết định,CO2013,Hệ cơ sở Dữ liệu,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO2013 (Hệ cơ sở Dữ liệu)
 49,KHMT_K21,CO4035,Hệ hoạch Định tài Nguyên tổ chức,CO2013,Hệ cơ sở Dữ liệu,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO2013 (Hệ cơ sở Dữ liệu)
-50,KHMT_K21,CO4029,Đồ án Chuyên ngành,CO3335,Thực tập Ngoài trường,SH,SH,0.0,Song hành: Được phép học cùng học kỳ hoặc trước môn CO3335 (Thực tập Ngoài trường)
+50,KHMT_K21,CO4029,Đồ án Chuyên ngành,CO3335,Thực tập Ngoài trường,SHT,SHT,0.0,Song hành trước: Được phép học cùng học kỳ hoặc trước môn CO3335 (Thực tập Ngoài trường)
 51,KHMT_K21,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),CO3335,Thực tập Ngoài trường,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO3335 (Thực tập Ngoài trường) với điểm >= 5.0
 52,KHMT_K21,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),CO4029,Đồ án Chuyên ngành,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO4029 (Đồ án Chuyên ngành) với điểm >= 5.0
 53,KHMT_K22,MT1005,Giải tích 2,MT1003,Giải tích 1,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn MT1003 (Giải tích 1)
@@ -57,8 +57,8 @@
 56,KHMT_K22,CO2011,Mô hình hóa Toán học,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO1007 (Cấu trúc Rời rạc cho Khoa học Máy tính)
 57,KHMT_K22,SP1033,Kinh tế Chính trị Mác - Lênin,SP1031,Triết học Mác - Lênin,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1031 (Triết học Mác - Lênin)
 58,KHMT_K22,SP1035,Chủ nghĩa Xã hội Khoa học,SP1033,Kinh tế Chính trị Mác - Lênin,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1033 (Kinh tế Chính trị Mác - Lênin)
-59,KHMT_K22,SP1037,Tư tưởng Hồ Chí Minh,SP1039,Lịch sử Đảng Cộng sản Việt Nam,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1039 (Lịch sử Đảng Cộng sản Việt Nam)
-60,KHMT_K22,SP1039,Lịch sử Đảng Cộng sản Việt Nam,SP1035,Chủ nghĩa Xã hội Khoa học,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1035 (Chủ nghĩa Xã hội Khoa học)
+59,KHMT_K22,SP1039,Lịch sử Đảng Cộng sản Việt Nam,SP1037,Tư tưởng Hồ Chí Minh,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1037 (Tư tưởng Hồ Chí Minh)
+60,KHMT_K22,SP1037,Tư tưởng Hồ Chí Minh,SP1035,Chủ nghĩa Xã hội Khoa học,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1035 (Chủ nghĩa Xã hội Khoa học)
 61,KHMT_K22,LA1005,Anh văn 2,LA1003,Anh văn 1,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn LA1003 (Anh văn 1) với điểm >= 5.0
 62,KHMT_K22,LA1007,Anh văn 3,LA1005,Anh văn 2,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn LA1005 (Anh văn 2) với điểm >= 5.0
 63,KHMT_K22,LA1009,Anh văn 4,LA1007,Anh văn 3,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn LA1007 (Anh văn 3) với điểm >= 5.0
@@ -74,7 +74,7 @@
 73,KHMT_K22,CO3033,Bảo mật Hệ thống Thông tin,CO2013,Hệ cơ sở Dữ liệu,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO2013 (Hệ cơ sở Dữ liệu)
 74,KHMT_K22,CO4031,Kho dữ Liệu và Hệ hỗ trợ Quyết định,CO2013,Hệ cơ sở Dữ liệu,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO2013 (Hệ cơ sở Dữ liệu)
 75,KHMT_K22,CO4035,Hệ hoạch Định tài Nguyên tổ chức,CO2013,Hệ cơ sở Dữ liệu,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO2013 (Hệ cơ sở Dữ liệu)
-76,KHMT_K22,CO4029,Đồ án Chuyên ngành,CO3335,Thực tập Ngoài trường,SH,SH,0.0,Song hành: Được phép học cùng học kỳ hoặc trước môn CO3335 (Thực tập Ngoài trường)
+76,KHMT_K22,CO4029,Đồ án Chuyên ngành,CO3335,Thực tập Ngoài trường,SHT,SHT,0.0,Song hành trước: Được phép học cùng học kỳ hoặc trước môn CO3335 (Thực tập Ngoài trường)
 77,KHMT_K22,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),CO3335,Thực tập Ngoài trường,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO3335 (Thực tập Ngoài trường) với điểm >= 5.0
 78,KHMT_K22,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),CO4029,Đồ án Chuyên ngành,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO4029 (Đồ án Chuyên ngành) với điểm >= 5.0
 79,KHMT_K23,MT1005,Giải tích 2,MT1003,Giải tích 1,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn MT1003 (Giải tích 1)
@@ -82,8 +82,8 @@
 81,KHMT_K23,CO2011,Mô hình hóa Toán học,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO1007 (Cấu trúc Rời rạc cho Khoa học Máy tính)
 82,KHMT_K23,SP1033,Kinh tế Chính trị Mác - Lênin,SP1031,Triết học Mác - Lênin,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1031 (Triết học Mác - Lênin)
 83,KHMT_K23,SP1035,Chủ nghĩa Xã hội Khoa học,SP1033,Kinh tế Chính trị Mác - Lênin,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1033 (Kinh tế Chính trị Mác - Lênin)
-84,KHMT_K23,SP1037,Tư tưởng Hồ Chí Minh,SP1039,Lịch sử Đảng Cộng sản Việt Nam,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1039 (Lịch sử Đảng Cộng sản Việt Nam)
-85,KHMT_K23,SP1039,Lịch sử Đảng Cộng sản Việt Nam,SP1035,Chủ nghĩa Xã hội Khoa học,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1035 (Chủ nghĩa Xã hội Khoa học)
+84,KHMT_K23,SP1039,Lịch sử Đảng Cộng sản Việt Nam,SP1037,Tư tưởng Hồ Chí Minh,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1037 (Tư tưởng Hồ Chí Minh)
+85,KHMT_K23,SP1037,Tư tưởng Hồ Chí Minh,SP1035,Chủ nghĩa Xã hội Khoa học,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1035 (Chủ nghĩa Xã hội Khoa học)
 86,KHMT_K23,CO2001,Kỹ năng Chuyên nghiệp cho Kỹ sư,CO1005,Nhập môn Điện toán,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO1005 (Nhập môn Điện toán) với điểm >= 5.0
 87,KHMT_K23,LA1005,Anh văn 2,LA1003,Anh văn 1,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn LA1003 (Anh văn 1) với điểm >= 5.0
 88,KHMT_K23,LA1007,Anh văn 3,LA1005,Anh văn 2,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn LA1005 (Anh văn 2) với điểm >= 5.0
@@ -106,7 +106,7 @@
 105,KHMT_K23,CO3135,Lập trình cho Trí tuệ nhân tạo và Khoa học dữ liệu,CO2003,Cấu trúc Dữ liệu và Giải Thuật,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO2003 (Cấu trúc Dữ liệu và Giải Thuật) với điểm >= 5.0
 106,KHMT_K23,CO3135,Lập trình cho Trí tuệ nhân tạo và Khoa học dữ liệu,CO1027,Kỹ thuật Lập trình,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO1027 (Kỹ thuật Lập trình) với điểm >= 5.0
 107,KHMT_K23,CO3031,Phân tích và Thiết kế Giải Thuật,CO2003,Cấu trúc Dữ liệu và Giải Thuật,KN,HT,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO2003 (Cấu trúc Dữ liệu và Giải Thuật)
-108,KHMT_K23,CO4029,Đồ án Chuyên ngành,CO3335,Thực tập Ngoài trường,SH,SHT,0.0,Song hành: Được phép học cùng học kỳ hoặc trước môn CO3335 (Thực tập Ngoài trường)
+108,KHMT_K23,CO4029,Đồ án Chuyên ngành,CO3335,Thực tập Ngoài trường,SHT,SHT,0.0,Song hành trước: Được phép học cùng học kỳ hoặc trước môn CO3335 (Thực tập Ngoài trường)
 109,KHMT_K23,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),CO3335,Thực tập Ngoài trường,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO3335 (Thực tập Ngoài trường) với điểm >= 5.0
 110,KHMT_K23,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),CO4029,Đồ án Chuyên ngành,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO4029 (Đồ án Chuyên ngành) với điểm >= 5.0
 111,KHMT_K24,MT1005,Giải tích 2,MT1003,Giải tích 1,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn MT1003 (Giải tích 1)
@@ -114,8 +114,8 @@
 113,KHMT_K24,CO2011,Mô hình hóa Toán học,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO1007 (Cấu trúc Rời rạc cho Khoa học Máy tính)
 114,KHMT_K24,SP1033,Kinh tế Chính trị Mác - Lênin,SP1031,Triết học Mác - Lênin,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1031 (Triết học Mác - Lênin)
 115,KHMT_K24,SP1035,Chủ nghĩa Xã hội Khoa học,SP1033,Kinh tế Chính trị Mác - Lênin,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1033 (Kinh tế Chính trị Mác - Lênin)
-116,KHMT_K24,SP1037,Tư tưởng Hồ Chí Minh,SP1039,Lịch sử Đảng Cộng sản Việt Nam,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1039 (Lịch sử Đảng Cộng sản Việt Nam)
-117,KHMT_K24,SP1039,Lịch sử Đảng Cộng sản Việt Nam,SP1035,Chủ nghĩa Xã hội Khoa học,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1035 (Chủ nghĩa Xã hội Khoa học)
+116,KHMT_K24,SP1039,Lịch sử Đảng Cộng sản Việt Nam,SP1037,Tư tưởng Hồ Chí Minh,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1037 (Tư tưởng Hồ Chí Minh)
+117,KHMT_K24,SP1037,Tư tưởng Hồ Chí Minh,SP1035,Chủ nghĩa Xã hội Khoa học,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1035 (Chủ nghĩa Xã hội Khoa học)
 118,KHMT_K24,CO2001,Kỹ năng Chuyên nghiệp cho Kỹ sư,CO1005,Nhập môn Điện toán,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO1005 (Nhập môn Điện toán) với điểm >= 5.0
 119,KHMT_K24,LA1005,Anh văn 2,LA1003,Anh văn 1,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn LA1003 (Anh văn 1) với điểm >= 5.0
 120,KHMT_K24,LA1007,Anh văn 3,LA1005,Anh văn 2,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn LA1005 (Anh văn 2) với điểm >= 5.0
@@ -137,7 +137,7 @@
 136,KHMT_K24,CO3135,Lập trình cho Trí tuệ nhân tạo và Khoa học dữ liệu,CO2003,Cấu trúc Dữ liệu và Giải Thuật,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO2003 (Cấu trúc Dữ liệu và Giải Thuật) với điểm >= 5.0
 137,KHMT_K24,CO3135,Lập trình cho Trí tuệ nhân tạo và Khoa học dữ liệu,CO1027,Kỹ thuật Lập trình,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO1027 (Kỹ thuật Lập trình) với điểm >= 5.0
 138,KHMT_K24,CO3133,Học sâu và Ứng dụng,CO3061,Nhập môn Trí tuệ Nhân tạo,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO3061 (Nhập môn Trí tuệ Nhân tạo)
-139,KHMT_K24,CO4029,Đồ án Chuyên ngành,CO3335,Thực tập Ngoài trường,SH,SHT,0.0,Song hành: Được phép học cùng học kỳ hoặc trước môn CO3335 (Thực tập Ngoài trường)
+139,KHMT_K24,CO4029,Đồ án Chuyên ngành,CO3335,Thực tập Ngoài trường,SHT,SHT,0.0,Song hành trước: Được phép học cùng học kỳ hoặc trước môn CO3335 (Thực tập Ngoài trường)
 140,KHMT_K24,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),CO3335,Thực tập Ngoài trường,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO3335 (Thực tập Ngoài trường) với điểm >= 5.0
 141,KHMT_K24,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),CO4029,Đồ án Chuyên ngành,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO4029 (Đồ án Chuyên ngành) với điểm >= 5.0
 142,KHMT_K25,MT1005,Giải tích 2,MT1003,Giải tích 1,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn MT1003 (Giải tích 1)
@@ -145,8 +145,8 @@
 144,KHMT_K25,CO2011,Mô hình hóa Toán học,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO1007 (Cấu trúc Rời rạc cho Khoa học Máy tính)
 145,KHMT_K25,SP1033,Kinh tế Chính trị Mác - Lênin,SP1031,Triết học Mác - Lênin,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1031 (Triết học Mác - Lênin)
 146,KHMT_K25,SP1035,Chủ nghĩa Xã hội Khoa học,SP1033,Kinh tế Chính trị Mác - Lênin,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1033 (Kinh tế Chính trị Mác - Lênin)
-147,KHMT_K25,SP1037,Tư tưởng Hồ Chí Minh,SP1039,Lịch sử Đảng Cộng sản Việt Nam,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1039 (Lịch sử Đảng Cộng sản Việt Nam)
-148,KHMT_K25,SP1039,Lịch sử Đảng Cộng sản Việt Nam,SP1035,Chủ nghĩa Xã hội Khoa học,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1035 (Chủ nghĩa Xã hội Khoa học)
+147,KHMT_K25,SP1039,Lịch sử Đảng Cộng sản Việt Nam,SP1037,Tư tưởng Hồ Chí Minh,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1037 (Tư tưởng Hồ Chí Minh)
+148,KHMT_K25,SP1037,Tư tưởng Hồ Chí Minh,SP1035,Chủ nghĩa Xã hội Khoa học,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1035 (Chủ nghĩa Xã hội Khoa học)
 149,KHMT_K25,CO2001,Kỹ năng Chuyên nghiệp cho Kỹ sư,CO1005,Nhập môn Điện toán,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO1005 (Nhập môn Điện toán) với điểm >= 5.0
 150,KHMT_K25,LA1005,Anh văn 2,LA1003,Anh văn 1,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn LA1003 (Anh văn 1) với điểm >= 5.0
 151,KHMT_K25,LA1007,Anh văn 3,LA1005,Anh văn 2,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn LA1005 (Anh văn 2) với điểm >= 5.0
@@ -168,7 +168,7 @@
 167,KHMT_K25,CO3135,Lập trình cho Trí tuệ nhân tạo và Khoa học dữ liệu,CO2003,Cấu trúc Dữ liệu và Giải Thuật,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO2003 (Cấu trúc Dữ liệu và Giải Thuật) với điểm >= 5.0
 168,KHMT_K25,CO3135,Lập trình cho Trí tuệ nhân tạo và Khoa học dữ liệu,CO1027,Kỹ thuật Lập trình,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO1027 (Kỹ thuật Lập trình) với điểm >= 5.0
 169,KHMT_K25,CO3133,Học sâu và Ứng dụng,CO3061,Nhập môn Trí tuệ Nhân tạo,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO3061 (Nhập môn Trí tuệ Nhân tạo)
-170,KHMT_K25,CO4029,Đồ án Chuyên ngành,CO3335,Thực tập Ngoài trường,SH,SHT,0.0,Song hành: Được phép học cùng học kỳ hoặc trước môn CO3335 (Thực tập Ngoài trường)
+170,KHMT_K25,CO4029,Đồ án Chuyên ngành,CO3335,Thực tập Ngoài trường,SHT,SHT,0.0,Song hành trước: Được phép học cùng học kỳ hoặc trước môn CO3335 (Thực tập Ngoài trường)
 171,KHMT_K25,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),CO3335,Thực tập Ngoài trường,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO3335 (Thực tập Ngoài trường) với điểm >= 5.0
 172,KHMT_K25,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),CO4029,Đồ án Chuyên ngành,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO4029 (Đồ án Chuyên ngành) với điểm >= 5.0
 173,KHMT_K26,MT1005,Giải tích 2,MT1003,Giải tích 1,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn MT1003 (Giải tích 1)
@@ -176,8 +176,8 @@
 175,KHMT_K26,CO2011,Mô hình hóa Toán học,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO1007 (Cấu trúc Rời rạc cho Khoa học Máy tính)
 176,KHMT_K26,SP1033,Kinh tế Chính trị Mác - Lênin,SP1031,Triết học Mác - Lênin,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1031 (Triết học Mác - Lênin)
 177,KHMT_K26,SP1035,Chủ nghĩa Xã hội Khoa học,SP1033,Kinh tế Chính trị Mác - Lênin,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1033 (Kinh tế Chính trị Mác - Lênin)
-178,KHMT_K26,SP1037,Tư tưởng Hồ Chí Minh,SP1039,Lịch sử Đảng Cộng sản Việt Nam,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1039 (Lịch sử Đảng Cộng sản Việt Nam)
-179,KHMT_K26,SP1039,Lịch sử Đảng Cộng sản Việt Nam,SP1035,Chủ nghĩa Xã hội Khoa học,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1035 (Chủ nghĩa Xã hội Khoa học)
+178,KHMT_K26,SP1039,Lịch sử Đảng Cộng sản Việt Nam,SP1037,Tư tưởng Hồ Chí Minh,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1037 (Tư tưởng Hồ Chí Minh)
+179,KHMT_K26,SP1037,Tư tưởng Hồ Chí Minh,SP1035,Chủ nghĩa Xã hội Khoa học,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn SP1035 (Chủ nghĩa Xã hội Khoa học)
 180,KHMT_K26,CO2001,Kỹ năng Chuyên nghiệp cho Kỹ sư,CO1005,Nhập môn Điện toán,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO1005 (Nhập môn Điện toán) với điểm >= 5.0
 181,KHMT_K26,LA1005,Anh văn 2,LA1003,Anh văn 1,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn LA1003 (Anh văn 1) với điểm >= 5.0
 182,KHMT_K26,LA1007,Anh văn 3,LA1005,Anh văn 2,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn LA1005 (Anh văn 2) với điểm >= 5.0
@@ -199,6 +199,6 @@
 198,KHMT_K26,CO3135,Lập trình cho Trí tuệ nhân tạo và Khoa học dữ liệu,CO2003,Cấu trúc Dữ liệu và Giải Thuật,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO2003 (Cấu trúc Dữ liệu và Giải Thuật) với điểm >= 5.0
 199,KHMT_K26,CO3135,Lập trình cho Trí tuệ nhân tạo và Khoa học dữ liệu,CO1027,Kỹ thuật Lập trình,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO1027 (Kỹ thuật Lập trình) với điểm >= 5.0
 200,KHMT_K26,CO3133,Học sâu và Ứng dụng,CO3061,Nhập môn Trí tuệ Nhân tạo,KN,KN,0.0,Học trước / khởi nguyên: Phải từng học / tích lũy môn CO3061 (Nhập môn Trí tuệ Nhân tạo)
-201,KHMT_K26,CO4029,Đồ án Chuyên ngành,CO3335,Thực tập Ngoài trường,SH,SHT,0.0,Song hành: Được phép học cùng học kỳ hoặc trước môn CO3335 (Thực tập Ngoài trường)
+201,KHMT_K26,CO4029,Đồ án Chuyên ngành,CO3335,Thực tập Ngoài trường,SHT,SHT,0.0,Song hành trước: Được phép học cùng học kỳ hoặc trước môn CO3335 (Thực tập Ngoài trường)
 202,KHMT_K26,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),CO3335,Thực tập Ngoài trường,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO3335 (Thực tập Ngoài trường) với điểm >= 5.0
 203,KHMT_K26,CO4337,Đồ án Tốt nghiệp (Khoa học Máy tính),CO4029,Đồ án Chuyên ngành,TQ,TQ,5.0,Bắt buộc phải học và thi đậu môn CO4029 (Đồ án Chuyên ngành) với điểm >= 5.0

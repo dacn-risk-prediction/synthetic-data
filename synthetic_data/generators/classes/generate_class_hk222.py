@@ -635,14 +635,17 @@ def generate_class_hk222() -> Path:
             else:
                 combined_k20_uids = prog_uids
 
-            regular_k20_uids = [uid for uid in combined_k20_uids if uid not in set(early_candidates)]
+            regular_k20_uids = list(combined_k20_uids)
             if regular_k20_uids:
                 spec_map = get_student_specialization_map()
                 c_demand_map: Dict[str, int] = defaultdict(int)
                 for uid in regular_k20_uids:
                     spec = spec_map.get(uid, "Khoa học Máy tính")
                     prev_passed = passed_map.get(uid, set())
-                    elecs = get_term6_student_electives(uid, "K20", spec, prev_passed)
+                    elecs = get_term6_student_electives(
+                        uid, "K20", spec, prev_passed,
+                        exclude_courses={"CO3061"} if uid in set(early_candidates) else None
+                    )
                     for ec in elecs:
                         c_demand_map[ec] += 1
 

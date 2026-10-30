@@ -431,6 +431,8 @@ def parse_program_structures_from_pdf(year, text, master_courses):
             prereq_match = re.search(r"([A-Z]{2}\d{4}\([A-Z]+\)(?:,\s*[A-Z]{2}\d{4}\([A-Z]+\))*)", line)
             if prereq_match:
                 prereq = prereq_match.group(1)
+            if code == "CO4029":
+                prereq = "CO3335(SHT)"
 
             course_meta = master_courses.get(code, {})
             credits_val = course_meta.get("credits", 0)
@@ -492,11 +494,13 @@ def parse_prerequisites_from_pdf(text, year):
             for p_code, p_type in matches:
                 if p_code == "CO1033":
                     p_code = "CO1023"  # Fix typo in PDF
+                if code == "CO4029" and p_code == "CO3335":
+                    p_type = "SHT"
                 if p_code != code:
                     key = (code, p_code, p_type)
                     if key not in seen:
                         seen.add(key)
-                        norm_type = "KN" if p_type in ["KN", "HT"] else ("SH" if p_type in ["SH", "SHT"] else "TQ")
+                        norm_type = "KN" if p_type in ["KN", "HT"] else ("SHT" if p_type == "SHT" or (code == "CO4029" and p_code == "CO3335") else ("SH" if p_type == "SH" else "TQ"))
                         results.append({
                             "curriculum_id": f"KHMT_K{year[2:]}",
                             "course_code": code,
@@ -505,6 +509,17 @@ def parse_prerequisites_from_pdf(text, year):
                             "relation_type_raw": p_type,
                             "min_grade": 5.0 if norm_type == "TQ" else 0.0,
                         })
+
+    # Fix inverted LLCT prerequisite: SP1039 (Lịch sử Đảng - HK7) requires SP1037 (Tư tưởng HCM - HK6),
+    # and SP1037 requires SP1035 (Chủ nghĩa Xã hội Khoa học - HK5)
+    for item in results:
+        if item["course_code"] == "SP1037" and item["prerequisite_course_code"] == "SP1039":
+            item["course_code"] = "SP1039"
+            item["prerequisite_course_code"] = "SP1037"
+        elif item["course_code"] == "SP1039" and item["prerequisite_course_code"] == "SP1035":
+            item["course_code"] = "SP1037"
+            item["prerequisite_course_code"] = "SP1035"
+
     return results
 
 
@@ -727,6 +742,8 @@ def generate_all_academics():
                 desc = f"Học trước / khởi nguyên: Phải từng học / tích lũy môn {p_code} ({p_name})"
             elif rel_type == "SH":
                 desc = f"Song hành: Được phép học cùng học kỳ hoặc trước môn {p_code} ({p_name})"
+            elif rel_type == "SHT":
+                desc = f"Song hành trước: Được phép học cùng học kỳ hoặc trước môn {p_code} ({p_name})"
 
             prereq_records.append({
                 "prerequisite_id": prereq_id,

@@ -292,6 +292,9 @@ def generate_class_hk242() -> Path:
         pd.read_csv(ENROLLMENTS_DIR / f"enrollment_{sem}.csv", encoding="utf-8-sig", dtype={"student_id": str})
         for sem in ["hk201", "hk202", "hk211", "hk212", "hk221", "hk222", "hk231", "hk232", "hk241"]
     ])
+    enrolled_map: Dict[str, Set[str]] = defaultdict(set)
+    for _, r in all_prev_enrollments.iterrows():
+        enrolled_map[str(r["student_id"])].add(str(r["course_id"]))
     retake_demand: Dict[str, Set[str]] = defaultdict(set)
     for _, r in all_prev_enrollments[all_prev_enrollments["passed"] == False].iterrows():
         sid = str(r["student_id"])
@@ -678,15 +681,23 @@ def generate_class_hk242() -> Path:
                     print(f"   + [K22 Lộ trình sớm] {early_code} ({c_name}): {len(early_candidates)} SV{suffix_note} -> {len(sizes)} lớp")
 
             # Tự chọn ngành Group C cho sinh viên K22 thông thường (chọn 2 môn theo chuyên ngành)
-            regular_k22_uids = [uid for uid in combined_prog_uids if uid not in set(early_candidates)]
+            regular_k22_uids = list(combined_prog_uids)
             if regular_k22_uids:
                 spec_map = get_student_specialization_map()
                 c_demand_map: Dict[str, int] = defaultdict(int)
                 for uid in regular_k22_uids:
                     spec = spec_map.get(uid, "Khoa học Máy tính")
                     prev_passed = passed_map.get(uid, set())
-                    c1 = select_student_group_c_course(uid, "K22", spec, seed_salt="k22_group_c_1_hk242", exclude_courses=prev_passed)
-                    c2 = select_student_group_c_course(uid, "K22", spec, seed_salt="k22_group_c_2_hk242", exclude_courses=prev_passed | {c1})
+                    prev_enrolled = enrolled_map.get(uid, set())
+                    c1_exclude = prev_passed | ({"CO3061"} if uid in set(early_candidates) else set())
+                    c1 = select_student_group_c_course(
+                        uid, "K22", spec, seed_salt="k22_group_c_1_hk242",
+                        exclude_courses=c1_exclude, passed_courses=prev_passed, enrolled_courses=prev_enrolled
+                    )
+                    c2 = select_student_group_c_course(
+                        uid, "K22", spec, seed_salt="k22_group_c_2_hk242",
+                        exclude_courses=c1_exclude | {c1}, passed_courses=prev_passed, enrolled_courses=prev_enrolled
+                    )
                     c_ga = select_student_group_a_course(spec)
                     c_demand_map[c1] += 1
                     c_demand_map[c2] += 1

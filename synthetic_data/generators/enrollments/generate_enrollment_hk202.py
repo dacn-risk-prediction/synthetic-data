@@ -40,6 +40,8 @@ from academic_rules import (
     GENERATOR_CONFIG,
     balanced_class_sizes,
     convert_score_to_grade,
+    filter_active_students_for_semester,
+    is_student_active_for_semester,
     score_course_components,
 )
 
@@ -139,6 +141,15 @@ def generate_enrollment_hk202() -> Path:
         orient="index"
     )
 
+    # Lọc sinh viên còn hoạt động (loại bỏ voluntary_dropout và academic_dismissal)
+    k20_students = filter_active_students_for_semester(k20_students, SEMESTER, df_profiles)
+    la1003_failed_students = {sid for sid in la1003_failed_students if is_student_active_for_semester(sid, SEMESTER, df_profiles)}
+
+    # Theo dõi lịch sử môn đã từng đăng ký ở các kỳ trước
+    history_enrolled: Dict[str, Set[str]] = defaultdict(set)
+    for _, r in df_hk201.iterrows():
+        history_enrolled[str(r["student_id"])].add(str(r["course_id"]))
+
     # 7. Nhận diện sinh viên học vượt (additional_course_rules.csv)
     accel_students = get_acceleration_students(k20_students, df_profiles)
     total_accel = sum(len(uids) for uids in accel_students.values())
@@ -186,6 +197,7 @@ def generate_enrollment_hk202() -> Path:
                         int(hashlib.sha256(seed_str.encode("utf-8")).hexdigest()[:8], 16)
                     )
 
+                    is_retake = (course_code in history_enrolled[uid])
                     component_scores, final_score, letter, gpa = score_course_components(
                         student=student_data,
                         course_code=course_code,
@@ -193,7 +205,7 @@ def generate_enrollment_hk202() -> Path:
                         catalog_difficulty=0.5,
                         rng=rng,
                         config=GENERATOR_CONFIG,
-                        retaken=False,
+                        retaken=is_retake,
                         student_id=uid,
                     )
 
@@ -203,7 +215,7 @@ def generate_enrollment_hk202() -> Path:
                         "class_id": class_id,
                         "course_id": course_code,
                         "semester": SEMESTER,
-                        "retaken": False,
+                        "retaken": is_retake,
                         "quiz": component_scores.get("quiz", np.nan),
                         "lab": component_scores.get("lab", np.nan),
                         "btl": component_scores.get("btl", np.nan),
@@ -240,6 +252,7 @@ def generate_enrollment_hk202() -> Path:
                         int(hashlib.sha256(seed_str.encode("utf-8")).hexdigest()[:8], 16)
                     )
 
+                    is_retake = (course_code in history_enrolled[uid])
                     component_scores, final_score, letter, gpa = score_course_components(
                         student=student_data,
                         course_code=course_code,
@@ -247,7 +260,7 @@ def generate_enrollment_hk202() -> Path:
                         catalog_difficulty=0.5,
                         rng=rng,
                         config=GENERATOR_CONFIG,
-                        retaken=False,
+                        retaken=is_retake,
                         student_id=uid,
                     )
 
@@ -257,7 +270,7 @@ def generate_enrollment_hk202() -> Path:
                         "class_id": class_id,
                         "course_id": course_code,
                         "semester": SEMESTER,
-                        "retaken": False,
+                        "retaken": is_retake,
                         "quiz": component_scores.get("quiz", np.nan),
                         "lab": component_scores.get("lab", np.nan),
                         "btl": component_scores.get("btl", np.nan),
@@ -296,6 +309,7 @@ def generate_enrollment_hk202() -> Path:
                         int(hashlib.sha256(seed_str.encode("utf-8")).hexdigest()[:8], 16)
                     )
 
+                    is_retake = (course_code in history_enrolled[uid])
                     component_scores, final_score, letter, gpa = score_course_components(
                         student=student_data,
                         course_code=course_code,
@@ -303,7 +317,7 @@ def generate_enrollment_hk202() -> Path:
                         catalog_difficulty=0.5,
                         rng=rng,
                         config=GENERATOR_CONFIG,
-                        retaken=False,
+                        retaken=is_retake,
                         student_id=uid,
                     )
 
@@ -313,7 +327,7 @@ def generate_enrollment_hk202() -> Path:
                         "class_id": class_id,
                         "course_id": course_code,
                         "semester": SEMESTER,
-                        "retaken": False,
+                        "retaken": is_retake,
                         "quiz": component_scores.get("quiz", np.nan),
                         "lab": component_scores.get("lab", np.nan),
                         "btl": component_scores.get("btl", np.nan),
@@ -388,6 +402,11 @@ def generate_enrollment_hk202() -> Path:
 
     # 9. Tính toán GPA học kỳ HK202 và GPA tích lũy toàn khóa (HK201 + HK202)
     print("\n5. Đang tính điểm trung bình học kỳ (semester_gpa_4) và GPA tích lũy (final_gpa_4)...")
+    # Chuẩn hóa cờ retaken dựa trên lịch sử
+    for r in enrollment_records:
+        if r.get("status") != "Exempted" and str(r.get("course_id")) in history_enrolled.get(str(r.get("student_id")), set()):
+            r["retaken"] = True
+
     df_enrollment = pd.DataFrame(enrollment_records)
 
     hk201_passed_courses: Dict[str, Dict[str, float]] = defaultdict(dict)

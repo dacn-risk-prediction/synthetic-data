@@ -154,17 +154,26 @@ def get_k23_acceleration_students(k23_students: pd.DataFrame) -> Dict[str, List[
     return accelerating_by_prog
 
 
-def get_k22_group_c_distribution(k22_students: pd.DataFrame) -> Dict[Tuple[str, str], List[str]]:
-    """Distribute K22 students among Group C elective courses based on specialization."""
-    spec_map = get_student_specialization_map()
-    choice_map: Dict[Tuple[str, str], List[str]] = defaultdict(list)
-    for _, row in k22_students.iterrows():
-        uid = str(row["user_id"])
-        prog = row["program"]
-        spec = spec_map.get(uid, "Khoa học Máy tính")
-        c_code = select_student_group_c_course(uid, "K22", spec, seed_salt="k22_group_c_hk241")
-        choice_map[(prog, c_code)].append(uid)
-    return choice_map
+def get_k22_group_c_distribution(
+    k22_students: pd.DataFrame,
+    passed_map: Optional[Dict[str, Set[str]]] = None,
+    enrolled_map: Optional[Dict[str, Set[str]]] = None,
+    retake_demand: Optional[Dict[str, Any]] = None,
+    profiles: Optional[Dict[str, Dict[str, Any]]] = None,
+    credits_map: Optional[Dict[str, float]] = None,
+) -> Dict[Tuple[str, str], List[str]]:
+    """Distribute K22 students among Group C elective courses based on specialization and acceleration."""
+    from curriculum_rules import get_term5_group_c_distribution
+    return get_term5_group_c_distribution(
+        cohort_students=k22_students,
+        cohort="K22",
+        semester="HK241",
+        passed_map=passed_map,
+        enrolled_map=enrolled_map,
+        retake_demand=retake_demand,
+        profiles=profiles,
+        credits_map=credits_map,
+    )
 
 
 def get_all_lecturers_with_fallback(course_code: str, all_lecturers: List[Dict[str, Any]]) -> Tuple[List[Dict[str, Any]], str, str]:
@@ -271,8 +280,12 @@ def generate_class_hk241() -> Path:
     print("   Môn học K22 (HK5):", ", ".join(c["course_code"] for c in k22_curriculum))
     print("   Môn học K21 (HK7):", ", ".join(c["course_code"] for c in k21_curriculum))
 
+    enrolled_map: Dict[str, Set[str]] = defaultdict(set)
+    for _, r in all_prev_enrollments.iterrows():
+        enrolled_map[str(r["student_id"])].add(str(r["course_id"]))
+
     k23_accel = get_k23_acceleration_students(k23_students)
-    k22_group_c = get_k22_group_c_distribution(k22_students)
+    k22_group_c = get_k22_group_c_distribution(k22_students, passed_map, enrolled_map, retake_demand=retake_demand)
 
     all_lecturers = load_lecturers_table()
     assigned_count: Dict[str, int] = defaultdict(int)
@@ -729,14 +742,15 @@ def generate_class_hk241() -> Path:
             else:
                 combined_k21_uids = prog_uids
 
-            regular_k21_uids = [uid for uid in combined_k21_uids if uid not in set(early_candidates)]
+            regular_k21_uids = list(combined_k21_uids)
             if regular_k21_uids:
                 spec_map = get_student_specialization_map()
                 c_demand_map: Dict[str, int] = defaultdict(int)
                 for uid in regular_k21_uids:
                     spec = spec_map.get(uid, "Khoa học Máy tính")
                     prev_passed = passed_map.get(uid, set())
-                    elecs = get_term7_student_electives(uid, "K21", spec, prev_passed)
+                    prev_enrolled = enrolled_map.get(uid, set())
+                    elecs = get_term7_student_electives(uid, "K21", spec, prev_passed, prev_enrolled)
                     for ec in elecs:
                         c_demand_map[ec] += 1
 

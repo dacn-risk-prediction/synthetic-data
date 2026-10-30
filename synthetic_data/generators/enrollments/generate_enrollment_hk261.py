@@ -59,11 +59,6 @@ OUTPUT_DIR = ROOT_DIR / "generated" / "enrollments"
 if str(RULES_DIR) not in sys.path:
     sys.path.insert(0, str(RULES_DIR))
 
-ENROLLMENTS_DIR = Path(__file__).resolve().parent
-if str(ENROLLMENTS_DIR) not in sys.path:
-    sys.path.insert(0, str(ENROLLMENTS_DIR))
-from retake_improvement_helper import generate_grade_improvement_retakes
-
 from curriculum_rules import (
     enroll_students_in_electives,
     get_student_specialization_map,
@@ -73,7 +68,12 @@ from curriculum_rules import (
 
 from academic_rules import (
     GENERATOR_CONFIG,
+    filter_active_students_for_semester,
+    is_student_active_for_semester,
+    is_thesis_eligible,
     balanced_class_sizes,
+    filter_retake_demand_by_credit_limit,
+    generate_grade_improvement_retakes,
     score_course_components,
 )
 
@@ -115,17 +115,26 @@ def get_k25_acceleration_students(k25_students: pd.DataFrame, df_prof: pd.DataFr
     return accelerating_by_prog
 
 
-def get_k24_group_c_distribution(k24_students: pd.DataFrame) -> Dict[Tuple[str, str], List[str]]:
-    """Distribute K24 students among Group C elective courses based on specialization."""
-    spec_map = get_student_specialization_map()
-    choice_map: Dict[Tuple[str, str], List[str]] = defaultdict(list)
-    for _, row in k24_students.iterrows():
-        uid = str(row["user_id"])
-        prog = row["program"]
-        spec = spec_map.get(uid, "Khoa học Máy tính")
-        c_code = select_student_group_c_course(uid, "K24", spec, seed_salt="k24_group_c_hk261")
-        choice_map[(prog, c_code)].append(uid)
-    return choice_map
+def get_k24_group_c_distribution(
+    k24_students: pd.DataFrame,
+    passed_map: Optional[Dict[str, Any]] = None,
+    enrolled_map: Optional[Dict[str, Set[str]]] = None,
+    retake_demand: Optional[Dict[str, Any]] = None,
+    profiles: Optional[Dict[str, Dict[str, Any]]] = None,
+    credits_map: Optional[Dict[str, float]] = None,
+) -> Dict[Tuple[str, str], List[str]]:
+    """Distribute K24 students among Group C elective courses based on specialization and acceleration."""
+    from curriculum_rules import get_term5_group_c_distribution
+    return get_term5_group_c_distribution(
+        cohort_students=k24_students,
+        cohort="K24",
+        semester="HK261",
+        passed_map=passed_map,
+        enrolled_map=enrolled_map,
+        retake_demand=retake_demand,
+        profiles=profiles,
+        credits_map=credits_map,
+    )
 
 
 def generate_enrollment_hk261() -> Path:
@@ -184,6 +193,14 @@ def generate_enrollment_hk261() -> Path:
     profiles_file = USERS_DIR / "student_profiles.csv"
     df_profiles = pd.read_csv(profiles_file, encoding="utf-8-sig", dtype={"student_id": str})
     student_profiles: Dict[str, Dict[str, Any]] = df_profiles.set_index("student_id").to_dict(orient="index")
+
+    # Lọc sinh viên còn hoạt động
+    k21_students = filter_active_students_for_semester(k21_students, SEMESTER, df_profiles)
+    k22_students = filter_active_students_for_semester(k22_students, SEMESTER, df_profiles)
+    k23_students = filter_active_students_for_semester(k23_students, SEMESTER, df_profiles)
+    k24_students = filter_active_students_for_semester(k24_students, SEMESTER, df_profiles)
+    k25_students = filter_active_students_for_semester(k25_students, SEMESTER, df_profiles)
+    k26_students = filter_active_students_for_semester(k26_students, SEMESTER, df_profiles)
 
     # K22: Loại trừ SV đã tốt nghiệp đủ điều kiện tính đến HK252 (738 SV)
     k22_graduated_uids = set()
@@ -247,6 +264,12 @@ def generate_enrollment_hk261() -> Path:
     # Nhu cầu học lại từ các kỳ trước (chỉ tính SV chưa tốt nghiệp)
     graduated_all = k22_graduated_uids.union(k21_graduated_uids).union(k20_all_uids)
     all_prev_enrollments = pd.concat(prev_dfs)
+
+    # Lịch sử tất cả các môn đã từng đăng ký ở các kỳ trước
+    history_enrolled: Dict[str, Set[str]] = defaultdict(set)
+    for df_prev in prev_dfs:
+        for _, r in df_prev.iterrows():
+            history_enrolled[str(r["student_id"])].add(str(r["course_id"]))
     retake_demand: Dict[str, List[str]] = defaultdict(list)
     for _, r in all_prev_enrollments[all_prev_enrollments["passed"] == False].iterrows():
         sid = str(r["student_id"])
@@ -273,6 +296,9 @@ def generate_enrollment_hk261() -> Path:
     df_courses = pd.read_csv(courses_file, encoding="utf-8-sig")
     credits_map: Dict[str, float] = dict(zip(df_courses["course_code"], df_courses["credits"].astype(float)))
 
+    # Ràng buộc trần tín chỉ: Lọc môn học lại để không vượt quá trần tín chỉ học kỳ
+    retake_demand = filter_retake_demand_by_credit_limit(retake_demand, credits_map, SEMESTER)
+
     # Điều kiện tiên quyết (TQ)
     prereqs_file = ACADEMICS_DIR / "course_prerequisites.csv"
     df_prereqs = pd.read_csv(prereqs_file, encoding="utf-8-sig")
@@ -288,6 +314,12 @@ def generate_enrollment_hk261() -> Path:
         tc = credits_map.get(course_code, 0.0)
         if tc > 0 and (student_credits[uid] + tc > MAX_SEMESTER_CREDITS):
             return False
+        # Đối với môn Đồ án / Khóa luận tốt nghiệp (CO4029, CO4337):
+        # Bắt buộc đạt chuẩn CTXH >= 12 ngày và chuẩn tiếng Anh
+        if course_code in ("CO4029", "CO4337"):
+            passed_set = set(history_passed[uid].keys()) if isinstance(history_passed[uid], dict) else set(history_passed[uid])
+            if not is_thesis_eligible(uid, SEMESTER, passed_set, df_profiles):
+                return False
 
         # Đối với CO4337: Nhóm tốt nghiệp sớm K23 học KLTN ở HK7 song hành với Thực tập CO3335
         if course_code == "CO4337":
@@ -308,7 +340,10 @@ def generate_enrollment_hk261() -> Path:
         return True
 
     k25_accel = get_k25_acceleration_students(k25_students, df_profiles)
-    k24_group_c = get_k24_group_c_distribution(k24_students)
+    k24_group_c = get_k24_group_c_distribution(
+        k24_students, history_passed, history_enrolled,
+        retake_demand=retake_demand, profiles=student_profiles, credits_map=credits_map
+    )
 
     k26_compulsory = get_curriculum_for_cohort_semester("K26", 1)["compulsory_courses"]
     k26_core_courses = [c["course_code"] for c in k26_compulsory if not c["course_code"].startswith("LA")]
@@ -330,6 +365,7 @@ def generate_enrollment_hk261() -> Path:
         classes_by_prog_course[(r["program"], r["course_code"])].append(r["class_id"])
 
     def record_grade(uid: str, course_code: str, class_id: Any, is_retake: bool, seed_suffix: str = ""):
+        is_retake = is_retake or (course_code in history_enrolled.get(uid, set()))
         """
         Record enrollment for current ongoing semester HK261:
         - In-term components (quiz, lab, btl, giua_ky) are scored for dropout risk prediction.
@@ -763,14 +799,15 @@ def generate_enrollment_hk261() -> Path:
             else:
                 combined_k23_uids = set(student_ids)
 
-            regular_k23_uids = [uid for uid in combined_k23_uids if uid not in set(early_candidates)]
+            regular_k23_uids = list(combined_k23_uids)
             if regular_k23_uids:
                 spec_map = get_student_specialization_map()
                 student_c_choices: Dict[str, List[str]] = defaultdict(list)
                 for uid in regular_k23_uids:
                     spec = spec_map.get(uid, "Khoa học Máy tính")
                     prev_passed = set(history_passed[uid].keys())
-                    elecs = get_term7_student_electives(uid, "K23", spec, prev_passed)
+                    prev_enrolled = history_enrolled.get(uid, set())
+                    elecs = get_term7_student_electives(uid, "K23", spec, prev_passed, prev_enrolled)
                     for ec in elecs:
                         student_c_choices[ec].append(uid)
 
@@ -786,6 +823,7 @@ def generate_enrollment_hk261() -> Path:
                     start_enrollment_id=enrollment_id,
                     max_cap=40,
                     is_active=True,
+                    history_enrolled=history_enrolled,
                 )
                 suffix_note = " (CLC+TT)" if prog == "high-quality" else ""
                 print(f"   -> [K23 Tự chọn ngành - Group C, Free & B]{suffix_note}: Đã phân bổ {len(regular_k23_uids)} SV vào {len(student_c_choices)} môn học.")
@@ -843,6 +881,11 @@ def generate_enrollment_hk261() -> Path:
     # F. XUẤT FILE KẾT QUẢ CHO HỌC KỲ HIỆN TẠI
     # -------------------------------------------------------------------------
     print(f"\n9. Đang lưu bảng điểm đăng ký học phần cho học kỳ hiện tại {SEMESTER}...")
+    # Chuẩn hóa cờ retaken dựa trên lịch sử
+    for r in enrollment_records:
+        if r.get("status") != "Exempted" and str(r.get("course_id")) in history_enrolled.get(str(r.get("student_id")), set()):
+            r["retaken"] = True
+
     df_enrollment = pd.DataFrame(enrollment_records)
 
     # Xuất file kết quả

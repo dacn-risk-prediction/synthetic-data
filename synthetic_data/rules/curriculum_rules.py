@@ -7,6 +7,7 @@ in generated/academics/ (program_structures.csv, courses.csv, curriculums.csv).
 
 from __future__ import annotations
 
+from collections import defaultdict
 import hashlib
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
@@ -218,18 +219,40 @@ def select_student_free_elective_course(
     return available[seed_val % len(available)]
 
 
-def get_term6_student_electives(uid: str, cohort: str, spec: str, prev_passed: Set[str]) -> List[str]:
+def get_term6_student_electives(
+    uid: str,
+    cohort: str,
+    spec: str,
+    prev_passed: Set[str],
+    prev_enrolled: Optional[Set[str]] = None,
+    exclude_courses: Optional[Set[str]] = None,
+) -> List[str]:
     """Return the 3 elective courses for Term 6: 2 Group C courses (6 TC) + 1 Group A project (1 TC)."""
-    c1 = select_student_group_c_course(uid, cohort, spec, seed_salt=f"{cohort}_group_c_1_term6", exclude_courses=prev_passed)
-    c2 = select_student_group_c_course(uid, cohort, spec, seed_salt=f"{cohort}_group_c_2_term6", exclude_courses=prev_passed | {c1})
+    exclude = set(prev_passed) | (exclude_courses or set())
+    c1 = select_student_group_c_course(
+        uid, cohort, spec, seed_salt=f"{cohort}_group_c_1_term6",
+        exclude_courses=exclude, passed_courses=prev_passed, enrolled_courses=prev_enrolled
+    )
+    c2 = select_student_group_c_course(
+        uid, cohort, spec, seed_salt=f"{cohort}_group_c_2_term6",
+        exclude_courses=exclude | {c1}, passed_courses=prev_passed, enrolled_courses=prev_enrolled
+    )
     c_ga = select_student_group_a_course(spec)
     return [c1, c2, c_ga]
 
 
-def get_term7_student_electives(uid: str, cohort: str, spec: str, prev_passed: Set[str]) -> List[str]:
+def get_term7_student_electives(
+    uid: str, cohort: str, spec: str, prev_passed: Set[str], prev_enrolled: Optional[Set[str]] = None
+) -> List[str]:
     """Return the 4 elective courses for Term 7: 2 Group C courses (6 TC) + 1 Free elective (3 TC) + 1 Group B project (1 TC)."""
-    c1 = select_student_group_c_course(uid, cohort, spec, seed_salt=f"{cohort}_group_c_3_term7", exclude_courses=prev_passed)
-    c2 = select_student_group_c_course(uid, cohort, spec, seed_salt=f"{cohort}_group_c_4_term7", exclude_courses=prev_passed | {c1})
+    c1 = select_student_group_c_course(
+        uid, cohort, spec, seed_salt=f"{cohort}_group_c_3_term7",
+        exclude_courses=prev_passed, passed_courses=prev_passed, enrolled_courses=prev_enrolled
+    )
+    c2 = select_student_group_c_course(
+        uid, cohort, spec, seed_salt=f"{cohort}_group_c_4_term7",
+        exclude_courses=prev_passed | {c1}, passed_courses=prev_passed, enrolled_courses=prev_enrolled
+    )
     c_free = select_student_free_elective_course(uid, seed_salt=f"{cohort}_free_1_term7", exclude_courses=prev_passed | {c1, c2})
     c_gb = select_student_group_b_course(spec)
     return [c1, c2, c_free, c_gb]
@@ -306,6 +329,7 @@ def enroll_students_in_electives(
     start_enrollment_id: int,
     max_cap: int = 40,
     is_active: bool = False,
+    history_enrolled: Optional[Dict[str, Set[str]]] = None,
 ) -> int:
     """Enroll students into elective classes and record assessment results."""
     from academic_rules import balanced_class_sizes, score_course_components
@@ -329,6 +353,7 @@ def enroll_students_in_electives(
             assigned_chunk = uids[offset : offset + size]
             offset += size
             for uid in assigned_chunk:
+                is_retake = bool(history_enrolled and c_code in history_enrolled.get(uid, set()))
                 if is_active:
                     rec = {
                         "enrollment_id": enrollment_id,
@@ -336,7 +361,7 @@ def enroll_students_in_electives(
                         "class_id": class_id,
                         "course_id": c_code,
                         "semester": semester,
-                        "retaken": False,
+                        "retaken": is_retake,
                         "quiz": np.nan,
                         "lab": np.nan,
                         "btl": np.nan,
@@ -360,7 +385,7 @@ def enroll_students_in_electives(
                         catalog_difficulty=0.5,
                         rng=rng,
                         config=config,
-                        retaken=False,
+                        retaken=is_retake,
                         student_id=uid,
                     )
                     rec = {
@@ -369,7 +394,7 @@ def enroll_students_in_electives(
                         "class_id": class_id,
                         "course_id": c_code,
                         "semester": semester,
-                        "retaken": False,
+                        "retaken": is_retake,
                         "quiz": component_scores.get("quiz", np.nan),
                         "lab": component_scores.get("lab", np.nan),
                         "btl": component_scores.get("btl", np.nan),
@@ -386,31 +411,252 @@ def enroll_students_in_electives(
     return enrollment_id
 
 
+_TQ_PREREQ_MAP = None
+_KN_PREREQ_MAP = None
+_STUDENT_PASSED_CACHE = None
+_STUDENT_ENROLLED_CACHE = None
+
+
+def get_tq_prerequisite_map() -> Dict[str, Set[str]]:
+    """Retrieve mapping of course_code -> set of prerequisite_course_code with relation_type == 'TQ'."""
+    global _TQ_PREREQ_MAP
+    if _TQ_PREREQ_MAP is None:
+        _TQ_PREREQ_MAP = defaultdict(set)
+        prereq_file = Path(__file__).resolve().parent.parent / "generated" / "academics" / "course_prerequisites.csv"
+        if prereq_file.exists():
+            try:
+                df = pd.read_csv(prereq_file)
+                for _, r in df[df["relation_type"] == "TQ"].iterrows():
+                    _TQ_PREREQ_MAP[str(r["course_code"])].add(str(r["prerequisite_course_code"]))
+            except Exception:
+                pass
+    return _TQ_PREREQ_MAP
+
+
+def get_kn_prerequisite_map() -> Dict[str, Set[str]]:
+    """Retrieve mapping of course_code -> set of prerequisite_course_code with relation_type == 'KN'."""
+    global _KN_PREREQ_MAP
+    if _KN_PREREQ_MAP is None:
+        _KN_PREREQ_MAP = defaultdict(set)
+        prereq_file = Path(__file__).resolve().parent.parent / "generated" / "academics" / "course_prerequisites.csv"
+        if prereq_file.exists():
+            try:
+                df = pd.read_csv(prereq_file)
+                for _, r in df[df["relation_type"] == "KN"].iterrows():
+                    _KN_PREREQ_MAP[str(r["course_code"])].add(str(r["prerequisite_course_code"]))
+            except Exception:
+                pass
+    return _KN_PREREQ_MAP
+
+
+def get_student_passed_cache() -> Dict[str, Set[str]]:
+    """Retrieve cached mapping of student_id -> set of passed course codes from generated enrollment files."""
+    global _STUDENT_PASSED_CACHE
+    if _STUDENT_PASSED_CACHE is None:
+        _STUDENT_PASSED_CACHE = defaultdict(set)
+        enr_dir = Path(__file__).resolve().parent.parent / "generated" / "enrollments"
+        if enr_dir.exists():
+            for p in sorted(enr_dir.glob("enrollment_hk*.csv")):
+                try:
+                    df = pd.read_csv(p, usecols=["student_id", "course_id", "passed", "status"], dtype={"student_id": str})
+                    for _, r in df.iterrows():
+                        if r["passed"] == True or str(r.get("status", "")).lower() in ["pass", "exempted"]:
+                            _STUDENT_PASSED_CACHE[str(r["student_id"])].add(str(r["course_id"]))
+                except Exception:
+                    pass
+    return _STUDENT_PASSED_CACHE
+
+
+def get_student_enrolled_cache() -> Dict[str, Set[str]]:
+    """Retrieve cached mapping of student_id -> set of enrolled course codes from generated enrollment files."""
+    global _STUDENT_ENROLLED_CACHE
+    if _STUDENT_ENROLLED_CACHE is None:
+        _STUDENT_ENROLLED_CACHE = defaultdict(set)
+        enr_dir = Path(__file__).resolve().parent.parent / "generated" / "enrollments"
+        if enr_dir.exists():
+            for p in sorted(enr_dir.glob("enrollment_hk*.csv")):
+                try:
+                    df = pd.read_csv(p, usecols=["student_id", "course_id"], dtype={"student_id": str})
+                    for _, r in df.iterrows():
+                        _STUDENT_ENROLLED_CACHE[str(r["student_id"])].add(str(r["course_id"]))
+                except Exception:
+                    pass
+    return _STUDENT_ENROLLED_CACHE
+
+
+def invalidate_student_passed_cache():
+    """Invalidate the student passed and enrolled courses caches so fresh files are reloaded."""
+    global _STUDENT_PASSED_CACHE, _STUDENT_ENROLLED_CACHE
+    _STUDENT_PASSED_CACHE = None
+    _STUDENT_ENROLLED_CACHE = None
+
+
 def select_student_group_c_course(
     student_id: str,
     cohort: str,
     specialization: Optional[str] = None,
     seed_salt: str = "group_c",
     exclude_courses: Optional[Set[str]] = None,
+    passed_courses: Optional[Set[str]] = None,
+    enrolled_courses: Optional[Set[str]] = None,
 ) -> str:
-    """Select a Group C course deterministically matching the student's specialization."""
+    """Select a Group C course deterministically matching the student's specialization,
+    filtering out any courses whose TQ (prerequisite) and KN (prior course) requirements have not been met.
+    """
     if not specialization:
         spec_map = get_student_specialization_map()
         specialization = spec_map.get(str(student_id), "Khoa học Máy tính")
 
-    spec_courses = get_specialization_group_c_courses(specialization, cohort)
+    tq_map = get_tq_prerequisite_map()
+    kn_map = get_kn_prerequisite_map()
     exclude = exclude_courses or set()
-    available = [c for c in spec_courses if c not in exclude]
+
+    def meets_tq(course: str) -> bool:
+        reqs = tq_map.get(course, set())
+        if not reqs:
+            return True
+        nonlocal passed_courses
+        if passed_courses is None:
+            cache = get_student_passed_cache()
+            return reqs.issubset(cache.get(str(student_id), set()))
+        return reqs.issubset(passed_courses)
+
+    def meets_kn(course: str) -> bool:
+        reqs = kn_map.get(course, set())
+        if not reqs:
+            return True
+        nonlocal enrolled_courses
+        if enrolled_courses is None:
+            cache = get_student_enrolled_cache()
+            return reqs.issubset(cache.get(str(student_id), set()))
+        return reqs.issubset(enrolled_courses)
+
+    spec_courses = get_specialization_group_c_courses(specialization, cohort)
+    available = [c for c in spec_courses if c not in exclude and meets_tq(c) and meets_kn(c)]
 
     if not available:
         all_group_c = load_group_c_electives(cohort=cohort)["course_code"].tolist()
-        available = [c for c in all_group_c if c not in exclude]
+        available = [c for c in all_group_c if c not in exclude and meets_tq(c) and meets_kn(c)]
 
     if not available:
-        available = spec_courses if spec_courses else ["CO3011", "CO3021", "CO3029", "CO3043", "CO3045"]
+        # Fallback to courses with no unfulfilled TQ and KN
+        base_fallback = ["CO3011", "CO3029", "CO3043", "CO3045"]
+        available = [c for c in base_fallback if meets_tq(c) and meets_kn(c)] or [c for c in base_fallback if meets_tq(c)] or base_fallback
 
     seed_val = int(hashlib.sha256(f"{student_id}:{seed_salt}".encode("utf-8")).hexdigest()[:8], 16)
     return available[seed_val % len(available)]
+
+
+def get_term5_group_c_distribution(
+    cohort_students: pd.DataFrame,
+    cohort: str,
+    semester: str,
+    passed_map: Optional[Dict[str, Any]] = None,
+    enrolled_map: Optional[Dict[str, Set[str]]] = None,
+    retake_demand: Optional[Dict[str, Any]] = None,
+    profiles: Optional[Dict[str, Dict[str, Any]]] = None,
+    credits_map: Optional[Dict[str, float]] = None,
+) -> Dict[Tuple[str, str], List[str]]:
+    """Distribute Term 5 students among Group C elective courses with acceleration (học vượt).
+    
+    Registration order:
+    1. First: Retake / failed courses (môn nợ).
+    2. Second: Regular curriculum courses (môn theo chương trình).
+    3. Third: If remaining credit capacity allows (dư 2-3 tín chỉ), allow acceleration (học vượt môn nhóm C thứ hai).
+    """
+    spec_map = get_student_specialization_map()
+    choice_map: Dict[Tuple[str, str], List[str]] = defaultdict(list)
+
+    prof_dict = profiles
+    if prof_dict is None:
+        try:
+            from academic_rules import load_student_profiles
+            df_p = load_student_profiles()
+            if isinstance(df_p, pd.DataFrame):
+                id_col = "student_id" if "student_id" in df_p.columns else "user_id"
+                prof_dict = df_p.set_index(id_col).to_dict(orient="index")
+            else:
+                prof_dict = df_p or {}
+        except Exception:
+            prof_dict = {}
+    elif isinstance(prof_dict, pd.DataFrame):
+        id_col = "student_id" if "student_id" in prof_dict.columns else "user_id"
+        prof_dict = prof_dict.set_index(id_col).to_dict(orient="index")
+
+    if credits_map is None:
+        try:
+            c_path = Path(__file__).resolve().parent.parent / "generated" / "academics" / "courses.csv"
+            if c_path.exists():
+                df_c = pd.read_csv(c_path)
+                credits_map = dict(zip(df_c["course_code"], df_c["credits"].astype(float)))
+            else:
+                credits_map = {}
+        except Exception:
+            credits_map = {}
+
+    for _, row in cohort_students.iterrows():
+        uid = str(row["user_id"])
+        prog = row["program"]
+        spec = spec_map.get(uid, "Khoa học Máy tính")
+
+        # Determine set of passed courses
+        u_passed: Set[str] = set()
+        if passed_map:
+            val = passed_map.get(uid, set())
+            if isinstance(val, dict):
+                u_passed = set(val.keys())
+            elif isinstance(val, (set, list)):
+                u_passed = set(val)
+
+        u_enrolled = enrolled_map.get(uid, set()) if enrolled_map else None
+
+        # 1. THỨ NHẤT: MÔN NỢ (RETAKES)
+        retake_creds = 0.0
+        if retake_demand and credits_map:
+            for cid, sids in retake_demand.items():
+                if uid in sids:
+                    retake_creds += float(credits_map.get(cid, 3.0))
+
+        # 2. THỨ HAI: MÔN THEO CHƯƠNG TRÌNH (CURRICULUM COURSES)
+        has_co3005_prereqs = ("CO2003" in u_passed and "CO1027" in u_passed)
+        co3005_creds = 4.0 if has_co3005_prereqs else 0.0
+        co2001_creds = 3.0 if ("CO2001" not in u_passed and "CO1005" in u_passed) else 0.0
+        co2013_creds = 4.0 if ("CO2013" not in u_passed) else 0.0
+
+        prof = prof_dict.get(uid, {}) if isinstance(prof_dict, dict) else {}
+        is_early = str(prof.get("early_graduation_candidate", "")).lower() == "true"
+        base_score = float(prof.get("base_score", 0.0) or 0.0)
+
+        # For early graduation candidates, exclude CO3061 in Term 5 since EARLY_CO3061_HK6 schedules it in Term 6
+        term5_exclude = set(u_passed)
+        if is_early:
+            term5_exclude.add("CO3061")
+
+        c1 = select_student_group_c_course(
+            uid, cohort, spec, seed_salt=f"{cohort.lower()}_group_c_{semester.lower()}",
+            exclude_courses=term5_exclude, passed_courses=u_passed, enrolled_courses=u_enrolled
+        )
+        choice_map[(prog, c1)].append(uid)
+        c1_creds = float(credits_map.get(c1, 3.0)) if credits_map else 3.0
+
+        curriculum_creds = 2.0 + 3.0 + co3005_creds + co2001_creds + co2013_creds + c1_creds
+        total_current_creds = retake_creds + curriculum_creds
+
+        # 3. THỨ BA: NẾU DƯ 2-3 TÍN THÌ MỚI CHO HỌC VƯỢT
+        # Tổng tải hiện tại <= 15.0 TC nghĩa là còn dư >= 3 TC so với 18 và trần 22
+        has_remaining_capacity = (total_current_creds <= 15.0) and (total_current_creds + 3.0 <= 22.0)
+
+        seed_val = int(hashlib.sha256(f"{uid}:accel_term5_{semester.lower()}".encode()).hexdigest()[:8], 16)
+        is_eligible = is_early or (base_score >= 7.8 and (seed_val % 100) < 35)
+
+        if has_remaining_capacity and is_eligible:
+            c2 = select_student_group_c_course(
+                uid, cohort, spec, seed_salt=f"{cohort.lower()}_group_c_accel_{semester.lower()}",
+                exclude_courses=term5_exclude | {c1}, passed_courses=u_passed, enrolled_courses=u_enrolled
+            )
+            choice_map[(prog, c2)].append(uid)
+
+    return choice_map
 
 
 def load_group_c_electives(cohort: Optional[str] = "K20", specialization: Optional[str] = None) -> pd.DataFrame:

@@ -56,8 +56,12 @@ if str(RULES_DIR) not in sys.path:
 
 from academic_rules import (
     GENERATOR_CONFIG,
+    filter_active_students_for_semester,
+    is_student_active_for_semester,
+    is_thesis_eligible,
     balanced_class_sizes,
     convert_score_to_grade,
+    filter_retake_demand_by_credit_limit,
     score_course_components,
 )
 
@@ -175,12 +179,14 @@ def generate_enrollment_hk212() -> Path:
 
     # Lịch sử môn đạt của từng sinh viên (để tính GPA tích lũy và kiểm tra điều kiện)
     history_passed: Dict[str, Dict[str, float]] = defaultdict(dict)
+    history_enrolled: Dict[str, Set[str]] = defaultdict(set)
     for df_prev in [df_hk201, df_hk202, df_hk211]:
         for _, r in df_prev.iterrows():
             sid = str(r["student_id"])
             cid = str(r["course_id"])
             score = r["final_score"]
             gpa4 = r["gpa_4"]
+            history_enrolled[sid].add(cid)
             if r["passed"] == True or str(r.get("status", "")).lower() in ["pass", "exempted"]:
                 history_passed[sid][cid] = float(gpa4) if (pd.notna(gpa4) and not (pd.notna(score) and float(score) == 12.0)) else 0.0
 
@@ -244,12 +250,28 @@ def generate_enrollment_hk212() -> Path:
         zip(df_courses["course_code"], df_courses["credits"].astype(float))
     )
 
+    # Ràng buộc trần tín chỉ: Lọc môn học lại để không vượt quá trần tín chỉ học kỳ
+    creds_tracker: Dict[str, float] = defaultdict(float)
+    count_tracker: Dict[str, int] = defaultdict(int)
+    k20_failed_hk2 = filter_retake_demand_by_credit_limit(
+        k20_failed_hk2, credits_map, SEMESTER,
+        student_assigned_creds=creds_tracker, student_assigned_count=count_tracker
+    )
+    hk1_retake_students = filter_retake_demand_by_credit_limit(
+        hk1_retake_students, credits_map, SEMESTER,
+        student_assigned_creds=creds_tracker, student_assigned_count=count_tracker
+    )
+
     # 6. Đọc hồ sơ năng lực học tập cố định (student_profiles.csv)
     profiles_file = USERS_DIR / "student_profiles.csv"
     df_profiles = pd.read_csv(profiles_file, encoding="utf-8-sig", dtype={"student_id": str})
     student_profiles: Dict[str, Dict[str, Any]] = df_profiles.set_index("student_id").to_dict(
         orient="index"
     )
+
+    # Lọc sinh viên còn hoạt động (loại bỏ voluntary_dropout và academic_dismissal)
+    k20_students = filter_active_students_for_semester(k20_students, SEMESTER, df_profiles)
+    k21_students = filter_active_students_for_semester(k21_students, SEMESTER, df_profiles)
 
     # 7. Danh sách học vượt và tự chọn
     k21_accel = get_k21_acceleration_students(k21_students, df_profiles)
@@ -822,6 +844,11 @@ def generate_enrollment_hk212() -> Path:
     # 11. TÍNH GPA HỌC KỲ VÀ TÍCH LŨY (PHÂN TÁCH K21 VÀ K20)
     # -------------------------------------------------------------------------
     print("\n7. Đang tính điểm trung bình học kỳ và GPA tích lũy cho cả K20 và K21...")
+    # Chuẩn hóa cờ retaken dựa trên lịch sử
+    for r in enrollment_records:
+        if r.get("status") != "Exempted" and str(r.get("course_id")) in history_enrolled.get(str(r.get("student_id")), set()):
+            r["retaken"] = True
+
     df_enrollment = pd.DataFrame(enrollment_records)
 
     semester_gpas: Dict[str, float] = {}

@@ -47,8 +47,12 @@ if str(RULES_DIR) not in sys.path:
 
 from academic_rules import (
     GENERATOR_CONFIG,
+    filter_active_students_for_semester,
+    is_student_active_for_semester,
+    is_thesis_eligible,
     balanced_class_sizes,
     convert_score_to_grade,
+    filter_retake_demand_by_credit_limit,
     score_course_components,
 )
 from curriculum_rules import (
@@ -185,6 +189,12 @@ def generate_enrollment_hk222() -> Path:
 
     # Sinh viên khóa trước còn nợ môn cần học lại
     all_prev_enrollments = pd.concat(prev_dfs)
+
+    # Lịch sử tất cả các môn đã từng đăng ký ở các kỳ trước
+    history_enrolled: Dict[str, Set[str]] = defaultdict(set)
+    for df_prev in prev_dfs:
+        for _, r in df_prev.iterrows():
+            history_enrolled[str(r["student_id"])].add(str(r["course_id"]))
     retake_demand: Dict[str, List[str]] = defaultdict(list)
     for _, r in all_prev_enrollments[all_prev_enrollments["passed"] == False].iterrows():
         sid = str(r["student_id"])
@@ -219,9 +229,26 @@ def generate_enrollment_hk222() -> Path:
     df_courses = pd.read_csv(courses_file, encoding="utf-8-sig")
     credits_map: Dict[str, float] = dict(zip(df_courses["course_code"], df_courses["credits"].astype(float)))
 
+    # Ràng buộc trần tín chỉ: Lọc môn học lại để không vượt quá trần tín chỉ học kỳ
+    creds_tracker: Dict[str, float] = defaultdict(float)
+    count_tracker: Dict[str, int] = defaultdict(int)
+    retake_demand = filter_retake_demand_by_credit_limit(
+        retake_demand, credits_map, SEMESTER,
+        student_assigned_creds=creds_tracker, student_assigned_count=count_tracker
+    )
+    hk1_retake_students = filter_retake_demand_by_credit_limit(
+        hk1_retake_students, credits_map, SEMESTER,
+        student_assigned_creds=creds_tracker, student_assigned_count=count_tracker
+    )
+
     profiles_file = USERS_DIR / "student_profiles.csv"
     df_profiles = pd.read_csv(profiles_file, encoding="utf-8-sig", dtype={"student_id": str})
     student_profiles: Dict[str, Dict[str, Any]] = df_profiles.set_index("student_id").to_dict(orient="index")
+
+    # Lọc sinh viên còn hoạt động (loại bỏ voluntary_dropout và academic_dismissal)
+    k20_students = filter_active_students_for_semester(k20_students, SEMESTER, df_profiles)
+    k21_students = filter_active_students_for_semester(k21_students, SEMESTER, df_profiles)
+    k22_students = filter_active_students_for_semester(k22_students, SEMESTER, df_profiles)
 
     k22_accel = get_k22_acceleration_students(k22_students, df_profiles)
     k21_accel = get_k21_acceleration_students(k21_students, df_profiles, k21_passed_mt2013)
@@ -854,13 +881,20 @@ def generate_enrollment_hk222() -> Path:
         ]
         if early_candidates:
             for early_code in ["CO3061", "CO4029"]:
+                current_candidates = [
+                    uid for uid in early_candidates
+                    if early_code not in history_passed[uid]
+                    and (early_code != "CO4029" or is_thesis_eligible(uid, SEMESTER, set(history_passed[uid].keys()), df_profiles))
+                ]
+                if not current_candidates:
+                    continue
                 class_ids = classes_by_prog_course.get((prog, early_code), [])
-                sizes = balanced_class_sizes(len(early_candidates), max_size=40)
+                sizes = balanced_class_sizes(len(current_candidates), max_size=40)
                 offset = 0
                 comps = course_assessments.get(early_code, [("cuoi_ky", 1.0)])
 
                 for class_id, size in zip(class_ids, sizes):
-                    assigned_chunk = early_candidates[offset : offset + size]
+                    assigned_chunk = current_candidates[offset : offset + size]
                     offset += size
 
                     for uid in assigned_chunk:
@@ -914,14 +948,17 @@ def generate_enrollment_hk222() -> Path:
             else:
                 combined_student_ids = student_ids
 
-            regular_k20_uids = [uid for uid in combined_student_ids if uid not in set(early_candidates)]
+            regular_k20_uids = list(combined_student_ids)
             if regular_k20_uids:
                 spec_map = get_student_specialization_map()
                 student_c_choices: Dict[str, List[str]] = defaultdict(list)
                 for uid in regular_k20_uids:
                     spec = spec_map.get(uid, "Khoa học Máy tính")
                     prev_passed = set(history_passed[uid].keys())
-                    elecs = get_term6_student_electives(uid, "K20", spec, prev_passed)
+                    elecs = get_term6_student_electives(
+                        uid, "K20", spec, prev_passed,
+                        exclude_courses={"CO3061"} if uid in set(early_candidates) else None
+                    )
                     for ec in elecs:
                         student_c_choices[ec].append(uid)
 
@@ -936,6 +973,7 @@ def generate_enrollment_hk222() -> Path:
                     enrollment_records=enrollment_records,
                     start_enrollment_id=enrollment_id,
                     max_cap=40,
+                    history_enrolled=history_enrolled,
                 )
                 suffix_note = " (CLC+TT)" if prog == "high-quality" else ""
                 print(f"   -> [K20 Tự chọn ngành - Group C & A]{suffix_note}: Đã phân bổ {len(regular_k20_uids)} SV vào {len(student_c_choices)} môn học.")
@@ -1002,6 +1040,11 @@ def generate_enrollment_hk222() -> Path:
     # E. TÍNH GPA HỌC KỲ VÀ TÍCH LŨY
     # -------------------------------------------------------------------------
     print("\n8. Đang tính điểm trung bình học kỳ và GPA tích lũy cho cả K20, K21 và K22...")
+    # Chuẩn hóa cờ retaken dựa trên lịch sử
+    for r in enrollment_records:
+        if r.get("status") != "Exempted" and str(r.get("course_id")) in history_enrolled.get(str(r.get("student_id")), set()):
+            r["retaken"] = True
+
     df_enrollment = pd.DataFrame(enrollment_records)
 
     semester_gpas: Dict[str, float] = {}
