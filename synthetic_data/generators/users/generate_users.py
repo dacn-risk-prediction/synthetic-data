@@ -66,7 +66,7 @@ USER_HEADER = [
 ]
 ROLE_HEADERS = {
     "student": [
-        "user_id", "name", "email", "password", "password_hash", "role", "title", "program",
+        "user_id", "name", "email", "password", "password_hash", "role", "title", "program", "specialization",
     ],
     "lecturer": [
         "user_id", "name", "email", "password", "password_hash", "role", "title", "department", "specialization",
@@ -161,6 +161,15 @@ def generate_users() -> None:
         program_weights = PROGRAM_WEIGHTS_DEFAULT
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    existing_students = []
+    if ROLE_OUTPUT_FILES["student"].exists():
+        with ROLE_OUTPUT_FILES["student"].open("r", encoding="utf-8-sig") as f:
+            reader = csv.reader(f)
+            header = next(reader, None)
+            for r in reader:
+                if r:
+                    existing_students.append(r)
+
     with OUTPUT_FILE.open("w", newline="", encoding="utf-8-sig") as output, ExitStack() as role_outputs:
         writer = csv.writer(output)
         role_writers = {}
@@ -216,29 +225,41 @@ def generate_users() -> None:
         cohort_summary = []
         program_counts = {p: 0 for p in programs}
 
-        for i, cohort in enumerate(cohorts):
-            if i > 0:
-                current_students_per_cohort += fake.random_int(min=increment_min, max=increment_max)
-            cohort_summary.append((f"K{cohort}", current_students_per_cohort))
-
-            for sequence in range(1, current_students_per_cohort + 1):
-                suffix = (sequence * MSSV_STEP + int(cohort) * 1049) % MSSV_MODULUS
-                user_id = f"{cohort}{suffix:05d}"
-                name = generate_vietnamese_name(fake)
-                email_name = normalize_name(name)
-                email = f"{email_name}.{user_id}@hcmut.edu.vn"
-                password = generate_password()
-                role, title = "student", "undergraduate"
-                program = fake.random.choices(programs, weights=program_weights, k=1)[0]
-                program_counts[program] += 1
-
-                row = [user_id, name, email, password, password, role, title, program]
+        if existing_students:
+            for row in existing_students:
                 role_writers["student"].writerow(row)
+                prog = row[7] if len(row) > 7 else "standard"
+                spec = row[8] if len(row) > 8 else "Khoa học Máy tính"
                 writer.writerow([
-                    user_id, name, email, password, password, role, title, program,
-                    "Khoa Khoa học và Kỹ thuật Máy tính", "Khoa học Máy tính"
+                    row[0], row[1], row[2], row[3], row[4], row[5], row[6], prog,
+                    "Khoa Khoa học và Kỹ thuật Máy tính", spec
                 ])
                 total_students += 1
+                program_counts[prog] = program_counts.get(prog, 0) + 1
+        else:
+            for i, cohort in enumerate(cohorts):
+                if i > 0:
+                    current_students_per_cohort += fake.random_int(min=increment_min, max=increment_max)
+                cohort_summary.append((f"K{cohort}", current_students_per_cohort))
+
+                for sequence in range(1, current_students_per_cohort + 1):
+                    suffix = (sequence * MSSV_STEP + int(cohort) * 1049) % MSSV_MODULUS
+                    user_id = f"{cohort}{suffix:05d}"
+                    name = generate_vietnamese_name(fake)
+                    email_name = normalize_name(name)
+                    email = f"{email_name}.{user_id}@hcmut.edu.vn"
+                    password = generate_password()
+                    role, title = "student", "undergraduate"
+                    program = fake.random.choices(programs, weights=program_weights, k=1)[0]
+                    program_counts[program] += 1
+
+                    row = [user_id, name, email, password, password, role, title, program]
+                    role_writers["student"].writerow(row)
+                    writer.writerow([
+                        user_id, name, email, password, password, role, title, program,
+                        "Khoa Khoa học và Kỹ thuật Máy tính", "Khoa học Máy tính"
+                    ])
+                    total_students += 1
 
         total_users = total_admins + total_lecturers + total_students
         print("=== KẾT QUẢ SINH DỮ LIỆU USER (TỪ CẤU HÌNH GENERATOR_CONFIG.JSON) ===")

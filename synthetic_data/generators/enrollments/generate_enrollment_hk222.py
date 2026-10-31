@@ -765,11 +765,11 @@ def generate_enrollment_hk222() -> Path:
         # CH1003 và SP1037
         for course_code in k20_core_courses:
             class_ids = classes_by_prog_course.get((prog, course_code), [])
-            k20_classes = class_ids
 
             is_politics = course_code.startswith("SP")
             max_cap = 120 if is_politics else 40
             sizes = balanced_class_sizes(len(student_ids), max_size=max_cap)
+            k20_classes = class_ids[-len(sizes):] if course_code == "CH1003" else class_ids
             offset = 0
             comps = course_assessments.get(course_code, [("cuoi_ky", 1.0)])
 
@@ -823,9 +823,9 @@ def generate_enrollment_hk222() -> Path:
         if k20_co3093_learners:
             course_code = "CO3093"
             class_ids = classes_by_prog_course.get((prog, course_code), [])
-            # Lọc các lớp dành cho K20
-            k20_classes = [c for c in class_ids if "Học vượt" not in c] or class_ids
             sizes = balanced_class_sizes(len(k20_co3093_learners), max_size=40)
+            # Lọc các lớp dành cho K20 (offset sau các lớp học vượt của K21)
+            k20_classes = class_ids[-len(sizes):]
             offset = 0
             comps = course_assessments.get(course_code, [("cuoi_ky", 1.0)])
 

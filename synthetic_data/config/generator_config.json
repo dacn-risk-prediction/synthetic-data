@@ -338,57 +338,57 @@
         {
           "department": "Khoa Khoa học và Kỹ thuật Máy tính",
           "specialization": "Trí tuệ nhân tạo",
-          "count": 13
+          "count": 35
         },
         {
           "department": "Khoa Khoa học và Kỹ thuật Máy tính",
           "specialization": "Công nghệ Phần mềm",
-          "count": 13
+          "count": 35
         },
         {
           "department": "Khoa Khoa học và Kỹ thuật Máy tính",
           "specialization": "An ninh hệ thống và mạng",
-          "count": 11
+          "count": 30
         },
         {
           "department": "Khoa Khoa học và Kỹ thuật Máy tính",
           "specialization": "Kỹ thuật Máy tính",
-          "count": 10
+          "count": 25
         },
         {
           "department": "Khoa Khoa học và Kỹ thuật Máy tính",
           "specialization": "Công nghệ dữ liệu và dữ liệu lớn",
-          "count": 8
+          "count": 25
         },
         {
           "department": "Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng",
           "specialization": "Toán Ứng dụng & Thống kê",
-          "count": 15
+          "count": 18
         },
         {
           "department": "Trung tâm Ngoại ngữ",
           "specialization": "Tiếng Anh học thuật",
-          "count": 14
+          "count": 11
         },
         {
           "department": "Khoa Khoa học Ứng dụng - Bộ môn Lý luận Chính trị",
           "specialization": "Lý luận Chính trị & Pháp luật",
-          "count": 8
+          "count": 11
         },
         {
           "department": "Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng",
           "specialization": "Vật lý & Khoa học Tự nhiên",
-          "count": 8
+          "count": 10
         },
         {
           "department": "Khoa Kỹ thuật Hóa học",
           "specialization": "Hóa học Đại cương",
-          "count": 8
+          "count": 5
         },
         {
           "department": "Bộ môn Giáo dục Thể chất",
           "specialization": "Giáo dục Thể chất & Thể thao",
-          "count": 8
+          "count": 4
         }
       ]
     }

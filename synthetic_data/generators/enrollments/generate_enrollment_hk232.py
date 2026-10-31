@@ -691,6 +691,7 @@ def generate_enrollment_hk232() -> Path:
                 uid for uid in combined_student_ids
                 if str(student_profiles.get(uid, {}).get("early_graduation_candidate", "")).lower() == "true"
             ]
+            early_classes_assigned: Dict[Tuple[str, str], int] = defaultdict(int)
             if early_candidates:
                 for early_code in ["CO3061", "CO4029"]:
                     current_early = [
@@ -701,6 +702,7 @@ def generate_enrollment_hk232() -> Path:
                     if not current_early: continue
                     class_ids = classes_by_prog_course.get((prog, early_code), [])
                     sizes = balanced_class_sizes(len(current_early), max_size=40)
+                    early_classes_assigned[(prog, early_code)] = len(sizes)
                     offset = 0
                     comps = course_assessments.get(early_code, [("cuoi_ky", 1.0)])
 
@@ -781,7 +783,9 @@ def generate_enrollment_hk232() -> Path:
                     offset = 0
                     comps = course_assessments.get(c_code, [("cuoi_ky", 1.0)])
 
-                    c_classes = all_c_classes[-len(sizes):]
+                    # K21 takes the slice after early classes; K20 free electives will take subsequent classes
+                    early_cnt = early_classes_assigned.get((prog, c_code), 0)
+                    c_classes = all_c_classes[early_cnt : early_cnt + len(sizes)]
                     for class_id, size in zip(c_classes, sizes):
                         assigned_chunk = uids[offset : offset + size]
                         offset += size

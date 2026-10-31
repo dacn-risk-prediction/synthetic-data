@@ -27,9 +27,11 @@ for cs in class_scripts:
     if es.exists():
         semester_pipeline.append(es)
 
-# 3. Add metrics calculation at the end of the pipeline
+# 3. Add class pruning and metrics calculation at the end of the pipeline
+prune_script = ROOT_DIR / "tools" / "prune_empty_classes.py"
 metrics_script = ROOT_DIR / "tools" / "generate_academic_metrics.py"
-all_scripts = core_scripts + semester_pipeline + ([metrics_script] if metrics_script.exists() else [])
+post_scripts = [p for p in [prune_script, metrics_script] if p.exists()]
+all_scripts = core_scripts + semester_pipeline + post_scripts
 
 for script_path in all_scripts:
     if not script_path.exists():

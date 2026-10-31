@@ -1,6 +1,6 @@
 """Course retake policies, failed course recovery, and grade improvement rules under credit caps."""
 
-from collections import defaultdict
+from collections import defaultdict, Counter
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 import numpy as np
@@ -165,6 +165,15 @@ def generate_grade_improvement_retakes(
     active_profiles = student_profiles if student_profiles is not None else _get_profiles_cache()
     tq_map = get_tq_prerequisite_map()
 
+    # Track current enrollment counts and maximum capacities to prevent exceeding max_capacity
+    class_enrollment_counts = Counter(
+        str(r["class_id"]) for r in current_records if pd.notna(r.get("class_id"))
+    )
+    class_capacities = {
+        str(r["class_id"]): int(r["max_capacity"])
+        for _, r in df_classes.iterrows()
+    }
+
     for sid, records in hist_by_student.items():
         coh = sid[:2]
         if coh not in target_cohorts:
@@ -218,9 +227,11 @@ def generate_grade_improvement_retakes(
             candidates.sort(key=lambda x: (x[0], -x[1]))
 
             prog = student_program_map.get(sid, "standard")
-            selected_courses = candidates[:max_courses_per_student]
+            enrolled_for_student = 0
 
-            for _, tc, cid, _ in selected_courses:
+            for _, tc, cid, _ in candidates:
+                if enrolled_for_student >= max_courses_per_student:
+                    break
                 if current_credits_by_student[sid] + tc > max_credits_per_semester:
                     continue
 
@@ -234,8 +245,21 @@ def generate_grade_improvement_retakes(
                 if not open_classes:
                     continue
 
-                idx = int(hash(f"{sid}:{cid}:{semester}")) % len(open_classes)
-                chosen_class_id = open_classes[idx]
+                # Filter classes that have not reached maximum capacity
+                available_classes = [
+                    c for c in open_classes
+                    if class_enrollment_counts[c] < class_capacities.get(c, 40)
+                ]
+                if not available_classes:
+                    continue
+
+                # Select class with the lowest current enrollment (load balancing), tie-broken deterministically
+                chosen_class_id = min(
+                    available_classes,
+                    key=lambda c: (class_enrollment_counts[c], abs(hash(f"{sid}:{c}:{semester}")) % 1000),
+                )
+                class_enrollment_counts[chosen_class_id] += 1
+                enrolled_for_student += 1
 
                 comps = course_assessments.get(cid, [("exam", 1.0)])
                 std_prof = student_profiles.get(sid, {})

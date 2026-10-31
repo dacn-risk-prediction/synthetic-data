@@ -618,8 +618,9 @@ def generate_enrollment_hk252() -> Path:
             course_code = "CH1003"
             class_ids = classes_by_prog_course.get((prog, course_code), [])
             sizes = balanced_class_sizes(len(valid_ch1003), max_size=40)
+            k23_classes = class_ids[-len(sizes):]
             offset = 0
-            for class_id, size in zip(class_ids, sizes):
+            for class_id, size in zip(k23_classes, sizes):
                 assigned_chunk = valid_ch1003[offset : offset + size]
                 offset += size
                 for uid in assigned_chunk:
@@ -638,8 +639,9 @@ def generate_enrollment_hk252() -> Path:
             course_code = "CO3093"
             class_ids = classes_by_prog_course.get((prog, course_code), [])
             sizes = balanced_class_sizes(len(valid_co3093), max_size=40)
+            k23_classes = class_ids[-len(sizes):]
             offset = 0
-            for class_id, size in zip(class_ids, sizes):
+            for class_id, size in zip(k23_classes, sizes):
                 assigned_chunk = valid_co3093[offset : offset + size]
                 offset += size
                 for uid in assigned_chunk:
@@ -652,6 +654,7 @@ def generate_enrollment_hk252() -> Path:
             print(f"   -> [K23 Lộ trình sớm]: Đã ghép học chung lớp với hệ Chất lượng cao (CC)")
             print(f"   -> [K23 Tự chọn ngành - Group C]: Đã ghép học chung lớp với hệ Chất lượng cao (CC)")
         elif prog == "high-quality":
+            early_classes_assigned: Dict[Tuple[str, str], int] = defaultdict(int)
             adv_uids = k23_students[k23_students["program"] == "advanced"]["user_id"].tolist()
             combined_student_ids = student_ids + adv_uids
             early_candidates = [
@@ -668,6 +671,7 @@ def generate_enrollment_hk252() -> Path:
                         continue
                     class_ids = classes_by_prog_course.get((prog, early_code), [])
                     sizes = balanced_class_sizes(len(valid_early), max_size=40)
+                    early_classes_assigned[(prog, early_code)] = len(sizes)
                     offset = 0
                     for class_id, size in zip(class_ids, sizes):
                         assigned_chunk = valid_early[offset : offset + size]
@@ -706,13 +710,16 @@ def generate_enrollment_hk252() -> Path:
                         continue
                     class_ids = classes_by_prog_course.get((prog, g_course), [])
                     sizes = balanced_class_sizes(len(valid_g), max_size=40)
+                    early_cnt = early_classes_assigned.get((prog, g_course), 0)
+                    c_classes = class_ids[early_cnt : early_cnt + len(sizes)]
                     offset = 0
-                    for class_id, size in zip(class_ids, sizes):
+                    for class_id, size in zip(c_classes, sizes):
                         assigned_chunk = valid_g[offset : offset + size]
                         offset += size
                         for uid in assigned_chunk:
                             record_grade(uid, g_course, class_id, is_retake=False)
         else:  # standard
+            early_classes_assigned: Dict[Tuple[str, str], int] = defaultdict(int)
             early_candidates = [
                 uid for uid in student_ids
                 if str(student_profiles.get(uid, {}).get("early_graduation_candidate", "")).lower() == "true"
@@ -727,6 +734,7 @@ def generate_enrollment_hk252() -> Path:
                         continue
                     class_ids = classes_by_prog_course.get((prog, early_code), [])
                     sizes = balanced_class_sizes(len(valid_early), max_size=40)
+                    early_classes_assigned[(prog, early_code)] = len(sizes)
                     offset = 0
                     for class_id, size in zip(class_ids, sizes):
                         assigned_chunk = valid_early[offset : offset + size]
@@ -766,8 +774,10 @@ def generate_enrollment_hk252() -> Path:
                         continue
                     class_ids = classes_by_prog_course.get((prog, g_course), [])
                     sizes = balanced_class_sizes(len(valid_g), max_size=40)
+                    early_cnt = early_classes_assigned.get((prog, g_course), 0)
+                    c_classes = class_ids[early_cnt : early_cnt + len(sizes)]
                     offset = 0
-                    for class_id, size in zip(class_ids, sizes):
+                    for class_id, size in zip(c_classes, sizes):
                         assigned_chunk = valid_g[offset : offset + size]
                         offset += size
                         for uid in assigned_chunk:

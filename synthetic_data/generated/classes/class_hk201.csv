@@ -1,50 +1,50 @@
 ﻿class_id,course_code,course_name,semester,class_group,program,max_capacity,lecturer_id,lecturer_name,department
-HK201_MT1003_L01,MT1003,Giải tích 1,HK201,L01,standard,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L02,MT1003,Giải tích 1,HK201,L02,standard,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L03,MT1003,Giải tích 1,HK201,L03,standard,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L04,MT1003,Giải tích 1,HK201,L04,standard,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L05,MT1003,Giải tích 1,HK201,L05,standard,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L06,MT1003,Giải tích 1,HK201,L06,standard,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L07,MT1003,Giải tích 1,HK201,L07,standard,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L08,MT1003,Giải tích 1,HK201,L08,standard,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L09,MT1003,Giải tích 1,HK201,L09,standard,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L10,MT1003,Giải tích 1,HK201,L10,standard,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L11,MT1003,Giải tích 1,HK201,L11,standard,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L12,MT1003,Giải tích 1,HK201,L12,standard,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L13,MT1003,Giải tích 1,HK201,L13,standard,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L14,MT1003,Giải tích 1,HK201,L14,standard,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L15,MT1003,Giải tích 1,HK201,L15,standard,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L16,MT1003,Giải tích 1,HK201,L16,standard,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L17,MT1003,Giải tích 1,HK201,L17,standard,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L18,MT1003,Giải tích 1,HK201,L18,standard,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L19,MT1003,Giải tích 1,HK201,L19,standard,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L20,MT1003,Giải tích 1,HK201,L20,standard,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L21,MT1003,Giải tích 1,HK201,L21,standard,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L22,MT1003,Giải tích 1,HK201,L22,standard,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_L23,MT1003,Giải tích 1,HK201,L23,standard,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_PH1003_L01,PH1003,Vật lý 1,HK201,L01,standard,40,GV00093,Huỳnh Hữu Trinh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L02,PH1003,Vật lý 1,HK201,L02,standard,40,GV00094,Hồ Anh Quang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L03,PH1003,Vật lý 1,HK201,L03,standard,40,GV00095,Dương Tuấn Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L04,PH1003,Vật lý 1,HK201,L04,standard,40,GV00096,Đỗ Ngọc Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L05,PH1003,Vật lý 1,HK201,L05,standard,40,GV00097,Dương Thị Phúc,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L06,PH1003,Vật lý 1,HK201,L06,standard,40,GV00098,Lý Anh Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L07,PH1003,Vật lý 1,HK201,L07,standard,40,GV00099,Phạm Khánh Nam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L08,PH1003,Vật lý 1,HK201,L08,standard,40,GV00100,Ngô Thanh Lam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L09,PH1003,Vật lý 1,HK201,L09,standard,40,GV00093,Huỳnh Hữu Trinh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L10,PH1003,Vật lý 1,HK201,L10,standard,40,GV00094,Hồ Anh Quang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L11,PH1003,Vật lý 1,HK201,L11,standard,40,GV00095,Dương Tuấn Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L12,PH1003,Vật lý 1,HK201,L12,standard,40,GV00096,Đỗ Ngọc Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L13,PH1003,Vật lý 1,HK201,L13,standard,40,GV00097,Dương Thị Phúc,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L14,PH1003,Vật lý 1,HK201,L14,standard,40,GV00098,Lý Anh Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L15,PH1003,Vật lý 1,HK201,L15,standard,40,GV00099,Phạm Khánh Nam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L16,PH1003,Vật lý 1,HK201,L16,standard,40,GV00100,Ngô Thanh Lam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L17,PH1003,Vật lý 1,HK201,L17,standard,40,GV00093,Huỳnh Hữu Trinh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L18,PH1003,Vật lý 1,HK201,L18,standard,40,GV00094,Hồ Anh Quang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L19,PH1003,Vật lý 1,HK201,L19,standard,40,GV00095,Dương Tuấn Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L20,PH1003,Vật lý 1,HK201,L20,standard,40,GV00096,Đỗ Ngọc Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L21,PH1003,Vật lý 1,HK201,L21,standard,40,GV00097,Dương Thị Phúc,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L22,PH1003,Vật lý 1,HK201,L22,standard,40,GV00098,Lý Anh Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_L23,PH1003,Vật lý 1,HK201,L23,standard,40,GV00099,Phạm Khánh Nam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_MT1003_L01,MT1003,Giải tích 1,HK201,L01,standard,40,GV00151,Đặng Tuấn Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L02,MT1003,Giải tích 1,HK201,L02,standard,40,GV00152,Lê Hữu Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L03,MT1003,Giải tích 1,HK201,L03,standard,40,GV00153,Phan Tuấn Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L04,MT1003,Giải tích 1,HK201,L04,standard,40,GV00154,Trần Quang An,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L05,MT1003,Giải tích 1,HK201,L05,standard,40,GV00155,Lý Tuấn Việt,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L06,MT1003,Giải tích 1,HK201,L06,standard,40,GV00156,Đỗ Minh Trinh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L07,MT1003,Giải tích 1,HK201,L07,standard,40,GV00157,Bùi Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L08,MT1003,Giải tích 1,HK201,L08,standard,40,GV00158,Vũ Hoàng Uyên,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L09,MT1003,Giải tích 1,HK201,L09,standard,40,GV00159,Phạm Quốc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L10,MT1003,Giải tích 1,HK201,L10,standard,40,GV00160,Vũ Văn Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L11,MT1003,Giải tích 1,HK201,L11,standard,40,GV00161,Ngô Thị Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L12,MT1003,Giải tích 1,HK201,L12,standard,40,GV00162,Bùi Đức Uyên,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L13,MT1003,Giải tích 1,HK201,L13,standard,40,GV00163,Phan Đức Khang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L14,MT1003,Giải tích 1,HK201,L14,standard,40,GV00164,Lê Khánh Tuấn,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L15,MT1003,Giải tích 1,HK201,L15,standard,40,GV00165,Huỳnh Thanh Việt,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L16,MT1003,Giải tích 1,HK201,L16,standard,40,GV00166,Nguyễn Văn Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L17,MT1003,Giải tích 1,HK201,L17,standard,40,GV00167,Hoàng Anh Linh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L18,MT1003,Giải tích 1,HK201,L18,standard,40,GV00168,Bùi Khánh Trinh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L19,MT1003,Giải tích 1,HK201,L19,standard,40,GV00151,Đặng Tuấn Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L20,MT1003,Giải tích 1,HK201,L20,standard,40,GV00152,Lê Hữu Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L21,MT1003,Giải tích 1,HK201,L21,standard,40,GV00153,Phan Tuấn Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L22,MT1003,Giải tích 1,HK201,L22,standard,40,GV00154,Trần Quang An,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_L23,MT1003,Giải tích 1,HK201,L23,standard,40,GV00155,Lý Tuấn Việt,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_PH1003_L01,PH1003,Vật lý 1,HK201,L01,standard,40,GV00191,Võ Văn Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L02,PH1003,Vật lý 1,HK201,L02,standard,40,GV00192,Trần Ngọc Hải,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L03,PH1003,Vật lý 1,HK201,L03,standard,40,GV00193,Lý Quang Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L04,PH1003,Vật lý 1,HK201,L04,standard,40,GV00194,Phan Gia Linh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L05,PH1003,Vật lý 1,HK201,L05,standard,40,GV00195,Phạm Khánh Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L06,PH1003,Vật lý 1,HK201,L06,standard,40,GV00196,Dương Đức Yến,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L07,PH1003,Vật lý 1,HK201,L07,standard,40,GV00197,Hoàng Thanh Khang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L08,PH1003,Vật lý 1,HK201,L08,standard,40,GV00198,Lý Tuấn Châu,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L09,PH1003,Vật lý 1,HK201,L09,standard,40,GV00199,Dương Phương Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L10,PH1003,Vật lý 1,HK201,L10,standard,40,GV00200,Dương Tuấn Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L11,PH1003,Vật lý 1,HK201,L11,standard,40,GV00191,Võ Văn Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L12,PH1003,Vật lý 1,HK201,L12,standard,40,GV00192,Trần Ngọc Hải,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L13,PH1003,Vật lý 1,HK201,L13,standard,40,GV00193,Lý Quang Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L14,PH1003,Vật lý 1,HK201,L14,standard,40,GV00194,Phan Gia Linh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L15,PH1003,Vật lý 1,HK201,L15,standard,40,GV00195,Phạm Khánh Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L16,PH1003,Vật lý 1,HK201,L16,standard,40,GV00196,Dương Đức Yến,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L17,PH1003,Vật lý 1,HK201,L17,standard,40,GV00197,Hoàng Thanh Khang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L18,PH1003,Vật lý 1,HK201,L18,standard,40,GV00198,Lý Tuấn Châu,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L19,PH1003,Vật lý 1,HK201,L19,standard,40,GV00199,Dương Phương Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L20,PH1003,Vật lý 1,HK201,L20,standard,40,GV00200,Dương Tuấn Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L21,PH1003,Vật lý 1,HK201,L21,standard,40,GV00191,Võ Văn Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L22,PH1003,Vật lý 1,HK201,L22,standard,40,GV00192,Trần Ngọc Hải,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_L23,PH1003,Vật lý 1,HK201,L23,standard,40,GV00193,Lý Quang Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK201_CO1005_L01,CO1005,Nhập môn Điện toán,HK201,L01,standard,40,GV00001,Ngô Quốc An,Khoa Khoa học và Kỹ thuật Máy tính
 HK201_CO1005_L02,CO1005,Nhập môn Điện toán,HK201,L02,standard,40,GV00002,Dương Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
 HK201_CO1005_L03,CO1005,Nhập môn Điện toán,HK201,L03,standard,40,GV00003,Lý Hoàng Duy,Khoa Khoa học và Kỹ thuật Máy tính
@@ -68,107 +68,107 @@ HK201_CO1005_L20,CO1005,Nhập môn Điện toán,HK201,L20,standard,40,GV00020,
 HK201_CO1005_L21,CO1005,Nhập môn Điện toán,HK201,L21,standard,40,GV00021,Bùi Quang Hà,Khoa Khoa học và Kỹ thuật Máy tính
 HK201_CO1005_L22,CO1005,Nhập môn Điện toán,HK201,L22,standard,40,GV00022,Bùi Minh Minh,Khoa Khoa học và Kỹ thuật Máy tính
 HK201_CO1005_L23,CO1005,Nhập môn Điện toán,HK201,L23,standard,40,GV00023,Trần Tuấn Lam,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_LA1003_L01,LA1003,Anh văn 1,HK201,L01,standard,40,GV00071,Đặng Đức Châu,Trung tâm Ngoại ngữ
-HK201_LA1003_L02,LA1003,Anh văn 1,HK201,L02,standard,40,GV00072,Vũ Quốc Châu,Trung tâm Ngoại ngữ
-HK201_LA1003_L03,LA1003,Anh văn 1,HK201,L03,standard,40,GV00073,Võ Khánh Việt,Trung tâm Ngoại ngữ
-HK201_LA1003_L04,LA1003,Anh văn 1,HK201,L04,standard,40,GV00074,Nguyễn Tuấn Tuấn,Trung tâm Ngoại ngữ
-HK201_LA1003_L05,LA1003,Anh văn 1,HK201,L05,standard,40,GV00075,Dương Anh An,Trung tâm Ngoại ngữ
-HK201_LA1003_L06,LA1003,Anh văn 1,HK201,L06,standard,40,GV00076,Đặng Quang Hải,Trung tâm Ngoại ngữ
-HK201_LA1003_L07,LA1003,Anh văn 1,HK201,L07,standard,40,GV00077,Đỗ Hữu Quân,Trung tâm Ngoại ngữ
-HK201_LA1003_L08,LA1003,Anh văn 1,HK201,L08,standard,40,GV00078,Võ Gia Nhi,Trung tâm Ngoại ngữ
-HK201_LA1003_L09,LA1003,Anh văn 1,HK201,L09,standard,40,GV00079,Võ Ngọc Quân,Trung tâm Ngoại ngữ
-HK201_LA1003_L10,LA1003,Anh văn 1,HK201,L10,standard,40,GV00080,Ngô Thị Yến,Trung tâm Ngoại ngữ
-HK201_LA1003_L11,LA1003,Anh văn 1,HK201,L11,standard,40,GV00081,Đỗ Hữu Long,Trung tâm Ngoại ngữ
-HK201_LA1003_L12,LA1003,Anh văn 1,HK201,L12,standard,40,GV00082,Lý Khánh Hiếu,Trung tâm Ngoại ngữ
-HK201_LA1003_L13,LA1003,Anh văn 1,HK201,L13,standard,40,GV00083,Võ Phương Khôi,Trung tâm Ngoại ngữ
-HK201_LA1003_L14,LA1003,Anh văn 1,HK201,L14,standard,40,GV00084,Đỗ Minh Trang,Trung tâm Ngoại ngữ
-HK201_LA1003_L15,LA1003,Anh văn 1,HK201,L15,standard,40,GV00071,Đặng Đức Châu,Trung tâm Ngoại ngữ
-HK201_LA1003_L16,LA1003,Anh văn 1,HK201,L16,standard,40,GV00072,Vũ Quốc Châu,Trung tâm Ngoại ngữ
-HK201_LA1003_L17,LA1003,Anh văn 1,HK201,L17,standard,40,GV00073,Võ Khánh Việt,Trung tâm Ngoại ngữ
-HK201_CO1023_L01,CO1023,Hệ thống số,HK201,L01,standard,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L02,CO1023,Hệ thống số,HK201,L02,standard,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L03,CO1023,Hệ thống số,HK201,L03,standard,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L04,CO1023,Hệ thống số,HK201,L04,standard,40,GV00041,Nguyễn Anh Trang,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L05,CO1023,Hệ thống số,HK201,L05,standard,40,GV00042,Hoàng Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L06,CO1023,Hệ thống số,HK201,L06,standard,40,GV00043,Lê Ngọc Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L07,CO1023,Hệ thống số,HK201,L07,standard,40,GV00044,Phan Quốc Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L08,CO1023,Hệ thống số,HK201,L08,standard,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L09,CO1023,Hệ thống số,HK201,L09,standard,40,GV00046,Bùi Quang Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L10,CO1023,Hệ thống số,HK201,L10,standard,40,GV00047,Đỗ Hữu Phát,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L11,CO1023,Hệ thống số,HK201,L11,standard,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L12,CO1023,Hệ thống số,HK201,L12,standard,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L13,CO1023,Hệ thống số,HK201,L13,standard,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L14,CO1023,Hệ thống số,HK201,L14,standard,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L15,CO1023,Hệ thống số,HK201,L15,standard,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L16,CO1023,Hệ thống số,HK201,L16,standard,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L17,CO1023,Hệ thống số,HK201,L17,standard,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L18,CO1023,Hệ thống số,HK201,L18,standard,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L19,CO1023,Hệ thống số,HK201,L19,standard,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L20,CO1023,Hệ thống số,HK201,L20,standard,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L21,CO1023,Hệ thống số,HK201,L21,standard,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L22,CO1023,Hệ thống số,HK201,L22,standard,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_L23,CO1023,Hệ thống số,HK201,L23,standard,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_MT1003_CC01,MT1003,Giải tích 1,HK201,CC01,high-quality,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_CC02,MT1003,Giải tích 1,HK201,CC02,high-quality,40,GV00065,Hoàng Quang Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_CC03,MT1003,Giải tích 1,HK201,CC03,high-quality,40,GV00066,Võ Ngọc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_CC04,MT1003,Giải tích 1,HK201,CC04,high-quality,40,GV00067,Đặng Quốc Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_CC05,MT1003,Giải tích 1,HK201,CC05,high-quality,40,GV00068,Lê Quốc Yến,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_CC06,MT1003,Giải tích 1,HK201,CC06,high-quality,40,GV00069,Bùi Ngọc Bảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_CC07,MT1003,Giải tích 1,HK201,CC07,high-quality,40,GV00070,Nguyễn Gia Thảo,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_CC08,MT1003,Giải tích 1,HK201,CC08,high-quality,40,GV00056,Nguyễn Hoàng Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_CC09,MT1003,Giải tích 1,HK201,CC09,high-quality,40,GV00057,Hồ Khánh Phúc,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_CC10,MT1003,Giải tích 1,HK201,CC10,high-quality,40,GV00058,Võ Hữu Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_CC11,MT1003,Giải tích 1,HK201,CC11,high-quality,40,GV00059,Ngô Hữu Duy,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_CC12,MT1003,Giải tích 1,HK201,CC12,high-quality,40,GV00060,Huỳnh Phương Long,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_PH1003_CC01,PH1003,Vật lý 1,HK201,CC01,high-quality,40,GV00100,Ngô Thanh Lam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_CC02,PH1003,Vật lý 1,HK201,CC02,high-quality,40,GV00093,Huỳnh Hữu Trinh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_CC03,PH1003,Vật lý 1,HK201,CC03,high-quality,40,GV00094,Hồ Anh Quang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_CC04,PH1003,Vật lý 1,HK201,CC04,high-quality,40,GV00095,Dương Tuấn Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_CC05,PH1003,Vật lý 1,HK201,CC05,high-quality,40,GV00096,Đỗ Ngọc Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_CC06,PH1003,Vật lý 1,HK201,CC06,high-quality,40,GV00097,Dương Thị Phúc,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_CC07,PH1003,Vật lý 1,HK201,CC07,high-quality,40,GV00098,Lý Anh Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_CC08,PH1003,Vật lý 1,HK201,CC08,high-quality,40,GV00099,Phạm Khánh Nam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_CC09,PH1003,Vật lý 1,HK201,CC09,high-quality,40,GV00100,Ngô Thanh Lam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_CC10,PH1003,Vật lý 1,HK201,CC10,high-quality,40,GV00093,Huỳnh Hữu Trinh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_CC11,PH1003,Vật lý 1,HK201,CC11,high-quality,40,GV00094,Hồ Anh Quang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_CC12,PH1003,Vật lý 1,HK201,CC12,high-quality,40,GV00095,Dương Tuấn Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_CO1005_CC01,CO1005,Nhập môn Điện toán,HK201,CC01,high-quality,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1005_CC02,CO1005,Nhập môn Điện toán,HK201,CC02,high-quality,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1005_CC03,CO1005,Nhập môn Điện toán,HK201,CC03,high-quality,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1005_CC04,CO1005,Nhập môn Điện toán,HK201,CC04,high-quality,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1005_CC05,CO1005,Nhập môn Điện toán,HK201,CC05,high-quality,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1005_CC06,CO1005,Nhập môn Điện toán,HK201,CC06,high-quality,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1005_CC07,CO1005,Nhập môn Điện toán,HK201,CC07,high-quality,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1005_CC08,CO1005,Nhập môn Điện toán,HK201,CC08,high-quality,40,GV00054,Dương Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1005_CC09,CO1005,Nhập môn Điện toán,HK201,CC09,high-quality,40,GV00055,Bùi Anh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1005_CC10,CO1005,Nhập môn Điện toán,HK201,CC10,high-quality,40,GV00001,Ngô Quốc An,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1005_CC11,CO1005,Nhập môn Điện toán,HK201,CC11,high-quality,40,GV00002,Dương Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1005_CC12,CO1005,Nhập môn Điện toán,HK201,CC12,high-quality,40,GV00003,Lý Hoàng Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_CC01,CO1023,Hệ thống số,HK201,CC01,high-quality,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_CC02,CO1023,Hệ thống số,HK201,CC02,high-quality,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_CC03,CO1023,Hệ thống số,HK201,CC03,high-quality,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_CC04,CO1023,Hệ thống số,HK201,CC04,high-quality,40,GV00041,Nguyễn Anh Trang,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_CC05,CO1023,Hệ thống số,HK201,CC05,high-quality,40,GV00042,Hoàng Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_CC06,CO1023,Hệ thống số,HK201,CC06,high-quality,40,GV00043,Lê Ngọc Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_CC07,CO1023,Hệ thống số,HK201,CC07,high-quality,40,GV00044,Phan Quốc Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_CC08,CO1023,Hệ thống số,HK201,CC08,high-quality,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_CC09,CO1023,Hệ thống số,HK201,CC09,high-quality,40,GV00046,Bùi Quang Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_CC10,CO1023,Hệ thống số,HK201,CC10,high-quality,40,GV00047,Đỗ Hữu Phát,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_CC11,CO1023,Hệ thống số,HK201,CC11,high-quality,40,GV00004,Phạm Ngọc Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_CC12,CO1023,Hệ thống số,HK201,CC12,high-quality,40,GV00005,Hồ Khánh Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_MT1003_TT01,MT1003,Giải tích 1,HK201,TT01,advanced,40,GV00061,Dương Quang Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_TT02,MT1003,Giải tích 1,HK201,TT02,advanced,40,GV00062,Trần Minh Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_TT03,MT1003,Giải tích 1,HK201,TT03,advanced,40,GV00063,Đặng Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_MT1003_TT04,MT1003,Giải tích 1,HK201,TT04,advanced,40,GV00064,Phạm Gia Anh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK201_PH1003_TT01,PH1003,Vật lý 1,HK201,TT01,advanced,40,GV00096,Đỗ Ngọc Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_TT02,PH1003,Vật lý 1,HK201,TT02,advanced,40,GV00097,Dương Thị Phúc,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_TT03,PH1003,Vật lý 1,HK201,TT03,advanced,40,GV00098,Lý Anh Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_PH1003_TT04,PH1003,Vật lý 1,HK201,TT04,advanced,40,GV00099,Phạm Khánh Nam,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK201_CO1005_TT01,CO1005,Nhập môn Điện toán,HK201,TT01,advanced,40,GV00006,Bùi Hữu Trinh,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1005_TT02,CO1005,Nhập môn Điện toán,HK201,TT02,advanced,40,GV00007,Huỳnh Anh Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1005_TT03,CO1005,Nhập môn Điện toán,HK201,TT03,advanced,40,GV00008,Lê Thanh Hải,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1005_TT04,CO1005,Nhập môn Điện toán,HK201,TT04,advanced,40,GV00009,Bùi Anh Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_TT01,CO1023,Hệ thống số,HK201,TT01,advanced,40,GV00010,Dương Hữu Bảo,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_TT02,CO1023,Hệ thống số,HK201,TT02,advanced,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_TT03,CO1023,Hệ thống số,HK201,TT03,advanced,40,GV00012,Huỳnh Ngọc Khôi,Khoa Khoa học và Kỹ thuật Máy tính
-HK201_CO1023_TT04,CO1023,Hệ thống số,HK201,TT04,advanced,40,GV00013,Đỗ Đức Khang,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_LA1003_L01,LA1003,Anh văn 1,HK201,L01,standard,40,GV00169,Bùi Hoàng Uyên,Trung tâm Ngoại ngữ
+HK201_LA1003_L02,LA1003,Anh văn 1,HK201,L02,standard,40,GV00170,Hồ Minh Châu,Trung tâm Ngoại ngữ
+HK201_LA1003_L03,LA1003,Anh văn 1,HK201,L03,standard,40,GV00171,Lý Phương Thảo,Trung tâm Ngoại ngữ
+HK201_LA1003_L04,LA1003,Anh văn 1,HK201,L04,standard,40,GV00172,Huỳnh Gia Phúc,Trung tâm Ngoại ngữ
+HK201_LA1003_L05,LA1003,Anh văn 1,HK201,L05,standard,40,GV00173,Trần Quốc Tú,Trung tâm Ngoại ngữ
+HK201_LA1003_L06,LA1003,Anh văn 1,HK201,L06,standard,40,GV00174,Trần Thị Hùng,Trung tâm Ngoại ngữ
+HK201_LA1003_L07,LA1003,Anh văn 1,HK201,L07,standard,40,GV00175,Hồ Đức Minh,Trung tâm Ngoại ngữ
+HK201_LA1003_L08,LA1003,Anh văn 1,HK201,L08,standard,40,GV00176,Lý Thị Tú,Trung tâm Ngoại ngữ
+HK201_LA1003_L09,LA1003,Anh văn 1,HK201,L09,standard,40,GV00177,Võ Phương Khang,Trung tâm Ngoại ngữ
+HK201_LA1003_L10,LA1003,Anh văn 1,HK201,L10,standard,40,GV00178,Lê Thị Hà,Trung tâm Ngoại ngữ
+HK201_LA1003_L11,LA1003,Anh văn 1,HK201,L11,standard,40,GV00179,Nguyễn Thanh Nhi,Trung tâm Ngoại ngữ
+HK201_LA1003_L12,LA1003,Anh văn 1,HK201,L12,standard,40,GV00169,Bùi Hoàng Uyên,Trung tâm Ngoại ngữ
+HK201_LA1003_L13,LA1003,Anh văn 1,HK201,L13,standard,40,GV00170,Hồ Minh Châu,Trung tâm Ngoại ngữ
+HK201_LA1003_L14,LA1003,Anh văn 1,HK201,L14,standard,40,GV00171,Lý Phương Thảo,Trung tâm Ngoại ngữ
+HK201_LA1003_L15,LA1003,Anh văn 1,HK201,L15,standard,40,GV00172,Huỳnh Gia Phúc,Trung tâm Ngoại ngữ
+HK201_LA1003_L16,LA1003,Anh văn 1,HK201,L16,standard,40,GV00173,Trần Quốc Tú,Trung tâm Ngoại ngữ
+HK201_LA1003_L17,LA1003,Anh văn 1,HK201,L17,standard,40,GV00174,Trần Thị Hùng,Trung tâm Ngoại ngữ
+HK201_CO1023_L01,CO1023,Hệ thống số,HK201,L01,standard,40,GV00101,Nguyễn Quang Phúc,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L02,CO1023,Hệ thống số,HK201,L02,standard,40,GV00102,Đặng Anh Phúc,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L03,CO1023,Hệ thống số,HK201,L03,standard,40,GV00103,Phạm Gia Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L04,CO1023,Hệ thống số,HK201,L04,standard,40,GV00104,Phan Gia Bảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L05,CO1023,Hệ thống số,HK201,L05,standard,40,GV00105,Vũ Đức Long,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L06,CO1023,Hệ thống số,HK201,L06,standard,40,GV00106,Vũ Thanh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L07,CO1023,Hệ thống số,HK201,L07,standard,40,GV00107,Hoàng Quang Quang,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L08,CO1023,Hệ thống số,HK201,L08,standard,40,GV00108,Lý Hoàng Anh,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L09,CO1023,Hệ thống số,HK201,L09,standard,40,GV00109,Đỗ Hữu Khang,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L10,CO1023,Hệ thống số,HK201,L10,standard,40,GV00110,Huỳnh Hoàng Yến,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L11,CO1023,Hệ thống số,HK201,L11,standard,40,GV00111,Vũ Ngọc Hùng,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L12,CO1023,Hệ thống số,HK201,L12,standard,40,GV00112,Phạm Phương Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L13,CO1023,Hệ thống số,HK201,L13,standard,40,GV00113,Vũ Hữu Hùng,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L14,CO1023,Hệ thống số,HK201,L14,standard,40,GV00114,Đặng Quang Quân,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L15,CO1023,Hệ thống số,HK201,L15,standard,40,GV00115,Huỳnh Quốc Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L16,CO1023,Hệ thống số,HK201,L16,standard,40,GV00116,Phạm Khánh Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L17,CO1023,Hệ thống số,HK201,L17,standard,40,GV00117,Trần Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L18,CO1023,Hệ thống số,HK201,L18,standard,40,GV00118,Võ Phương Khang,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L19,CO1023,Hệ thống số,HK201,L19,standard,40,GV00119,Phan Tuấn Quân,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L20,CO1023,Hệ thống số,HK201,L20,standard,40,GV00120,Vũ Khánh Lam,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L21,CO1023,Hệ thống số,HK201,L21,standard,40,GV00121,Vũ Hữu Hải,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L22,CO1023,Hệ thống số,HK201,L22,standard,40,GV00122,Lý Hoàng Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_L23,CO1023,Hệ thống số,HK201,L23,standard,40,GV00123,Phạm Phương An,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_MT1003_CC01,MT1003,Giải tích 1,HK201,CC01,high-quality,40,GV00156,Đỗ Minh Trinh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_CC02,MT1003,Giải tích 1,HK201,CC02,high-quality,40,GV00157,Bùi Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_CC03,MT1003,Giải tích 1,HK201,CC03,high-quality,40,GV00158,Vũ Hoàng Uyên,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_CC04,MT1003,Giải tích 1,HK201,CC04,high-quality,40,GV00159,Phạm Quốc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_CC05,MT1003,Giải tích 1,HK201,CC05,high-quality,40,GV00160,Vũ Văn Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_CC06,MT1003,Giải tích 1,HK201,CC06,high-quality,40,GV00161,Ngô Thị Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_CC07,MT1003,Giải tích 1,HK201,CC07,high-quality,40,GV00162,Bùi Đức Uyên,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_CC08,MT1003,Giải tích 1,HK201,CC08,high-quality,40,GV00163,Phan Đức Khang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_CC09,MT1003,Giải tích 1,HK201,CC09,high-quality,40,GV00164,Lê Khánh Tuấn,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_CC10,MT1003,Giải tích 1,HK201,CC10,high-quality,40,GV00165,Huỳnh Thanh Việt,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_CC11,MT1003,Giải tích 1,HK201,CC11,high-quality,40,GV00166,Nguyễn Văn Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_CC12,MT1003,Giải tích 1,HK201,CC12,high-quality,40,GV00167,Hoàng Anh Linh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_PH1003_CC01,PH1003,Vật lý 1,HK201,CC01,high-quality,40,GV00194,Phan Gia Linh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_CC02,PH1003,Vật lý 1,HK201,CC02,high-quality,40,GV00195,Phạm Khánh Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_CC03,PH1003,Vật lý 1,HK201,CC03,high-quality,40,GV00196,Dương Đức Yến,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_CC04,PH1003,Vật lý 1,HK201,CC04,high-quality,40,GV00197,Hoàng Thanh Khang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_CC05,PH1003,Vật lý 1,HK201,CC05,high-quality,40,GV00198,Lý Tuấn Châu,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_CC06,PH1003,Vật lý 1,HK201,CC06,high-quality,40,GV00199,Dương Phương Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_CC07,PH1003,Vật lý 1,HK201,CC07,high-quality,40,GV00200,Dương Tuấn Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_CC08,PH1003,Vật lý 1,HK201,CC08,high-quality,40,GV00191,Võ Văn Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_CC09,PH1003,Vật lý 1,HK201,CC09,high-quality,40,GV00192,Trần Ngọc Hải,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_CC10,PH1003,Vật lý 1,HK201,CC10,high-quality,40,GV00193,Lý Quang Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_CC11,PH1003,Vật lý 1,HK201,CC11,high-quality,40,GV00194,Phan Gia Linh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_CC12,PH1003,Vật lý 1,HK201,CC12,high-quality,40,GV00195,Phạm Khánh Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_CO1005_CC01,CO1005,Nhập môn Điện toán,HK201,CC01,high-quality,40,GV00024,Lê Anh Thảo,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1005_CC02,CO1005,Nhập môn Điện toán,HK201,CC02,high-quality,40,GV00025,Ngô Quang Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1005_CC03,CO1005,Nhập môn Điện toán,HK201,CC03,high-quality,40,GV00026,Hoàng Khánh Long,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1005_CC04,CO1005,Nhập môn Điện toán,HK201,CC04,high-quality,40,GV00027,Nguyễn Quốc Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1005_CC05,CO1005,Nhập môn Điện toán,HK201,CC05,high-quality,40,GV00028,Phạm Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1005_CC06,CO1005,Nhập môn Điện toán,HK201,CC06,high-quality,40,GV00029,Lê Hoàng Lam,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1005_CC07,CO1005,Nhập môn Điện toán,HK201,CC07,high-quality,40,GV00030,Đỗ Minh Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1005_CC08,CO1005,Nhập môn Điện toán,HK201,CC08,high-quality,40,GV00031,Lê Khánh Yến,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1005_CC09,CO1005,Nhập môn Điện toán,HK201,CC09,high-quality,40,GV00032,Đặng Gia Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1005_CC10,CO1005,Nhập môn Điện toán,HK201,CC10,high-quality,40,GV00033,Đỗ Thanh Châu,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1005_CC11,CO1005,Nhập môn Điện toán,HK201,CC11,high-quality,40,GV00034,Dương Minh Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1005_CC12,CO1005,Nhập môn Điện toán,HK201,CC12,high-quality,40,GV00035,Lê Quang Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_CC01,CO1023,Hệ thống số,HK201,CC01,high-quality,40,GV00124,Phan Hữu An,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_CC02,CO1023,Hệ thống số,HK201,CC02,high-quality,40,GV00125,Ngô Đức Việt,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_CC03,CO1023,Hệ thống số,HK201,CC03,high-quality,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_CC04,CO1023,Hệ thống số,HK201,CC04,high-quality,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_CC05,CO1023,Hệ thống số,HK201,CC05,high-quality,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_CC06,CO1023,Hệ thống số,HK201,CC06,high-quality,40,GV00039,Nguyễn Quang Tuấn,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_CC07,CO1023,Hệ thống số,HK201,CC07,high-quality,40,GV00040,Lý Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_CC08,CO1023,Hệ thống số,HK201,CC08,high-quality,40,GV00041,Nguyễn Anh Trang,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_CC09,CO1023,Hệ thống số,HK201,CC09,high-quality,40,GV00042,Hoàng Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_CC10,CO1023,Hệ thống số,HK201,CC10,high-quality,40,GV00043,Lê Ngọc Nhi,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_CC11,CO1023,Hệ thống số,HK201,CC11,high-quality,40,GV00044,Phan Quốc Trinh,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_CC12,CO1023,Hệ thống số,HK201,CC12,high-quality,40,GV00045,Nguyễn Ngọc Duy,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_MT1003_TT01,MT1003,Giải tích 1,HK201,TT01,advanced,40,GV00168,Bùi Khánh Trinh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_TT02,MT1003,Giải tích 1,HK201,TT02,advanced,40,GV00151,Đặng Tuấn Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_TT03,MT1003,Giải tích 1,HK201,TT03,advanced,40,GV00152,Lê Hữu Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_MT1003_TT04,MT1003,Giải tích 1,HK201,TT04,advanced,40,GV00153,Phan Tuấn Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK201_PH1003_TT01,PH1003,Vật lý 1,HK201,TT01,advanced,40,GV00196,Dương Đức Yến,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_TT02,PH1003,Vật lý 1,HK201,TT02,advanced,40,GV00197,Hoàng Thanh Khang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_TT03,PH1003,Vật lý 1,HK201,TT03,advanced,40,GV00198,Lý Tuấn Châu,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_PH1003_TT04,PH1003,Vật lý 1,HK201,TT04,advanced,40,GV00199,Dương Phương Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK201_CO1005_TT01,CO1005,Nhập môn Điện toán,HK201,TT01,advanced,40,GV00046,Bùi Quang Khôi,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1005_TT02,CO1005,Nhập môn Điện toán,HK201,TT02,advanced,40,GV00047,Đỗ Hữu Phát,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1005_TT03,CO1005,Nhập môn Điện toán,HK201,TT03,advanced,40,GV00048,Hồ Minh Nam,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1005_TT04,CO1005,Nhập môn Điện toán,HK201,TT04,advanced,40,GV00049,Đỗ Anh Minh,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_TT01,CO1023,Hệ thống số,HK201,TT01,advanced,40,GV00050,Đỗ Tuấn Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_TT02,CO1023,Hệ thống số,HK201,TT02,advanced,40,GV00051,Vũ Ngọc Linh,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_TT03,CO1023,Hệ thống số,HK201,TT03,advanced,40,GV00052,Đỗ Văn Uyên,Khoa Khoa học và Kỹ thuật Máy tính
+HK201_CO1023_TT04,CO1023,Hệ thống số,HK201,TT04,advanced,40,GV00053,Trần Thị Bảo,Khoa Khoa học và Kỹ thuật Máy tính

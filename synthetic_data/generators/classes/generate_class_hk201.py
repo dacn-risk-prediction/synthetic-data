@@ -212,6 +212,8 @@ def generate_class_hk201() -> Path:
     print("\nThống kê cân bằng tải giảng viên theo từng đơn vị:")
     dept_stats: Dict[str, List[int]] = defaultdict(list)
     for gv_id, count in assigned_count.items():
+        if count == 0:
+            continue
         dept = df_classes[df_classes["lecturer_id"] == gv_id]["department"].iloc[0]
         dept_stats[dept].append(count)
 
