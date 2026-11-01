@@ -126,13 +126,15 @@ một cấu hình để điều chỉnh nhất quán giữa các học kỳ.
 - `personality_weights` là trọng số cho discipline, motivation, stress và
   social activity sau khi chuẩn hóa trait về `[-1, 1]`. Mặc định social activity
   không ảnh hưởng trực tiếp tới điểm.
-- `difficulty.course_overrides` cho phép đặt difficulty từng `course_code` theo
-  thang 1–5. Môn không có override dùng cột `difficulty` trong `course.csv`,
-  chuẩn hóa theo `catalog_min`/`catalog_max`. Difficulty trừ điểm; mức trừ giảm
-  khi academic/personality strength cao (academic level, discipline, motivation
-  cao hoặc stress thấp).
-- Ví dụ: đặt `"CO1005": 4` trong `course_overrides` để gán môn CO1005 mức 4
-  (mức 5 là khó nhất). Để giữ mức danh mục, không thêm môn vào map override.
+- `difficulty.course_overrides` cho phép đặt hệ số điều chỉnh độ khó từng `course_code` theo
+  thang `[-1.0, 1.0]`. Quy ước trực quan:
+  * **Giá trị dương (`> 0`, ví dụ `+0.4`, `+0.5`)**: Môn dễ $\rightarrow$ **Cộng thêm điểm** cho môn đó.
+  * **Giá trị âm (`< 0`, ví dụ `-0.3`, `-0.5`)**: Môn khó $\rightarrow$ **Trừ bớt điểm** của môn đó.
+  * **Giá trị `0.0`**: Mức chuẩn trung bình (mặc định cho môn không override, không cộng không trừ).
+  Mức trừ/cộng điểm giảm khi academic/personality strength cao (academic level,
+  discipline, motivation cao hoặc stress thấp).
+- Ví dụ: đặt `"SP1007": 0.4` để gán môn dễ (cộng thêm điểm), đặt `"CO2003": -0.5` để
+  gán môn khó (trừ bớt điểm). Để giữ mức mặc định (0.0), không thêm môn vào map override.
 - `calibration_targets` chỉ là khoảng để đánh giá kết quả GPA sau khi sinh,
   không ép sinh viên vào nhóm GPA.
 - `noise` điều chỉnh tỷ lệ Normal/high-deviation, sigma và hướng lệch. `seed`

@@ -269,7 +269,7 @@ def generate_grade_improvement_retakes(
                     std_prof,
                     cid,
                     comps,
-                    3.0,
+                    0.0,
                     rng,
                     retaken=True,
                     student_id=sid,

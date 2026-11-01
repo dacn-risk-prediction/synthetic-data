@@ -49,19 +49,21 @@ def course_mean_score(
     mean_score += shift
 
     difficulty_config = config["difficulty"]
-    overrides = difficulty_config["course_overrides"]
+    overrides = difficulty_config.get("course_overrides", {})
+    min_lvl = float(difficulty_config.get("min_level", -1.0))
+    max_lvl = float(difficulty_config.get("max_level", 1.0))
+
     if course_code in overrides:
-        difficulty_fraction = (
-            overrides[course_code] - difficulty_config["min_level"]
-        ) / (difficulty_config["max_level"] - difficulty_config["min_level"])
+        diff_val = float(overrides[course_code])
     else:
         catalog_value = float(catalog_difficulty)
         if not math.isfinite(catalog_value):
             raise ValueError(f"Invalid catalog difficulty for course {course_code}")
-        difficulty_fraction = (
-            catalog_value - difficulty_config["catalog_min"]
-        ) / (difficulty_config["catalog_max"] - difficulty_config["catalog_min"])
-    difficulty_fraction = float(np.clip(difficulty_fraction, 0.0, 1.0))
+        cat_min = float(difficulty_config.get("catalog_min", -1.0))
+        cat_max = float(difficulty_config.get("catalog_max", 1.0))
+        diff_val = float(np.clip(catalog_value, cat_min, cat_max))
+
+    diff_val = float(np.clip(diff_val, min_lvl, max_lvl))
 
     academic_strength = (profile["academic_level"] - 1) / 4.0
     personality_strength = sum((
@@ -70,12 +72,14 @@ def course_mean_score(
         (5 - profile["stress"]) / 4.0,
     )) / 3.0
     overall_strength = (academic_strength + personality_strength) / 2.0
-    difficulty_effect = (
-        difficulty_fraction
+    # Positive diff_val (> 0) adds points (easy course bonus);
+    # Negative diff_val (< 0) subtracts points (hard course penalty).
+    adjustment = (
+        diff_val
         * difficulty_config["max_penalty"]
         * (1.0 - difficulty_config["resilience"] * overall_strength)
     )
-    return mean_score - difficulty_effect
+    return mean_score + adjustment
 
 
 def generate_observed_score(
@@ -120,8 +124,8 @@ def score_course_components(
     student: Any,
     course_code: str,
     components: List[Tuple[str, float]],
-    catalog_difficulty: float,
-    rng: np.random.Generator,
+    catalog_difficulty: float = 0.0,
+    rng: Optional[np.random.Generator] = None,
     config: Optional[Dict[str, Any]] = None,
     *,
     retaken: bool = False,

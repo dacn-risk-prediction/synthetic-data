@@ -382,7 +382,7 @@ def enroll_students_in_electives(
                         student=student_data,
                         course_code=c_code,
                         components=comps,
-                        catalog_difficulty=0.5,
+                        catalog_difficulty=0.0,
                         rng=rng,
                         config=config,
                         retaken=is_retake,

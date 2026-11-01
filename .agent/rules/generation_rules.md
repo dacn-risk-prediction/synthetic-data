@@ -84,6 +84,11 @@ Khi có nhiều nhóm đối tượng sinh viên cùng đăng ký một môn h�
 9. **Thang điểm chuẩn ĐHQG**:
    - Điểm tổng kết $\ge 4.0$ là qua môn (`status = 'Pass'`, điểm chữ khác `F`).
    - Thang chữ: A+ (9.0-10.0: 4.0), A (8.0-8.9: 4.0), B+ (7.0-7.9: 3.5), B (6.0-6.9: 3.0), C+ (5.5-5.9: 2.5), C (5.0-5.4: 2.0), D+ (4.5-4.9: 1.5), D (4.0-4.4: 1.0), F (< 4.0: 0.0).
+10. **Hệ số độ khó & Điều chỉnh điểm môn học (`difficulty.course_overrides`)**:
+   - Thang đo cấu hình: `[-1.0, 1.0]`.
+   - **Giá trị dương (`> 0`)**: Môn dễ $\rightarrow$ **Cộng thêm điểm** vào điểm kỳ vọng (ví dụ `SP1007: 0.4`).
+   - **Giá trị âm (`< 0`)**: Môn khó $\rightarrow$ **Trừ bớt điểm** khỏi điểm kỳ vọng (ví dụ `MT1003: -0.5`).
+   - **Giá trị `0.0` (Mặc định)**: Môn chuẩn trung tính (không cộng không trừ điểm).
 
 ---
 

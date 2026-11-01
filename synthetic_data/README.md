@@ -93,9 +93,12 @@ Khi cần tinh chỉnh số liệu theo thông số thực tế do giảng viên
 * **Công thức tính điểm tổng kết:**
   $$\text{final\_score} = \frac{\sum (\text{điểm thành phần} \times \text{tỷ lệ})}{100}$$
 
-### 4.2. Đổi độ khó môn học (Course Difficulty Overrides)
+### 4.2. Đổi độ khó & Điều chỉnh điểm môn học (Course Difficulty Overrides)
 * **Vị trí:** [`synthetic_data/config/generator_config.json`](file:///home/nhan/Documents/DACN/synthetic-data/synthetic_data/config/generator_config.json) tại mục `"difficulty" -> "course_overrides"`:
-  * Điểm phạt trừ vào điểm kỳ vọng (ví dụ `"MT1003": 0.5`, `"PH1003": 0.5`, `"CO2003": 0.4`). Môn dễ có thể gán giá trị âm để cộng điểm (ví dụ `"SP1007": -0.3`).
+  * Thang đo `[-1.0, 1.0]`:
+    * **Giá trị dương (`> 0`)**: Môn dễ $\rightarrow$ **Cộng thêm điểm** (ví dụ `"SP1007": 0.4`, `"PE1003": 0.5`).
+    * **Giá trị âm (`< 0`)**: Môn khó $\rightarrow$ **Trừ bớt điểm** (ví dụ `"MT1003": -0.5`, `"CO2003": -0.5`).
+    * **Giá trị `0.0` (Mặc định)**: Môn chuẩn trung bình (không cộng không trừ).
 * **Quy tắc theo khối môn:** Điều chỉnh trong hàm `course_mean_score()` tại [`synthetic_data/rules/academic_rules.py`](file:///home/nhan/Documents/DACN/synthetic-data/synthetic_data/rules/academic_rules.py).
 
 ### 4.3. Đổi phân phối phổ điểm & Học lực toàn trường

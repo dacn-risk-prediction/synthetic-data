@@ -408,14 +408,14 @@ class AcademicScoreRulesTests(unittest.TestCase):
             **GENERATOR_CONFIG,
             "difficulty": {
                 **GENERATOR_CONFIG["difficulty"],
-                "course_overrides": {"CO9999": 1},
+                "course_overrides": {"CO9999": 1.0},
             },
         }
         hard_config = {
             **GENERATOR_CONFIG,
             "difficulty": {
                 **GENERATOR_CONFIG["difficulty"],
-                "course_overrides": {"CO9999": 5},
+                "course_overrides": {"CO9999": -1.0},
             },
         }
 
@@ -427,6 +427,35 @@ class AcademicScoreRulesTests(unittest.TestCase):
         ) - course_mean_score(high_profile, "CO9999", 0, easy_config)
 
         self.assertLess(abs(high_change), abs(low_change))
+
+    def test_positive_difficulty_adds_points_and_negative_penalizes(self):
+        profile = {
+            "student_id": "test_student",
+            "academic_level": 3,
+            "discipline": 3,
+            "motivation": 3,
+            "stress": 3,
+        }
+        bonus_config = {
+            **GENERATOR_CONFIG,
+            "difficulty": {
+                **GENERATOR_CONFIG["difficulty"],
+                "course_overrides": {"CO_EASY": 0.5},
+            },
+        }
+        penalty_config = {
+            **GENERATOR_CONFIG,
+            "difficulty": {
+                **GENERATOR_CONFIG["difficulty"],
+                "course_overrides": {"CO_HARD": -0.5},
+            },
+        }
+        neutral_score = course_mean_score(profile, "CO_NORM", 0.0, GENERATOR_CONFIG)
+        bonus_score = course_mean_score(profile, "CO_EASY", 0.0, bonus_config)
+        penalty_score = course_mean_score(profile, "CO_HARD", 0.0, penalty_config)
+
+        self.assertGreater(bonus_score, neutral_score, "Positive difficulty must add points")
+        self.assertLess(penalty_score, neutral_score, "Negative difficulty must reduce points")
 
     def test_grade_boundaries_are_lower_inclusive(self):
         cases = {

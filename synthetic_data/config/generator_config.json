@@ -47,13 +47,15 @@
     "social_activity": 0.0
   },
   "difficulty": {
-    "catalog_min": 0.0,
+    "catalog_min": -1.0,
     "catalog_max": 1.0,
-    "min_level": 1.0,
-    "max_level": 5.0,
+    "min_level": -1.0,
+    "max_level": 1.0,
     "max_penalty": 1.0,
     "resilience": 0.8,
-    "course_overrides": {}
+    "course_overrides": {
+      
+    }
   },
   "noise": {
     "normal_ratio": 0.9,

@@ -371,7 +371,7 @@ def generate_enrollment_hk251() -> Path:
             student=student_data,
             course_code=course_code,
             components=comps,
-            catalog_difficulty=0.5,
+            catalog_difficulty=0.0,
             rng=rng,
             config=GENERATOR_CONFIG,
             retaken=is_retake,
