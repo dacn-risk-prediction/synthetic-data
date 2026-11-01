@@ -45,8 +45,34 @@ COURSE_ASSESSMENT_SPECS: Dict[str, Tuple[str, int, int, int, int, int]] = {
 
     # Giáo dục thể chất & Giáo dục quốc phòng
     "MI1003": ("giao_duc", 0, 0, 20, 20, 60),
-    "PE1003": ("giao_duc", 0, 0, 20, 20, 60),
-    "PE1005": ("giao_duc", 0, 0, 20, 20, 60),
+    "PE1003": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1005": ("giao_duc", 0, 0, 0, 0, 100),
+    # Giáo dục thể chất (Học phần 1) - 100% điểm thi cuối kỳ
+    "PE1009": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1011": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1013": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1015": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1017": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1019": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1021": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1025": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1027": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1053": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1057": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1061": ("giao_duc", 0, 0, 0, 0, 100),
+    # Giáo dục thể chất (Học phần 2) - 100% điểm thi cuối kỳ
+    "PE1033": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1035": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1037": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1039": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1041": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1043": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1045": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1049": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1051": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1055": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1059": ("giao_duc", 0, 0, 0, 0, 100),
+    "PE1063": ("giao_duc", 0, 0, 0, 0, 100),
 
     # Kinh tế & Quản lý
     "IM1013": ("kinh_te", 0, 0, 20, 30, 50),

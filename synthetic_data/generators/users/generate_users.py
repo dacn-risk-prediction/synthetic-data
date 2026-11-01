@@ -28,6 +28,7 @@ ROLE_OUTPUT_FILES = {
 # DEFAULT FALLBACKS (Nghiệp vụ - sẽ được ưu tiên đọc từ generator_config.json)
 # -------------------------------------------------------------------------
 DEFAULT_SEED = 20260923
+DEFAULT_PASSWORD_HASH = "$2a$12$T5UwfYsBpB4uismVp9cGBuSGl1w3hhKrztc.Q9KRSQd1F1ne3TyGi"
 INITIAL_STUDENT_COUNT_DEFAULT = 1500
 STUDENT_INCREMENT_MIN_DEFAULT = 15
 STUDENT_INCREMENT_MAX_DEFAULT = 50
@@ -136,8 +137,9 @@ def generate_users() -> None:
     students_cfg = user_cfg.get("students", {})
     staff_cfg = user_cfg.get("staff", {})
 
-    # 1. Khởi tạo Seed
+    # 1. Khởi tạo Seed & Mật khẩu mặc định
     seed_value = user_cfg.get("seed", DEFAULT_SEED)
+    default_password = user_cfg.get("default_password_hash", DEFAULT_PASSWORD_HASH)
     fake = Faker("vi_VN")
     Faker.seed(seed_value)
 
@@ -189,7 +191,7 @@ def generate_users() -> None:
             name = generate_vietnamese_name(fake)
             email_name = normalize_name(name)
             email = f"{email_name}.{user_id.lower()}@hcmut.edu.vn"
-            password = generate_password()
+            password = default_password
             role, title = "admin", "none"
             role_writers["admin"].writerow([user_id, name, email, password, password, role, title])
             writer.writerow([user_id, name, email, password, password, role, title, "none", "Phòng Đào tạo", "Quản trị hệ thống"])
@@ -207,7 +209,7 @@ def generate_users() -> None:
                 name = generate_vietnamese_name(fake)
                 email_name = normalize_name(name)
                 email = f"{email_name}.{user_id.lower()}@hcmut.edu.vn"
-                password = generate_password()
+                password = default_password
                 role = "lecturer"
                 title = fake.random_element(elements=lecturer_titles)
                 role_writers["lecturer"].writerow([
@@ -227,11 +229,15 @@ def generate_users() -> None:
 
         if existing_students:
             for row in existing_students:
+                if len(row) > 3:
+                    row[3] = default_password
+                if len(row) > 4:
+                    row[4] = default_password
                 role_writers["student"].writerow(row)
                 prog = row[7] if len(row) > 7 else "standard"
                 spec = row[8] if len(row) > 8 else "Khoa học Máy tính"
                 writer.writerow([
-                    row[0], row[1], row[2], row[3], row[4], row[5], row[6], prog,
+                    row[0], row[1], row[2], default_password, default_password, row[5], row[6], prog,
                     "Khoa Khoa học và Kỹ thuật Máy tính", spec
                 ])
                 total_students += 1
@@ -248,7 +254,7 @@ def generate_users() -> None:
                     name = generate_vietnamese_name(fake)
                     email_name = normalize_name(name)
                     email = f"{email_name}.{user_id}@hcmut.edu.vn"
-                    password = generate_password()
+                    password = default_password
                     role, title = "student", "undergraduate"
                     program = fake.random.choices(programs, weights=program_weights, k=1)[0]
                     program_counts[program] += 1

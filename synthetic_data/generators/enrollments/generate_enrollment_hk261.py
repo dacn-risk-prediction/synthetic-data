@@ -75,6 +75,8 @@ from academic_rules import (
     filter_retake_demand_by_credit_limit,
     generate_grade_improvement_retakes,
     score_course_components,
+    assign_student_hp1_sport,
+    build_pe_enrollments_for_semester,
 )
 
 ANALYSIS_DIR = ROOT_DIR / "analysis"
@@ -346,16 +348,33 @@ def generate_enrollment_hk261() -> Path:
     )
 
     k26_compulsory = get_curriculum_for_cohort_semester("K26", 1)["compulsory_courses"]
-    k26_core_courses = [c["course_code"] for c in k26_compulsory if not c["course_code"].startswith("LA")]
+    k26_core_courses = [
+        c["course_code"] for c in k26_compulsory
+        if not c["course_code"].startswith("LA")
+        and not c["course_code"].startswith("PE")
+        and c["course_code"] not in ("MI1003", "SA4001")
+    ]
 
     k25_compulsory = get_curriculum_for_cohort_semester("K25", 3)["compulsory_courses"]
-    k25_core_courses = [c["course_code"] for c in k25_compulsory if not c["course_code"].startswith("LA")]
+    k25_core_courses = [
+        c["course_code"] for c in k25_compulsory
+        if not c["course_code"].startswith("LA")
+        and c["course_code"] not in ("MI1003", "SA4001")
+    ]
 
     k24_compulsory = get_curriculum_for_cohort_semester("K24", 5)["compulsory_courses"]
-    k24_core_courses = [c["course_code"] for c in k24_compulsory if c["course_code"] != "CO2013"]
+    k24_core_courses = [
+        c["course_code"] for c in k24_compulsory
+        if c["course_code"] != "CO2013"
+        and c["course_code"] not in ("MI1003", "SA4001")
+    ]
 
     k23_compulsory = get_curriculum_for_cohort_semester("K23", 7)["compulsory_courses"]
-    k23_core_courses = [c["course_code"] for c in k23_compulsory if c["course_code"] != "CO4029"]
+    k23_core_courses = [
+        c["course_code"] for c in k23_compulsory
+        if c["course_code"] != "CO4029"
+        and c["course_code"] not in ("MI1003", "SA4001")
+    ]
 
     enrollment_records: List[Dict[str, Any]] = []
     enrollment_id = total_past_enrollments + 1
@@ -512,6 +531,27 @@ def generate_enrollment_hk261() -> Path:
                     record_grade(uid, course_code, class_id, is_retake=(uid in set(retakers_la1003)))
 
             print(f"   -> Đã gán {len(valid_la1003)} SV vào môn LA1003 ({len(class_ids)} lớp, miễn {len(exempt_uids)} SV)")
+
+    # Đăng ký các môn Giáo dục Thể chất HP1 (PE1009 - PE1063) cho Tân sinh viên K26
+    pe_classes_dict = [cl for cl in df_classes.to_dict(orient="records") if str(cl.get("course_code", "")).startswith("PE")]
+    pe_student_map = {
+        str(uid): assign_student_hp1_sport(str(uid))
+        for uid in k26_students["user_id"]
+    }
+    pe_enrs = build_pe_enrollments_for_semester(
+        semester=SEMESTER,
+        term_type=1,
+        freshmen_df=k26_students,
+        pe_classes=pe_classes_dict,
+        student_sport_map=pe_student_map,
+        student_profiles=student_profiles,
+        start_enrollment_id=enrollment_id,
+        config=GENERATOR_CONFIG,
+        is_ongoing=True,
+    )
+    enrollment_records.extend(pe_enrs)
+    enrollment_id += len(pe_enrs)
+    print(f"   -> Đã gán {len(pe_enrs)} SV K26 vào các môn Giáo dục Thể chất HP1 (12 môn thể thao)")
 
     # -------------------------------------------------------------------------
     # B. MÔ PHỎNG ĐĂNG KÝ CHO KHÓA K25 (HỌC KỲ 3)
@@ -834,7 +874,7 @@ def generate_enrollment_hk261() -> Path:
     print("\n8. Đang xử lý đăng ký cho các LỚP HỌC LẠI MÔN CHẴN/HK2 (L_HL)...")
     even_courses_retake = [
         "CO1027", "PH1007", "CO2017", "CO1007", "MT1007", "MT1005",
-        "CO2039", "SP1033", "CO3093", "CH1003", "SP1037", "MI1003",
+        "CO2039", "SP1033", "CO3093", "CH1003", "SP1037",
     ]
     for retake_code in even_courses_retake:
         uids = retake_demand.get(retake_code, [])
@@ -887,6 +927,8 @@ def generate_enrollment_hk261() -> Path:
             r["retaken"] = True
 
     df_enrollment = pd.DataFrame(enrollment_records)
+    df_enrollment = df_enrollment[~df_enrollment["course_id"].isin(["MI1003", "SA4001"])].reset_index(drop=True)
+    df_enrollment["enrollment_id"] = range(total_past_enrollments + 1, total_past_enrollments + 1 + len(df_enrollment))
 
     # Xuất file kết quả
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

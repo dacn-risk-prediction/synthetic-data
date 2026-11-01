@@ -243,8 +243,7 @@ def academic_suspension_semesters(
 
         if semester_column == "semester_code":
             term_history = student_history[
-                student_history[semester_column].astype(str).str.upper()
-                == semester.upper()
+                student_history["semester_code"] == semester
             ]
         else:
             term_history = student_history[
@@ -253,9 +252,12 @@ def academic_suspension_semesters(
                 )
                 == current_index
             ]
-        passed = term_history[
-            term_history["status"].astype(str).str.casefold() == "pass"
-        ]
+        if "is_passed" in term_history.columns:
+            passed = term_history[term_history["is_passed"]]
+        else:
+            passed = term_history[
+                term_history["status"].astype(str).str.casefold() == "pass"
+            ]
         passed_credits = sum(
             float(credits[course_code])
             for course_code in passed["course_code"].drop_duplicates()

@@ -63,6 +63,8 @@ from academic_rules import (
     filter_retake_demand_by_credit_limit,
     generate_grade_improvement_retakes,
     score_course_components,
+    assign_student_hp1_sport,
+    build_pe_enrollments_for_semester,
 )
 
 ANALYSIS_DIR = ROOT_DIR / "analysis"
@@ -228,7 +230,7 @@ def generate_enrollment_hk231() -> Path:
     )
 
     k23_compulsory = get_curriculum_for_cohort_semester("K23", 1)["compulsory_courses"]
-    k23_core_courses = [c["course_code"] for c in k23_compulsory if not c["course_code"].startswith("LA")]
+    k23_core_courses = [c["course_code"] for c in k23_compulsory if not c["course_code"].startswith("LA") and not c["course_code"].startswith("PE")]
 
     k22_compulsory = get_curriculum_for_cohort_semester("K22", 3)["compulsory_courses"]
     k22_core_courses = [c["course_code"] for c in k22_compulsory if not c["course_code"].startswith("LA")]
@@ -419,6 +421,26 @@ def generate_enrollment_hk231() -> Path:
                     enrollment_id += 1
 
             print(f"   -> Đã gán {len(all_la1003)} SV học LA1003 ({len(class_ids)} lớp) và {len(exempt_uids)} SV miễn.")
+
+    # Đăng ký và chấm điểm các môn Giáo dục Thể chất HP1 (PE1009 - PE1061) cho Tân sinh viên K23
+    pe_classes_dict = [cl for cl in df_classes.to_dict(orient="records") if cl["course_code"].startswith("PE")]
+    pe_student_map = {
+        str(uid): assign_student_hp1_sport(str(uid))
+        for uid in k23_students["user_id"]
+    }
+    pe_enrs = build_pe_enrollments_for_semester(
+        semester=SEMESTER,
+        term_type=1,
+        freshmen_df=k23_students,
+        pe_classes=pe_classes_dict,
+        student_sport_map=pe_student_map,
+        student_profiles=student_profiles,
+        start_enrollment_id=enrollment_id,
+        config=GENERATOR_CONFIG,
+    )
+    enrollment_records.extend(pe_enrs)
+    enrollment_id += len(pe_enrs)
+    print(f"   -> Đã gán {len(pe_enrs)} SV K23 vào các lớp Giáo dục Thể chất HP1")
 
     # -------------------------------------------------------------------------
     # B. MÔ PHỎNG ĐĂNG KÝ VÀ CHẤM ĐIỂM CHO KHÓA K22 (HỌC KỲ 3)

@@ -87,7 +87,7 @@ from curriculum_rules import (
     select_student_group_c_course,
 )
 
-from academic_rules import balanced_class_sizes
+from academic_rules import balanced_class_sizes, build_pe_classes_for_semester
 from analysis_helpers import (
     get_curriculum_for_cohort_semester,
     get_lecturers_by_course,
@@ -352,6 +352,10 @@ def generate_class_hk242() -> Path:
 
         for c in k24_curriculum:
             course_code = c["course_code"]
+            # Bỏ qua các môn Giáo dục thể chất trong vòng lặp chung vì sẽ chia theo môn thể thao riêng biệt
+            if course_code.startswith("PE") or course_code in ("MI1003", "SA4001"):
+                continue
+
             retakers = [
                 uid for uid in retake_demand.get(course_code, set())
                 if uid in set(df_students[df_students["program"] == prog]["user_id"])
@@ -425,6 +429,20 @@ def generate_class_hk242() -> Path:
                     "department": dept,
                 })
             print(f"   + [K24 Học vượt] CH1003 ({c_name}): demand={ch1003_demand} -> {len(sizes)} lớp")
+
+    # Phân bổ lớp Giáo dục Thể chất HP2 (PE1033 - PE1063) cho Tân sinh viên K24
+    pe_classes, pe_sport_map = build_pe_classes_for_semester(
+        semester=SEMESTER,
+        term_type=2,
+        freshmen_df=k24_students,
+        lecturers=all_lecturers,
+        assigned_count=assigned_count,
+        program_config=PROGRAM_CONFIG,
+        prev_enrollments=all_prev_enrollments,
+        max_capacity=REGULAR_CLASS_MAX_CAPACITY,
+    )
+    classes.extend(pe_classes)
+    print(f"   -> Đã mở {len(pe_classes)} lớp Giáo dục thể chất HP2 (PE1033 - PE1063) cho K24")
 
     # -------------------------------------------------------------------------
     # B. PHÂN BỔ LỚP HỌC PHẦN CHO KHÓA K23 (HỌC KỲ 4)
@@ -877,6 +895,7 @@ def generate_class_hk242() -> Path:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     out_file = OUTPUT_DIR / f"class_{SEMESTER.lower()}.csv"
     df_classes = pd.DataFrame(classes)
+    df_classes = df_classes[~df_classes["course_code"].isin(["MI1003", "SA4001"])]
     df_classes.to_csv(out_file, index=False, encoding="utf-8-sig")
 
     print(f"\n=== ĐÃ TẠO THÀNH CÔNG: {out_file} ===")

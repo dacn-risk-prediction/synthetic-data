@@ -92,10 +92,10 @@ def _load_enrollment_history(profiles):
 
 
 def _parse_ctxh_progress(value):
-    if value is None or pd.isna(value) or value == "":
-        return []
     if isinstance(value, list):
         return value
+    if value is None or pd.isna(value) or value == "":
+        return []
     parsed = json.loads(value)
     if not isinstance(parsed, list):
         raise ValueError("ctxh_days_by_semester must be a JSON array")
@@ -121,46 +121,51 @@ def _ctxh_days_for_semester(progress, semester_code, *, before=False):
 def _profile_graduation_state(
     profile, student_history, semesters, credits, required_courses
 ):
-    student_history = student_history.copy()
-    student_history["final_score"] = pd.to_numeric(
-        student_history["final_score"], errors="coerce"
-    )
-    completed = student_history[
-        student_history["status"].astype(str).str.casefold().isin(["pass", "exempted"])
-        | student_history["passed"].eq(True)
-    ]
+    if "is_passed" in student_history.columns:
+        completed = student_history[student_history["is_passed"]]
+    else:
+        completed = student_history[
+            student_history["status"].astype(str).str.casefold().isin(["pass", "exempted"])
+            | student_history["passed"].eq(True)
+        ]
     passed_courses = set(completed["course_code"])
-    passed_credits_by_course = {}
-    for code in passed_courses:
-        if code in credits:
-            passed_credits_by_course[code] = float(credits[code])
+    passed_credits_by_course = {
+        code: float(credits[code]) for code in passed_courses if code in credits
+    }
     credit_total = sum(passed_credits_by_course.values())
 
-    gpa_courses = [
-        code for code in passed_courses
-        if not completed.loc[completed["course_code"] == code, "gpa_4"].dropna().empty
-        and not completed.loc[completed["course_code"] == code, "final_score"].dropna().empty
-        and float(completed.loc[completed["course_code"] == code, "final_score"].dropna().max() or 0) != 12.0
-        and code in credits
-    ]
-    gpa_credit_total = sum(float(credits[c]) for c in gpa_courses)
+    completed_records = completed[
+        ["course_code", "sem_idx", "gpa_4", "final_score"]
+    ].to_dict("records")
+
+    best_by_course = {}
+    for r in completed_records:
+        c = r["course_code"]
+        g4 = r["gpa_4"]
+        fs = r["final_score"]
+        if g4 is not None and fs is not None and not pd.isna(g4) and not pd.isna(fs) and fs != 12.0 and c in credits:
+            if c not in best_by_course:
+                best_by_course[c] = [float(g4), float(fs)]
+            else:
+                if float(g4) > best_by_course[c][0]:
+                    best_by_course[c][0] = float(g4)
+                if float(fs) > best_by_course[c][1]:
+                    best_by_course[c][1] = float(fs)
+
+    gpa_courses = []
+    gpa4_sum = 0.0
+    gpa10_sum = 0.0
+    gpa_credit_total = 0.0
+    for code, (bg4, bfs) in best_by_course.items():
+        tc = float(credits[code])
+        gpa_credit_total += tc
+        gpa4_sum += bg4 * tc
+        gpa10_sum += bfs * tc
+        gpa_courses.append(code)
+
     if gpa_credit_total > 0:
-        gpa4 = sum(
-            float(
-                completed.loc[completed["course_code"] == code, "gpa_4"]
-                .dropna()
-                .max()
-            ) * credits[code]
-            for code in gpa_courses
-        ) / gpa_credit_total
-        gpa10 = sum(
-            float(
-                completed.loc[completed["course_code"] == code, "final_score"]
-                .dropna()
-                .max()
-            ) * credits[code]
-            for code in gpa_courses
-        ) / gpa_credit_total
+        gpa4 = gpa4_sum / gpa_credit_total
+        gpa10 = gpa10_sum / gpa_credit_total
     else:
         gpa4 = pd.NA
         gpa10 = pd.NA
@@ -193,15 +198,21 @@ def _profile_graduation_state(
     for semester in semesters:
         if is_academic_dismissal(student_id_val, semester, GENERATOR_CONFIG):
             break
-        completed_through_term = student_history[
-            student_history["semester_index"].le(semester_index(semester))
-            & (
-                student_history["status"].astype(str).str.casefold().isin(["pass", "exempted"])
-                | student_history["passed"].eq(True)
-            )
-        ]
+        target_s_idx = semester_index(semester)
+
+        term_passed = set()
+        term_gpa_best = {}
+        for r in completed_records:
+            if r["sem_idx"] <= target_s_idx:
+                c = r["course_code"]
+                term_passed.add(c)
+                g4 = r["gpa_4"]
+                fs = r["final_score"]
+                if g4 is not None and fs is not None and not pd.isna(g4) and not pd.isna(fs) and fs != 12.0 and c in credits:
+                    if c not in term_gpa_best or float(g4) > term_gpa_best[c]:
+                        term_gpa_best[c] = float(g4)
+
         term_ctxh_days = _ctxh_days_for_semester(progress, semester)
-        term_passed = set(completed_through_term["course_code"])
         term_english_pass = is_english_passed(
             profile, term_passed, GENERATOR_CONFIG, semester
         )
@@ -213,18 +224,9 @@ def _profile_graduation_state(
         min_grad_credits = float(graduation_config.get("minimum_credits_for_graduation", 128.0))
         min_gpa = float(graduation_config.get("minimum_gpa4_for_graduation", 2.0))
 
-        term_gpa_courses = [
-            c for c in term_passed
-            if not completed_through_term.loc[completed_through_term["course_code"] == c, "gpa_4"].dropna().empty
-            and float(completed_through_term.loc[completed_through_term["course_code"] == c, "final_score"].dropna().max() or 0) != 12.0
-            and c in credits
-        ]
-        term_gpa_credits = sum(float(credits[c]) for c in term_gpa_courses)
+        term_gpa_credits = sum(float(credits[c]) for c in term_gpa_best)
         term_gpa4 = (
-            sum(
-                float(completed_through_term.loc[completed_through_term["course_code"] == c, "gpa_4"].dropna().max()) * credits[c]
-                for c in term_gpa_courses
-            ) / term_gpa_credits
+            sum(term_gpa_best[c] * float(credits[c]) for c in term_gpa_best) / term_gpa_credits
             if term_gpa_credits > 0 else 0.0
         )
 
@@ -304,8 +306,16 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
                 c_req.update(graduation_config.get("graduation_project_codes", []))
                 required_courses_by_cohort[cohort_str] = c_req
     default_required.update(graduation_config.get("graduation_project_codes", []))
+    history["final_score"] = pd.to_numeric(history["final_score"], errors="coerce")
+    history["gpa_4"] = pd.to_numeric(history["gpa_4"], errors="coerce")
+    history["is_passed"] = (
+        history["status"].astype(str).str.casefold().isin(["pass", "exempted"])
+        | history["passed"].eq(True)
+    )
+    history["sem_idx"] = history["semester_code"].map(semester_index)
+
     history_by_student = {
-        student_id: group.copy()
+        student_id: group
         for student_id, group in history.groupby("student_id", sort=False)
     }
     progress_rows = []
@@ -326,6 +336,9 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
         student_history = history_by_student.get(
             student_id, history.iloc[0:0].copy()
         )
+        all_student_records = student_history[
+            ["course_code", "semester_code", "sem_idx", "is_passed"]
+        ].to_dict("records")
         suspension_semesters = academic_suspension_semesters(
             student_history,
             student_semesters,
@@ -361,45 +374,42 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
                 voluntary_semester
             ):
                 break
-            term = student_history[
-                student_history["semester_code"].eq(semester)
-            ]
             complete = semester_complete.get(semester, False)
-            passed = term[
-                term["status"].astype(str).str.casefold().isin(["pass", "exempted"])
-                | term["passed"].eq(True)
+            term_records = [
+                r for r in all_student_records if r["semester_code"] == semester
             ]
+            term_passed_codes = {
+                r["course_code"] for r in term_records if r["is_passed"]
+            }
+            term_all_codes = {r["course_code"] for r in term_records}
             passed_credits = sum(
                 float(credits[code])
-                for code in passed["course_code"].drop_duplicates()
+                for code in term_passed_codes
                 if code in credits
             )
             progress = details["progress"]
             cumulative_ctxh = _ctxh_days_for_semester(progress, semester)
             academic_suspension = semester in suspension_semesters
-            completed_through_term = student_history[
-                student_history["semester_index"].le(semester_index(semester))
-                & (
-                    student_history["status"].astype(str).str.casefold().isin(["pass", "exempted"])
-                    | student_history["passed"].eq(True)
-                )
-            ]
+            s_idx = semester_index_value
+            term_completed_codes = {
+                r["course_code"]
+                for r in all_student_records
+                if r["sem_idx"] <= s_idx and r["is_passed"]
+            }
             term_english_pass = is_english_passed(
                 profile,
-                set(completed_through_term["course_code"]),
+                term_completed_codes,
                 GENERATOR_CONFIG,
                 semester,
             )
-            completed_before_term = student_history[
-                student_history["semester_index"].lt(semester_index(semester))
-                & (
-                    student_history["status"].astype(str).str.casefold().isin(["pass", "exempted"])
-                    | student_history["passed"].eq(True)
-                )
-            ]
+            before_completed_codes = {
+                r["course_code"]
+                for r in all_student_records
+                if r["sem_idx"] < s_idx and r["is_passed"]
+            }
             before_english_pass = is_english_passed(
                 profile,
-                set(completed_before_term["course_code"]),
+                before_completed_codes,
                 GENERATOR_CONFIG,
                 semester,
                 before=True,
@@ -408,11 +418,11 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
                 "student_id": student_id,
                 "cohort": f"K{str(student_id)[:2]}",
                 "semester": semester,
-                "registered": not term.empty,
-                "registered_courses": int(term["course_code"].nunique()),
+                "registered": bool(term_records),
+                "registered_courses": len(term_all_codes),
                 "registered_credits": sum(
                     float(credits[code])
-                    for code in term["course_code"].drop_duplicates()
+                    for code in term_all_codes
                     if code in credits
                 ),
                 "passed_credits": passed_credits,
@@ -502,6 +512,14 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
             dropout_type = "voluntary"
         else:
             dropout_type = "none"
+
+        observed_sem_set = set(student_semesters[:observed_count])
+        registered_semesters_set = {
+            r["semester_code"]
+            for r in all_student_records
+            if r["semester_code"] in observed_sem_set
+        }
+        reg_count = len(registered_semesters_set)
         student_rows.append({
             "student_id": student_id,
             "cohort": f"K{str(student_id)[:2]}",
@@ -527,24 +545,8 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
                 4,
             ),
             "tracked_semesters": observed_count,
-            "registered_semesters": int(
-                student_history.loc[
-                    student_history["semester_code"].isin(
-                        student_semesters[:observed_count]
-                    ),
-                    "semester_code",
-                ].nunique()
-            ),
-            "empty_semesters": max(
-                0,
-                observed_count
-                - student_history.loc[
-                    student_history["semester_code"].isin(
-                        student_semesters[:observed_count]
-                    ),
-                    "semester_code",
-                ].nunique(),
-            ),
+            "registered_semesters": reg_count,
+            "empty_semesters": max(0, observed_count - reg_count),
             "last_observed_semester": (
                 student_semesters[observed_count - 1]
                 if observed_count
@@ -810,6 +812,11 @@ def generate_academic_metrics(cohort=None):
         on="student_id",
         how="left",
     )
+    for json_col in ["english_eligibility_by_semester", "ctxh_days_by_semester"]:
+        if json_col in profiles.columns:
+            profiles[json_col] = profiles[json_col].apply(
+                lambda x: json.loads(x) if isinstance(x, str) and x else (x if isinstance(x, list) else [])
+            )
     history, observed_semesters, tracked_ids = _load_enrollment_history(profiles)
     if cohort:
         cohort_ids = {

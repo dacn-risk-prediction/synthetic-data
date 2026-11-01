@@ -90,7 +90,7 @@ from curriculum_rules import (
     select_student_group_c_course,
 )
 
-from academic_rules import balanced_class_sizes
+from academic_rules import balanced_class_sizes, build_pe_classes_for_semester
 from analysis_helpers import (
     get_curriculum_for_cohort_semester,
     get_lecturers_by_course,
@@ -373,6 +373,10 @@ def generate_class_hk252() -> Path:
 
         for c in k25_curriculum:
             course_code = c["course_code"]
+            # Bỏ qua các môn Giáo dục thể chất trong vòng lặp chung vì sẽ chia theo môn thể thao riêng biệt
+            if course_code.startswith("PE") or course_code in ("MI1003", "SA4001"):
+                continue
+
             retakers = [
                 uid for uid in retake_demand.get(course_code, set())
                 if uid in set(df_students[df_students["program"] == prog]["user_id"])
@@ -448,6 +452,21 @@ def generate_class_hk252() -> Path:
                     "department": dept,
                 })
             print(f"   + [K25 Học vượt] CH1003 ({c_name}): demand={len(accel_k25_uids)} -> {len(sizes)} lớp")
+
+    # Phân bổ lớp Giáo dục Thể chất HP2 (PE1033 - PE1063) cho Tân sinh viên K25
+    prev_hk251_enr = pd.read_csv(ENROLLMENTS_DIR / "enrollment_hk251.csv", dtype={"student_id": str})
+    pe_classes, pe_sport_map = build_pe_classes_for_semester(
+        semester=SEMESTER,
+        term_type=2,
+        freshmen_df=k25_students,
+        lecturers=all_lecturers,
+        assigned_count=assigned_count,
+        program_config=PROGRAM_CONFIG,
+        prev_enrollments=prev_hk251_enr,
+        max_capacity=REGULAR_CLASS_MAX_CAPACITY,
+    )
+    classes.extend(pe_classes)
+    print(f"   -> Đã mở {len(pe_classes)} lớp Giáo dục thể chất HP2 (PE1033 - PE1063) cho K25")
 
     # -------------------------------------------------------------------------
     # B. PHÂN BỔ LỚP HỌC PHẦN CHO KHÓA K24 (NĂM 2 - HỌC KỲ 4)
@@ -597,6 +616,8 @@ def generate_class_hk252() -> Path:
 
         for c in k23_curriculum:
             course_code = c["course_code"]
+            if course_code.startswith("PE") or course_code in ("MI1003", "SA4001"):
+                continue
             retakers = [
                 uid for uid in retake_demand.get(course_code, set())
                 if uid in set(df_students[df_students["program"] == prog]["user_id"])
@@ -1011,6 +1032,7 @@ def generate_class_hk252() -> Path:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     out_file = OUTPUT_DIR / f"class_{SEMESTER.lower()}.csv"
     df_classes = pd.DataFrame(classes)
+    df_classes = df_classes[~df_classes["course_code"].isin(["MI1003", "SA4001"])]
     df_classes.to_csv(out_file, index=False, encoding="utf-8-sig")
 
     print(f"\n=== ĐÃ TẠO THÀNH CÔNG: {out_file} ===")

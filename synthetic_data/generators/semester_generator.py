@@ -234,7 +234,9 @@ def generate_class(semester):
     )
 
     output = ROOT_DIR / "generated" / "classes" / f"class_{semester.lower()}.csv"
-    pd.DataFrame(class_data).to_csv(output, index=False, encoding="utf-8-sig")
+    df_classes = pd.DataFrame(class_data)
+    df_classes = df_classes[~df_classes["course_code"].isin(["MI1003", "SA4001"])]
+    df_classes.to_csv(output, index=False, encoding="utf-8-sig")
     print(f"Created {output.name}: {len(class_data)} classes")
     print(f"Maximum credits per student: {MAX_CREDITS}")
 

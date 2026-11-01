@@ -122,6 +122,16 @@ from academic import (
     students_by_course_from_eligibility,
     validate_generator_config,
     wants_acceleration,
+    ALL_PE_SPORTS,
+    HP1_SPORTS,
+    HP2_SPORTS,
+    SPORT_NAMES,
+    SPORT_PAIRS,
+    REVERSE_SPORT_PAIRS,
+    assign_student_hp1_sport,
+    build_pe_classes_for_semester,
+    build_pe_enrollments_for_semester,
+    get_student_hp2_sport,
 )
 
 __all__ = [

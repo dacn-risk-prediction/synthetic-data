@@ -220,6 +220,22 @@ KNOWLEDGE_BLOCKS_DATA = [
 ]
 
 # Supplementary course details for new courses or PE courses
+SPORT_PAIRS = {
+    "PE1009": "PE1033",  # Bóng đá
+    "PE1011": "PE1035",  # Bóng chuyền
+    "PE1013": "PE1037",  # Bóng bàn
+    "PE1015": "PE1039",  # Bóng rổ
+    "PE1017": "PE1041",  # Cầu lông
+    "PE1019": "PE1043",  # Bơi
+    "PE1021": "PE1045",  # Aerobic
+    "PE1025": "PE1049",  # Điền kinh
+    "PE1027": "PE1051",  # Quần vợt
+    "PE1053": "PE1055",  # Cờ vua
+    "PE1057": "PE1059",  # Bowling
+    "PE1061": "PE1063",  # Pickleball
+}
+REVERSE_SPORT_PAIRS = {v: k for k, v in SPORT_PAIRS.items()}
+
 SUPPLEMENTARY_COURSES = {
     "IM1031": ("Khởi nghiệp và đổi mới sáng tạo", "Entrepreneurship and Innovation", 3),
     "ME1019": ("Quản lý năng suất và chất lượng", "Quality and Productivity Management", 3),
@@ -277,7 +293,13 @@ OTHERS_COURSES = {"SA4001"}
 # Recommended semesters mapping
 RECOMMENDED_SEMESTERS = {
     "LA1003": "HK1", "PE1003": "HK1", "MT1003": "HK1", "PH1003": "HK1", "CO1005": "HK1", "CO1023": "HK1",
+    # Thể chất Học phần 1
+    "PE1009": "HK1", "PE1011": "HK1", "PE1013": "HK1", "PE1015": "HK1", "PE1017": "HK1", "PE1019": "HK1",
+    "PE1021": "HK1", "PE1025": "HK1", "PE1027": "HK1", "PE1053": "HK1", "PE1057": "HK1", "PE1061": "HK1",
     "LA1005": "HK2", "PE1005": "HK2", "MT1005": "HK2", "MT1007": "HK2", "CO1007": "HK2", "CO1027": "HK2", "PH1007": "HK2", "MI1003": "HK2",
+    # Thể chất Học phần 2
+    "PE1033": "HK2", "PE1035": "HK2", "PE1037": "HK2", "PE1039": "HK2", "PE1041": "HK2", "PE1043": "HK2",
+    "PE1045": "HK2", "PE1049": "HK2", "PE1051": "HK2", "PE1055": "HK2", "PE1059": "HK2", "PE1063": "HK2",
     "LA1007": "HK3", "SP1031": "HK3", "CO2007": "HK3", "CO2011": "HK3", "CO2003": "HK3",
     "LA1009": "HK4", "SP1033": "HK4", "CO2017": "HK4", "CO2039": "HK4", "MT2013": "HK4",
     "SP1035": "HK5", "CO3005": "HK5", "CO3001": "HK5", "CO2013": "HK5", "CO2001": "HK5",
@@ -433,6 +455,8 @@ def parse_program_structures_from_pdf(year, text, master_courses):
                 prereq = prereq_match.group(1)
             if code == "CO4029":
                 prereq = "CO3335(SHT)"
+            if code in REVERSE_SPORT_PAIRS:
+                prereq = f"{REVERSE_SPORT_PAIRS[code]}(KN)"
 
             course_meta = master_courses.get(code, {})
             credits_val = course_meta.get("credits", 0)
@@ -698,6 +722,25 @@ def generate_all_academics():
             structure_id += 1
             program_structures.append(e_clone)
 
+    # Standardize PE sports (PE1009..PE1063) across ALL cohorts K20..K26
+    # Remove any generic PE1003/PE1005 and ensure all 24 sports exist per cohort
+    k24_pe_entries = [e for e in k24_structures if e["course_code"].startswith("PE")]
+    final_program_structures = []
+    structure_id = 1
+    for cid in [f"KHMT_K{c}" for c in [20, 21, 22, 23, 24, 25, 26]]:
+        cohort_entries = [e for e in program_structures if e["curriculum_id"] == cid and not e["course_code"].startswith("PE")]
+        for e in cohort_entries:
+            e_copy = dict(e)
+            e_copy["structure_id"] = structure_id
+            structure_id += 1
+            final_program_structures.append(e_copy)
+        for pe in k24_pe_entries:
+            pe_clone = dict(pe)
+            pe_clone["structure_id"] = structure_id
+            pe_clone["curriculum_id"] = cid
+            structure_id += 1
+            final_program_structures.append(pe_clone)
+
     prog_struct_file = OUTPUT_DIR / "program_structures.csv"
     with prog_struct_file.open("w", newline="", encoding="utf-8-sig") as f:
         writer = csv.DictWriter(f, fieldnames=[
@@ -705,8 +748,8 @@ def generate_all_academics():
             "elective_group", "specialization", "credits", "recommended_semester", "prerequisites"
         ])
         writer.writeheader()
-        writer.writerows(program_structures)
-    print(f"-> Generated {prog_struct_file} ({len(program_structures)} mapping entries across K20 - K26)")
+        writer.writerows(final_program_structures)
+    print(f"-> Generated {prog_struct_file} ({len(final_program_structures)} mapping entries across K20 - K26)")
 
     # 5. Save course_prerequisites.csv
     prereq_records = []
@@ -724,6 +767,23 @@ def generate_all_academics():
         c_item["curriculum_id"] = "KHMT_K20"
         k20_inherited.append(c_item)
     parsed_prereqs_by_year["2020"] = k20_inherited
+
+    # Add standardized PE sport prerequisites (PE10xx HP2 requires matching PE10yy HP1) across all cohorts
+    for y in ["2020", "2021", "2022", "2023", "2024"]:
+        cid = f"KHMT_K{y[2:]}"
+        parsed_prereqs_by_year[y] = [
+            p for p in parsed_prereqs_by_year[y]
+            if p["course_code"] not in ("PE1003", "PE1005") and p["prerequisite_course_code"] not in ("PE1003", "PE1005")
+        ]
+        for hp1, hp2 in SPORT_PAIRS.items():
+            parsed_prereqs_by_year[y].append({
+                "curriculum_id": cid,
+                "course_code": hp2,
+                "prerequisite_course_code": hp1,
+                "relation_type": "KN",
+                "relation_type_raw": "KN",
+                "min_grade": 0.0,
+            })
 
     # Add K20..K24
     for y in ["2020", "2021", "2022", "2023", "2024"]:

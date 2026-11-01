@@ -1051,6 +1051,80 @@ class AcademicScoreRulesTests(unittest.TestCase):
         # Should NOT be suspended in HK171 because sem 7 & 8 are graduation phase
         self.assertNotIn("HK171", suspensions)
 
+    def test_pe_sport_pairs_completeness(self):
+        """Test physical education sport pairs, bijection, and naming."""
+        from academic_rules import SPORT_PAIRS, REVERSE_SPORT_PAIRS, HP1_SPORTS, HP2_SPORTS, SPORT_NAMES
+        self.assertEqual(len(SPORT_PAIRS), 12, "Must define exactly 12 sport pairs")
+        self.assertEqual(len(REVERSE_SPORT_PAIRS), 12, "Reverse mapping must have 12 pairs")
+        self.assertEqual(len(HP1_SPORTS), 12)
+        self.assertEqual(len(HP2_SPORTS), 12)
+        self.assertTrue(set(HP1_SPORTS).isdisjoint(set(HP2_SPORTS)), "HP1 and HP2 courses must be disjoint")
+        for hp1, hp2 in SPORT_PAIRS.items():
+            self.assertIn(hp1, SPORT_NAMES)
+            self.assertIn(hp2, SPORT_NAMES)
+            self.assertEqual(REVERSE_SPORT_PAIRS[hp2], hp1)
+
+    def test_pe_student_continuity(self):
+        """Test that HP2 sport strictly matches HP1 sport for each student."""
+        from academic_rules import assign_student_hp1_sport, get_student_hp2_sport, SPORT_PAIRS
+        # Synthetic freshmen student IDs
+        test_ids = [f"231{i:04d}" for i in range(100)]
+        for sid in test_ids:
+            hp1 = assign_student_hp1_sport(sid)
+            hp2 = get_student_hp2_sport(sid)
+            self.assertEqual(SPORT_PAIRS[hp1], hp2, f"Student {sid} HP2 must match HP1 sport pair")
+
+            # Also test when historical enrollment record is provided
+            prev_df = pd.DataFrame([{"student_id": sid, "course_id": hp1}])
+            hp2_from_history = get_student_hp2_sport(sid, prev_df)
+            self.assertEqual(hp2_from_history, hp2)
+
+    def test_pe_assessment_cuoi_ky_only(self):
+        """Test that PE enrollment generates 100% cuoi_ky score with zero/nan other components."""
+        from academic_rules import (
+            build_pe_classes_for_semester,
+            build_pe_enrollments_for_semester,
+        )
+        students = pd.DataFrame([
+            {"user_id": f"231{i:04d}", "program": "standard"} for i in range(120)
+        ])
+        lecturers = [
+            {"user_id": "GV00206", "name": "Vũ Khánh Minh", "department": "Bộ môn Giáo dục Thể chất"},
+            {"user_id": "GV00207", "name": "Hồ Thị An", "department": "Bộ môn Giáo dục Thể chất"},
+        ]
+        assigned_count = {"GV00206": 0, "GV00207": 0}
+        prog_cfg = {"standard": {"prefix": "L"}}
+        classes, sport_map = build_pe_classes_for_semester(
+            semester="HK231",
+            term_type=1,
+            freshmen_df=students,
+            lecturers=lecturers,
+            assigned_count=assigned_count,
+            program_config=prog_cfg,
+        )
+        self.assertGreater(len(classes), 0)
+        for cl in classes:
+            self.assertLessEqual(cl["max_capacity"], 40)
+
+        enrs = build_pe_enrollments_for_semester(
+            semester="HK231",
+            term_type=1,
+            freshmen_df=students,
+            pe_classes=classes,
+            student_sport_map=sport_map,
+            student_profiles={f"231{i:04d}": {} for i in range(120)},
+            start_enrollment_id=1,
+            config=GENERATOR_CONFIG,
+        )
+        self.assertEqual(len(enrs), 120, "All 120 students must be enrolled in PE")
+        for rec in enrs:
+            self.assertTrue(pd.isna(rec["quiz"]))
+            self.assertTrue(pd.isna(rec["lab"]))
+            self.assertTrue(pd.isna(rec["btl"]))
+            self.assertTrue(pd.isna(rec["giua_ky"]))
+            self.assertFalse(pd.isna(rec["cuoi_ky"]))
+            self.assertEqual(rec["cuoi_ky"], rec["final_score"])
+
 
 if __name__ == "__main__":
     unittest.main()

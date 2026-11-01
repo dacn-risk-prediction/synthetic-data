@@ -68,6 +68,8 @@ from academic_rules import (
     filter_retake_demand_by_credit_limit,
     generate_grade_improvement_retakes,
     score_course_components,
+    get_student_hp2_sport,
+    build_pe_enrollments_for_semester,
 )
 
 ANALYSIS_DIR = ROOT_DIR / "analysis"
@@ -273,6 +275,8 @@ def generate_enrollment_hk232() -> Path:
 
         for c in k23_curriculum:
             course_code = c["course_code"]
+            if course_code.startswith("PE") or course_code in ("MI1003", "SA4001"):
+                continue
             retakers = [
                 uid for uid in retake_demand.get(course_code, [])
                 if uid in set(df_students[df_students["program"] == prog]["user_id"])
@@ -397,6 +401,26 @@ def generate_enrollment_hk232() -> Path:
                     enrollment_id += 1
 
             print(f"   -> [K23 Học vượt] {len(accel_uids)} SV học vượt {top_code} vào {len(accel_classes)} lớp.")
+
+    # Đăng ký và chấm điểm các môn Giáo dục Thể chất HP2 (PE1033 - PE1063) cho Tân sinh viên K23
+    pe_classes_dict = [cl for cl in df_classes.to_dict(orient="records") if cl["course_code"].startswith("PE")]
+    pe_student_map = {
+        str(uid): get_student_hp2_sport(str(uid), df_all_prev)
+        for uid in k23_students["user_id"]
+    }
+    pe_enrs = build_pe_enrollments_for_semester(
+        semester=SEMESTER,
+        term_type=2,
+        freshmen_df=k23_students,
+        pe_classes=pe_classes_dict,
+        student_sport_map=pe_student_map,
+        student_profiles=student_profiles,
+        start_enrollment_id=enrollment_id,
+        config=GENERATOR_CONFIG,
+    )
+    enrollment_records.extend(pe_enrs)
+    enrollment_id += len(pe_enrs)
+    print(f"   -> Đã gán {len(pe_enrs)} SV K23 vào các lớp Giáo dục Thể chất HP2 (tương ứng môn HP1 đã học)")
 
     # -------------------------------------------------------------------------
     # B. MÔ PHỎNG ĐĂNG KÝ VÀ CHẤM ĐIỂM CHO KHÓA K22 (HỌC KỲ 4)
@@ -1020,6 +1044,29 @@ def generate_enrollment_hk232() -> Path:
         enrollment_id += len(improvement_records)
         print(f"   -> [Học cải thiện điểm] Đã xếp {len(improvement_records)} lượt học cải thiện cho sinh viên có GPA < 2.0.")
 
+    # Ghi nhận hoàn thành Giáo dục Quốc phòng (MI1003) cho sinh viên K23 cuối kỳ 2
+    print("\n--- Ghi nhận hoàn thành MI1003 (GDQP) cho K23 cuối kỳ 2 ---")
+    for uid in k23_students["user_id"]:
+        enrollment_records.append({
+            "enrollment_id": enrollment_id,
+            "student_id": uid,
+            "class_id": np.nan,
+            "course_id": "MI1003",
+            "semester": SEMESTER,
+            "retaken": False,
+            "quiz": np.nan,
+            "lab": np.nan,
+            "btl": np.nan,
+            "giua_ky": np.nan,
+            "cuoi_ky": np.nan,
+            "final_score": 12.0,
+            "letter_grade": np.nan,
+            "gpa_4": np.nan,
+            "passed": True,
+            "status": "Pass",
+        })
+        enrollment_id += 1
+
     # -------------------------------------------------------------------------
     # F. TÍNH GPA HỌC KỲ VÀ TÍCH LŨY
     # -------------------------------------------------------------------------
@@ -1030,6 +1077,13 @@ def generate_enrollment_hk232() -> Path:
             r["retaken"] = True
 
     df_enrollment = pd.DataFrame(enrollment_records)
+
+    # Đảm bảo loại bỏ bất kỳ bản ghi MI1003/SA4001 nào không phải diện hoàn thành đặc biệt
+    df_enrollment = df_enrollment[
+        (~df_enrollment["course_id"].isin(["MI1003", "SA4001"])) |
+        (df_enrollment["final_score"].eq(12.0) & df_enrollment["class_id"].isna())
+    ].reset_index(drop=True)
+    df_enrollment["enrollment_id"] = df_enrollment.index + 1
 
     semester_gpas: Dict[str, float] = {}
     final_gpas: Dict[str, float] = {}
@@ -1042,7 +1096,7 @@ def generate_enrollment_hk232() -> Path:
             ccode = att["course_id"]
             creds = credits_map.get(ccode, 3.0)
 
-            if creds > 0:
+            if creds > 0 and pd.notna(gpa4) and att.get("final_score") != 12.0:
                 hk_points += gpa4 * creds
                 hk_credits += creds
 

@@ -72,6 +72,8 @@ from academic_rules import (
     filter_retake_demand_by_credit_limit,
     generate_grade_improvement_retakes,
     score_course_components,
+    get_student_hp2_sport,
+    build_pe_enrollments_for_semester,
 )
 
 ANALYSIS_DIR = ROOT_DIR / "analysis"
@@ -166,6 +168,7 @@ def generate_enrollment_hk252() -> Path:
         for s in prior_sems
     ]
     total_past_enrollments = sum(len(df) for df in prev_dfs)
+    df_all_prev = pd.concat(prev_dfs, ignore_index=True)
 
     # Lịch sử môn đạt của từng sinh viên
     history_passed: Dict[str, Dict[str, float]] = defaultdict(dict)
@@ -336,13 +339,27 @@ def generate_enrollment_hk252() -> Path:
     k24_group_d = get_k24_group_d_distribution(k24_students)
 
     k25_compulsory = get_curriculum_for_cohort_semester("K25", 2)["compulsory_courses"]
-    k25_core_courses = [c["course_code"] for c in k25_compulsory if not c["course_code"].startswith("LA")]
+    k25_core_courses = [
+        c["course_code"] for c in k25_compulsory
+        if not c["course_code"].startswith("LA")
+        and not c["course_code"].startswith("PE")
+        and c["course_code"] not in ("MI1003", "SA4001")
+    ]
 
     k24_compulsory = get_curriculum_for_cohort_semester("K24", 4)["compulsory_courses"]
-    k24_core_courses = [c["course_code"] for c in k24_compulsory if not c["course_code"].startswith("LA") and c["course_code"] != "MT2013"]
+    k24_core_courses = [
+        c["course_code"] for c in k24_compulsory
+        if not c["course_code"].startswith("LA")
+        and c["course_code"] != "MT2013"
+        and c["course_code"] not in ("MI1003", "SA4001")
+    ]
 
     k23_compulsory = get_curriculum_for_cohort_semester("K23", 6)["compulsory_courses"]
-    k23_core_courses = [c["course_code"] for c in k23_compulsory if c["course_code"] not in ("CH1003", "CO3093")]
+    k23_core_courses = [
+        c["course_code"] for c in k23_compulsory
+        if c["course_code"] not in ("CH1003", "CO3093")
+        and c["course_code"] not in ("MI1003", "SA4001")
+    ]
 
     enrollment_records: List[Dict[str, Any]] = []
     enrollment_id = total_past_enrollments + 1
@@ -465,6 +482,26 @@ def generate_enrollment_hk252() -> Path:
                     record_grade(uid, course_code, class_id, is_retake=False, seed_suffix="_accel")
 
             print(f"   -> [K25 Học vượt] {len(valid_accel)} SV học vượt CH1003 vào {len(class_ids)} lớp.")
+
+    # Đăng ký và chấm điểm các môn Giáo dục Thể chất HP2 (PE1033 - PE1063) cho Tân sinh viên K25
+    pe_classes_dict = [cl for cl in df_classes.to_dict(orient="records") if str(cl.get("course_code", "")).startswith("PE")]
+    pe_student_map = {
+        str(uid): get_student_hp2_sport(str(uid), df_all_prev)
+        for uid in k25_students["user_id"]
+    }
+    pe_enrs = build_pe_enrollments_for_semester(
+        semester=SEMESTER,
+        term_type=2,
+        freshmen_df=k25_students,
+        pe_classes=pe_classes_dict,
+        student_sport_map=pe_student_map,
+        student_profiles=student_profiles,
+        start_enrollment_id=enrollment_id,
+        config=GENERATOR_CONFIG,
+    )
+    enrollment_records.extend(pe_enrs)
+    enrollment_id += len(pe_enrs)
+    print(f"   -> Đã gán {len(pe_enrs)} SV K25 vào các môn Giáo dục Thể chất HP2 (tương ứng môn HP1 đã học)")
 
     # -------------------------------------------------------------------------
     # B. MÔ PHỎNG ĐĂNG KÝ VÀ CHẤM ĐIỂM CHO KHÓA K24 (HỌC KỲ 4)
@@ -918,6 +955,52 @@ def generate_enrollment_hk252() -> Path:
         enrollment_id += len(improvement_records)
         print(f"   -> [Học cải thiện điểm] Đã xếp {len(improvement_records)} lượt học cải thiện cho sinh viên có GPA < 2.0.")
 
+    # Ghi nhận hoàn thành Giáo dục Quốc phòng (MI1003) cho sinh viên K25 cuối kỳ 2
+    print("\n--- Ghi nhận hoàn thành MI1003 (GDQP) cho K25 cuối kỳ 2 ---")
+    for uid in k25_students["user_id"]:
+        enrollment_records.append({
+            "enrollment_id": enrollment_id,
+            "student_id": uid,
+            "class_id": np.nan,
+            "course_id": "MI1003",
+            "semester": SEMESTER,
+            "retaken": False,
+            "quiz": np.nan,
+            "lab": np.nan,
+            "btl": np.nan,
+            "giua_ky": np.nan,
+            "cuoi_ky": np.nan,
+            "final_score": 12.0,
+            "letter_grade": np.nan,
+            "gpa_4": np.nan,
+            "passed": True,
+            "status": "Pass",
+        })
+        enrollment_id += 1
+
+    # Ghi nhận hoàn thành Hoạt động sinh viên (SA4001) cho sinh viên K23 cuối kỳ 6
+    print("\n--- Ghi nhận hoàn thành SA4001 (Hoạt động sinh viên) cho K23 cuối kỳ 6 ---")
+    for uid in k23_students["user_id"]:
+        enrollment_records.append({
+            "enrollment_id": enrollment_id,
+            "student_id": uid,
+            "class_id": np.nan,
+            "course_id": "SA4001",
+            "semester": SEMESTER,
+            "retaken": False,
+            "quiz": np.nan,
+            "lab": np.nan,
+            "btl": np.nan,
+            "giua_ky": np.nan,
+            "cuoi_ky": np.nan,
+            "final_score": 12.0,
+            "letter_grade": np.nan,
+            "gpa_4": np.nan,
+            "passed": True,
+            "status": "Pass",
+        })
+        enrollment_id += 1
+
     # -------------------------------------------------------------------------
     # F. TÍNH GPA HỌC KỲ VÀ TÍCH LŨY
     # -------------------------------------------------------------------------
@@ -928,6 +1011,13 @@ def generate_enrollment_hk252() -> Path:
             r["retaken"] = True
 
     df_enrollment = pd.DataFrame(enrollment_records)
+
+    # Đảm bảo loại bỏ bất kỳ bản ghi MI1003/SA4001 nào không phải diện hoàn thành đặc biệt
+    df_enrollment = df_enrollment[
+        (~df_enrollment["course_id"].isin(["MI1003", "SA4001"])) |
+        (df_enrollment["final_score"].eq(12.0) & df_enrollment["class_id"].isna())
+    ].reset_index(drop=True)
+    df_enrollment["enrollment_id"] = range(total_past_enrollments + 1, total_past_enrollments + 1 + len(df_enrollment))
 
     semester_gpas: Dict[str, float] = {}
     for uid, attempts in df_enrollment.groupby("student_id"):

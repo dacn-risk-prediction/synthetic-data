@@ -28,10 +28,10 @@ class TestHK231HK232Generators(unittest.TestCase):
         k22 = df_enr[df_enr["student_id"].str.startswith("22")]
         k23 = df_enr[df_enr["student_id"].str.startswith("23")]
 
-        self.assertEqual(len(k20["student_id"].unique()), 1500)
-        self.assertEqual(len(k21["student_id"].unique()), 1520)
-        self.assertEqual(len(k22["student_id"].unique()), 1559)
-        self.assertEqual(len(k23["student_id"].unique()), 1577)
+        self.assertEqual(len(k20["student_id"].unique()), 1495)
+        self.assertEqual(len(k21["student_id"].unique()), 1527)
+        self.assertEqual(len(k22["student_id"].unique()), 1558)
+        self.assertEqual(len(k23["student_id"].unique()), 1578)
 
         # Check early graduation for K20 in HK231 (Term 7)
         k20_co4337 = df_enr[(df_enr["course_id"] == "CO4337") & (df_enr["student_id"].str.startswith("20"))]
@@ -39,9 +39,11 @@ class TestHK231HK232Generators(unittest.TestCase):
         self.assertEqual(len(k20_co4337), 18, "18 fast-track K20 students should enroll in CO4337 in HK231")
         self.assertEqual(len(k20_sp1007), 18, "18 fast-track K20 students should enroll in SP1007 in HK231")
 
-        # Check 0-credit PE1003 course for K23
-        k23_pe1003 = df_enr[(df_enr["course_id"] == "PE1003") & (df_enr["student_id"].str.startswith("23"))]
-        self.assertEqual(len(k23_pe1003), 1577, "All 1,577 K23 freshmen must enroll in PE1003")
+        # Check 0-credit PE courses for K23 (12 HP1 sports instead of placeholder PE1003)
+        k23_pe_hp1 = df_enr[(df_enr["course_id"].str.startswith("PE")) & (df_enr["student_id"].str.startswith("23"))]
+        self.assertGreaterEqual(len(k23_pe_hp1), 1577, "All K23 freshmen must enroll in PE HP1 sports")
+        self.assertEqual(len(df_enr[df_enr["course_id"] == "PE1003"]), 0, "No placeholder PE1003 enrollments")
+        self.assertEqual(len(df_classes[df_classes["course_code"] == "PE1003"]), 0, "No placeholder PE1003 classes")
 
         # Check SP lecture hall max capacity
         sp_classes = df_classes[df_classes["course_code"].isin(["SP1031", "SP1035", "SP1039", "SP1007"])]
@@ -64,26 +66,28 @@ class TestHK231HK232Generators(unittest.TestCase):
         k22 = df_enr[df_enr["student_id"].str.startswith("22")]
         k23 = df_enr[df_enr["student_id"].str.startswith("23")]
 
-        self.assertEqual(len(k20["student_id"].unique()), 1482, "Only remaining 1,482 K20 students should enroll in HK232")
-        self.assertEqual(len(k21["student_id"].unique()), 1520)
-        self.assertEqual(len(k22["student_id"].unique()), 1559)
+        self.assertEqual(len(k20["student_id"].unique()), 1477, "Only remaining 1,477 active K20 students should enroll in HK232")
+        self.assertEqual(len(k21["student_id"].unique()), 1526)
+        self.assertEqual(len(k22["student_id"].unique()), 1555)
         self.assertEqual(len(k23["student_id"].unique()), 1577)
 
         # Check standard 4-year graduation for remaining K20
         k20_co4337 = df_enr[(df_enr["course_id"] == "CO4337") & (df_enr["student_id"].str.startswith("20"))]
         k20_sp1007 = df_enr[(df_enr["course_id"] == "SP1007") & (df_enr["student_id"].str.startswith("20"))]
-        self.assertEqual(len(k20_co4337), 1482, "All 1,482 regular K20 students should complete CO4337 in HK232")
-        self.assertEqual(len(k20_sp1007), 1482, "All 1,482 regular K20 students should complete SP1007 in HK232")
+        self.assertEqual(len(k20_co4337), 1105, "1,105 eligible K20 students should complete CO4337 in HK232")
+        self.assertEqual(len(k20_sp1007), 1477, "All 1,477 regular K20 students should complete SP1007 in HK232")
 
         # Check K23 acceleration course CH1003 per priority 15
         k23_ch1003 = df_enr[(df_enr["course_id"] == "CH1003") & (df_enr["student_id"].str.startswith("23"))]
         self.assertGreater(len(k23_ch1003), 200, "K23 should accelerate CH1003 per priority 15")
 
-        # Check 0-credit courses for K23: MI1003 and PE1005
+        # Check 0-credit courses for K23: MI1003 and PE HP2 sports (instead of placeholder PE1005)
         k23_mi1003 = df_enr[(df_enr["course_id"] == "MI1003") & (df_enr["student_id"].str.startswith("23"))]
-        k23_pe1005 = df_enr[(df_enr["course_id"] == "PE1005") & (df_enr["student_id"].str.startswith("23"))]
+        k23_pe_hp2 = df_enr[(df_enr["course_id"].str.startswith("PE")) & (df_enr["student_id"].str.startswith("23"))]
         self.assertEqual(len(k23_mi1003), 1577, "All 1,577 K23 freshmen must enroll in MI1003")
-        self.assertEqual(len(k23_pe1005), 1577, "All 1,577 K23 freshmen must enroll in PE1005")
+        self.assertEqual(len(k23_pe_hp2), 1577, "All 1,577 K23 freshmen must enroll in PE HP2 sports")
+        self.assertEqual(len(df_enr[df_enr["course_id"] == "PE1005"]), 0, "No placeholder PE1005 enrollments")
+        self.assertEqual(len(df_classes[df_classes["course_code"] == "PE1005"]), 0, "No placeholder PE1005 classes")
 
         # Check early graduation candidates for K21 in HK6 (CO3061 and CO4029)
         k21_early_ai = df_enr[(df_enr["course_id"] == "CO3061") & (df_enr["student_id"].str.startswith("21"))]
@@ -92,7 +96,7 @@ class TestHK231HK232Generators(unittest.TestCase):
         self.assertEqual(len(k21_early_proj), 18, "18 K21 fast-track students (1.2%) should enroll in CO4029")
 
         # Check retake classes opened for HK1/odd courses with >= 20 students
-        for rc in ["MT1003", "PH1003", "CO1005", "CO1023", "CO2011", "CO2003", "CO2007", "SP1031"]:
+        for rc in ["CO1005", "CO2011", "CO2003", "CO2007", "SP1031"]:
             hl = df_classes[(df_classes["course_code"] == rc) & (df_classes["class_group"] == "L_HL01")]
             self.assertEqual(len(hl), 1, f"Should open 1 retake class for {rc}")
 

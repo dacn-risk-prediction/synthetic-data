@@ -126,887 +126,981 @@
 125,KHMT_K20,CO3059,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
 126,KHMT_K20,CO3089,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
 127,KHMT_K20,CO3117,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-128,KHMT_K21,MT1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
-129,KHMT_K21,MT1005,MATH_SCI,BB,,Toàn ngành,4,HK2,MT1003(KN)
-130,KHMT_K21,MT1007,MATH_SCI,BB,,Toàn ngành,3,HK2,
-131,KHMT_K21,MT2013,MATH_SCI,BB,,Toàn ngành,4,HK4,
-132,KHMT_K21,CH1003,MATH_SCI,BB,,Toàn ngành,3,HK6,
-133,KHMT_K21,PH1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
-134,KHMT_K21,PH1007,MATH_SCI,BB,,Toàn ngành,1,HK2,
-135,KHMT_K21,CO1007,MATH_SCI,BB,,Toàn ngành,4,HK2,
-136,KHMT_K21,CO2011,MATH_SCI,BB,,Toàn ngành,3,HK3,CO1007(KN)
-137,KHMT_K21,SP1007,POLITICS_LAW,BB,,Toàn ngành,2,HK8,
-138,KHMT_K21,SP1031,POLITICS_LAW,BB,,Toàn ngành,3,HK3,
-139,KHMT_K21,SP1033,POLITICS_LAW,BB,,Toàn ngành,2,HK4,SP1031(KN)
-140,KHMT_K21,SP1035,POLITICS_LAW,BB,,Toàn ngành,2,HK5,SP1033(KN)
-141,KHMT_K21,SP1037,POLITICS_LAW,BB,,Toàn ngành,2,HK6,SP1039(KN)
-142,KHMT_K21,SP1039,POLITICS_LAW,BB,,Toàn ngành,2,HK7,SP1035(KN)
-143,KHMT_K21,CO1005,GEN_SKILLS,BB,,Toàn ngành,3,HK1,
-144,KHMT_K21,IM1013,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-145,KHMT_K21,IM1023,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-146,KHMT_K21,IM1025,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-147,KHMT_K21,IM1027,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-148,KHMT_K21,IM3001,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-149,KHMT_K21,CO2001,GEN_SKILLS,BB,,Toàn ngành,3,HK5,
-150,KHMT_K21,LA1003,FOREIGN_LANG,BB,,Toàn ngành,2,HK1,
-151,KHMT_K21,LA1005,FOREIGN_LANG,BB,,Toàn ngành,2,HK2,LA1003(TQ)
-152,KHMT_K21,LA1007,FOREIGN_LANG,BB,,Toàn ngành,2,HK3,LA1005(TQ)
-153,KHMT_K21,LA1009,FOREIGN_LANG,BB,,Toàn ngành,2,HK4,LA1007(TQ)
-154,KHMT_K21,CO1023,CORE,BB,,Toàn ngành,3,HK1,
-155,KHMT_K21,CO1027,CORE,BB,,Toàn ngành,3,HK2,
-156,KHMT_K21,CO2003,CORE,BB,,Toàn ngành,4,HK3,
-157,KHMT_K21,CO2007,CORE,BB,,Toàn ngành,4,HK3,
-158,KHMT_K21,CO2013,CORE,BB,,Toàn ngành,4,HK5,
-159,KHMT_K21,CO2039,CORE,BB,,Toàn ngành,3,HK4,
-160,KHMT_K21,CO2017,MAJOR,BB,,Toàn ngành,3,HK4,
-161,KHMT_K21,CO3001,MAJOR,BB,,Toàn ngành,3,HK5,
-162,KHMT_K21,CO3005,MAJOR,BB,,Toàn ngành,4,HK5,CO2003(TQ)
-163,KHMT_K21,CO3093,MAJOR,BB,,Toàn ngành,3,HK6,
-164,KHMT_K21,CO3101,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-165,KHMT_K21,CO3103,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-166,KHMT_K21,CO3105,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-167,KHMT_K21,CO3107,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-168,KHMT_K21,CO3109,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-169,KHMT_K21,CO3111,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-170,KHMT_K21,CO3011,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-171,KHMT_K21,CO3013,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-172,KHMT_K21,CO3015,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-173,KHMT_K21,CO3017,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-174,KHMT_K21,CO3021,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-175,KHMT_K21,CO3023,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-176,KHMT_K21,CO3027,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-177,KHMT_K21,CO3029,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-178,KHMT_K21,CO3031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2003(KN)
-179,KHMT_K21,CO3033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-180,KHMT_K21,CO3035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-181,KHMT_K21,CO3037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-182,KHMT_K21,CO3041,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-183,KHMT_K21,CO3043,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-184,KHMT_K21,CO3045,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-185,KHMT_K21,CO3047,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-186,KHMT_K21,CO3049,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-187,KHMT_K21,CO3051,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-188,KHMT_K21,CO3057,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-189,KHMT_K21,CO3059,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-190,KHMT_K21,CO3061,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-191,KHMT_K21,CO3065,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-192,KHMT_K21,CO3067,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-193,KHMT_K21,CO3069,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-194,KHMT_K21,CO3071,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-195,KHMT_K21,CO3083,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-196,KHMT_K21,CO3085,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-197,KHMT_K21,CO3089,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-198,KHMT_K21,CO3115,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-199,KHMT_K21,CO3117,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-200,KHMT_K21,CO4025,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-201,KHMT_K21,CO4031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-202,KHMT_K21,CO4033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-203,KHMT_K21,CO4035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-204,KHMT_K21,CO4037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-205,KHMT_K21,CO4039,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-206,KHMT_K21,CO3335,GRADUATION,BB,,Toàn ngành,2,HK7,
-207,KHMT_K21,CO4029,GRADUATION,BB,,Toàn ngành,2,HK7,CO3335(SHT)
-208,KHMT_K21,CO4337,GRADUATION,BB,,Toàn ngành,4,HK8,
-209,KHMT_K21,CO3021,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
-210,KHMT_K21,CO3023,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-211,KHMT_K21,CO3027,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-212,KHMT_K21,CO3029,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-213,KHMT_K21,CO3033,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
-214,KHMT_K21,CO3115,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-215,KHMT_K21,CO4031,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
-216,KHMT_K21,CO4033,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-217,KHMT_K21,CO4035,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
-218,KHMT_K21,CO4037,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-219,KHMT_K21,CO4039,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-220,KHMT_K21,CO3011,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-221,KHMT_K21,CO3013,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-222,KHMT_K21,CO3015,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-223,KHMT_K21,CO3017,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-224,KHMT_K21,CO3065,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-225,KHMT_K21,CO3089,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-226,KHMT_K21,CO3115,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-227,KHMT_K21,CO3041,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-228,KHMT_K21,CO3047,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-229,KHMT_K21,CO3049,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-230,KHMT_K21,CO3051,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-231,KHMT_K21,CO3069,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-232,KHMT_K21,CO3083,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-233,KHMT_K21,CO3089,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-234,KHMT_K21,CO3029,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-235,KHMT_K21,CO3035,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-236,KHMT_K21,CO3037,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-237,KHMT_K21,CO3041,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-238,KHMT_K21,CO3043,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-239,KHMT_K21,CO3045,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-240,KHMT_K21,CO3049,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-241,KHMT_K21,CO3051,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-242,KHMT_K21,CO3061,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-243,KHMT_K21,CO3085,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-244,KHMT_K21,CO3089,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-245,KHMT_K21,CO3117,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-246,KHMT_K21,CO4025,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-247,KHMT_K21,CO3043,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-248,KHMT_K21,CO3045,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-249,KHMT_K21,CO3049,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-250,KHMT_K21,CO3051,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-251,KHMT_K21,CO3057,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-252,KHMT_K21,CO3059,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-253,KHMT_K21,CO3089,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-254,KHMT_K21,CO3117,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-255,KHMT_K22,MT1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
-256,KHMT_K22,MT1005,MATH_SCI,BB,,Toàn ngành,4,HK2,MT1003(KN)
-257,KHMT_K22,MT1007,MATH_SCI,BB,,Toàn ngành,3,HK2,
-258,KHMT_K22,MT2013,MATH_SCI,BB,,Toàn ngành,4,HK4,
-259,KHMT_K22,CH1003,MATH_SCI,BB,,Toàn ngành,3,HK6,
-260,KHMT_K22,PH1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
-261,KHMT_K22,PH1007,MATH_SCI,BB,,Toàn ngành,1,HK2,
-262,KHMT_K22,CO1007,MATH_SCI,BB,,Toàn ngành,4,HK2,
-263,KHMT_K22,CO2011,MATH_SCI,BB,,Toàn ngành,3,HK3,CO1007(KN)
-264,KHMT_K22,SP1007,POLITICS_LAW,BB,,Toàn ngành,2,HK8,
-265,KHMT_K22,SP1031,POLITICS_LAW,BB,,Toàn ngành,3,HK3,
-266,KHMT_K22,SP1033,POLITICS_LAW,BB,,Toàn ngành,2,HK4,SP1031(KN)
-267,KHMT_K22,SP1035,POLITICS_LAW,BB,,Toàn ngành,2,HK5,SP1033(KN)
-268,KHMT_K22,SP1037,POLITICS_LAW,BB,,Toàn ngành,2,HK6,SP1039(KN)
-269,KHMT_K22,SP1039,POLITICS_LAW,BB,,Toàn ngành,2,HK7,SP1035(KN)
-270,KHMT_K22,CO1005,GEN_SKILLS,BB,,Toàn ngành,3,HK1,
-271,KHMT_K22,IM1013,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-272,KHMT_K22,IM1023,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-273,KHMT_K22,IM1025,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-274,KHMT_K22,IM1027,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-275,KHMT_K22,IM3001,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-276,KHMT_K22,CO2001,GEN_SKILLS,BB,,Toàn ngành,3,HK5,
-277,KHMT_K22,LA1003,FOREIGN_LANG,BB,,Toàn ngành,2,HK1,
-278,KHMT_K22,LA1005,FOREIGN_LANG,BB,,Toàn ngành,2,HK2,LA1003(TQ)
-279,KHMT_K22,LA1007,FOREIGN_LANG,BB,,Toàn ngành,2,HK3,LA1005(TQ)
-280,KHMT_K22,LA1009,FOREIGN_LANG,BB,,Toàn ngành,2,HK4,LA1007(TQ)
-281,KHMT_K22,CO1023,CORE,BB,,Toàn ngành,3,HK1,
-282,KHMT_K22,CO1027,CORE,BB,,Toàn ngành,3,HK2,
-283,KHMT_K22,CO2003,CORE,BB,,Toàn ngành,4,HK3,
-284,KHMT_K22,CO2007,CORE,BB,,Toàn ngành,4,HK3,
-285,KHMT_K22,CO2013,CORE,BB,,Toàn ngành,4,HK5,
-286,KHMT_K22,CO2039,CORE,BB,,Toàn ngành,3,HK4,
-287,KHMT_K22,CO2017,MAJOR,BB,,Toàn ngành,3,HK4,
-288,KHMT_K22,CO3001,MAJOR,BB,,Toàn ngành,3,HK5,
-289,KHMT_K22,CO3005,MAJOR,BB,,Toàn ngành,4,HK5,CO2003(TQ)
-290,KHMT_K22,CO3093,MAJOR,BB,,Toàn ngành,3,HK6,
-291,KHMT_K22,CO3101,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-292,KHMT_K22,CO3103,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-293,KHMT_K22,CO3105,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-294,KHMT_K22,CO3119,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-295,KHMT_K22,CO3127,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-296,KHMT_K22,CO3107,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-297,KHMT_K22,CO3109,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-298,KHMT_K22,CO3111,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-299,KHMT_K22,CO3011,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-300,KHMT_K22,CO3013,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-301,KHMT_K22,CO3015,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-302,KHMT_K22,CO3017,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-303,KHMT_K22,CO3021,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-304,KHMT_K22,CO3023,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-305,KHMT_K22,CO3027,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-306,KHMT_K22,CO3029,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-307,KHMT_K22,CO3031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2003(KN)
-308,KHMT_K22,CO3033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-309,KHMT_K22,CO3035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-310,KHMT_K22,CO3037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-311,KHMT_K22,CO3041,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-312,KHMT_K22,CO3043,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-313,KHMT_K22,CO3045,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-314,KHMT_K22,CO3047,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-315,KHMT_K22,CO3049,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-316,KHMT_K22,CO3051,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-317,KHMT_K22,CO3057,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-318,KHMT_K22,CO3059,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-319,KHMT_K22,CO3061,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-320,KHMT_K22,CO3065,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-321,KHMT_K22,CO3067,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-322,KHMT_K22,CO3069,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-323,KHMT_K22,CO3071,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-324,KHMT_K22,CO3083,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-325,KHMT_K22,CO3085,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-326,KHMT_K22,CO3089,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-327,KHMT_K22,CO3115,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-328,KHMT_K22,CO3117,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-329,KHMT_K22,CO4025,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-330,KHMT_K22,CO4031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-331,KHMT_K22,CO4033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-332,KHMT_K22,CO4035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-333,KHMT_K22,CO4037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-334,KHMT_K22,CO4039,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-335,KHMT_K22,CO3129,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-336,KHMT_K22,CO3137,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-337,KHMT_K22,CO3139,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-338,KHMT_K22,CO3131,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-339,KHMT_K22,CO3151,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-340,KHMT_K22,CO3153,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-341,KHMT_K22,CO3133,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-342,KHMT_K22,CO3135,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-343,KHMT_K22,CO3335,GRADUATION,BB,,Toàn ngành,2,HK7,
-344,KHMT_K22,CO4029,GRADUATION,BB,,Toàn ngành,2,HK7,CO3335(SHT)
-345,KHMT_K22,CO4337,GRADUATION,BB,,Toàn ngành,4,HK8,
-346,KHMT_K22,CO3021,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
-347,KHMT_K22,CO3023,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-348,KHMT_K22,CO3027,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-349,KHMT_K22,CO3029,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-350,KHMT_K22,CO3033,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
-351,KHMT_K22,CO3115,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-352,KHMT_K22,CO4031,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
-353,KHMT_K22,CO4033,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-354,KHMT_K22,CO4035,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
-355,KHMT_K22,CO4037,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-356,KHMT_K22,CO4039,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-357,KHMT_K22,CO3129,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-358,KHMT_K22,CO3137,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-359,KHMT_K22,CO3139,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-360,KHMT_K22,CO3011,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-361,KHMT_K22,CO3013,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-362,KHMT_K22,CO3015,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-363,KHMT_K22,CO3017,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-364,KHMT_K22,CO3065,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-365,KHMT_K22,CO3089,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-366,KHMT_K22,CO3115,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-367,KHMT_K22,CO3041,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-368,KHMT_K22,CO3131,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-369,KHMT_K22,CO3047,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-370,KHMT_K22,CO3049,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-371,KHMT_K22,CO3051,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-372,KHMT_K22,CO3069,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-373,KHMT_K22,CO3083,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-374,KHMT_K22,CO3089,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-375,KHMT_K22,CO3151,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-376,KHMT_K22,CO3153,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-377,KHMT_K22,CO3029,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-378,KHMT_K22,CO3035,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-379,KHMT_K22,CO3037,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-380,KHMT_K22,CO3041,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-381,KHMT_K22,CO3043,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-382,KHMT_K22,CO3045,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-383,KHMT_K22,CO3049,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-384,KHMT_K22,CO3051,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-385,KHMT_K22,CO3061,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-386,KHMT_K22,CO3085,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-387,KHMT_K22,CO3089,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-388,KHMT_K22,CO3117,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-389,KHMT_K22,CO4025,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-390,KHMT_K22,CO3133,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-391,KHMT_K22,CO3135,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-392,KHMT_K22,CO3137,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-393,KHMT_K22,CO3043,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-394,KHMT_K22,CO3045,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-395,KHMT_K22,CO3049,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-396,KHMT_K22,CO3051,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-397,KHMT_K22,CO3057,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-398,KHMT_K22,CO3059,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-399,KHMT_K22,CO3089,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-400,KHMT_K22,CO3117,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-401,KHMT_K23,MT1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
-402,KHMT_K23,MT1005,MATH_SCI,BB,,Toàn ngành,4,HK2,MT1003(KN)
-403,KHMT_K23,MT1007,MATH_SCI,BB,,Toàn ngành,3,HK2,
-404,KHMT_K23,MT2013,MATH_SCI,BB,,Toàn ngành,4,HK4,MT1007(KN)
-405,KHMT_K23,CH1003,MATH_SCI,BB,,Toàn ngành,3,HK6,
-406,KHMT_K23,PH1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
-407,KHMT_K23,PH1007,MATH_SCI,BB,,Toàn ngành,1,HK2,
-408,KHMT_K23,CO1007,MATH_SCI,BB,,Toàn ngành,4,HK2,
-409,KHMT_K23,CO2011,MATH_SCI,BB,,Toàn ngành,3,HK3,CO1007(KN)
-410,KHMT_K23,SP1007,POLITICS_LAW,BB,,Toàn ngành,2,HK8,
-411,KHMT_K23,SP1031,POLITICS_LAW,BB,,Toàn ngành,3,HK3,
-412,KHMT_K23,SP1033,POLITICS_LAW,BB,,Toàn ngành,2,HK4,SP1031(KN)
-413,KHMT_K23,SP1035,POLITICS_LAW,BB,,Toàn ngành,2,HK5,SP1033(KN)
-414,KHMT_K23,SP1037,POLITICS_LAW,BB,,Toàn ngành,2,HK6,SP1039(KN)
-415,KHMT_K23,SP1039,POLITICS_LAW,BB,,Toàn ngành,2,HK7,SP1035(KN)
-416,KHMT_K23,CO1005,GEN_SKILLS,BB,,Toàn ngành,3,HK1,
-417,KHMT_K23,CO2001,GEN_SKILLS,BB,,Toàn ngành,3,HK5,CO1005(TQ)
-418,KHMT_K23,LA1003,FOREIGN_LANG,BB,,Toàn ngành,2,HK1,
-419,KHMT_K23,LA1005,FOREIGN_LANG,BB,,Toàn ngành,2,HK2,LA1003(TQ)
-420,KHMT_K23,LA1007,FOREIGN_LANG,BB,,Toàn ngành,2,HK3,LA1005(TQ)
-421,KHMT_K23,LA1009,FOREIGN_LANG,BB,,Toàn ngành,2,HK4,LA1007(TQ)
-422,KHMT_K23,CO1023,CORE,BB,,Toàn ngành,3,HK1,
-423,KHMT_K23,CO1027,CORE,BB,,Toàn ngành,3,HK2,
-424,KHMT_K23,CO2003,CORE,BB,,Toàn ngành,4,HK3,
-425,KHMT_K23,CO2007,CORE,BB,,Toàn ngành,4,HK3,CO1005(KN)
-426,KHMT_K23,CO2013,CORE,BB,,Toàn ngành,4,HK5,
-427,KHMT_K23,CO2039,CORE,BB,,Toàn ngành,3,HK4,
-428,KHMT_K23,CO2017,MAJOR,BB,,Toàn ngành,3,HK4,
-429,KHMT_K23,PE1003,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
-430,KHMT_K23,PE1005,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1003(HT)
-431,KHMT_K23,MI1003,COND_DEFENSE,BB,,Toàn ngành,0,HK2,
-432,KHMT_K23,CO3001,MAJOR,BB,,Toàn ngành,3,HK5,CO1027(KN)
-433,KHMT_K23,CO3093,MAJOR,BB,,Toàn ngành,3,HK6,
-434,KHMT_K23,CO3005,MAJOR,BB,,Toàn ngành,4,HK5,CO1027(TQ)
-435,KHMT_K23,CO3101,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-436,KHMT_K23,CO3103,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-437,KHMT_K23,CO3105,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-438,KHMT_K23,CO3119,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-439,KHMT_K23,CO3127,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-440,KHMT_K23,CO3107,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-441,KHMT_K23,CO3109,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-442,KHMT_K23,CO3111,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-443,KHMT_K23,CO3021,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
-444,KHMT_K23,CO3023,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-445,KHMT_K23,CO3027,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-446,KHMT_K23,CO3029,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-447,KHMT_K23,CO3033,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
-448,KHMT_K23,CO3115,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-449,KHMT_K23,CO4031,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
-450,KHMT_K23,CO4033,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-451,KHMT_K23,CO4035,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
-452,KHMT_K23,CO4039,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-453,KHMT_K23,CO3129,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-454,KHMT_K23,CO3137,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2017(KN)
-455,KHMT_K23,CO3139,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
-456,KHMT_K23,IM1013,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-457,KHMT_K23,IM1023,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-458,KHMT_K23,IM1025,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-459,KHMT_K23,IM1027,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-460,KHMT_K23,IM3001,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-461,KHMT_K23,CO3011,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-462,KHMT_K23,CO3013,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-463,KHMT_K23,CO3015,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-464,KHMT_K23,CO3017,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-465,KHMT_K23,CO3065,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-466,KHMT_K23,CO3089,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-467,KHMT_K23,CO3115,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-468,KHMT_K23,CO3041,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,CO3001(TQ)
-469,KHMT_K23,CO3131,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-470,KHMT_K23,CO3021,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-471,KHMT_K23,CO3027,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-472,KHMT_K23,CO3029,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-473,KHMT_K23,CO3033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-474,KHMT_K23,CO3115,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-475,KHMT_K23,CO4031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-476,KHMT_K23,CO4033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-477,KHMT_K23,CO4035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-478,KHMT_K23,CO4037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-479,KHMT_K23,CO4039,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-480,KHMT_K23,CO3011,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-481,KHMT_K23,CO3015,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-482,KHMT_K23,CO3017,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-483,KHMT_K23,CO3065,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-484,KHMT_K23,CO3041,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO3001(TQ)
-485,KHMT_K23,CO3089,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-486,KHMT_K23,CO3049,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-487,KHMT_K23,CO3051,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-488,KHMT_K23,CO3069,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-489,KHMT_K23,CO3061,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-490,KHMT_K23,CO3117,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-491,KHMT_K23,CO3129,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-492,KHMT_K23,CO3137,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2017(KN)
-493,KHMT_K23,CO3139,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-494,KHMT_K23,CO3131,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-495,KHMT_K23,CO3151,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-496,KHMT_K23,CO3153,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-497,KHMT_K23,CO3133,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO3061(KN)
-498,KHMT_K23,CO3135,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-499,KHMT_K23,CO3013,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-500,KHMT_K23,CO3023,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-501,KHMT_K23,CO3031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2003(HT)
-502,KHMT_K23,CO3035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-503,KHMT_K23,CO3047,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-504,KHMT_K23,CO3071,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-505,KHMT_K23,CO3083,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-506,KHMT_K23,CO4025,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-507,KHMT_K23,CO3085,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-508,KHMT_K23,CO3057,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-509,KHMT_K23,CO3045,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-510,KHMT_K23,CO3059,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-511,KHMT_K23,CO3067,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-512,KHMT_K23,CO3037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-513,KHMT_K23,CO3043,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-514,KHMT_K23,CO3047,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-515,KHMT_K23,CO3049,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-516,KHMT_K23,CO3051,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-517,KHMT_K23,CO3069,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-518,KHMT_K23,CO3083,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-519,KHMT_K23,CO3089,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-520,KHMT_K23,CO3151,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-521,KHMT_K23,CO3153,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
-522,KHMT_K23,CO3029,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-523,KHMT_K23,CO3035,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-524,KHMT_K23,CO3037,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-525,KHMT_K23,CO3041,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,CO3001(TQ)
-526,KHMT_K23,CO3043,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-527,KHMT_K23,CO3045,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-528,KHMT_K23,CO3049,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-529,KHMT_K23,CO3051,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-530,KHMT_K23,CO3061,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-531,KHMT_K23,CO3085,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-532,KHMT_K23,CO3089,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-533,KHMT_K23,CO3117,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-534,KHMT_K23,CO4025,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-535,KHMT_K23,CO3133,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,CO3061(KN)
-536,KHMT_K23,CO3135,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
-537,KHMT_K23,CO3137,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,CO2017(KN)
-538,KHMT_K23,CO3043,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-539,KHMT_K23,CO3045,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-540,KHMT_K23,CO3049,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-541,KHMT_K23,CO3051,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-542,KHMT_K23,CO3057,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-543,KHMT_K23,CO3059,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-544,KHMT_K23,CO3089,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-545,KHMT_K23,CO3117,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
-546,KHMT_K23,CO3335,GRADUATION,BB,,Toàn ngành,2,HK7,
-547,KHMT_K23,CO4029,GRADUATION,BB,,Toàn ngành,2,HK7,CO3335(SHT)
-548,KHMT_K23,CO4337,GRADUATION,BB,,Toàn ngành,4,HK8,
-549,KHMT_K23,SA4001,COND_OTHERS,BB,,Toàn ngành,0,HK8,
-550,KHMT_K24,MT1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
-551,KHMT_K24,MT1005,MATH_SCI,BB,,Toàn ngành,4,HK2,MT1003(KN)
-552,KHMT_K24,MT1007,MATH_SCI,BB,,Toàn ngành,3,HK2,
-553,KHMT_K24,MT2013,MATH_SCI,BB,,Toàn ngành,4,HK4,MT1007(KN)
-554,KHMT_K24,CH1003,MATH_SCI,BB,,Toàn ngành,3,HK6,
-555,KHMT_K24,PH1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
-556,KHMT_K24,PH1007,MATH_SCI,BB,,Toàn ngành,1,HK2,
-557,KHMT_K24,CO1007,MATH_SCI,BB,,Toàn ngành,4,HK2,
-558,KHMT_K24,CO2011,MATH_SCI,BB,,Toàn ngành,3,HK3,CO1007(KN)
-559,KHMT_K24,SP1007,POLITICS_LAW,BB,,Toàn ngành,2,HK8,
-560,KHMT_K24,SP1031,POLITICS_LAW,BB,,Toàn ngành,3,HK3,
-561,KHMT_K24,SP1033,POLITICS_LAW,BB,,Toàn ngành,2,HK4,SP1031(KN)
-562,KHMT_K24,SP1035,POLITICS_LAW,BB,,Toàn ngành,2,HK5,SP1033(KN)
-563,KHMT_K24,SP1037,POLITICS_LAW,BB,,Toàn ngành,2,HK6,SP1039(KN)
-564,KHMT_K24,SP1039,POLITICS_LAW,BB,,Toàn ngành,2,HK7,SP1035(KN)
-565,KHMT_K24,CO1005,GEN_SKILLS,BB,,Toàn ngành,3,HK1,
-566,KHMT_K24,CO2001,GEN_SKILLS,BB,,Toàn ngành,3,HK5,CO1005(TQ)
-567,KHMT_K24,IM1013,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-568,KHMT_K24,IM1023,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-569,KHMT_K24,IM1025,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-570,KHMT_K24,IM1027,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-571,KHMT_K24,IM3001,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-572,KHMT_K24,IM1031,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-573,KHMT_K24,ME1019,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-574,KHMT_K24,LA1003,FOREIGN_LANG,BB,,Toàn ngành,2,HK1,
-575,KHMT_K24,LA1005,FOREIGN_LANG,BB,,Toàn ngành,2,HK2,LA1003(TQ)
-576,KHMT_K24,LA1007,FOREIGN_LANG,BB,,Toàn ngành,2,HK3,LA1005(TQ)
-577,KHMT_K24,LA1009,FOREIGN_LANG,BB,,Toàn ngành,2,HK4,LA1007(TQ)
-578,KHMT_K24,CO1023,CORE,BB,,Toàn ngành,3,HK1,
-579,KHMT_K24,CO1027,CORE,BB,,Toàn ngành,3,HK2,
-580,KHMT_K24,CO2003,CORE,BB,,Toàn ngành,4,HK3,
-581,KHMT_K24,CO2007,CORE,BB,,Toàn ngành,4,HK3,
-582,KHMT_K24,CO2013,CORE,BB,,Toàn ngành,4,HK5,
-583,KHMT_K24,CO2039,CORE,BB,,Toàn ngành,3,HK4,
-584,KHMT_K24,CO2017,MAJOR,BB,,Toàn ngành,3,HK4,
-585,KHMT_K24,CO3001,MAJOR,BB,,Toàn ngành,3,HK5,CO1027(KN)
-586,KHMT_K24,CO3005,MAJOR,BB,,Toàn ngành,4,HK5,CO1027(TQ)
-587,KHMT_K24,CO3093,MAJOR,BB,,Toàn ngành,3,HK6,
-588,KHMT_K24,CO3101,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-589,KHMT_K24,CO3103,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-590,KHMT_K24,CO3105,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-591,KHMT_K24,CO3127,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-592,KHMT_K24,CO3119,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-593,KHMT_K24,CO3107,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-594,KHMT_K24,CO3109,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-595,KHMT_K24,CO3111,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-596,KHMT_K24,CO3021,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
-597,KHMT_K24,CO3027,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-598,KHMT_K24,CO3029,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-599,KHMT_K24,CO3033,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
-600,KHMT_K24,CO3115,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-601,KHMT_K24,CO4031,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
-602,KHMT_K24,CO4033,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-603,KHMT_K24,CO4035,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
-604,KHMT_K24,CO4037,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-605,KHMT_K24,CO4039,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-606,KHMT_K24,CO3139,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-607,KHMT_K24,CO3137,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2017(KN)
-608,KHMT_K24,CO3011,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-609,KHMT_K24,CO3129,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-610,KHMT_K24,CO3131,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-611,KHMT_K24,CO3015,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-612,KHMT_K24,CO3017,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-613,KHMT_K24,CO3065,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-614,KHMT_K24,CO3041,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,CO3001(TQ)
-615,KHMT_K24,CO3049,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-616,KHMT_K24,CO3135,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-617,KHMT_K24,CO3021,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-618,KHMT_K24,CO3027,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-619,KHMT_K24,CO3029,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-620,KHMT_K24,CO3033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-621,KHMT_K24,CO3115,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-622,KHMT_K24,CO4031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-623,KHMT_K24,CO4033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-624,KHMT_K24,CO4035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-625,KHMT_K24,CO4037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-626,KHMT_K24,CO4039,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-627,KHMT_K24,CO3139,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-628,KHMT_K24,CO3137,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2017(KN)
-629,KHMT_K24,CO3011,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-630,KHMT_K24,CO3129,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-631,KHMT_K24,CO3131,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-632,KHMT_K24,CO3015,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-633,KHMT_K24,CO3017,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-634,KHMT_K24,CO3065,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-635,KHMT_K24,CO3041,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO3001(TQ)
-636,KHMT_K24,CO3089,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-637,KHMT_K24,CO3049,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-638,KHMT_K24,CO3135,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-639,KHMT_K24,CO3151,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-640,KHMT_K24,CO3051,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-641,KHMT_K24,CO3069,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-642,KHMT_K24,CO3153,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-643,KHMT_K24,CO3061,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-644,KHMT_K24,CO3117,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-645,KHMT_K24,CO3133,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO3061(KN)
-646,KHMT_K24,CO3085,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-647,KHMT_K24,CO3057,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-648,KHMT_K24,CO3045,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-649,KHMT_K24,CO3059,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-650,KHMT_K24,CO3067,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-651,KHMT_K24,CO3037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-652,KHMT_K24,CO3043,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-653,KHMT_K24,CO3151,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-654,KHMT_K24,CO3049,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-655,KHMT_K24,CO3051,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-656,KHMT_K24,CO3069,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-657,KHMT_K24,CO3153,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-658,KHMT_K24,CO3033,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,CO2013(KN)
-659,KHMT_K24,CO4039,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-660,KHMT_K24,CO3117,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-661,KHMT_K24,CO3137,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,CO2017(KN)
-662,KHMT_K24,CO3067,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-663,KHMT_K24,CO3061,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-664,KHMT_K24,CO3135,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-665,KHMT_K24,CO3117,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-666,KHMT_K24,CO3133,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,CO3061(KN)
-667,KHMT_K24,CO3085,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-668,KHMT_K24,CO3057,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-669,KHMT_K24,CO3041,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,CO3001(TQ)
-670,KHMT_K24,CO3029,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-671,KHMT_K24,CO3045,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-672,KHMT_K24,CO3059,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-673,KHMT_K24,CO3037,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-674,KHMT_K24,CO3043,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-675,KHMT_K24,CO3335,GRADUATION,BB,,Toàn ngành,2,HK7,
-676,KHMT_K24,CO4029,GRADUATION,BB,,Toàn ngành,2,HK7,CO3335(SHT)
-677,KHMT_K24,CO4337,GRADUATION,BB,,Toàn ngành,4,HK8,
-678,KHMT_K24,MI1003,COND_DEFENSE,BB,,Toàn ngành,0,HK2,
-679,KHMT_K24,PE1009,COND_PHYSICAL,BB,,Toàn ngành,0,,
-680,KHMT_K24,PE1011,COND_PHYSICAL,BB,,Toàn ngành,0,,
-681,KHMT_K24,PE1013,COND_PHYSICAL,BB,,Toàn ngành,0,,
-682,KHMT_K24,PE1015,COND_PHYSICAL,BB,,Toàn ngành,0,,
-683,KHMT_K24,PE1017,COND_PHYSICAL,BB,,Toàn ngành,0,,
-684,KHMT_K24,PE1019,COND_PHYSICAL,BB,,Toàn ngành,0,,
-685,KHMT_K24,PE1021,COND_PHYSICAL,BB,,Toàn ngành,0,,
-686,KHMT_K24,PE1025,COND_PHYSICAL,BB,,Toàn ngành,0,,
-687,KHMT_K24,PE1027,COND_PHYSICAL,BB,,Toàn ngành,0,,
-688,KHMT_K24,PE1053,COND_PHYSICAL,BB,,Toàn ngành,0,,
-689,KHMT_K24,PE1057,COND_PHYSICAL,BB,,Toàn ngành,0,,
-690,KHMT_K24,PE1061,COND_PHYSICAL,BB,,Toàn ngành,0,,
-691,KHMT_K24,PE1033,COND_PHYSICAL,BB,,Toàn ngành,0,,
-692,KHMT_K24,PE1035,COND_PHYSICAL,BB,,Toàn ngành,0,,
-693,KHMT_K24,PE1037,COND_PHYSICAL,BB,,Toàn ngành,0,,
-694,KHMT_K24,PE1039,COND_PHYSICAL,BB,,Toàn ngành,0,,
-695,KHMT_K24,PE1041,COND_PHYSICAL,BB,,Toàn ngành,0,,
-696,KHMT_K24,PE1043,COND_PHYSICAL,BB,,Toàn ngành,0,,
-697,KHMT_K24,PE1045,COND_PHYSICAL,BB,,Toàn ngành,0,,
-698,KHMT_K24,PE1049,COND_PHYSICAL,BB,,Toàn ngành,0,,
-699,KHMT_K24,PE1051,COND_PHYSICAL,BB,,Toàn ngành,0,,
-700,KHMT_K24,PE1055,COND_PHYSICAL,BB,,Toàn ngành,0,,
-701,KHMT_K24,PE1059,COND_PHYSICAL,BB,,Toàn ngành,0,,
-702,KHMT_K24,PE1063,COND_PHYSICAL,BB,,Toàn ngành,0,,
-703,KHMT_K24,SA4001,COND_OTHERS,BB,,Toàn ngành,0,HK8,
-704,KHMT_K25,MT1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
-705,KHMT_K25,MT1005,MATH_SCI,BB,,Toàn ngành,4,HK2,MT1003(KN)
-706,KHMT_K25,MT1007,MATH_SCI,BB,,Toàn ngành,3,HK2,
-707,KHMT_K25,MT2013,MATH_SCI,BB,,Toàn ngành,4,HK4,MT1007(KN)
-708,KHMT_K25,CH1003,MATH_SCI,BB,,Toàn ngành,3,HK6,
-709,KHMT_K25,PH1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
-710,KHMT_K25,PH1007,MATH_SCI,BB,,Toàn ngành,1,HK2,
-711,KHMT_K25,CO1007,MATH_SCI,BB,,Toàn ngành,4,HK2,
-712,KHMT_K25,CO2011,MATH_SCI,BB,,Toàn ngành,3,HK3,CO1007(KN)
-713,KHMT_K25,SP1007,POLITICS_LAW,BB,,Toàn ngành,2,HK8,
-714,KHMT_K25,SP1031,POLITICS_LAW,BB,,Toàn ngành,3,HK3,
-715,KHMT_K25,SP1033,POLITICS_LAW,BB,,Toàn ngành,2,HK4,SP1031(KN)
-716,KHMT_K25,SP1035,POLITICS_LAW,BB,,Toàn ngành,2,HK5,SP1033(KN)
-717,KHMT_K25,SP1037,POLITICS_LAW,BB,,Toàn ngành,2,HK6,SP1039(KN)
-718,KHMT_K25,SP1039,POLITICS_LAW,BB,,Toàn ngành,2,HK7,SP1035(KN)
-719,KHMT_K25,CO1005,GEN_SKILLS,BB,,Toàn ngành,3,HK1,
-720,KHMT_K25,CO2001,GEN_SKILLS,BB,,Toàn ngành,3,HK5,CO1005(TQ)
-721,KHMT_K25,IM1013,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-722,KHMT_K25,IM1023,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-723,KHMT_K25,IM1025,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-724,KHMT_K25,IM1027,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-725,KHMT_K25,IM3001,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-726,KHMT_K25,IM1031,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-727,KHMT_K25,ME1019,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-728,KHMT_K25,LA1003,FOREIGN_LANG,BB,,Toàn ngành,2,HK1,
-729,KHMT_K25,LA1005,FOREIGN_LANG,BB,,Toàn ngành,2,HK2,LA1003(TQ)
-730,KHMT_K25,LA1007,FOREIGN_LANG,BB,,Toàn ngành,2,HK3,LA1005(TQ)
-731,KHMT_K25,LA1009,FOREIGN_LANG,BB,,Toàn ngành,2,HK4,LA1007(TQ)
-732,KHMT_K25,CO1023,CORE,BB,,Toàn ngành,3,HK1,
-733,KHMT_K25,CO1027,CORE,BB,,Toàn ngành,3,HK2,
-734,KHMT_K25,CO2003,CORE,BB,,Toàn ngành,4,HK3,
-735,KHMT_K25,CO2007,CORE,BB,,Toàn ngành,4,HK3,
-736,KHMT_K25,CO2013,CORE,BB,,Toàn ngành,4,HK5,
-737,KHMT_K25,CO2039,CORE,BB,,Toàn ngành,3,HK4,
-738,KHMT_K25,CO2017,MAJOR,BB,,Toàn ngành,3,HK4,
-739,KHMT_K25,CO3001,MAJOR,BB,,Toàn ngành,3,HK5,CO1027(KN)
-740,KHMT_K25,CO3005,MAJOR,BB,,Toàn ngành,4,HK5,CO1027(TQ)
-741,KHMT_K25,CO3093,MAJOR,BB,,Toàn ngành,3,HK6,
-742,KHMT_K25,CO3101,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-743,KHMT_K25,CO3103,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-744,KHMT_K25,CO3105,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-745,KHMT_K25,CO3127,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-746,KHMT_K25,CO3119,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-747,KHMT_K25,CO3107,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-748,KHMT_K25,CO3109,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-749,KHMT_K25,CO3111,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-750,KHMT_K25,CO3021,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
-751,KHMT_K25,CO3027,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-752,KHMT_K25,CO3029,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-753,KHMT_K25,CO3033,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
-754,KHMT_K25,CO3115,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-755,KHMT_K25,CO4031,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
-756,KHMT_K25,CO4033,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-757,KHMT_K25,CO4035,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
-758,KHMT_K25,CO4037,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-759,KHMT_K25,CO4039,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-760,KHMT_K25,CO3139,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-761,KHMT_K25,CO3137,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2017(KN)
-762,KHMT_K25,CO3011,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-763,KHMT_K25,CO3129,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-764,KHMT_K25,CO3131,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-765,KHMT_K25,CO3015,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-766,KHMT_K25,CO3017,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-767,KHMT_K25,CO3065,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-768,KHMT_K25,CO3041,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,CO3001(TQ)
-769,KHMT_K25,CO3049,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-770,KHMT_K25,CO3135,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-771,KHMT_K25,CO3021,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-772,KHMT_K25,CO3027,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-773,KHMT_K25,CO3029,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-774,KHMT_K25,CO3033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-775,KHMT_K25,CO3115,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-776,KHMT_K25,CO4031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-777,KHMT_K25,CO4033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-778,KHMT_K25,CO4035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-779,KHMT_K25,CO4037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-780,KHMT_K25,CO4039,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-781,KHMT_K25,CO3139,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-782,KHMT_K25,CO3137,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2017(KN)
-783,KHMT_K25,CO3011,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-784,KHMT_K25,CO3129,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-785,KHMT_K25,CO3131,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-786,KHMT_K25,CO3015,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-787,KHMT_K25,CO3017,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-788,KHMT_K25,CO3065,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-789,KHMT_K25,CO3041,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO3001(TQ)
-790,KHMT_K25,CO3089,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-791,KHMT_K25,CO3049,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-792,KHMT_K25,CO3135,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-793,KHMT_K25,CO3151,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-794,KHMT_K25,CO3051,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-795,KHMT_K25,CO3069,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-796,KHMT_K25,CO3153,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-797,KHMT_K25,CO3061,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-798,KHMT_K25,CO3117,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-799,KHMT_K25,CO3133,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO3061(KN)
-800,KHMT_K25,CO3085,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-801,KHMT_K25,CO3057,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-802,KHMT_K25,CO3045,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-803,KHMT_K25,CO3059,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-804,KHMT_K25,CO3067,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-805,KHMT_K25,CO3037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-806,KHMT_K25,CO3043,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-807,KHMT_K25,CO3151,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-808,KHMT_K25,CO3049,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-809,KHMT_K25,CO3051,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-810,KHMT_K25,CO3069,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-811,KHMT_K25,CO3153,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-812,KHMT_K25,CO3033,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,CO2013(KN)
-813,KHMT_K25,CO4039,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-814,KHMT_K25,CO3117,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-815,KHMT_K25,CO3137,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,CO2017(KN)
-816,KHMT_K25,CO3067,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-817,KHMT_K25,CO3061,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-818,KHMT_K25,CO3135,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-819,KHMT_K25,CO3117,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-820,KHMT_K25,CO3133,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,CO3061(KN)
-821,KHMT_K25,CO3085,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-822,KHMT_K25,CO3057,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-823,KHMT_K25,CO3041,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,CO3001(TQ)
-824,KHMT_K25,CO3029,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-825,KHMT_K25,CO3045,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-826,KHMT_K25,CO3059,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-827,KHMT_K25,CO3037,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-828,KHMT_K25,CO3043,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-829,KHMT_K25,CO3335,GRADUATION,BB,,Toàn ngành,2,HK7,
-830,KHMT_K25,CO4029,GRADUATION,BB,,Toàn ngành,2,HK7,CO3335(SHT)
-831,KHMT_K25,CO4337,GRADUATION,BB,,Toàn ngành,4,HK8,
-832,KHMT_K25,MI1003,COND_DEFENSE,BB,,Toàn ngành,0,HK2,
-833,KHMT_K25,PE1009,COND_PHYSICAL,BB,,Toàn ngành,0,,
-834,KHMT_K25,PE1011,COND_PHYSICAL,BB,,Toàn ngành,0,,
-835,KHMT_K25,PE1013,COND_PHYSICAL,BB,,Toàn ngành,0,,
-836,KHMT_K25,PE1015,COND_PHYSICAL,BB,,Toàn ngành,0,,
-837,KHMT_K25,PE1017,COND_PHYSICAL,BB,,Toàn ngành,0,,
-838,KHMT_K25,PE1019,COND_PHYSICAL,BB,,Toàn ngành,0,,
-839,KHMT_K25,PE1021,COND_PHYSICAL,BB,,Toàn ngành,0,,
-840,KHMT_K25,PE1025,COND_PHYSICAL,BB,,Toàn ngành,0,,
-841,KHMT_K25,PE1027,COND_PHYSICAL,BB,,Toàn ngành,0,,
-842,KHMT_K25,PE1053,COND_PHYSICAL,BB,,Toàn ngành,0,,
-843,KHMT_K25,PE1057,COND_PHYSICAL,BB,,Toàn ngành,0,,
-844,KHMT_K25,PE1061,COND_PHYSICAL,BB,,Toàn ngành,0,,
-845,KHMT_K25,PE1033,COND_PHYSICAL,BB,,Toàn ngành,0,,
-846,KHMT_K25,PE1035,COND_PHYSICAL,BB,,Toàn ngành,0,,
-847,KHMT_K25,PE1037,COND_PHYSICAL,BB,,Toàn ngành,0,,
-848,KHMT_K25,PE1039,COND_PHYSICAL,BB,,Toàn ngành,0,,
-849,KHMT_K25,PE1041,COND_PHYSICAL,BB,,Toàn ngành,0,,
-850,KHMT_K25,PE1043,COND_PHYSICAL,BB,,Toàn ngành,0,,
-851,KHMT_K25,PE1045,COND_PHYSICAL,BB,,Toàn ngành,0,,
-852,KHMT_K25,PE1049,COND_PHYSICAL,BB,,Toàn ngành,0,,
-853,KHMT_K25,PE1051,COND_PHYSICAL,BB,,Toàn ngành,0,,
-854,KHMT_K25,PE1055,COND_PHYSICAL,BB,,Toàn ngành,0,,
-855,KHMT_K25,PE1059,COND_PHYSICAL,BB,,Toàn ngành,0,,
-856,KHMT_K25,PE1063,COND_PHYSICAL,BB,,Toàn ngành,0,,
-857,KHMT_K25,SA4001,COND_OTHERS,BB,,Toàn ngành,0,HK8,
-858,KHMT_K26,MT1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
-859,KHMT_K26,MT1005,MATH_SCI,BB,,Toàn ngành,4,HK2,MT1003(KN)
-860,KHMT_K26,MT1007,MATH_SCI,BB,,Toàn ngành,3,HK2,
-861,KHMT_K26,MT2013,MATH_SCI,BB,,Toàn ngành,4,HK4,MT1007(KN)
-862,KHMT_K26,CH1003,MATH_SCI,BB,,Toàn ngành,3,HK6,
-863,KHMT_K26,PH1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
-864,KHMT_K26,PH1007,MATH_SCI,BB,,Toàn ngành,1,HK2,
-865,KHMT_K26,CO1007,MATH_SCI,BB,,Toàn ngành,4,HK2,
-866,KHMT_K26,CO2011,MATH_SCI,BB,,Toàn ngành,3,HK3,CO1007(KN)
-867,KHMT_K26,SP1007,POLITICS_LAW,BB,,Toàn ngành,2,HK8,
-868,KHMT_K26,SP1031,POLITICS_LAW,BB,,Toàn ngành,3,HK3,
-869,KHMT_K26,SP1033,POLITICS_LAW,BB,,Toàn ngành,2,HK4,SP1031(KN)
-870,KHMT_K26,SP1035,POLITICS_LAW,BB,,Toàn ngành,2,HK5,SP1033(KN)
-871,KHMT_K26,SP1037,POLITICS_LAW,BB,,Toàn ngành,2,HK6,SP1039(KN)
-872,KHMT_K26,SP1039,POLITICS_LAW,BB,,Toàn ngành,2,HK7,SP1035(KN)
-873,KHMT_K26,CO1005,GEN_SKILLS,BB,,Toàn ngành,3,HK1,
-874,KHMT_K26,CO2001,GEN_SKILLS,BB,,Toàn ngành,3,HK5,CO1005(TQ)
-875,KHMT_K26,IM1013,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-876,KHMT_K26,IM1023,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-877,KHMT_K26,IM1025,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-878,KHMT_K26,IM1027,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-879,KHMT_K26,IM3001,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-880,KHMT_K26,IM1031,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-881,KHMT_K26,ME1019,MANAGEMENT,TC,Group D,Toàn ngành,3,,
-882,KHMT_K26,LA1003,FOREIGN_LANG,BB,,Toàn ngành,2,HK1,
-883,KHMT_K26,LA1005,FOREIGN_LANG,BB,,Toàn ngành,2,HK2,LA1003(TQ)
-884,KHMT_K26,LA1007,FOREIGN_LANG,BB,,Toàn ngành,2,HK3,LA1005(TQ)
-885,KHMT_K26,LA1009,FOREIGN_LANG,BB,,Toàn ngành,2,HK4,LA1007(TQ)
-886,KHMT_K26,CO1023,CORE,BB,,Toàn ngành,3,HK1,
-887,KHMT_K26,CO1027,CORE,BB,,Toàn ngành,3,HK2,
-888,KHMT_K26,CO2003,CORE,BB,,Toàn ngành,4,HK3,
-889,KHMT_K26,CO2007,CORE,BB,,Toàn ngành,4,HK3,
-890,KHMT_K26,CO2013,CORE,BB,,Toàn ngành,4,HK5,
-891,KHMT_K26,CO2039,CORE,BB,,Toàn ngành,3,HK4,
-892,KHMT_K26,CO2017,MAJOR,BB,,Toàn ngành,3,HK4,
-893,KHMT_K26,CO3001,MAJOR,BB,,Toàn ngành,3,HK5,CO1027(KN)
-894,KHMT_K26,CO3005,MAJOR,BB,,Toàn ngành,4,HK5,CO1027(TQ)
-895,KHMT_K26,CO3093,MAJOR,BB,,Toàn ngành,3,HK6,
-896,KHMT_K26,CO3101,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-897,KHMT_K26,CO3103,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-898,KHMT_K26,CO3105,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-899,KHMT_K26,CO3127,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-900,KHMT_K26,CO3119,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
-901,KHMT_K26,CO3107,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-902,KHMT_K26,CO3109,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-903,KHMT_K26,CO3111,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
-904,KHMT_K26,CO3021,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
-905,KHMT_K26,CO3027,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-906,KHMT_K26,CO3029,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-907,KHMT_K26,CO3033,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
-908,KHMT_K26,CO3115,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-909,KHMT_K26,CO4031,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
-910,KHMT_K26,CO4033,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-911,KHMT_K26,CO4035,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
-912,KHMT_K26,CO4037,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-913,KHMT_K26,CO4039,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-914,KHMT_K26,CO3139,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
-915,KHMT_K26,CO3137,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2017(KN)
-916,KHMT_K26,CO3011,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-917,KHMT_K26,CO3129,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-918,KHMT_K26,CO3131,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-919,KHMT_K26,CO3015,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-920,KHMT_K26,CO3017,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-921,KHMT_K26,CO3065,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-922,KHMT_K26,CO3041,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,CO3001(TQ)
-923,KHMT_K26,CO3049,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-924,KHMT_K26,CO3135,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
-925,KHMT_K26,CO3021,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-926,KHMT_K26,CO3027,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-927,KHMT_K26,CO3029,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-928,KHMT_K26,CO3033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-929,KHMT_K26,CO3115,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-930,KHMT_K26,CO4031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-931,KHMT_K26,CO4033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-932,KHMT_K26,CO4035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
-933,KHMT_K26,CO4037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-934,KHMT_K26,CO4039,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-935,KHMT_K26,CO3139,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-936,KHMT_K26,CO3137,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2017(KN)
-937,KHMT_K26,CO3011,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-938,KHMT_K26,CO3129,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-939,KHMT_K26,CO3131,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-940,KHMT_K26,CO3015,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-941,KHMT_K26,CO3017,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-942,KHMT_K26,CO3065,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-943,KHMT_K26,CO3041,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO3001(TQ)
-944,KHMT_K26,CO3089,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-945,KHMT_K26,CO3049,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-946,KHMT_K26,CO3135,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-947,KHMT_K26,CO3151,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-948,KHMT_K26,CO3051,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-949,KHMT_K26,CO3069,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-950,KHMT_K26,CO3153,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-951,KHMT_K26,CO3061,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-952,KHMT_K26,CO3117,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-953,KHMT_K26,CO3133,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO3061(KN)
-954,KHMT_K26,CO3085,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-955,KHMT_K26,CO3057,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-956,KHMT_K26,CO3045,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-957,KHMT_K26,CO3059,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-958,KHMT_K26,CO3067,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-959,KHMT_K26,CO3037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-960,KHMT_K26,CO3043,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
-961,KHMT_K26,CO3151,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-962,KHMT_K26,CO3049,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-963,KHMT_K26,CO3051,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-964,KHMT_K26,CO3069,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-965,KHMT_K26,CO3153,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-966,KHMT_K26,CO3033,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,CO2013(KN)
-967,KHMT_K26,CO4039,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-968,KHMT_K26,CO3117,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-969,KHMT_K26,CO3137,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,CO2017(KN)
-970,KHMT_K26,CO3067,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
-971,KHMT_K26,CO3061,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-972,KHMT_K26,CO3135,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-973,KHMT_K26,CO3117,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-974,KHMT_K26,CO3133,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,CO3061(KN)
-975,KHMT_K26,CO3085,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-976,KHMT_K26,CO3057,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-977,KHMT_K26,CO3041,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,CO3001(TQ)
-978,KHMT_K26,CO3029,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-979,KHMT_K26,CO3045,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-980,KHMT_K26,CO3059,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-981,KHMT_K26,CO3037,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-982,KHMT_K26,CO3043,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
-983,KHMT_K26,CO3335,GRADUATION,BB,,Toàn ngành,2,HK7,
-984,KHMT_K26,CO4029,GRADUATION,BB,,Toàn ngành,2,HK7,CO3335(SHT)
-985,KHMT_K26,CO4337,GRADUATION,BB,,Toàn ngành,4,HK8,
-986,KHMT_K26,MI1003,COND_DEFENSE,BB,,Toàn ngành,0,HK2,
-987,KHMT_K26,PE1009,COND_PHYSICAL,BB,,Toàn ngành,0,,
-988,KHMT_K26,PE1011,COND_PHYSICAL,BB,,Toàn ngành,0,,
-989,KHMT_K26,PE1013,COND_PHYSICAL,BB,,Toàn ngành,0,,
-990,KHMT_K26,PE1015,COND_PHYSICAL,BB,,Toàn ngành,0,,
-991,KHMT_K26,PE1017,COND_PHYSICAL,BB,,Toàn ngành,0,,
-992,KHMT_K26,PE1019,COND_PHYSICAL,BB,,Toàn ngành,0,,
-993,KHMT_K26,PE1021,COND_PHYSICAL,BB,,Toàn ngành,0,,
-994,KHMT_K26,PE1025,COND_PHYSICAL,BB,,Toàn ngành,0,,
-995,KHMT_K26,PE1027,COND_PHYSICAL,BB,,Toàn ngành,0,,
-996,KHMT_K26,PE1053,COND_PHYSICAL,BB,,Toàn ngành,0,,
-997,KHMT_K26,PE1057,COND_PHYSICAL,BB,,Toàn ngành,0,,
-998,KHMT_K26,PE1061,COND_PHYSICAL,BB,,Toàn ngành,0,,
-999,KHMT_K26,PE1033,COND_PHYSICAL,BB,,Toàn ngành,0,,
-1000,KHMT_K26,PE1035,COND_PHYSICAL,BB,,Toàn ngành,0,,
-1001,KHMT_K26,PE1037,COND_PHYSICAL,BB,,Toàn ngành,0,,
-1002,KHMT_K26,PE1039,COND_PHYSICAL,BB,,Toàn ngành,0,,
-1003,KHMT_K26,PE1041,COND_PHYSICAL,BB,,Toàn ngành,0,,
-1004,KHMT_K26,PE1043,COND_PHYSICAL,BB,,Toàn ngành,0,,
-1005,KHMT_K26,PE1045,COND_PHYSICAL,BB,,Toàn ngành,0,,
-1006,KHMT_K26,PE1049,COND_PHYSICAL,BB,,Toàn ngành,0,,
-1007,KHMT_K26,PE1051,COND_PHYSICAL,BB,,Toàn ngành,0,,
-1008,KHMT_K26,PE1055,COND_PHYSICAL,BB,,Toàn ngành,0,,
-1009,KHMT_K26,PE1059,COND_PHYSICAL,BB,,Toàn ngành,0,,
-1010,KHMT_K26,PE1063,COND_PHYSICAL,BB,,Toàn ngành,0,,
-1011,KHMT_K26,SA4001,COND_OTHERS,BB,,Toàn ngành,0,HK8,
+128,KHMT_K20,PE1009,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+129,KHMT_K20,PE1011,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+130,KHMT_K20,PE1013,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+131,KHMT_K20,PE1015,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+132,KHMT_K20,PE1017,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+133,KHMT_K20,PE1019,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+134,KHMT_K20,PE1021,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+135,KHMT_K20,PE1025,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+136,KHMT_K20,PE1027,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+137,KHMT_K20,PE1053,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+138,KHMT_K20,PE1057,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+139,KHMT_K20,PE1061,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+140,KHMT_K20,PE1033,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1009(KN)
+141,KHMT_K20,PE1035,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1011(KN)
+142,KHMT_K20,PE1037,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1013(KN)
+143,KHMT_K20,PE1039,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1015(KN)
+144,KHMT_K20,PE1041,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1017(KN)
+145,KHMT_K20,PE1043,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1019(KN)
+146,KHMT_K20,PE1045,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1021(KN)
+147,KHMT_K20,PE1049,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1025(KN)
+148,KHMT_K20,PE1051,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1027(KN)
+149,KHMT_K20,PE1055,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1053(KN)
+150,KHMT_K20,PE1059,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1057(KN)
+151,KHMT_K20,PE1063,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1061(KN)
+152,KHMT_K21,MT1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
+153,KHMT_K21,MT1005,MATH_SCI,BB,,Toàn ngành,4,HK2,MT1003(KN)
+154,KHMT_K21,MT1007,MATH_SCI,BB,,Toàn ngành,3,HK2,
+155,KHMT_K21,MT2013,MATH_SCI,BB,,Toàn ngành,4,HK4,
+156,KHMT_K21,CH1003,MATH_SCI,BB,,Toàn ngành,3,HK6,
+157,KHMT_K21,PH1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
+158,KHMT_K21,PH1007,MATH_SCI,BB,,Toàn ngành,1,HK2,
+159,KHMT_K21,CO1007,MATH_SCI,BB,,Toàn ngành,4,HK2,
+160,KHMT_K21,CO2011,MATH_SCI,BB,,Toàn ngành,3,HK3,CO1007(KN)
+161,KHMT_K21,SP1007,POLITICS_LAW,BB,,Toàn ngành,2,HK8,
+162,KHMT_K21,SP1031,POLITICS_LAW,BB,,Toàn ngành,3,HK3,
+163,KHMT_K21,SP1033,POLITICS_LAW,BB,,Toàn ngành,2,HK4,SP1031(KN)
+164,KHMT_K21,SP1035,POLITICS_LAW,BB,,Toàn ngành,2,HK5,SP1033(KN)
+165,KHMT_K21,SP1037,POLITICS_LAW,BB,,Toàn ngành,2,HK6,SP1039(KN)
+166,KHMT_K21,SP1039,POLITICS_LAW,BB,,Toàn ngành,2,HK7,SP1035(KN)
+167,KHMT_K21,CO1005,GEN_SKILLS,BB,,Toàn ngành,3,HK1,
+168,KHMT_K21,IM1013,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+169,KHMT_K21,IM1023,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+170,KHMT_K21,IM1025,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+171,KHMT_K21,IM1027,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+172,KHMT_K21,IM3001,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+173,KHMT_K21,CO2001,GEN_SKILLS,BB,,Toàn ngành,3,HK5,
+174,KHMT_K21,LA1003,FOREIGN_LANG,BB,,Toàn ngành,2,HK1,
+175,KHMT_K21,LA1005,FOREIGN_LANG,BB,,Toàn ngành,2,HK2,LA1003(TQ)
+176,KHMT_K21,LA1007,FOREIGN_LANG,BB,,Toàn ngành,2,HK3,LA1005(TQ)
+177,KHMT_K21,LA1009,FOREIGN_LANG,BB,,Toàn ngành,2,HK4,LA1007(TQ)
+178,KHMT_K21,CO1023,CORE,BB,,Toàn ngành,3,HK1,
+179,KHMT_K21,CO1027,CORE,BB,,Toàn ngành,3,HK2,
+180,KHMT_K21,CO2003,CORE,BB,,Toàn ngành,4,HK3,
+181,KHMT_K21,CO2007,CORE,BB,,Toàn ngành,4,HK3,
+182,KHMT_K21,CO2013,CORE,BB,,Toàn ngành,4,HK5,
+183,KHMT_K21,CO2039,CORE,BB,,Toàn ngành,3,HK4,
+184,KHMT_K21,CO2017,MAJOR,BB,,Toàn ngành,3,HK4,
+185,KHMT_K21,CO3001,MAJOR,BB,,Toàn ngành,3,HK5,
+186,KHMT_K21,CO3005,MAJOR,BB,,Toàn ngành,4,HK5,CO2003(TQ)
+187,KHMT_K21,CO3093,MAJOR,BB,,Toàn ngành,3,HK6,
+188,KHMT_K21,CO3101,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+189,KHMT_K21,CO3103,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+190,KHMT_K21,CO3105,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+191,KHMT_K21,CO3107,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+192,KHMT_K21,CO3109,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+193,KHMT_K21,CO3111,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+194,KHMT_K21,CO3011,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+195,KHMT_K21,CO3013,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+196,KHMT_K21,CO3015,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+197,KHMT_K21,CO3017,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+198,KHMT_K21,CO3021,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+199,KHMT_K21,CO3023,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+200,KHMT_K21,CO3027,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+201,KHMT_K21,CO3029,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+202,KHMT_K21,CO3031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2003(KN)
+203,KHMT_K21,CO3033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+204,KHMT_K21,CO3035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+205,KHMT_K21,CO3037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+206,KHMT_K21,CO3041,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+207,KHMT_K21,CO3043,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+208,KHMT_K21,CO3045,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+209,KHMT_K21,CO3047,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+210,KHMT_K21,CO3049,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+211,KHMT_K21,CO3051,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+212,KHMT_K21,CO3057,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+213,KHMT_K21,CO3059,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+214,KHMT_K21,CO3061,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+215,KHMT_K21,CO3065,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+216,KHMT_K21,CO3067,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+217,KHMT_K21,CO3069,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+218,KHMT_K21,CO3071,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+219,KHMT_K21,CO3083,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+220,KHMT_K21,CO3085,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+221,KHMT_K21,CO3089,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+222,KHMT_K21,CO3115,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+223,KHMT_K21,CO3117,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+224,KHMT_K21,CO4025,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+225,KHMT_K21,CO4031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+226,KHMT_K21,CO4033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+227,KHMT_K21,CO4035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+228,KHMT_K21,CO4037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+229,KHMT_K21,CO4039,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+230,KHMT_K21,CO3335,GRADUATION,BB,,Toàn ngành,2,HK7,
+231,KHMT_K21,CO4029,GRADUATION,BB,,Toàn ngành,2,HK7,CO3335(SHT)
+232,KHMT_K21,CO4337,GRADUATION,BB,,Toàn ngành,4,HK8,
+233,KHMT_K21,CO3021,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
+234,KHMT_K21,CO3023,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+235,KHMT_K21,CO3027,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+236,KHMT_K21,CO3029,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+237,KHMT_K21,CO3033,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
+238,KHMT_K21,CO3115,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+239,KHMT_K21,CO4031,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
+240,KHMT_K21,CO4033,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+241,KHMT_K21,CO4035,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
+242,KHMT_K21,CO4037,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+243,KHMT_K21,CO4039,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+244,KHMT_K21,CO3011,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+245,KHMT_K21,CO3013,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+246,KHMT_K21,CO3015,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+247,KHMT_K21,CO3017,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+248,KHMT_K21,CO3065,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+249,KHMT_K21,CO3089,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+250,KHMT_K21,CO3115,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+251,KHMT_K21,CO3041,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+252,KHMT_K21,CO3047,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+253,KHMT_K21,CO3049,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+254,KHMT_K21,CO3051,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+255,KHMT_K21,CO3069,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+256,KHMT_K21,CO3083,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+257,KHMT_K21,CO3089,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+258,KHMT_K21,CO3029,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+259,KHMT_K21,CO3035,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+260,KHMT_K21,CO3037,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+261,KHMT_K21,CO3041,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+262,KHMT_K21,CO3043,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+263,KHMT_K21,CO3045,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+264,KHMT_K21,CO3049,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+265,KHMT_K21,CO3051,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+266,KHMT_K21,CO3061,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+267,KHMT_K21,CO3085,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+268,KHMT_K21,CO3089,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+269,KHMT_K21,CO3117,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+270,KHMT_K21,CO4025,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+271,KHMT_K21,CO3043,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+272,KHMT_K21,CO3045,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+273,KHMT_K21,CO3049,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+274,KHMT_K21,CO3051,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+275,KHMT_K21,CO3057,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+276,KHMT_K21,CO3059,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+277,KHMT_K21,CO3089,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+278,KHMT_K21,CO3117,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+279,KHMT_K21,PE1009,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+280,KHMT_K21,PE1011,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+281,KHMT_K21,PE1013,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+282,KHMT_K21,PE1015,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+283,KHMT_K21,PE1017,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+284,KHMT_K21,PE1019,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+285,KHMT_K21,PE1021,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+286,KHMT_K21,PE1025,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+287,KHMT_K21,PE1027,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+288,KHMT_K21,PE1053,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+289,KHMT_K21,PE1057,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+290,KHMT_K21,PE1061,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+291,KHMT_K21,PE1033,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1009(KN)
+292,KHMT_K21,PE1035,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1011(KN)
+293,KHMT_K21,PE1037,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1013(KN)
+294,KHMT_K21,PE1039,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1015(KN)
+295,KHMT_K21,PE1041,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1017(KN)
+296,KHMT_K21,PE1043,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1019(KN)
+297,KHMT_K21,PE1045,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1021(KN)
+298,KHMT_K21,PE1049,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1025(KN)
+299,KHMT_K21,PE1051,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1027(KN)
+300,KHMT_K21,PE1055,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1053(KN)
+301,KHMT_K21,PE1059,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1057(KN)
+302,KHMT_K21,PE1063,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1061(KN)
+303,KHMT_K22,MT1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
+304,KHMT_K22,MT1005,MATH_SCI,BB,,Toàn ngành,4,HK2,MT1003(KN)
+305,KHMT_K22,MT1007,MATH_SCI,BB,,Toàn ngành,3,HK2,
+306,KHMT_K22,MT2013,MATH_SCI,BB,,Toàn ngành,4,HK4,
+307,KHMT_K22,CH1003,MATH_SCI,BB,,Toàn ngành,3,HK6,
+308,KHMT_K22,PH1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
+309,KHMT_K22,PH1007,MATH_SCI,BB,,Toàn ngành,1,HK2,
+310,KHMT_K22,CO1007,MATH_SCI,BB,,Toàn ngành,4,HK2,
+311,KHMT_K22,CO2011,MATH_SCI,BB,,Toàn ngành,3,HK3,CO1007(KN)
+312,KHMT_K22,SP1007,POLITICS_LAW,BB,,Toàn ngành,2,HK8,
+313,KHMT_K22,SP1031,POLITICS_LAW,BB,,Toàn ngành,3,HK3,
+314,KHMT_K22,SP1033,POLITICS_LAW,BB,,Toàn ngành,2,HK4,SP1031(KN)
+315,KHMT_K22,SP1035,POLITICS_LAW,BB,,Toàn ngành,2,HK5,SP1033(KN)
+316,KHMT_K22,SP1037,POLITICS_LAW,BB,,Toàn ngành,2,HK6,SP1039(KN)
+317,KHMT_K22,SP1039,POLITICS_LAW,BB,,Toàn ngành,2,HK7,SP1035(KN)
+318,KHMT_K22,CO1005,GEN_SKILLS,BB,,Toàn ngành,3,HK1,
+319,KHMT_K22,IM1013,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+320,KHMT_K22,IM1023,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+321,KHMT_K22,IM1025,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+322,KHMT_K22,IM1027,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+323,KHMT_K22,IM3001,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+324,KHMT_K22,CO2001,GEN_SKILLS,BB,,Toàn ngành,3,HK5,
+325,KHMT_K22,LA1003,FOREIGN_LANG,BB,,Toàn ngành,2,HK1,
+326,KHMT_K22,LA1005,FOREIGN_LANG,BB,,Toàn ngành,2,HK2,LA1003(TQ)
+327,KHMT_K22,LA1007,FOREIGN_LANG,BB,,Toàn ngành,2,HK3,LA1005(TQ)
+328,KHMT_K22,LA1009,FOREIGN_LANG,BB,,Toàn ngành,2,HK4,LA1007(TQ)
+329,KHMT_K22,CO1023,CORE,BB,,Toàn ngành,3,HK1,
+330,KHMT_K22,CO1027,CORE,BB,,Toàn ngành,3,HK2,
+331,KHMT_K22,CO2003,CORE,BB,,Toàn ngành,4,HK3,
+332,KHMT_K22,CO2007,CORE,BB,,Toàn ngành,4,HK3,
+333,KHMT_K22,CO2013,CORE,BB,,Toàn ngành,4,HK5,
+334,KHMT_K22,CO2039,CORE,BB,,Toàn ngành,3,HK4,
+335,KHMT_K22,CO2017,MAJOR,BB,,Toàn ngành,3,HK4,
+336,KHMT_K22,CO3001,MAJOR,BB,,Toàn ngành,3,HK5,
+337,KHMT_K22,CO3005,MAJOR,BB,,Toàn ngành,4,HK5,CO2003(TQ)
+338,KHMT_K22,CO3093,MAJOR,BB,,Toàn ngành,3,HK6,
+339,KHMT_K22,CO3101,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+340,KHMT_K22,CO3103,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+341,KHMT_K22,CO3105,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+342,KHMT_K22,CO3119,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+343,KHMT_K22,CO3127,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+344,KHMT_K22,CO3107,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+345,KHMT_K22,CO3109,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+346,KHMT_K22,CO3111,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+347,KHMT_K22,CO3011,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+348,KHMT_K22,CO3013,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+349,KHMT_K22,CO3015,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+350,KHMT_K22,CO3017,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+351,KHMT_K22,CO3021,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+352,KHMT_K22,CO3023,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+353,KHMT_K22,CO3027,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+354,KHMT_K22,CO3029,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+355,KHMT_K22,CO3031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2003(KN)
+356,KHMT_K22,CO3033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+357,KHMT_K22,CO3035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+358,KHMT_K22,CO3037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+359,KHMT_K22,CO3041,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+360,KHMT_K22,CO3043,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+361,KHMT_K22,CO3045,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+362,KHMT_K22,CO3047,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+363,KHMT_K22,CO3049,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+364,KHMT_K22,CO3051,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+365,KHMT_K22,CO3057,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+366,KHMT_K22,CO3059,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+367,KHMT_K22,CO3061,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+368,KHMT_K22,CO3065,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+369,KHMT_K22,CO3067,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+370,KHMT_K22,CO3069,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+371,KHMT_K22,CO3071,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+372,KHMT_K22,CO3083,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+373,KHMT_K22,CO3085,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+374,KHMT_K22,CO3089,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+375,KHMT_K22,CO3115,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+376,KHMT_K22,CO3117,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+377,KHMT_K22,CO4025,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+378,KHMT_K22,CO4031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+379,KHMT_K22,CO4033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+380,KHMT_K22,CO4035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+381,KHMT_K22,CO4037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+382,KHMT_K22,CO4039,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+383,KHMT_K22,CO3129,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+384,KHMT_K22,CO3137,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+385,KHMT_K22,CO3139,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+386,KHMT_K22,CO3131,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+387,KHMT_K22,CO3151,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+388,KHMT_K22,CO3153,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+389,KHMT_K22,CO3133,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+390,KHMT_K22,CO3135,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+391,KHMT_K22,CO3335,GRADUATION,BB,,Toàn ngành,2,HK7,
+392,KHMT_K22,CO4029,GRADUATION,BB,,Toàn ngành,2,HK7,CO3335(SHT)
+393,KHMT_K22,CO4337,GRADUATION,BB,,Toàn ngành,4,HK8,
+394,KHMT_K22,CO3021,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
+395,KHMT_K22,CO3023,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+396,KHMT_K22,CO3027,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+397,KHMT_K22,CO3029,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+398,KHMT_K22,CO3033,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
+399,KHMT_K22,CO3115,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+400,KHMT_K22,CO4031,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
+401,KHMT_K22,CO4033,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+402,KHMT_K22,CO4035,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
+403,KHMT_K22,CO4037,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+404,KHMT_K22,CO4039,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+405,KHMT_K22,CO3129,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+406,KHMT_K22,CO3137,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+407,KHMT_K22,CO3139,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+408,KHMT_K22,CO3011,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+409,KHMT_K22,CO3013,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+410,KHMT_K22,CO3015,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+411,KHMT_K22,CO3017,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+412,KHMT_K22,CO3065,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+413,KHMT_K22,CO3089,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+414,KHMT_K22,CO3115,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+415,KHMT_K22,CO3041,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+416,KHMT_K22,CO3131,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+417,KHMT_K22,CO3047,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+418,KHMT_K22,CO3049,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+419,KHMT_K22,CO3051,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+420,KHMT_K22,CO3069,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+421,KHMT_K22,CO3083,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+422,KHMT_K22,CO3089,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+423,KHMT_K22,CO3151,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+424,KHMT_K22,CO3153,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+425,KHMT_K22,CO3029,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+426,KHMT_K22,CO3035,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+427,KHMT_K22,CO3037,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+428,KHMT_K22,CO3041,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+429,KHMT_K22,CO3043,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+430,KHMT_K22,CO3045,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+431,KHMT_K22,CO3049,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+432,KHMT_K22,CO3051,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+433,KHMT_K22,CO3061,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+434,KHMT_K22,CO3085,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+435,KHMT_K22,CO3089,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+436,KHMT_K22,CO3117,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+437,KHMT_K22,CO4025,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+438,KHMT_K22,CO3133,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+439,KHMT_K22,CO3135,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+440,KHMT_K22,CO3137,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+441,KHMT_K22,CO3043,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+442,KHMT_K22,CO3045,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+443,KHMT_K22,CO3049,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+444,KHMT_K22,CO3051,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+445,KHMT_K22,CO3057,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+446,KHMT_K22,CO3059,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+447,KHMT_K22,CO3089,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+448,KHMT_K22,CO3117,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+449,KHMT_K22,PE1009,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+450,KHMT_K22,PE1011,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+451,KHMT_K22,PE1013,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+452,KHMT_K22,PE1015,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+453,KHMT_K22,PE1017,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+454,KHMT_K22,PE1019,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+455,KHMT_K22,PE1021,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+456,KHMT_K22,PE1025,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+457,KHMT_K22,PE1027,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+458,KHMT_K22,PE1053,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+459,KHMT_K22,PE1057,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+460,KHMT_K22,PE1061,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+461,KHMT_K22,PE1033,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1009(KN)
+462,KHMT_K22,PE1035,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1011(KN)
+463,KHMT_K22,PE1037,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1013(KN)
+464,KHMT_K22,PE1039,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1015(KN)
+465,KHMT_K22,PE1041,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1017(KN)
+466,KHMT_K22,PE1043,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1019(KN)
+467,KHMT_K22,PE1045,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1021(KN)
+468,KHMT_K22,PE1049,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1025(KN)
+469,KHMT_K22,PE1051,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1027(KN)
+470,KHMT_K22,PE1055,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1053(KN)
+471,KHMT_K22,PE1059,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1057(KN)
+472,KHMT_K22,PE1063,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1061(KN)
+473,KHMT_K23,MT1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
+474,KHMT_K23,MT1005,MATH_SCI,BB,,Toàn ngành,4,HK2,MT1003(KN)
+475,KHMT_K23,MT1007,MATH_SCI,BB,,Toàn ngành,3,HK2,
+476,KHMT_K23,MT2013,MATH_SCI,BB,,Toàn ngành,4,HK4,MT1007(KN)
+477,KHMT_K23,CH1003,MATH_SCI,BB,,Toàn ngành,3,HK6,
+478,KHMT_K23,PH1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
+479,KHMT_K23,PH1007,MATH_SCI,BB,,Toàn ngành,1,HK2,
+480,KHMT_K23,CO1007,MATH_SCI,BB,,Toàn ngành,4,HK2,
+481,KHMT_K23,CO2011,MATH_SCI,BB,,Toàn ngành,3,HK3,CO1007(KN)
+482,KHMT_K23,SP1007,POLITICS_LAW,BB,,Toàn ngành,2,HK8,
+483,KHMT_K23,SP1031,POLITICS_LAW,BB,,Toàn ngành,3,HK3,
+484,KHMT_K23,SP1033,POLITICS_LAW,BB,,Toàn ngành,2,HK4,SP1031(KN)
+485,KHMT_K23,SP1035,POLITICS_LAW,BB,,Toàn ngành,2,HK5,SP1033(KN)
+486,KHMT_K23,SP1037,POLITICS_LAW,BB,,Toàn ngành,2,HK6,SP1039(KN)
+487,KHMT_K23,SP1039,POLITICS_LAW,BB,,Toàn ngành,2,HK7,SP1035(KN)
+488,KHMT_K23,CO1005,GEN_SKILLS,BB,,Toàn ngành,3,HK1,
+489,KHMT_K23,CO2001,GEN_SKILLS,BB,,Toàn ngành,3,HK5,CO1005(TQ)
+490,KHMT_K23,LA1003,FOREIGN_LANG,BB,,Toàn ngành,2,HK1,
+491,KHMT_K23,LA1005,FOREIGN_LANG,BB,,Toàn ngành,2,HK2,LA1003(TQ)
+492,KHMT_K23,LA1007,FOREIGN_LANG,BB,,Toàn ngành,2,HK3,LA1005(TQ)
+493,KHMT_K23,LA1009,FOREIGN_LANG,BB,,Toàn ngành,2,HK4,LA1007(TQ)
+494,KHMT_K23,CO1023,CORE,BB,,Toàn ngành,3,HK1,
+495,KHMT_K23,CO1027,CORE,BB,,Toàn ngành,3,HK2,
+496,KHMT_K23,CO2003,CORE,BB,,Toàn ngành,4,HK3,
+497,KHMT_K23,CO2007,CORE,BB,,Toàn ngành,4,HK3,CO1005(KN)
+498,KHMT_K23,CO2013,CORE,BB,,Toàn ngành,4,HK5,
+499,KHMT_K23,CO2039,CORE,BB,,Toàn ngành,3,HK4,
+500,KHMT_K23,CO2017,MAJOR,BB,,Toàn ngành,3,HK4,
+501,KHMT_K23,MI1003,COND_DEFENSE,BB,,Toàn ngành,0,HK2,
+502,KHMT_K23,CO3001,MAJOR,BB,,Toàn ngành,3,HK5,CO1027(KN)
+503,KHMT_K23,CO3093,MAJOR,BB,,Toàn ngành,3,HK6,
+504,KHMT_K23,CO3005,MAJOR,BB,,Toàn ngành,4,HK5,CO1027(TQ)
+505,KHMT_K23,CO3101,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+506,KHMT_K23,CO3103,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+507,KHMT_K23,CO3105,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+508,KHMT_K23,CO3119,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+509,KHMT_K23,CO3127,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+510,KHMT_K23,CO3107,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+511,KHMT_K23,CO3109,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+512,KHMT_K23,CO3111,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+513,KHMT_K23,CO3021,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
+514,KHMT_K23,CO3023,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+515,KHMT_K23,CO3027,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+516,KHMT_K23,CO3029,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+517,KHMT_K23,CO3033,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
+518,KHMT_K23,CO3115,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+519,KHMT_K23,CO4031,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
+520,KHMT_K23,CO4033,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+521,KHMT_K23,CO4035,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2013(KN)
+522,KHMT_K23,CO4039,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+523,KHMT_K23,CO3129,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+524,KHMT_K23,CO3137,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,CO2017(KN)
+525,KHMT_K23,CO3139,SPEC_DATA,TC,Group C,Công nghệ Dữ liệu Bảo mật và Trí tuệ Kinh doanh,3,,
+526,KHMT_K23,IM1013,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+527,KHMT_K23,IM1023,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+528,KHMT_K23,IM1025,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+529,KHMT_K23,IM1027,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+530,KHMT_K23,IM3001,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+531,KHMT_K23,CO3011,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+532,KHMT_K23,CO3013,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+533,KHMT_K23,CO3015,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+534,KHMT_K23,CO3017,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+535,KHMT_K23,CO3065,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+536,KHMT_K23,CO3089,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+537,KHMT_K23,CO3115,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+538,KHMT_K23,CO3041,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,CO3001(TQ)
+539,KHMT_K23,CO3131,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+540,KHMT_K23,CO3021,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+541,KHMT_K23,CO3027,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+542,KHMT_K23,CO3029,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+543,KHMT_K23,CO3033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+544,KHMT_K23,CO3115,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+545,KHMT_K23,CO4031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+546,KHMT_K23,CO4033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+547,KHMT_K23,CO4035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+548,KHMT_K23,CO4037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+549,KHMT_K23,CO4039,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+550,KHMT_K23,CO3011,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+551,KHMT_K23,CO3015,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+552,KHMT_K23,CO3017,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+553,KHMT_K23,CO3065,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+554,KHMT_K23,CO3041,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO3001(TQ)
+555,KHMT_K23,CO3089,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+556,KHMT_K23,CO3049,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+557,KHMT_K23,CO3051,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+558,KHMT_K23,CO3069,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+559,KHMT_K23,CO3061,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+560,KHMT_K23,CO3117,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+561,KHMT_K23,CO3129,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+562,KHMT_K23,CO3137,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2017(KN)
+563,KHMT_K23,CO3139,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+564,KHMT_K23,CO3131,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+565,KHMT_K23,CO3151,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+566,KHMT_K23,CO3153,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+567,KHMT_K23,CO3133,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO3061(KN)
+568,KHMT_K23,CO3135,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+569,KHMT_K23,CO3013,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+570,KHMT_K23,CO3023,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+571,KHMT_K23,CO3031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2003(HT)
+572,KHMT_K23,CO3035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+573,KHMT_K23,CO3047,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+574,KHMT_K23,CO3071,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+575,KHMT_K23,CO3083,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+576,KHMT_K23,CO4025,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+577,KHMT_K23,CO3085,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+578,KHMT_K23,CO3057,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+579,KHMT_K23,CO3045,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+580,KHMT_K23,CO3059,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+581,KHMT_K23,CO3067,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+582,KHMT_K23,CO3037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+583,KHMT_K23,CO3043,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+584,KHMT_K23,CO3047,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+585,KHMT_K23,CO3049,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+586,KHMT_K23,CO3051,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+587,KHMT_K23,CO3069,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+588,KHMT_K23,CO3083,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+589,KHMT_K23,CO3089,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+590,KHMT_K23,CO3151,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+591,KHMT_K23,CO3153,SPEC_SEC,TC,Group C,Mật mã và An ninh mạng,3,,
+592,KHMT_K23,CO3029,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+593,KHMT_K23,CO3035,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+594,KHMT_K23,CO3037,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+595,KHMT_K23,CO3041,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,CO3001(TQ)
+596,KHMT_K23,CO3043,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+597,KHMT_K23,CO3045,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+598,KHMT_K23,CO3049,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+599,KHMT_K23,CO3051,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+600,KHMT_K23,CO3061,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+601,KHMT_K23,CO3085,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+602,KHMT_K23,CO3089,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+603,KHMT_K23,CO3117,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+604,KHMT_K23,CO4025,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+605,KHMT_K23,CO3133,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,CO3061(KN)
+606,KHMT_K23,CO3135,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,
+607,KHMT_K23,CO3137,SPEC_AI,TC,Group C,Trí tuệ nhân tạo ứng dụng,3,,CO2017(KN)
+608,KHMT_K23,CO3043,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+609,KHMT_K23,CO3045,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+610,KHMT_K23,CO3049,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+611,KHMT_K23,CO3051,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+612,KHMT_K23,CO3057,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+613,KHMT_K23,CO3059,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+614,KHMT_K23,CO3089,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+615,KHMT_K23,CO3117,SPEC_CV,TC,Group C,Xử lý ảnh và Thị giác máy tính,3,,
+616,KHMT_K23,CO3335,GRADUATION,BB,,Toàn ngành,2,HK7,
+617,KHMT_K23,CO4029,GRADUATION,BB,,Toàn ngành,2,HK7,CO3335(SHT)
+618,KHMT_K23,CO4337,GRADUATION,BB,,Toàn ngành,4,HK8,
+619,KHMT_K23,SA4001,COND_OTHERS,BB,,Toàn ngành,0,HK8,
+620,KHMT_K23,PE1009,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+621,KHMT_K23,PE1011,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+622,KHMT_K23,PE1013,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+623,KHMT_K23,PE1015,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+624,KHMT_K23,PE1017,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+625,KHMT_K23,PE1019,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+626,KHMT_K23,PE1021,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+627,KHMT_K23,PE1025,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+628,KHMT_K23,PE1027,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+629,KHMT_K23,PE1053,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+630,KHMT_K23,PE1057,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+631,KHMT_K23,PE1061,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+632,KHMT_K23,PE1033,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1009(KN)
+633,KHMT_K23,PE1035,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1011(KN)
+634,KHMT_K23,PE1037,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1013(KN)
+635,KHMT_K23,PE1039,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1015(KN)
+636,KHMT_K23,PE1041,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1017(KN)
+637,KHMT_K23,PE1043,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1019(KN)
+638,KHMT_K23,PE1045,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1021(KN)
+639,KHMT_K23,PE1049,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1025(KN)
+640,KHMT_K23,PE1051,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1027(KN)
+641,KHMT_K23,PE1055,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1053(KN)
+642,KHMT_K23,PE1059,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1057(KN)
+643,KHMT_K23,PE1063,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1061(KN)
+644,KHMT_K24,MT1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
+645,KHMT_K24,MT1005,MATH_SCI,BB,,Toàn ngành,4,HK2,MT1003(KN)
+646,KHMT_K24,MT1007,MATH_SCI,BB,,Toàn ngành,3,HK2,
+647,KHMT_K24,MT2013,MATH_SCI,BB,,Toàn ngành,4,HK4,MT1007(KN)
+648,KHMT_K24,CH1003,MATH_SCI,BB,,Toàn ngành,3,HK6,
+649,KHMT_K24,PH1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
+650,KHMT_K24,PH1007,MATH_SCI,BB,,Toàn ngành,1,HK2,
+651,KHMT_K24,CO1007,MATH_SCI,BB,,Toàn ngành,4,HK2,
+652,KHMT_K24,CO2011,MATH_SCI,BB,,Toàn ngành,3,HK3,CO1007(KN)
+653,KHMT_K24,SP1007,POLITICS_LAW,BB,,Toàn ngành,2,HK8,
+654,KHMT_K24,SP1031,POLITICS_LAW,BB,,Toàn ngành,3,HK3,
+655,KHMT_K24,SP1033,POLITICS_LAW,BB,,Toàn ngành,2,HK4,SP1031(KN)
+656,KHMT_K24,SP1035,POLITICS_LAW,BB,,Toàn ngành,2,HK5,SP1033(KN)
+657,KHMT_K24,SP1037,POLITICS_LAW,BB,,Toàn ngành,2,HK6,SP1039(KN)
+658,KHMT_K24,SP1039,POLITICS_LAW,BB,,Toàn ngành,2,HK7,SP1035(KN)
+659,KHMT_K24,CO1005,GEN_SKILLS,BB,,Toàn ngành,3,HK1,
+660,KHMT_K24,CO2001,GEN_SKILLS,BB,,Toàn ngành,3,HK5,CO1005(TQ)
+661,KHMT_K24,IM1013,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+662,KHMT_K24,IM1023,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+663,KHMT_K24,IM1025,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+664,KHMT_K24,IM1027,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+665,KHMT_K24,IM3001,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+666,KHMT_K24,IM1031,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+667,KHMT_K24,ME1019,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+668,KHMT_K24,LA1003,FOREIGN_LANG,BB,,Toàn ngành,2,HK1,
+669,KHMT_K24,LA1005,FOREIGN_LANG,BB,,Toàn ngành,2,HK2,LA1003(TQ)
+670,KHMT_K24,LA1007,FOREIGN_LANG,BB,,Toàn ngành,2,HK3,LA1005(TQ)
+671,KHMT_K24,LA1009,FOREIGN_LANG,BB,,Toàn ngành,2,HK4,LA1007(TQ)
+672,KHMT_K24,CO1023,CORE,BB,,Toàn ngành,3,HK1,
+673,KHMT_K24,CO1027,CORE,BB,,Toàn ngành,3,HK2,
+674,KHMT_K24,CO2003,CORE,BB,,Toàn ngành,4,HK3,
+675,KHMT_K24,CO2007,CORE,BB,,Toàn ngành,4,HK3,
+676,KHMT_K24,CO2013,CORE,BB,,Toàn ngành,4,HK5,
+677,KHMT_K24,CO2039,CORE,BB,,Toàn ngành,3,HK4,
+678,KHMT_K24,CO2017,MAJOR,BB,,Toàn ngành,3,HK4,
+679,KHMT_K24,CO3001,MAJOR,BB,,Toàn ngành,3,HK5,CO1027(KN)
+680,KHMT_K24,CO3005,MAJOR,BB,,Toàn ngành,4,HK5,CO1027(TQ)
+681,KHMT_K24,CO3093,MAJOR,BB,,Toàn ngành,3,HK6,
+682,KHMT_K24,CO3101,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+683,KHMT_K24,CO3103,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+684,KHMT_K24,CO3105,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+685,KHMT_K24,CO3127,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+686,KHMT_K24,CO3119,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+687,KHMT_K24,CO3107,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+688,KHMT_K24,CO3109,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+689,KHMT_K24,CO3111,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+690,KHMT_K24,CO3021,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
+691,KHMT_K24,CO3027,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+692,KHMT_K24,CO3029,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+693,KHMT_K24,CO3033,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
+694,KHMT_K24,CO3115,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+695,KHMT_K24,CO4031,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
+696,KHMT_K24,CO4033,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+697,KHMT_K24,CO4035,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
+698,KHMT_K24,CO4037,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+699,KHMT_K24,CO4039,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+700,KHMT_K24,CO3139,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+701,KHMT_K24,CO3137,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2017(KN)
+702,KHMT_K24,CO3011,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+703,KHMT_K24,CO3129,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+704,KHMT_K24,CO3131,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+705,KHMT_K24,CO3015,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+706,KHMT_K24,CO3017,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+707,KHMT_K24,CO3065,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+708,KHMT_K24,CO3041,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,CO3001(TQ)
+709,KHMT_K24,CO3049,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+710,KHMT_K24,CO3135,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+711,KHMT_K24,CO3021,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+712,KHMT_K24,CO3027,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+713,KHMT_K24,CO3029,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+714,KHMT_K24,CO3033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+715,KHMT_K24,CO3115,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+716,KHMT_K24,CO4031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+717,KHMT_K24,CO4033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+718,KHMT_K24,CO4035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+719,KHMT_K24,CO4037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+720,KHMT_K24,CO4039,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+721,KHMT_K24,CO3139,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+722,KHMT_K24,CO3137,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2017(KN)
+723,KHMT_K24,CO3011,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+724,KHMT_K24,CO3129,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+725,KHMT_K24,CO3131,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+726,KHMT_K24,CO3015,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+727,KHMT_K24,CO3017,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+728,KHMT_K24,CO3065,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+729,KHMT_K24,CO3041,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO3001(TQ)
+730,KHMT_K24,CO3089,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+731,KHMT_K24,CO3049,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+732,KHMT_K24,CO3135,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+733,KHMT_K24,CO3151,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+734,KHMT_K24,CO3051,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+735,KHMT_K24,CO3069,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+736,KHMT_K24,CO3153,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+737,KHMT_K24,CO3061,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+738,KHMT_K24,CO3117,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+739,KHMT_K24,CO3133,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO3061(KN)
+740,KHMT_K24,CO3085,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+741,KHMT_K24,CO3057,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+742,KHMT_K24,CO3045,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+743,KHMT_K24,CO3059,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+744,KHMT_K24,CO3067,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+745,KHMT_K24,CO3037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+746,KHMT_K24,CO3043,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+747,KHMT_K24,CO3151,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+748,KHMT_K24,CO3049,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+749,KHMT_K24,CO3051,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+750,KHMT_K24,CO3069,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+751,KHMT_K24,CO3153,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+752,KHMT_K24,CO3033,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,CO2013(KN)
+753,KHMT_K24,CO4039,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+754,KHMT_K24,CO3117,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+755,KHMT_K24,CO3137,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,CO2017(KN)
+756,KHMT_K24,CO3067,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+757,KHMT_K24,CO3061,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+758,KHMT_K24,CO3135,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+759,KHMT_K24,CO3117,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+760,KHMT_K24,CO3133,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,CO3061(KN)
+761,KHMT_K24,CO3085,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+762,KHMT_K24,CO3057,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+763,KHMT_K24,CO3041,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,CO3001(TQ)
+764,KHMT_K24,CO3029,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+765,KHMT_K24,CO3045,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+766,KHMT_K24,CO3059,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+767,KHMT_K24,CO3037,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+768,KHMT_K24,CO3043,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+769,KHMT_K24,CO3335,GRADUATION,BB,,Toàn ngành,2,HK7,
+770,KHMT_K24,CO4029,GRADUATION,BB,,Toàn ngành,2,HK7,CO3335(SHT)
+771,KHMT_K24,CO4337,GRADUATION,BB,,Toàn ngành,4,HK8,
+772,KHMT_K24,MI1003,COND_DEFENSE,BB,,Toàn ngành,0,HK2,
+773,KHMT_K24,SA4001,COND_OTHERS,BB,,Toàn ngành,0,HK8,
+774,KHMT_K24,PE1009,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+775,KHMT_K24,PE1011,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+776,KHMT_K24,PE1013,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+777,KHMT_K24,PE1015,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+778,KHMT_K24,PE1017,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+779,KHMT_K24,PE1019,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+780,KHMT_K24,PE1021,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+781,KHMT_K24,PE1025,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+782,KHMT_K24,PE1027,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+783,KHMT_K24,PE1053,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+784,KHMT_K24,PE1057,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+785,KHMT_K24,PE1061,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+786,KHMT_K24,PE1033,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1009(KN)
+787,KHMT_K24,PE1035,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1011(KN)
+788,KHMT_K24,PE1037,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1013(KN)
+789,KHMT_K24,PE1039,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1015(KN)
+790,KHMT_K24,PE1041,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1017(KN)
+791,KHMT_K24,PE1043,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1019(KN)
+792,KHMT_K24,PE1045,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1021(KN)
+793,KHMT_K24,PE1049,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1025(KN)
+794,KHMT_K24,PE1051,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1027(KN)
+795,KHMT_K24,PE1055,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1053(KN)
+796,KHMT_K24,PE1059,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1057(KN)
+797,KHMT_K24,PE1063,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1061(KN)
+798,KHMT_K25,MT1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
+799,KHMT_K25,MT1005,MATH_SCI,BB,,Toàn ngành,4,HK2,MT1003(KN)
+800,KHMT_K25,MT1007,MATH_SCI,BB,,Toàn ngành,3,HK2,
+801,KHMT_K25,MT2013,MATH_SCI,BB,,Toàn ngành,4,HK4,MT1007(KN)
+802,KHMT_K25,CH1003,MATH_SCI,BB,,Toàn ngành,3,HK6,
+803,KHMT_K25,PH1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
+804,KHMT_K25,PH1007,MATH_SCI,BB,,Toàn ngành,1,HK2,
+805,KHMT_K25,CO1007,MATH_SCI,BB,,Toàn ngành,4,HK2,
+806,KHMT_K25,CO2011,MATH_SCI,BB,,Toàn ngành,3,HK3,CO1007(KN)
+807,KHMT_K25,SP1007,POLITICS_LAW,BB,,Toàn ngành,2,HK8,
+808,KHMT_K25,SP1031,POLITICS_LAW,BB,,Toàn ngành,3,HK3,
+809,KHMT_K25,SP1033,POLITICS_LAW,BB,,Toàn ngành,2,HK4,SP1031(KN)
+810,KHMT_K25,SP1035,POLITICS_LAW,BB,,Toàn ngành,2,HK5,SP1033(KN)
+811,KHMT_K25,SP1037,POLITICS_LAW,BB,,Toàn ngành,2,HK6,SP1039(KN)
+812,KHMT_K25,SP1039,POLITICS_LAW,BB,,Toàn ngành,2,HK7,SP1035(KN)
+813,KHMT_K25,CO1005,GEN_SKILLS,BB,,Toàn ngành,3,HK1,
+814,KHMT_K25,CO2001,GEN_SKILLS,BB,,Toàn ngành,3,HK5,CO1005(TQ)
+815,KHMT_K25,IM1013,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+816,KHMT_K25,IM1023,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+817,KHMT_K25,IM1025,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+818,KHMT_K25,IM1027,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+819,KHMT_K25,IM3001,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+820,KHMT_K25,IM1031,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+821,KHMT_K25,ME1019,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+822,KHMT_K25,LA1003,FOREIGN_LANG,BB,,Toàn ngành,2,HK1,
+823,KHMT_K25,LA1005,FOREIGN_LANG,BB,,Toàn ngành,2,HK2,LA1003(TQ)
+824,KHMT_K25,LA1007,FOREIGN_LANG,BB,,Toàn ngành,2,HK3,LA1005(TQ)
+825,KHMT_K25,LA1009,FOREIGN_LANG,BB,,Toàn ngành,2,HK4,LA1007(TQ)
+826,KHMT_K25,CO1023,CORE,BB,,Toàn ngành,3,HK1,
+827,KHMT_K25,CO1027,CORE,BB,,Toàn ngành,3,HK2,
+828,KHMT_K25,CO2003,CORE,BB,,Toàn ngành,4,HK3,
+829,KHMT_K25,CO2007,CORE,BB,,Toàn ngành,4,HK3,
+830,KHMT_K25,CO2013,CORE,BB,,Toàn ngành,4,HK5,
+831,KHMT_K25,CO2039,CORE,BB,,Toàn ngành,3,HK4,
+832,KHMT_K25,CO2017,MAJOR,BB,,Toàn ngành,3,HK4,
+833,KHMT_K25,CO3001,MAJOR,BB,,Toàn ngành,3,HK5,CO1027(KN)
+834,KHMT_K25,CO3005,MAJOR,BB,,Toàn ngành,4,HK5,CO1027(TQ)
+835,KHMT_K25,CO3093,MAJOR,BB,,Toàn ngành,3,HK6,
+836,KHMT_K25,CO3101,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+837,KHMT_K25,CO3103,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+838,KHMT_K25,CO3105,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+839,KHMT_K25,CO3127,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+840,KHMT_K25,CO3119,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+841,KHMT_K25,CO3107,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+842,KHMT_K25,CO3109,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+843,KHMT_K25,CO3111,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+844,KHMT_K25,CO3021,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
+845,KHMT_K25,CO3027,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+846,KHMT_K25,CO3029,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+847,KHMT_K25,CO3033,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
+848,KHMT_K25,CO3115,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+849,KHMT_K25,CO4031,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
+850,KHMT_K25,CO4033,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+851,KHMT_K25,CO4035,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
+852,KHMT_K25,CO4037,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+853,KHMT_K25,CO4039,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+854,KHMT_K25,CO3139,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+855,KHMT_K25,CO3137,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2017(KN)
+856,KHMT_K25,CO3011,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+857,KHMT_K25,CO3129,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+858,KHMT_K25,CO3131,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+859,KHMT_K25,CO3015,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+860,KHMT_K25,CO3017,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+861,KHMT_K25,CO3065,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+862,KHMT_K25,CO3041,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,CO3001(TQ)
+863,KHMT_K25,CO3049,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+864,KHMT_K25,CO3135,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+865,KHMT_K25,CO3021,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+866,KHMT_K25,CO3027,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+867,KHMT_K25,CO3029,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+868,KHMT_K25,CO3033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+869,KHMT_K25,CO3115,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+870,KHMT_K25,CO4031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+871,KHMT_K25,CO4033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+872,KHMT_K25,CO4035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+873,KHMT_K25,CO4037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+874,KHMT_K25,CO4039,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+875,KHMT_K25,CO3139,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+876,KHMT_K25,CO3137,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2017(KN)
+877,KHMT_K25,CO3011,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+878,KHMT_K25,CO3129,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+879,KHMT_K25,CO3131,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+880,KHMT_K25,CO3015,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+881,KHMT_K25,CO3017,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+882,KHMT_K25,CO3065,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+883,KHMT_K25,CO3041,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO3001(TQ)
+884,KHMT_K25,CO3089,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+885,KHMT_K25,CO3049,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+886,KHMT_K25,CO3135,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+887,KHMT_K25,CO3151,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+888,KHMT_K25,CO3051,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+889,KHMT_K25,CO3069,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+890,KHMT_K25,CO3153,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+891,KHMT_K25,CO3061,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+892,KHMT_K25,CO3117,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+893,KHMT_K25,CO3133,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO3061(KN)
+894,KHMT_K25,CO3085,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+895,KHMT_K25,CO3057,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+896,KHMT_K25,CO3045,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+897,KHMT_K25,CO3059,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+898,KHMT_K25,CO3067,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+899,KHMT_K25,CO3037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+900,KHMT_K25,CO3043,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+901,KHMT_K25,CO3151,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+902,KHMT_K25,CO3049,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+903,KHMT_K25,CO3051,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+904,KHMT_K25,CO3069,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+905,KHMT_K25,CO3153,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+906,KHMT_K25,CO3033,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,CO2013(KN)
+907,KHMT_K25,CO4039,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+908,KHMT_K25,CO3117,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+909,KHMT_K25,CO3137,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,CO2017(KN)
+910,KHMT_K25,CO3067,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+911,KHMT_K25,CO3061,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+912,KHMT_K25,CO3135,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+913,KHMT_K25,CO3117,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+914,KHMT_K25,CO3133,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,CO3061(KN)
+915,KHMT_K25,CO3085,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+916,KHMT_K25,CO3057,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+917,KHMT_K25,CO3041,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,CO3001(TQ)
+918,KHMT_K25,CO3029,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+919,KHMT_K25,CO3045,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+920,KHMT_K25,CO3059,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+921,KHMT_K25,CO3037,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+922,KHMT_K25,CO3043,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+923,KHMT_K25,CO3335,GRADUATION,BB,,Toàn ngành,2,HK7,
+924,KHMT_K25,CO4029,GRADUATION,BB,,Toàn ngành,2,HK7,CO3335(SHT)
+925,KHMT_K25,CO4337,GRADUATION,BB,,Toàn ngành,4,HK8,
+926,KHMT_K25,MI1003,COND_DEFENSE,BB,,Toàn ngành,0,HK2,
+927,KHMT_K25,SA4001,COND_OTHERS,BB,,Toàn ngành,0,HK8,
+928,KHMT_K25,PE1009,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+929,KHMT_K25,PE1011,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+930,KHMT_K25,PE1013,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+931,KHMT_K25,PE1015,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+932,KHMT_K25,PE1017,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+933,KHMT_K25,PE1019,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+934,KHMT_K25,PE1021,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+935,KHMT_K25,PE1025,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+936,KHMT_K25,PE1027,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+937,KHMT_K25,PE1053,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+938,KHMT_K25,PE1057,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+939,KHMT_K25,PE1061,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+940,KHMT_K25,PE1033,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1009(KN)
+941,KHMT_K25,PE1035,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1011(KN)
+942,KHMT_K25,PE1037,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1013(KN)
+943,KHMT_K25,PE1039,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1015(KN)
+944,KHMT_K25,PE1041,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1017(KN)
+945,KHMT_K25,PE1043,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1019(KN)
+946,KHMT_K25,PE1045,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1021(KN)
+947,KHMT_K25,PE1049,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1025(KN)
+948,KHMT_K25,PE1051,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1027(KN)
+949,KHMT_K25,PE1055,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1053(KN)
+950,KHMT_K25,PE1059,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1057(KN)
+951,KHMT_K25,PE1063,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1061(KN)
+952,KHMT_K26,MT1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
+953,KHMT_K26,MT1005,MATH_SCI,BB,,Toàn ngành,4,HK2,MT1003(KN)
+954,KHMT_K26,MT1007,MATH_SCI,BB,,Toàn ngành,3,HK2,
+955,KHMT_K26,MT2013,MATH_SCI,BB,,Toàn ngành,4,HK4,MT1007(KN)
+956,KHMT_K26,CH1003,MATH_SCI,BB,,Toàn ngành,3,HK6,
+957,KHMT_K26,PH1003,MATH_SCI,BB,,Toàn ngành,4,HK1,
+958,KHMT_K26,PH1007,MATH_SCI,BB,,Toàn ngành,1,HK2,
+959,KHMT_K26,CO1007,MATH_SCI,BB,,Toàn ngành,4,HK2,
+960,KHMT_K26,CO2011,MATH_SCI,BB,,Toàn ngành,3,HK3,CO1007(KN)
+961,KHMT_K26,SP1007,POLITICS_LAW,BB,,Toàn ngành,2,HK8,
+962,KHMT_K26,SP1031,POLITICS_LAW,BB,,Toàn ngành,3,HK3,
+963,KHMT_K26,SP1033,POLITICS_LAW,BB,,Toàn ngành,2,HK4,SP1031(KN)
+964,KHMT_K26,SP1035,POLITICS_LAW,BB,,Toàn ngành,2,HK5,SP1033(KN)
+965,KHMT_K26,SP1037,POLITICS_LAW,BB,,Toàn ngành,2,HK6,SP1039(KN)
+966,KHMT_K26,SP1039,POLITICS_LAW,BB,,Toàn ngành,2,HK7,SP1035(KN)
+967,KHMT_K26,CO1005,GEN_SKILLS,BB,,Toàn ngành,3,HK1,
+968,KHMT_K26,CO2001,GEN_SKILLS,BB,,Toàn ngành,3,HK5,CO1005(TQ)
+969,KHMT_K26,IM1013,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+970,KHMT_K26,IM1023,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+971,KHMT_K26,IM1025,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+972,KHMT_K26,IM1027,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+973,KHMT_K26,IM3001,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+974,KHMT_K26,IM1031,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+975,KHMT_K26,ME1019,MANAGEMENT,TC,Group D,Toàn ngành,3,,
+976,KHMT_K26,LA1003,FOREIGN_LANG,BB,,Toàn ngành,2,HK1,
+977,KHMT_K26,LA1005,FOREIGN_LANG,BB,,Toàn ngành,2,HK2,LA1003(TQ)
+978,KHMT_K26,LA1007,FOREIGN_LANG,BB,,Toàn ngành,2,HK3,LA1005(TQ)
+979,KHMT_K26,LA1009,FOREIGN_LANG,BB,,Toàn ngành,2,HK4,LA1007(TQ)
+980,KHMT_K26,CO1023,CORE,BB,,Toàn ngành,3,HK1,
+981,KHMT_K26,CO1027,CORE,BB,,Toàn ngành,3,HK2,
+982,KHMT_K26,CO2003,CORE,BB,,Toàn ngành,4,HK3,
+983,KHMT_K26,CO2007,CORE,BB,,Toàn ngành,4,HK3,
+984,KHMT_K26,CO2013,CORE,BB,,Toàn ngành,4,HK5,
+985,KHMT_K26,CO2039,CORE,BB,,Toàn ngành,3,HK4,
+986,KHMT_K26,CO2017,MAJOR,BB,,Toàn ngành,3,HK4,
+987,KHMT_K26,CO3001,MAJOR,BB,,Toàn ngành,3,HK5,CO1027(KN)
+988,KHMT_K26,CO3005,MAJOR,BB,,Toàn ngành,4,HK5,CO1027(TQ)
+989,KHMT_K26,CO3093,MAJOR,BB,,Toàn ngành,3,HK6,
+990,KHMT_K26,CO3101,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+991,KHMT_K26,CO3103,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+992,KHMT_K26,CO3105,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+993,KHMT_K26,CO3127,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+994,KHMT_K26,CO3119,ELECTIVE_MAJOR_A,TC,Group A,Toàn ngành,1,,
+995,KHMT_K26,CO3107,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+996,KHMT_K26,CO3109,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+997,KHMT_K26,CO3111,ELECTIVE_MAJOR_B,TC,Group B,Toàn ngành,1,,
+998,KHMT_K26,CO3021,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
+999,KHMT_K26,CO3027,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+1000,KHMT_K26,CO3029,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+1001,KHMT_K26,CO3033,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
+1002,KHMT_K26,CO3115,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+1003,KHMT_K26,CO4031,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
+1004,KHMT_K26,CO4033,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+1005,KHMT_K26,CO4035,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2013(KN)
+1006,KHMT_K26,CO4037,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+1007,KHMT_K26,CO4039,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+1008,KHMT_K26,CO3139,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,
+1009,KHMT_K26,CO3137,SPEC_DATA,TC,Group C,Công nghệ dữ liệu và dữ liệu lớn,3,,CO2017(KN)
+1010,KHMT_K26,CO3011,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+1011,KHMT_K26,CO3129,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+1012,KHMT_K26,CO3131,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+1013,KHMT_K26,CO3015,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+1014,KHMT_K26,CO3017,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+1015,KHMT_K26,CO3065,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+1016,KHMT_K26,CO3041,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,CO3001(TQ)
+1017,KHMT_K26,CO3049,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+1018,KHMT_K26,CO3135,SPEC_SE,TC,Group C,Công nghệ Phần mềm,3,,
+1019,KHMT_K26,CO3021,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+1020,KHMT_K26,CO3027,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1021,KHMT_K26,CO3029,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1022,KHMT_K26,CO3033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+1023,KHMT_K26,CO3115,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1024,KHMT_K26,CO4031,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+1025,KHMT_K26,CO4033,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1026,KHMT_K26,CO4035,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2013(KN)
+1027,KHMT_K26,CO4037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1028,KHMT_K26,CO4039,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1029,KHMT_K26,CO3139,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1030,KHMT_K26,CO3137,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO2017(KN)
+1031,KHMT_K26,CO3011,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1032,KHMT_K26,CO3129,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1033,KHMT_K26,CO3131,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1034,KHMT_K26,CO3015,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1035,KHMT_K26,CO3017,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1036,KHMT_K26,CO3065,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1037,KHMT_K26,CO3041,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO3001(TQ)
+1038,KHMT_K26,CO3089,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1039,KHMT_K26,CO3049,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1040,KHMT_K26,CO3135,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1041,KHMT_K26,CO3151,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1042,KHMT_K26,CO3051,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1043,KHMT_K26,CO3069,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1044,KHMT_K26,CO3153,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1045,KHMT_K26,CO3061,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1046,KHMT_K26,CO3117,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1047,KHMT_K26,CO3133,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,CO3061(KN)
+1048,KHMT_K26,CO3085,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1049,KHMT_K26,CO3057,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1050,KHMT_K26,CO3045,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1051,KHMT_K26,CO3059,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1052,KHMT_K26,CO3067,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1053,KHMT_K26,CO3037,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1054,KHMT_K26,CO3043,SPEC_CS,TC,Group C,Khoa học Máy tính,3,,
+1055,KHMT_K26,CO3151,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+1056,KHMT_K26,CO3049,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+1057,KHMT_K26,CO3051,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+1058,KHMT_K26,CO3069,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+1059,KHMT_K26,CO3153,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+1060,KHMT_K26,CO3033,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,CO2013(KN)
+1061,KHMT_K26,CO4039,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+1062,KHMT_K26,CO3117,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+1063,KHMT_K26,CO3137,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,CO2017(KN)
+1064,KHMT_K26,CO3067,SPEC_SEC,TC,Group C,An ninh hệ thống và mạng,3,,
+1065,KHMT_K26,CO3061,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+1066,KHMT_K26,CO3135,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+1067,KHMT_K26,CO3117,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+1068,KHMT_K26,CO3133,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,CO3061(KN)
+1069,KHMT_K26,CO3085,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+1070,KHMT_K26,CO3057,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+1071,KHMT_K26,CO3041,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,CO3001(TQ)
+1072,KHMT_K26,CO3029,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+1073,KHMT_K26,CO3045,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+1074,KHMT_K26,CO3059,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+1075,KHMT_K26,CO3037,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+1076,KHMT_K26,CO3043,SPEC_AI,TC,Group C,Trí tuệ nhân tạo,3,,
+1077,KHMT_K26,CO3335,GRADUATION,BB,,Toàn ngành,2,HK7,
+1078,KHMT_K26,CO4029,GRADUATION,BB,,Toàn ngành,2,HK7,CO3335(SHT)
+1079,KHMT_K26,CO4337,GRADUATION,BB,,Toàn ngành,4,HK8,
+1080,KHMT_K26,MI1003,COND_DEFENSE,BB,,Toàn ngành,0,HK2,
+1081,KHMT_K26,SA4001,COND_OTHERS,BB,,Toàn ngành,0,HK8,
+1082,KHMT_K26,PE1009,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+1083,KHMT_K26,PE1011,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+1084,KHMT_K26,PE1013,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+1085,KHMT_K26,PE1015,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+1086,KHMT_K26,PE1017,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+1087,KHMT_K26,PE1019,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+1088,KHMT_K26,PE1021,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+1089,KHMT_K26,PE1025,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+1090,KHMT_K26,PE1027,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+1091,KHMT_K26,PE1053,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+1092,KHMT_K26,PE1057,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+1093,KHMT_K26,PE1061,COND_PHYSICAL,BB,,Toàn ngành,0,HK1,
+1094,KHMT_K26,PE1033,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1009(KN)
+1095,KHMT_K26,PE1035,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1011(KN)
+1096,KHMT_K26,PE1037,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1013(KN)
+1097,KHMT_K26,PE1039,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1015(KN)
+1098,KHMT_K26,PE1041,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1017(KN)
+1099,KHMT_K26,PE1043,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1019(KN)
+1100,KHMT_K26,PE1045,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1021(KN)
+1101,KHMT_K26,PE1049,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1025(KN)
+1102,KHMT_K26,PE1051,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1027(KN)
+1103,KHMT_K26,PE1055,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1053(KN)
+1104,KHMT_K26,PE1059,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1057(KN)
+1105,KHMT_K26,PE1063,COND_PHYSICAL,BB,,Toàn ngành,0,HK2,PE1061(KN)

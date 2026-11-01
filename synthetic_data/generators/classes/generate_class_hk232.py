@@ -82,7 +82,10 @@ from curriculum_rules import (
     select_student_group_c_course,
 )
 
-from academic_rules import balanced_class_sizes
+from academic_rules import (
+    balanced_class_sizes,
+    build_pe_classes_for_semester,
+)
 from analysis_helpers import (
     get_curriculum_for_cohort_semester,
     get_lecturers_by_course,
@@ -328,6 +331,8 @@ def generate_class_hk232() -> Path:
 
         for c in k23_curriculum:
             course_code = c["course_code"]
+            if course_code.startswith("PE") or course_code in ("MI1003", "SA4001"):
+                continue
             retakers = [
                 uid for uid in retake_demand.get(course_code, set())
                 if uid in set(df_students[df_students["program"] == prog]["user_id"])
@@ -403,6 +408,19 @@ def generate_class_hk232() -> Path:
                 })
 
             print(f"   + [K23 Học vượt] {accel_code}: demand={accel_demand} SV -> {len(sizes)} lớp")
+
+    # Phân bổ các lớp học phần Giáo dục Thể chất HP2 (PE1033 - PE1063) cho Tân sinh viên K23
+    pe_classes, _ = build_pe_classes_for_semester(
+        semester=SEMESTER,
+        term_type=2,
+        freshmen_df=k23_students,
+        lecturers=all_lecturers,
+        assigned_count=assigned_count,
+        program_config=PROGRAM_CONFIG,
+        prev_enrollments=all_prev_enrollments,
+    )
+    classes.extend(pe_classes)
+    print(f"   -> Đã mở {len(pe_classes)} lớp Giáo dục thể chất HP2 (PE1033 - PE1063) cho K23")
 
     # -------------------------------------------------------------------------
     # B. PHÂN BỔ LỚP HỌC PHẦN CHO KHÓA K22 (NĂM 2 - KỲ 4)
@@ -841,6 +859,7 @@ def generate_class_hk232() -> Path:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     out_file = OUTPUT_DIR / f"class_{SEMESTER.lower()}.csv"
     df_classes = pd.DataFrame(classes)
+    df_classes = df_classes[~df_classes["course_code"].isin(["MI1003", "SA4001"])]
     df_classes.to_csv(out_file, index=False, encoding="utf-8-sig")
 
     print(f"\n=== ĐÃ TẠO THÀNH CÔNG: {out_file} ===")

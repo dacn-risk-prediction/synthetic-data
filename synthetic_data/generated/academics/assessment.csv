@@ -83,8 +83,32 @@ MT1003,Giải tích 1,4,toan_ly_hoa,0,0,20,20,60
 MT1005,Giải tích 2,4,toan_ly_hoa,0,0,20,20,60
 MT1007,Đại số Tuyến tính,3,toan_ly_hoa,0,0,20,30,50
 MT2013,Xác suất và Thống kê,4,toan_ly_hoa,0,0,20,20,60
-PE1003,Giáo dục thể chất 1,0,giao_duc,0,0,20,20,60
-PE1005,Giáo dục thể chất 2,0,giao_duc,0,0,20,20,60
+PE1003,Giáo dục thể chất 1,0,giao_duc,0,0,0,0,100
+PE1005,Giáo dục thể chất 2,0,giao_duc,0,0,0,0,100
+PE1009,Bóng đá (Học phần 1),0,giao_duc,0,0,0,0,100
+PE1011,Bóng chuyền (Học phần 1),0,giao_duc,0,0,0,0,100
+PE1013,Bóng bàn (Học phần 1),0,giao_duc,0,0,0,0,100
+PE1015,Bóng rổ (Học phần 1),0,giao_duc,0,0,0,0,100
+PE1017,Cầu lông (Học phần 1),0,giao_duc,0,0,0,0,100
+PE1019,Bơi (Học phần 1),0,giao_duc,0,0,0,0,100
+PE1021,Aerobic (Học phần 1),0,giao_duc,0,0,0,0,100
+PE1025,Điền kinh (Học phần 1),0,giao_duc,0,0,0,0,100
+PE1027,Quần vợt (Học phần 1),0,giao_duc,0,0,0,0,100
+PE1033,Bóng đá (Học phần 2),0,giao_duc,0,0,0,0,100
+PE1035,Bóng chuyền (Học phần 2),0,giao_duc,0,0,0,0,100
+PE1037,Bóng bàn (Học phần 2),0,giao_duc,0,0,0,0,100
+PE1039,Bóng rổ (Học phần 2),0,giao_duc,0,0,0,0,100
+PE1041,Cầu lông (Học phần 2),0,giao_duc,0,0,0,0,100
+PE1043,Bơi (Học phần 2),0,giao_duc,0,0,0,0,100
+PE1045,Aerobic (Học phần 2),0,giao_duc,0,0,0,0,100
+PE1049,Điền kinh (Học phần 2),0,giao_duc,0,0,0,0,100
+PE1051,Quần vợt (Học phần 2),0,giao_duc,0,0,0,0,100
+PE1053,Cờ vua (Học phần 1),0,giao_duc,0,0,0,0,100
+PE1055,Cờ vua (Học phần 2),0,giao_duc,0,0,0,0,100
+PE1057,Bowling (Học phần 1),0,giao_duc,0,0,0,0,100
+PE1059,Bowling (Học phần 2),0,giao_duc,0,0,0,0,100
+PE1061,Pickleball (Học phần 1),0,giao_duc,0,0,0,0,100
+PE1063,Pickleball (Học phần 2),0,giao_duc,0,0,0,0,100
 PH1003,Vật lý 1,4,toan_ly_hoa,0,0,20,20,60
 PH1007,Thí nghiệm Vật lý,1,toan_ly_hoa,40,0,0,0,60
 SP1007,Pháp luật Việt Nam Đại cương,2,chinh_tri,0,0,20,30,50

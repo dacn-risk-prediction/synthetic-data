@@ -66,7 +66,7 @@ from curriculum_rules import (
     select_student_group_c_course,
 )
 
-from academic_rules import balanced_class_sizes
+from academic_rules import balanced_class_sizes, build_pe_classes_for_semester
 from analysis_helpers import (
     get_curriculum_for_cohort_semester,
     get_lecturers_by_course,
@@ -353,7 +353,7 @@ def generate_class_hk261() -> Path:
 
         for c in k26_curriculum:
             course_code = c["course_code"]
-            if course_code.startswith("PE"):
+            if course_code.startswith("PE") or course_code in ("MI1003", "SA4001"):
                 continue
 
             retakers = [
@@ -401,6 +401,19 @@ def generate_class_hk261() -> Path:
 
             retake_str = f" (+{retake_count} SV khóa trước học ghép)" if retake_count > 0 else ""
             print(f"   + [K26] {course_code} ({c_name}): demand={demand}{retake_str} -> {len(sizes)} lớp ({prefix}{existing_count+1:02d}..{prefix}{existing_count+len(sizes):02d})")
+
+    # Phân bổ lớp Giáo dục Thể chất HP1 (PE1009 - PE1063) cho Tân sinh viên K26
+    pe_classes, pe_sport_map = build_pe_classes_for_semester(
+        semester=SEMESTER,
+        term_type=1,
+        freshmen_df=k26_students,
+        lecturers=all_lecturers,
+        assigned_count=assigned_count,
+        program_config=PROGRAM_CONFIG,
+        max_capacity=REGULAR_CLASS_MAX_CAPACITY,
+    )
+    classes.extend(pe_classes)
+    print(f"   -> Đã mở {len(pe_classes)} lớp Giáo dục thể chất HP1 (PE1009 - PE1063) cho K26")
 
     # -------------------------------------------------------------------------
     # B. TẠO LỚP HỌC CHO KHÓA K25 (NĂM 2 - KỲ 3)
@@ -802,7 +815,7 @@ def generate_class_hk261() -> Path:
     print("\n--- [E] TẠO LỚP HỌC LẠI CHO CÁC MÔN CHẴN/HK2 (NHU CẦU >= 15 SV) ---")
     even_courses_order = [
         "CO1027", "PH1007", "CO2017", "CO1007", "MT1007", "MT1005",
-        "CO2039", "SP1033", "CO3093", "CH1003", "SP1037", "MI1003",
+        "CO2039", "SP1033", "CO3093", "CH1003", "SP1037",
     ]
     for even_code in even_courses_order:
         demand = len(retake_demand.get(even_code, set()))
@@ -841,6 +854,7 @@ def generate_class_hk261() -> Path:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     out_file = OUTPUT_DIR / f"class_{SEMESTER.lower()}.csv"
     df_classes = pd.DataFrame(classes)
+    df_classes = df_classes[~df_classes["course_code"].isin(["MI1003", "SA4001"])]
     df_classes.to_csv(out_file, index=False, encoding="utf-8-sig")
 
     print(f"\n=== ĐÃ TẠO THÀNH CÔNG: {out_file} ===")

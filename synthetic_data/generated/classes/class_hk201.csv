@@ -1,4 +1,4 @@
-﻿class_id,course_code,course_name,semester,class_group,program,max_capacity,lecturer_id,lecturer_name,department
+class_id,course_code,course_name,semester,class_group,program,max_capacity,lecturer_id,lecturer_name,department
 HK201_MT1003_L01,MT1003,Giải tích 1,HK201,L01,standard,40,GV00151,Đặng Tuấn Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK201_MT1003_L02,MT1003,Giải tích 1,HK201,L02,standard,40,GV00152,Lê Hữu Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK201_MT1003_L03,MT1003,Giải tích 1,HK201,L03,standard,40,GV00153,Phan Tuấn Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
