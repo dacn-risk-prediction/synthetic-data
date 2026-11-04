@@ -5,7 +5,7 @@ from typing import Any, Dict, List, Optional, Tuple
 import numpy as np
 import pandas as pd
 
-from .common import _normalized_trait, _student_value
+from .common import ROOT_DIR, _normalized_trait, _student_value
 from .config import GENERATOR_CONFIG
 from .profile_rules import _base_score_for_level, resolve_student_profile
 
@@ -140,18 +140,22 @@ def score_course_components(
         config,
         student_id=student_id,
     )
+    shifts = config.get("component_shifts", {})
+
     scores: Dict[str, float] = {}
     final_score = 0.0
     for component, weight in components:
+        comp_mean = mean_score + float(shifts.get(component, 0.0))
         score = round(generate_observed_score(
-            mean_score,
-            rng,
+            comp_mean,
+            rng if rng is not None else np.random.default_rng(),
             config,
             retaken=retaken,
         ), 1)
         scores[component] = score
         final_score += score * weight
     final_score = round(final_score, 1)
+    final_score = float(np.clip(final_score, config["score"]["min"], config["score"]["max"]))
     letter, gpa = convert_score_to_grade(final_score, config)
     return scores, final_score, letter, gpa
 
@@ -220,4 +224,139 @@ def add_gpa_summaries(
     result["semester_gpa_4"] = result["student_id"].map(semester_gpas)
     result["final_gpa_4"] = result["student_id"].map(final_gpas)
     return result
+
+
+def sync_class_teamwork_btl(
+    df_enrollment: pd.DataFrame,
+    config: Optional[Dict[str, Any]] = None,
+    assessment_weights: Optional[Dict[str, float]] = None,
+    credits_map: Optional[Dict[str, float]] = None,
+) -> pd.DataFrame:
+    """Group students in each class section for BTL assignments and synchronize their scores.
+
+    Students in the same teamwork group receive equal BTL scores based on the top performer (leader) of the group.
+    Final scores, letter grades, GPAs, and pass/fail statuses are recalculated accordingly.
+    """
+    if df_enrollment.empty or "btl" not in df_enrollment.columns or "class_id" not in df_enrollment.columns:
+        return df_enrollment
+
+    config = config or GENERATOR_CONFIG
+    team_cfg = config.get("teamwork_btl", {})
+    team_size = max(2, int(team_cfg.get("team_size", 4)))
+    score_min = float(config.get("score", {}).get("min", 0.0))
+    score_max = float(config.get("score", {}).get("max", 10.0))
+
+    # Read assessment weights if not provided
+    if assessment_weights is None:
+        assessment_weights = {}
+        assessment_file = ROOT_DIR / "generated" / "academics" / "assessment.csv"
+        if assessment_file.exists():
+            df_ass = pd.read_csv(assessment_file, encoding="utf-8-sig")
+            for _, row in df_ass.iterrows():
+                cid = str(row["course_id"])
+                btl_val = row.get("btl", 0.0)
+                if pd.notna(btl_val) and float(btl_val) > 0:
+                    assessment_weights[cid] = float(btl_val) / 100.0
+
+    # Read credits if not provided (needed if GPA columns exist)
+    recalc_gpa = "semester_gpa_4" in df_enrollment.columns or "final_gpa_4" in df_enrollment.columns
+    if recalc_gpa and credits_map is None:
+        credits_map = {}
+        courses_file = ROOT_DIR / "generated" / "academics" / "courses.csv"
+        if courses_file.exists():
+            df_crs = pd.read_csv(courses_file, encoding="utf-8-sig")
+            for _, row in df_crs.iterrows():
+                c_code = str(row["course_code"])
+                credits_map[c_code] = float(row.get("credits", 0.0))
+
+    df_enrollment = df_enrollment.copy()
+    has_changes = False
+
+    # Filter records that belong to a class section and have BTL
+    valid_mask = df_enrollment["class_id"].notna() & df_enrollment["btl"].notna()
+    if not valid_mask.any():
+        return df_enrollment
+
+    valid_indices = df_enrollment[valid_mask].index
+
+    # Group by course_id and class_id
+    grouped = df_enrollment.loc[valid_indices].groupby(["course_id", "class_id"])
+    for (course_id, class_id), group in grouped:
+        class_indices = group.index.tolist()
+        if len(class_indices) <= 1:
+            continue
+
+        w_btl = float(assessment_weights.get(str(course_id), 0.2))
+        if w_btl <= 0.0:
+            continue
+
+        # Partition class into teams of size team_size
+        teams = [class_indices[i : i + team_size] for i in range(0, len(class_indices), team_size)]
+        if len(teams) > 1 and len(teams[-1]) <= 1:
+            teams[-2].extend(teams.pop())
+
+        for team in teams:
+            member_btls = [
+                float(df_enrollment.at[idx, "btl"])
+                for idx in team
+                if pd.notna(df_enrollment.at[idx, "btl"])
+            ]
+            if not member_btls:
+                continue
+
+            team_btl = max(member_btls)
+
+            for idx in team:
+                old_btl = float(df_enrollment.at[idx, "btl"])
+                if team_btl != old_btl:
+                    has_changes = True
+                    df_enrollment.at[idx, "btl"] = team_btl
+
+                    old_final = df_enrollment.at[idx, "final_score"]
+                    if pd.notna(old_final) and old_final != 12.0:
+                        old_final = float(old_final)
+                        delta = (team_btl - old_btl) * w_btl
+                        new_final = round(old_final + delta, 1)
+                        new_final = float(np.clip(new_final, score_min, score_max))
+                        letter, gpa = convert_score_to_grade(new_final, config)
+
+                        df_enrollment.at[idx, "final_score"] = new_final
+                        df_enrollment.at[idx, "letter_grade"] = letter
+                        df_enrollment.at[idx, "gpa_4"] = gpa
+                        df_enrollment.at[idx, "passed"] = (letter != "F")
+                        if "status" in df_enrollment.columns:
+                            cur_status = str(df_enrollment.at[idx, "status"])
+                            if cur_status in ["Pass", "Fail", ""]:
+                                df_enrollment.at[idx, "status"] = "Pass" if letter != "F" else "Fail"
+
+    # Recalculate GPA if GPA columns are present and changes occurred
+    if has_changes and recalc_gpa and credits_map:
+        semester_gpas: Dict[str, float] = {}
+        final_gpas: Dict[str, float] = {}
+        for uid, attempts in df_enrollment.groupby("student_id"):
+            weighted_points = 0.0
+            attempted_credits = 0.0
+            passed_points = 0.0
+            passed_credits = 0.0
+            for _, att in attempts.iterrows():
+                cid = str(att["course_id"])
+                tc = float(credits_map.get(cid, 0.0))
+                score = att["final_score"]
+                gpa4 = att["gpa_4"]
+                if pd.isna(score) or score == 12.0 or pd.isna(gpa4):
+                    continue
+                weighted_points += float(gpa4) * tc
+                attempted_credits += tc
+                if att["passed"]:
+                    passed_points += float(gpa4) * tc
+                    passed_credits += tc
+            semester_gpas[uid] = round(weighted_points / attempted_credits, 2) if attempted_credits > 0 else np.nan
+            final_gpas[uid] = round(passed_points / passed_credits, 2) if passed_credits > 0 else np.nan
+
+        if "semester_gpa_4" in df_enrollment.columns:
+            df_enrollment["semester_gpa_4"] = df_enrollment["student_id"].map(semester_gpas)
+        if "final_gpa_4" in df_enrollment.columns:
+            df_enrollment["final_gpa_4"] = df_enrollment["student_id"].map(final_gpas)
+
+    return df_enrollment
 

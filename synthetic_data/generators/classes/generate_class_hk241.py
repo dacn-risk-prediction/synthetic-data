@@ -683,17 +683,17 @@ def generate_class_hk241() -> Path:
             if str(prof_by_id.get(uid, {}).get("early_graduation_candidate", "")).lower() == "true"
             and uid in k21_passed_co4029
         ]
-        k20_prog_retakers_co4337 = [
-            uid for uid in retake_demand.get("CO4337", set())
-            if uid in set(k20_active_students[k20_active_students["program"] == prog]["user_id"])
+        k20_prog_late_co4337 = [
+            uid for uid in set(k20_active_students[k20_active_students["program"] == prog]["user_id"])
+            if "CO4337" not in passed_map[uid]
         ]
-        k20_prog_retakers_sp1007 = [
-            uid for uid in retake_demand.get("SP1007", set())
-            if uid in set(k20_active_students[k20_active_students["program"] == prog]["user_id"])
+        k20_prog_late_sp1007 = [
+            uid for uid in set(k20_active_students[k20_active_students["program"] == prog]["user_id"])
+            if "SP1007" not in passed_map[uid]
         ]
 
-        total_co4337_demand = len(early_candidates) + len(k20_prog_retakers_co4337)
-        total_sp1007_demand = len(early_candidates) + len(k20_prog_retakers_sp1007)
+        total_co4337_demand = len(early_candidates) + len(k20_prog_late_co4337)
+        total_sp1007_demand = len(early_candidates) + len(k20_prog_late_sp1007)
 
         if total_co4337_demand > 0:
             sizes = balanced_class_sizes(total_co4337_demand, max_size=REGULAR_CLASS_MAX_CAPACITY)
@@ -724,7 +724,7 @@ def generate_class_hk241() -> Path:
                     "lecturer_name": best_gv["name"],
                     "department": dept,
                 })
-            print(f"   + [CO4337 Đồ án tốt nghiệp ({prog})]: {len(early_candidates)} K21 sớm + {len(k20_prog_retakers_co4337)} K20 trả nợ -> {len(sizes)} lớp")
+            print(f"   + [CO4337 Đồ án tốt nghiệp ({prog})]: {len(early_candidates)} K21 sớm + {len(k20_prog_late_co4337)} K20 trả nợ/trễ hạn -> {len(sizes)} lớp")
 
         if total_sp1007_demand > 0:
             sizes = balanced_class_sizes(total_sp1007_demand, max_size=POLITICS_CLASS_MAX_CAPACITY)
@@ -747,7 +747,7 @@ def generate_class_hk241() -> Path:
                     "lecturer_name": best_gv["name"],
                     "department": dept,
                 })
-            print(f"   + [SP1007 Pháp luật ({prog})]: {len(early_candidates)} K21 sớm + {len(k20_prog_retakers_sp1007)} K20 trả nợ -> {len(sizes)} lớp")
+            print(f"   + [SP1007 Pháp luật ({prog})]: {len(early_candidates)} K21 sớm + {len(k20_prog_late_sp1007)} K20 trả nợ -> {len(sizes)} lớp")
 
         # Tự chọn ngành Group C (2 môn), Tự do (1 môn), Group B (1 môn) cho K21
         if prog == "advanced":

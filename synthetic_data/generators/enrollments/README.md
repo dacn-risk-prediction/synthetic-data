@@ -176,8 +176,11 @@ sequenceDiagram
    - **Sinh viên từ HK2 trở đi:**
      - **Ưu tiên 1 (Trả nợ môn & Cải thiện điểm):**
        * *Trả nợ môn rớt:* Bắt buộc đăng ký lại các môn đã thi rớt (`passed == False`) nếu học kỳ này có mở lớp (`retaken = True`).
-       * *Cải thiện điểm (`academic_rules.py (hàm generate_grade_improvement_retakes)`):* Ở các học kỳ muộn (Kỳ 7, 8 hoặc giai đoạn kéo dài Kỳ 9–12), nếu sinh viên có GPA 4 tích lũy dự kiến $< 2.0$, hệ thống tự động cho phép sinh viên đăng ký học lại 1–2 môn đã đạt nhưng điểm thấp nhất (D: 1.0, D+: 1.5) với `retaken = True`. Lần học sau được cộng `retake_bonus = +2.0` nhằm giúp sinh viên kéo GPA tích lũy $\ge 2.0$ để tốt nghiệp hợp lệ.
-     - **Ưu tiên 2 (Môn mới theo tiến độ):** Đăng ký các môn mới của học kỳ khuyến nghị nếu đã thỏa mãn toàn bộ điều kiện tiên quyết (`TQ`) hoặc học trước (`KN`) từ các kỳ trước. Đối với sinh viên lộ trình 3.5 năm (tốt nghiệp sớm), học kỳ HK7 sẽ đăng ký cả môn tự chọn của Kỳ 7 và Kỳ 8 để hoàn thành đủ 128 tín chỉ.
+       * *Cải thiện điểm (`retake_rules.py - hàm generate_grade_improvement_retakes`):* Ở các học kỳ muộn (Kỳ 7, 8 hoặc giai đoạn kéo dài Kỳ 9–12), nếu sinh viên có CPA tích lũy $< 2.0$ hoặc có điểm Đồ án Chuyên ngành `CO4029 < 5.5`, hệ thống tự động cho phép sinh viên đăng ký học lại 1–2 môn đã đạt nhưng điểm thấp nhất (D: 1.0, D+: 1.5, hoặc môn `CO4029` khi chưa đạt chuẩn 5.5) với `retaken = True`. Lần học sau được cộng `retake_bonus = +2.0` nhằm giúp sinh viên kéo CPA tích lũy $\ge 2.0$ và đạt chuẩn ĐATN.
+     - **Ưu tiên 2 (Đồ án tốt nghiệp / Khóa luận tốt nghiệp `CO4337`):**
+       * Áp dụng hàm `is_thesis_eligible` kiểm tra 5 điều kiện cốt lõi: Tích lũy $\ge 105$ TC, ĐACN `CO4029` $\ge 5.5$, điểm tích lũy $\text{CPA} \ge 2.00$, tích lũy $\ge 12$ ngày CTXH, đạt chuẩn Ngoại ngữ và hoàn thành môn tiên quyết `CO3335` (Thực tập ngoài trường - ngoại trừ diện học sớm làm song hành).
+       * Đối với các kỳ trễ hạn (HK9 -> HK12: HK241 đến HK261), mở rộng đăng ký cho **toàn bộ sinh viên khóa trên (K20, K21, K22)** đạt đủ các điều kiện trên, không bị giới hạn trong nhóm từng rớt `CO4337`.
+     - **Ưu tiên 3 (Môn mới theo tiến độ):** Đăng ký các môn mới của học kỳ khuyến nghị nếu đã thỏa mãn toàn bộ điều kiện tiên quyết (`TQ`) hoặc học trước (`KN`) từ các kỳ trước. Đối với sinh viên lộ trình 3.5 năm (tốt nghiệp sớm), học kỳ HK7 sẽ đăng ký cả môn tự chọn của Kỳ 7 và Kỳ 8 để hoàn thành đủ 128 tín chỉ.
      - **Ràng buộc:** Tổng số tín chỉ đăng ký không vượt quá trần $22$ tín chỉ/kỳ.
 2. **Phân bổ vào danh sách lớp theo đúng hệ đào tạo (`allocate_course_rosters`):**
    - **Phân tách tuyệt đối theo hệ (`program`):**

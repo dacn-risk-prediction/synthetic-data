@@ -885,17 +885,17 @@ def generate_class_hk252() -> Path:
             ]["user_id"]
         )
 
-        older_prog_retakers_co4337 = [
-            uid for uid in retake_demand.get("CO4337", set())
-            if uid in active_older_uids
+        older_prog_late_co4337 = [
+            uid for uid in active_older_uids
+            if "CO4337" not in passed_map[uid]
         ]
-        older_prog_retakers_sp1007 = [
-            uid for uid in retake_demand.get("SP1007", set())
-            if uid in active_older_uids
+        older_prog_late_sp1007 = [
+            uid for uid in active_older_uids
+            if "SP1007" not in passed_map[uid]
         ]
 
-        total_co4337 = p_total + len(older_prog_retakers_co4337)
-        total_sp1007 = p_total + len(older_prog_retakers_sp1007)
+        total_co4337 = p_total + len(older_prog_late_co4337)
+        total_sp1007 = p_total + len(older_prog_late_sp1007)
 
         # CO4337: Đồ án Tốt nghiệp
         sizes_co4337 = balanced_class_sizes(total_co4337, max_size=REGULAR_CLASS_MAX_CAPACITY)
@@ -927,7 +927,7 @@ def generate_class_hk252() -> Path:
                 "lecturer_name": best_gv["name"],
                 "department": dept,
             })
-        print(f"   + [K22 & Trả nợ] CO4337 ({c_name}): demand={total_co4337} ({p_total} K22 + {len(older_prog_retakers_co4337)} trả nợ) -> {len(sizes_co4337)} lớp ({prefix}{existing_count+1:02d}..{prefix}{existing_count+len(sizes_co4337):02d})")
+        print(f"   + [K22 & Trả nợ/Trễ hạn] CO4337 ({c_name}): demand={total_co4337} ({p_total} K22 + {len(older_prog_late_co4337)} trả nợ) -> {len(sizes_co4337)} lớp ({prefix}{existing_count+1:02d}..{prefix}{existing_count+len(sizes_co4337):02d})")
 
         # SP1007: Pháp luật Việt Nam Đại cương
         sizes_sp1007 = balanced_class_sizes(total_sp1007, max_size=POLITICS_CLASS_MAX_CAPACITY)
@@ -951,7 +951,7 @@ def generate_class_hk252() -> Path:
                 "lecturer_name": best_gv["name"],
                 "department": dept,
             })
-        print(f"   + [K22 & Trả nợ] SP1007 ({c_name}): demand={total_sp1007} ({p_total} K22 + {len(older_prog_retakers_sp1007)} trả nợ) -> {len(sizes_sp1007)} lớp ({prefix}{existing_count+1:02d}..{prefix}{existing_count+len(sizes_sp1007):02d}) [Giảng đường lớn 120]")
+        print(f"   + [K22 & Trả nợ] SP1007 ({c_name}): demand={total_sp1007} ({p_total} K22 + {len(older_prog_late_sp1007)} trả nợ) -> {len(sizes_sp1007)} lớp ({prefix}{existing_count+1:02d}..{prefix}{existing_count+len(sizes_sp1007):02d}) [Giảng đường lớn 120]")
 
         # Tự chọn tự do (2 môn) cho K22
         if prog == "advanced":

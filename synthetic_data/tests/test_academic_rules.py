@@ -24,6 +24,7 @@ from academic_rules import (
     calculate_eligibility_for_schedule,
     convert_score_to_grade,
     course_mean_score,
+    extract_student_academic_standing,
     filter_students_from_2013,
     generate_observed_score,
     generate_student_profile,
@@ -33,6 +34,9 @@ from academic_rules import (
     is_academic_dismissal,
     is_english_passed,
     is_late_semester,
+    is_thesis_eligible,
+    score_course_components,
+    sync_class_teamwork_btl,
     select_early_graduation_candidates,
     semester_from_index,
     semester_index,
@@ -285,16 +289,16 @@ class AcademicScoreRulesTests(unittest.TestCase):
         eligible, _ = calculate_eligibility_for_schedule(
             students,
             history,
-            {"CO4029": 2, "CO1001": 3},
+            {"CO4337": 4, "CO1001": 3},
             prerequisites,
-            {"23": ["CO4029", "CO1001"]},
+            {"23": ["CO4337", "CO1001"]},
             {},
             semester_code="HK241",
             config=thesis_pause_config,
         )
 
         self.assertEqual(eligible, {
-            "2310001": ["CO4029", "CO1001"],
+            "2310001": ["CO4337", "CO1001"],
             "2310002": [],
             "2310003": [],
         })
@@ -1124,6 +1128,234 @@ class AcademicScoreRulesTests(unittest.TestCase):
             self.assertTrue(pd.isna(rec["giua_ky"]))
             self.assertFalse(pd.isna(rec["cuoi_ky"]))
             self.assertEqual(rec["cuoi_ky"], rec["final_score"])
+
+    def test_score_course_components_applies_component_shifts(self):
+        # Student with fixed ability (academic_level 4, etc.)
+        student = {
+            "student_id": "2110001",
+            "academic_level": 4,
+            "discipline": 3,
+            "motivation": 3,
+            "stress": 3,
+            "social_activity": 3,
+        }
+        components = [
+            ("quiz", 0.1),
+            ("lab", 0.2),
+            ("btl", 0.2),
+            ("giua_ky", 0.2),
+            ("cuoi_ky", 0.3),
+        ]
+        # Simulate across 200 random seeds
+        comp_totals = {c[0]: 0.0 for c in components}
+        n = 200
+        for i in range(n):
+            rng = np.random.default_rng(i + 1000)
+            scores, final_score, _, _ = score_course_components(
+                student=student,
+                course_code="CO2001",
+                components=components,
+                catalog_difficulty=0.0,
+                rng=rng,
+                config=GENERATOR_CONFIG,
+            )
+            for c, s in scores.items():
+                comp_totals[c] += s
+        means = {c: comp_totals[c] / n for c in comp_totals}
+        # In generator_config: shifts are lab=+0.8, btl=+1.0, giua_ky=0.0, cuoi_ky=-0.6
+        # Therefore mean(btl) > mean(giua_ky) > mean(cuoi_ky)
+        self.assertGreater(means["btl"], means["giua_ky"])
+        self.assertGreater(means["lab"], means["cuoi_ky"])
+        self.assertGreater(means["giua_ky"], means["cuoi_ky"])
+
+    def test_validate_generator_config_component_shifts(self):
+        import copy
+        bad_cfg = copy.deepcopy(GENERATOR_CONFIG)
+        bad_cfg["component_shifts"] = "not_a_dict"
+        with self.assertRaises(ValueError):
+            validate_generator_config(bad_cfg)
+
+        bad_cfg2 = copy.deepcopy(GENERATOR_CONFIG)
+        bad_cfg2["component_shifts"] = {"btl": "invalid_number"}
+        with self.assertRaises(ValueError):
+            validate_generator_config(bad_cfg2)
+
+    def test_sync_class_teamwork_btl_synchronizes_scores_within_team(self):
+        # 4 students in the same class section with different initial BTL scores
+        df = pd.DataFrame([
+            {
+                "enrollment_id": 1,
+                "student_id": "2110001",
+                "class_id": "HK211_CO1005_L01",
+                "course_id": "CO1005",
+                "btl": 9.0,  # Leader
+                "final_score": 8.0,
+                "letter_grade": "B+",
+                "gpa_4": 3.5,
+                "passed": True,
+                "status": "Pass",
+            },
+            {
+                "enrollment_id": 2,
+                "student_id": "2110002",
+                "class_id": "HK211_CO1005_L01",
+                "course_id": "CO1005",
+                "btl": 6.0,  # Weaker student
+                "final_score": 6.0,
+                "letter_grade": "C",
+                "gpa_4": 2.0,
+                "passed": True,
+                "status": "Pass",
+            },
+            {
+                "enrollment_id": 3,
+                "student_id": "2110003",
+                "class_id": "HK211_CO1005_L01",
+                "course_id": "CO1005",
+                "btl": 7.0,
+                "final_score": 6.8,
+                "letter_grade": "C+",
+                "gpa_4": 2.5,
+                "passed": True,
+                "status": "Pass",
+            },
+            {
+                "enrollment_id": 4,
+                "student_id": "2110004",
+                "class_id": "HK211_CO1005_L01",
+                "course_id": "CO1005",
+                "btl": 8.0,
+                "final_score": 7.5,
+                "letter_grade": "B",
+                "gpa_4": 3.0,
+                "passed": True,
+                "status": "Pass",
+            },
+        ])
+        
+        weights = {"CO1005": 0.2}  # BTL has 20% weight
+        synced = sync_class_teamwork_btl(df, assessment_weights=weights)
+
+        # All students in the 4-person team must have BTL equal to the top performer (9.0)
+        self.assertEqual(synced["btl"].tolist(), [9.0, 9.0, 9.0, 9.0])
+
+        # Weaker student (initial BTL 6.0 -> 9.0, +3.0 * 0.2 = +0.6 final_score)
+        # 6.0 + 0.6 = 6.6 -> Letter grade B (grade scale 6.5 <= score < 7.0 is B? Let's check grade_scale)
+        self.assertEqual(synced.loc[1, "btl"], 9.0)
+        self.assertEqual(synced.loc[1, "final_score"], 6.6)
+        self.assertGreater(synced.loc[1, "final_score"], 6.0)
+
+    def test_sync_class_teamwork_btl_recalculates_gpa(self):
+        df = pd.DataFrame([
+            {
+                "enrollment_id": 1,
+                "student_id": "2110001",
+                "class_id": "HK211_CO1005_L01",
+                "course_id": "CO1005",
+                "btl": 9.0,
+                "final_score": 8.0,
+                "letter_grade": "B+",
+                "gpa_4": 3.5,
+                "passed": True,
+                "status": "Pass",
+                "semester_gpa_4": 3.5,
+                "final_gpa_4": 3.5,
+            },
+            {
+                "enrollment_id": 2,
+                "student_id": "2110002",
+                "class_id": "HK211_CO1005_L01",
+                "course_id": "CO1005",
+                "btl": 5.0,
+                "final_score": 5.0,
+                "letter_grade": "D",
+                "gpa_4": 1.0,
+                "passed": True,
+                "status": "Pass",
+                "semester_gpa_4": 1.0,
+                "final_gpa_4": 1.0,
+            },
+        ])
+        weights = {"CO1005": 0.2}
+        credits_map = {"CO1005": 3.0}
+        synced = sync_class_teamwork_btl(df, assessment_weights=weights, credits_map=credits_map)
+        # Student 2 BTL increased from 5.0 to 9.0 -> final_score from 5.0 to 5.8 -> GPA 4.0 scale improves
+        self.assertGreater(synced.loc[1, "semester_gpa_4"], 1.0)
+
+    def test_thesis_eligibility_academic_standing_rules(self):
+        # Student with >= 12 CTXH and English passed
+        import json
+        ctxh_progress = json.dumps([{"semester": "HK201", "cumulative_days": 15}])
+        student = {
+            "student_id": "2010001",
+            "ctxh_days_by_semester": ctxh_progress,
+            "english_pass": True,
+            "english_eligibility_by_semester": json.dumps(["HK201"]),
+        }
+        passed_courses = {"CO1001", "CO4029"}
+
+        # 1. Base eligibility (without standing args) should be True for backward compatibility
+        self.assertTrue(is_thesis_eligible(student, "HK232", passed_courses))
+
+        # 2. Credits < 105 -> Ineligible
+        self.assertFalse(is_thesis_eligible(
+            student, "HK232", passed_courses,
+            passed_credits=104.0, co4029_score=6.0, cumulative_gpa=2.5
+        ))
+
+        # 3. CO4029 < 5.5 -> Ineligible
+        self.assertFalse(is_thesis_eligible(
+            student, "HK232", passed_courses,
+            passed_credits=110.0, co4029_score=5.0, cumulative_gpa=2.5
+        ))
+
+        # 4. GPA < 2.0 -> Ineligible
+        self.assertFalse(is_thesis_eligible(
+            student, "HK232", passed_courses,
+            passed_credits=110.0, co4029_score=6.0, cumulative_gpa=1.95
+        ))
+
+        # 5. All criteria met: credits >= 105, CO4029 >= 5.5, GPA >= 2.0, CTXH >= 12, English pass -> Eligible
+        self.assertTrue(is_thesis_eligible(
+            student, "HK232", passed_courses,
+            passed_credits=105.0, co4029_score=5.5, cumulative_gpa=2.00
+        ))
+
+    def test_extract_student_academic_standing(self):
+        prev_df = pd.DataFrame([
+            {
+                "student_id": "2010001",
+                "course_id": "CO1005",
+                "final_score": 8.0,
+                "gpa_4": 3.5,
+                "passed": True,
+                "status": "Pass",
+            },
+            {
+                "student_id": "2010001",
+                "course_id": "CO4029",
+                "final_score": 6.0,
+                "gpa_4": 2.5,
+                "passed": True,
+                "status": "Pass",
+            },
+            {
+                "student_id": "2010002",
+                "course_id": "CO4029",
+                "final_score": 5.0,
+                "gpa_4": 1.0,
+                "passed": True,
+                "status": "Pass",
+            },
+        ])
+        credits_map = {"CO1005": 4.0, "CO4029": 3.0}
+        passed_creds, co4029_sc, cum_gpa = extract_student_academic_standing(prev_df, credits_map)
+
+        self.assertEqual(passed_creds["2010001"], 7.0)
+        self.assertEqual(co4029_sc["2010001"], 6.0)
+        self.assertEqual(co4029_sc["2010002"], 5.0)
+        # 2010001 GPA: (3.5*4 + 2.5*3) / 7 = 21.5 / 7 = 3.07
+        self.assertAlmostEqual(cum_gpa["2010001"], 3.07, places=2)
 
 
 if __name__ == "__main__":

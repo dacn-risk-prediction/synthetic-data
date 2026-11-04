@@ -1,4 +1,4 @@
-class_id,course_code,course_name,semester,class_group,program,max_capacity,lecturer_id,lecturer_name,department
+﻿class_id,course_code,course_name,semester,class_group,program,max_capacity,lecturer_id,lecturer_name,department
 HK212_CO1007_L01,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK212,L01,standard,40,GV00001,Ngô Quốc An,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CO1007_L02,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK212,L02,standard,40,GV00002,Dương Đức Khôi,Khoa Khoa học và Kỹ thuật Máy tính
 HK212_CO1007_L03,CO1007,Cấu trúc Rời rạc cho Khoa học Máy tính,HK212,L03,standard,40,GV00003,Lý Hoàng Duy,Khoa Khoa học và Kỹ thuật Máy tính

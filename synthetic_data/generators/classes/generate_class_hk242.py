@@ -767,18 +767,18 @@ def generate_class_hk242() -> Path:
         prefix = cfg["prefix"]
 
         # K20 trả nợ CO4337 hoặc SP1007
-        k20_prog_retakers_co4337 = [
-            uid for uid in retake_demand.get("CO4337", set())
-            if uid in set(k20_active_students[k20_active_students["program"] == prog]["user_id"])
+        k20_prog_late_co4337 = [
+            uid for uid in set(k20_active_students[k20_active_students["program"] == prog]["user_id"])
+            if "CO4337" not in passed_map[uid]
         ]
-        k20_prog_retakers_sp1007 = [
-            uid for uid in retake_demand.get("SP1007", set())
-            if uid in set(k20_active_students[k20_active_students["program"] == prog]["user_id"])
+        k20_prog_late_sp1007 = [
+            uid for uid in set(k20_active_students[k20_active_students["program"] == prog]["user_id"])
+            if "SP1007" not in passed_map[uid]
         ]
 
         for c in k21_curriculum:
             course_code = c["course_code"]
-            retakers_cnt = len(k20_prog_retakers_co4337) if course_code == "CO4337" else len(k20_prog_retakers_sp1007)
+            retakers_cnt = len(k20_prog_late_co4337) if course_code == "CO4337" else len(k20_prog_late_sp1007)
             demand = p_total + retakers_cnt
 
             if demand <= 0:

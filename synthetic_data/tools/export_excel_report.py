@@ -10,12 +10,12 @@ Structure for each sheet:
 2. BẢNG 1: Tỷ lệ Tốt nghiệp đúng hạn (Khóa K20, K21, K22).
    - Dòng hướng dẫn công thức / logic tính metric trên cơ sở dữ liệu thực tế.
 3. BẢNG 2: Tỷ lệ Điểm & Xếp loại của những sinh viên đã tốt nghiệp (Khóa K20, K21, K22).
-   - GPA TB Hệ 10, CPA TB Hệ 4 và tỷ lệ % phân bố 6 mức xếp loại điểm.
+   - GPA TB Hệ 10, CPA TB Hệ 4 và tỷ lệ % phân bố 5 mức xếp loại điểm (Xuất sắc, Giỏi, Khá, Trung bình, Dưới 2.0).
    - Dòng hướng dẫn công thức / logic tính trên dữ liệu thực tế.
 4. BIỂU ĐỒ TRỰC QUAN CỦA BẢNG 2 (Khung A19):
    - Biểu đồ Cột chồng 100% (100% Stacked Column Chart) so sánh cơ cấu điểm tốt nghiệp K20, K21, K22.
-5. BẢNG 3: Tỷ lệ Bỏ học từng khóa (Khóa K20 đến K26 - Khung A44).
-   - Sĩ số tuyển sinh, số lượng sinh viên bỏ học và tỷ lệ % bỏ học.
+5. BẢNG 3: Tỷ lệ Bỏ học & Không tốt nghiệp từng khóa (Khóa K20 đến K26 - Khung A44).
+   - Sĩ số tuyển sinh, số lượng sinh viên bỏ học, tỷ lệ % bỏ học và tỷ lệ % không tốt nghiệp.
    - Dòng hướng dẫn công thức / logic tính trên dữ liệu thực tế.
 """
 
@@ -116,7 +116,7 @@ def build_program_characteristic_1_sheet(
     # =========================================================================
     # PHẦN 1: TIÊU ĐỀ, BỐI CẢNH & PHẠM VI
     # =========================================================================
-    ws.merge_cells("A1:J1")
+    ws.merge_cells("A1:I1")
     c1 = ws["A1"]
     c1.value = f"BÁO CÁO HỌC VỤ TỔNG QUAN DỮ LIỆU MÔ PHỎNG - {program_title.upper()}"
     c1.font = font_banner
@@ -124,17 +124,17 @@ def build_program_characteristic_1_sheet(
     c1.alignment = Alignment(horizontal="center", vertical="center")
     ws.row_dimensions[1].height = 32
 
-    ws.merge_cells("A2:J2")
+    ws.merge_cells("A2:I2")
     c2 = ws["A2"]
     c2.value = f"Bối cảnh: Báo cáo tổng quan phân phối dữ liệu học vụ mô phỏng của {program_desc} tại ĐHBK, phục vụ nghiên cứu và huấn luyện mô hình Cảnh báo học vụ sớm (EWS)."
     c2.font = Font(name="Arial", size=9.5, italic=True, color="262626")
     c2.alignment = Alignment(horizontal="left", vertical="center")
     ws.row_dimensions[2].height = 24
 
-    ws.merge_cells("A3:J3")
+    ws.merge_cells("A3:I3")
     c3 = ws["A3"]
     pct_total = (n_prog / total_univ_students * 100) if total_univ_students > 0 else 0.0
-    c3.value = f"BÁO CÁO HỌC VỤ: TIẾN ĐỘ TỐT NGHIỆP, XẾP LOẠI ĐIỂM & TỶ LỆ BỎ HỌC (K20 - K26) | Quy mô: {n_prog:,} SV ({pct_total:.1f}% toàn trường)"
+    c3.value = f"BÁO CÁO HỌC VỤ: TIẾN ĐỘ TỐT NGHIỆP, XẾP LOẠI ĐIỂM & TỶ LỆ BỎ HỌC / KHÔNG TỐT NGHIỆP (K20 - K26) | Quy mô: {n_prog:,} SV ({pct_total:.1f}% toàn trường)"
     c3.font = Font(name="Arial", size=9.5, bold=True, color="1F4E78")
     c3.alignment = Alignment(horizontal="left", vertical="center")
     ws.row_dimensions[3].height = 22
@@ -217,7 +217,7 @@ def build_program_characteristic_1_sheet(
     # =========================================================================
     # PHẦN 3: BẢNG 2 - TỶ LỆ ĐIỂM & XẾP LOẠI CỦA SINH VIÊN ĐÃ TỐT NGHIỆP (K20, K21, K22)
     # =========================================================================
-    ws.merge_cells("A12:J12")
+    ws.merge_cells("A12:I12")
     s2 = ws["A12"]
     s2.value = "II. BẢNG 2: TỶ LỆ ĐIỂM & XẾP LOẠI CỦA SINH VIÊN ĐÃ TỐT NGHIỆP (KHÓA K20, K21, K22)"
     s2.font = font_section
@@ -227,8 +227,9 @@ def build_program_characteristic_1_sheet(
 
     t2_headers = [
         "STT", "Khóa học", "GPA TB (Hệ 10)", "CPA TB (Hệ 4)",
-        "Xuất sắc (>= 3.6)", "Giỏi (3.2 - 3.59)", "Khá (2.8 - 3.19)",
-        "TB Khá (2.4 - 2.79)", "Trung bình (2.0 - 2.39)", "Dưới TB (< 2.0)"
+        "Xuất sắc (3.6 - 4.0)", "Giỏi (3.2 - cận 3.6)",
+        "Khá (2.5 - cận 3.2)", "Trung bình (2.0 - cận 2.5)",
+        "Dưới 2.0 (< 2.0)"
     ]
     ws.row_dimensions[13].height = 28
     for c_i, h in enumerate(t2_headers, 1):
@@ -237,42 +238,42 @@ def build_program_characteristic_1_sheet(
         cell.fill = navy_header
         cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
 
-    # Compute graduation score stats for K20, K21, K22
+    # Compute graduation score stats for K20, K21, K22 (Xuất sắc, Giỏi, Khá, Trung bình, Dưới 2.0)
     k20_grad = k20_sub[k20_sub["graduation_ready"] == True]
     k21_grad = k21_sub[k21_sub["graduation_ready"] == True]
     k22_grad = k22_sub[k22_sub["graduation_ready"] == True]
 
     def get_deg_stats(df_g):
-        exc = int((df_g["degree_classification"] == "excellent").sum())
-        good = int((df_g["degree_classification"] == "good").sum())
-        fair = int((df_g["degree_classification"] == "fair").sum())
-        f_avg = int((df_g["degree_classification"] == "fairly_average").sum())
-        avg = int((df_g["degree_classification"] == "average").sum())
-        below = int((df_g["degree_classification"] == "below_average").sum())
         cpa_10 = float(df_g["gpa_10"].dropna().mean()) if ("gpa_10" in df_g and len(df_g["gpa_10"].dropna())) else 0.0
         cpa_4 = float(df_g["gpa_4"].dropna().mean()) if len(df_g) else 0.0
         tot_g = len(df_g)
         if tot_g == 0:
-            pcts = [0.0] * 6
-        else:
-            pcts = [exc / tot_g, good / tot_g, fair / tot_g, f_avg / tot_g, avg / tot_g, below / tot_g]
-        return tot_g, cpa_10, cpa_4, exc, good, fair, f_avg, avg, below, pcts
+            return tot_g, cpa_10, cpa_4, 0, 0, 0, 0, 0, [0.0, 0.0, 0.0, 0.0, 0.0]
+
+        gpa = df_g["gpa_4"]
+        exc = int((gpa >= 3.6).sum())
+        good = int(((gpa >= 3.2) & (gpa < 3.6)).sum())
+        fair = int(((gpa >= 2.5) & (gpa < 3.2)).sum())
+        avg = int(((gpa >= 2.0) & (gpa < 2.5)).sum())
+        below = int((gpa < 2.0).sum())
+        pcts = [exc / tot_g, good / tot_g, fair / tot_g, avg / tot_g, below / tot_g]
+        return tot_g, cpa_10, cpa_4, exc, good, fair, avg, below, pcts
 
     k20_stats = get_deg_stats(k20_grad)
     k21_stats = get_deg_stats(k21_grad)
     k22_stats = get_deg_stats(k22_grad)
 
     t2_rows = [
-        (1, "Khóa K20", k20_stats[1], k20_stats[2], *k20_stats[9]),
-        (2, "Khóa K21", k21_stats[1], k21_stats[2], *k21_stats[9]),
-        (3, "Khóa K22", k22_stats[1], k22_stats[2], *k22_stats[9]),
+        (1, "Khóa K20", k20_stats[1], k20_stats[2], *k20_stats[8]),
+        (2, "Khóa K21", k21_stats[1], k21_stats[2], *k21_stats[8]),
+        (3, "Khóa K22", k22_stats[1], k22_stats[2], *k22_stats[8]),
     ]
 
-    for r_i, (stt, c_name, gpa10, gpa4, p_exc, p_good, p_fair, p_favg, p_avg, p_below) in enumerate(t2_rows, 14):
+    for r_i, (stt, c_name, gpa10, gpa4, p_exc, p_good, p_fair, p_avg, p_below) in enumerate(t2_rows, 14):
         ws.row_dimensions[r_i].height = 22
         is_even = (r_i % 2 == 0)
 
-        vals = [stt, c_name, gpa10, gpa4, p_exc, p_good, p_fair, p_favg, p_avg, p_below]
+        vals = [stt, c_name, gpa10, gpa4, p_exc, p_good, p_fair, p_avg, p_below]
         for c_i, val in enumerate(vals, 1):
             cell = ws.cell(row=r_i, column=c_i, value=val)
             cell.font = font_data
@@ -293,9 +294,13 @@ def build_program_characteristic_1_sheet(
                 cell.alignment = Alignment(horizontal="right", vertical="center")
 
     # Dòng hướng dẫn cách tính Metric Bảng 2
-    ws.merge_cells("A17:J17")
+    ws.merge_cells("A17:I17")
     g2 = ws["A17"]
-    g2.value = "💡 Cách tính: GPA 10 = Điểm TB tích lũy hệ 10; CPA 4 = Điểm TB tích lũy thang 4; Tỷ lệ xếp loại = Số SV tốt nghiệp theo từng mức điểm CPA / Tổng số SV tốt nghiệp của khóa."
+    g2.value = (
+        "💡 Cách tính: GPA 10 = Điểm TB tích lũy hệ 10; CPA 4 = Điểm TB tích lũy thang 4; "
+        "Xếp loại tốt nghiệp: Xuất sắc (3.6 - 4.0), Giỏi (3.2 - cận 3.6), Khá (2.5 - cận 3.2), "
+        "Trung bình (2.0 - cận 2.5; mức tối thiểu được cấp bằng), Dưới 2.0 (< 2.0; chưa đủ điều kiện tốt nghiệp)."
+    )
     g2.font = font_guidance
     g2.fill = guidance_fill
     g2.alignment = Alignment(horizontal="left", vertical="center")
@@ -315,18 +320,18 @@ def build_program_characteristic_1_sheet(
     chart.x_axis.title = "Khóa tốt nghiệp"
 
     cats = Reference(ws, min_col=2, min_row=14, max_row=16)  # K20, K21, K22
-    data = Reference(ws, min_col=5, max_col=10, min_row=13, max_row=16)
+    data = Reference(ws, min_col=5, max_col=9, min_row=13, max_row=16)
     chart.add_data(data, titles_from_data=True)
     chart.set_categories(cats)
 
     ws.add_chart(chart, "A19")
 
     # =========================================================================
-    # PHẦN 5: BẢNG 3 - TỶ LỆ BỎ HỌC TỪNG KHÓA (KHÓA K20 ĐẾN K26 - BẮT ĐẦU TỪ DÒNG 44)
+    # PHẦN 5: BẢNG 3 - TỶ LỆ BỎ HỌC & KHÔNG TỐT NGHIỆP TỪNG KHÓA (KHÓA K20 ĐẾN K26 - BẮT ĐẦU TỪ DÒNG 44)
     # =========================================================================
-    ws.merge_cells("A44:E44")
+    ws.merge_cells("A44:F44")
     s3 = ws["A44"]
-    s3.value = "III. BẢNG 3: TỶ LỆ BỎ HỌC TỪNG KHÓA (KHÓA K20 ĐẾN K26)"
+    s3.value = "III. BẢNG 3: TỶ LỆ BỎ HỌC & KHÔNG TỐT NGHIỆP TỪNG KHÓA (KHÓA K20 ĐẾN K26)"
     s3.font = font_section
     s3.fill = ice_blue_section
     s3.alignment = Alignment(horizontal="left", vertical="center", indent=1)
@@ -334,7 +339,7 @@ def build_program_characteristic_1_sheet(
 
     table3_headers = [
         "STT", "Khóa học", "Sĩ số tuyển sinh (SV)", "Sinh viên bỏ học (SV)",
-        "Tỷ lệ bỏ học (%)"
+        "Tỷ lệ bỏ học (%)", "Tỷ lệ không tốt nghiệp (%)"
     ]
     ws.row_dimensions[45].height = 28
     for c_i, h in enumerate(table3_headers, 1):
@@ -348,17 +353,29 @@ def build_program_characteristic_1_sheet(
     for idx, coh in enumerate(cohorts_all, 1):
         c_sub = prog_students[prog_students["cohort"] == coh]
         tot = len(c_sub)
+
+        # Tách riêng: Bỏ học thực sự (thôi học giữa chừng do hoàn cảnh khó khăn hoặc học vụ, không tính quá hạn đào tạo)
         if "dropout" in c_sub.columns:
-            if c_sub["dropout"].dtype == bool:
-                drop_cnt = int((c_sub["dropout"] == True).sum())
+            if "dropout_reason" in c_sub.columns:
+                drop_mask = (c_sub["dropout"].astype(str).str.lower() == "true") & (c_sub["dropout_reason"] != "overdue_more_than_two_years")
             else:
-                drop_cnt = int((c_sub["dropout"].astype(str).str.lower() == "true").sum())
+                drop_mask = (c_sub["dropout"].astype(str).str.lower() == "true")
+            drop_cnt = int(drop_mask.sum())
         else:
             drop_cnt = 0
-        pct = (drop_cnt / tot) if tot > 0 else 0.0
-        table3_data.append((idx, f"Khóa {coh}", tot, drop_cnt, pct))
+        pct_drop = (drop_cnt / tot) if tot > 0 else 0.0
 
-    for r_i, (stt, c_name, n, drop_cnt, pct) in enumerate(table3_data, 46):
+        # Tỷ lệ không tốt nghiệp (áp dụng cho các khóa đã đến thời hạn tốt nghiệp chuẩn 4 năm: K20, K21, K22)
+        if coh in ["K20", "K21", "K22"]:
+            grad_cnt = int((c_sub["graduation_ready"].astype(str).str.lower() == "true").sum()) if "graduation_ready" in c_sub.columns else 0
+            not_grad_cnt = tot - grad_cnt
+            pct_not_grad = (not_grad_cnt / tot) if tot > 0 else 0.0
+        else:
+            pct_not_grad = "-"
+
+        table3_data.append((idx, f"Khóa {coh}", tot, drop_cnt, pct_drop, pct_not_grad))
+
+    for r_i, (stt, c_name, n, drop_cnt, pct_drop, pct_not_grad) in enumerate(table3_data, 46):
         ws.row_dimensions[r_i].height = 22
         is_even = (r_i % 2 == 0)
 
@@ -377,38 +394,54 @@ def build_program_characteristic_1_sheet(
         c_drop.alignment = Alignment(horizontal="right", vertical="center")
         c_drop.number_format = "#,##0"
 
-        c_pct = ws.cell(row=r_i, column=5, value=pct)
-        c_pct.alignment = Alignment(horizontal="right", vertical="center")
-        c_pct.number_format = "0.0%"
-        c_pct.font = font_bold
+        c_pct_drop = ws.cell(row=r_i, column=5, value=pct_drop)
+        c_pct_drop.alignment = Alignment(horizontal="right", vertical="center")
+        c_pct_drop.number_format = "0.0%"
+        c_pct_drop.font = font_bold
 
-        for col_idx in range(1, 6):
+        c_pct_not_grad = ws.cell(row=r_i, column=6, value=pct_not_grad)
+        if isinstance(pct_not_grad, (int, float)):
+            c_pct_not_grad.alignment = Alignment(horizontal="right", vertical="center")
+            c_pct_not_grad.number_format = "0.0%"
+            c_pct_not_grad.font = font_bold
+        else:
+            c_pct_not_grad.alignment = Alignment(horizontal="center", vertical="center")
+            c_pct_not_grad.font = font_data
+
+        for col_idx in range(1, 7):
             cell = ws.cell(row=r_i, column=col_idx)
             cell.border = thin_border
-            cell.font = font_bold if col_idx in [2, 5] else font_data
+            if col_idx in [2, 5] or (col_idx == 6 and isinstance(pct_not_grad, (int, float))):
+                cell.font = font_bold
+            else:
+                cell.font = font_data
             if is_even: cell.fill = zebra_fill
 
     # Dòng hướng dẫn cách tính Metric Bảng 3
-    ws.merge_cells("A53:E53")
+    ws.merge_cells("A53:F53")
     g3 = ws["A53"]
-    g3.value = "💡 Cách tính: Tỷ lệ bỏ học = Số sinh viên bỏ học (dropout = True) / Tổng sĩ số sinh viên của khóa."
+    g3.value = (
+        "💡 Cách tính: "
+        "Tỷ lệ bỏ học = Số sinh viên thôi học giữa chừng (do hoàn cảnh cá nhân hoặc học vụ) / Tổng sĩ số khóa. "
+        "Tỷ lệ không tốt nghiệp = Số sinh viên chưa hoàn thành chuẩn tốt nghiệp / Tổng sĩ số khóa "
+        "(áp dụng cho K20, K21, K22; Khóa K23 - K26 đang trong thời gian đào tạo chuẩn)."
+    )
     g3.font = font_guidance
     g3.fill = guidance_fill
     g3.alignment = Alignment(horizontal="left", vertical="center")
     ws.row_dimensions[53].height = 24
 
-    # Column Widths Configuration (10 cột chuẩn khít với bảng số liệu và khung biểu đồ)
+    # Column Widths Configuration (9 cột chuẩn khít với bảng số liệu và khung biểu đồ)
     col_widths = {
         1: 6,    # A: STT
         2: 16,   # B: Khóa học
         3: 16,   # C: GPA TB Hệ 10
         4: 15,   # D: CPA TB Hệ 4
-        5: 16,   # E: Xuất sắc
-        6: 16,   # F: Giỏi
-        7: 16,   # G: Khá
-        8: 16,   # H: TB Khá
-        9: 16,   # I: Trung bình
-        10: 16,  # J: Dưới TB
+        5: 18,   # E: Xuất sắc (3.6 - 4.0)
+        6: 18,   # F: Giỏi (3.2 - cận 3.6) / Tỷ lệ không tốt nghiệp (%)
+        7: 18,   # G: Khá (2.5 - cận 3.2)
+        8: 20,   # H: Trung bình (2.0 - cận 2.5)
+        9: 16,   # I: Dưới 2.0 (< 2.0)
     }
     for col_idx, width in col_widths.items():
         ws.column_dimensions[get_column_letter(col_idx)].width = width

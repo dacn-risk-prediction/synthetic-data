@@ -200,8 +200,14 @@ def generate_grade_improvement_retakes(
             continue
         cpa = weighted_points / total_creds
 
-        # If student's GPA 4 is < 2.0 (threat of not graduating):
-        if cpa < 2.0:
+        # Check if student needs improvement:
+        # 1. cpa < 2.0 (threat of not graduating)
+        # 2. CO4029 score < 5.5 (threat of thesis ineligibility)
+        co4029_rec = best_by_course.get("CO4029")
+        co4029_fs = float(co4029_rec.get("final_score", 0.0)) if co4029_rec else 0.0
+        needs_co4029_improvement = ("CO4029" in best_by_course and co4029_fs < 5.5)
+
+        if cpa < 2.0 or needs_co4029_improvement:
             passed_courses_set = {
                 c for c, cr in best_by_course.items()
                 if str(cr.get("passed", "True")).lower() in ("true", "1") or float(cr.get("final_score", 0.0)) >= 5.0
@@ -209,15 +215,19 @@ def generate_grade_improvement_retakes(
             candidates: List[Tuple[float, float, str, Dict[str, Any]]] = []
             for cid, r in best_by_course.items():
                 g = float(r.get("gpa_4", 0.0))
-                passed = str(r.get("passed", "True")).lower() in ("true", "1") or float(r.get("final_score", 0.0)) >= 5.0
+                fs = float(r.get("final_score", 0.0))
+                passed = str(r.get("passed", "True")).lower() in ("true", "1") or fs >= 5.0
                 tq_reqs = tq_map.get(cid, set())
-                if (
-                    passed
-                    and g in (1.0, 1.5)
-                    and cid not in already_enrolled_courses[sid]
-                    and cid not in ("CO4337", "CO4029")
-                    and tq_reqs.issubset(passed_courses_set)
-                ):
+                if not passed or cid in already_enrolled_courses[sid] or cid == "CO4337":
+                    continue
+                if not tq_reqs.issubset(passed_courses_set):
+                    continue
+
+                if cid == "CO4029" and fs < 5.5:
+                    tc = float(credits_map.get(cid, 3.0))
+                    # Priority 0.0: CO4029 < 5.5 has top priority
+                    candidates.append((0.0, tc, cid, r))
+                elif cpa < 2.0 and g in (1.0, 1.5):
                     tc = float(credits_map.get(cid, 3.0))
                     candidates.append((g, tc, cid, r))
 

@@ -48,6 +48,7 @@ from academic_rules import (
     convert_score_to_grade,
     filter_retake_demand_by_credit_limit,
     score_course_components,
+    sync_class_teamwork_btl,
 )
 
 # Add analysis directory to import academic engine helpers
@@ -651,6 +652,7 @@ def generate_enrollment_hk211() -> Path:
     df_enrollment = df_enrollment[base_cols + comp_cols + end_cols]
 
     # 12. Xuất file CSV
+    df_enrollment = sync_class_teamwork_btl(df_enrollment)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     out_file = OUTPUT_DIR / f"enrollment_{SEMESTER.lower()}.csv"
     df_enrollment.to_csv(out_file, index=False, encoding="utf-8-sig")

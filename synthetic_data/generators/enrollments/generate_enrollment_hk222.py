@@ -54,6 +54,7 @@ from academic_rules import (
     convert_score_to_grade,
     filter_retake_demand_by_credit_limit,
     score_course_components,
+    sync_class_teamwork_btl,
 )
 from curriculum_rules import (
     enroll_students_in_electives,
@@ -884,7 +885,6 @@ def generate_enrollment_hk222() -> Path:
                 current_candidates = [
                     uid for uid in early_candidates
                     if early_code not in history_passed[uid]
-                    and (early_code != "CO4029" or is_thesis_eligible(uid, SEMESTER, set(history_passed[uid].keys()), df_profiles))
                 ]
                 if not current_candidates:
                     continue
@@ -1082,6 +1082,7 @@ def generate_enrollment_hk222() -> Path:
     df_enrollment["semester_gpa"] = df_enrollment["student_id"].map(semester_gpas)
     df_enrollment["cumulative_gpa"] = df_enrollment["student_id"].map(final_gpas)
 
+    df_enrollment = sync_class_teamwork_btl(df_enrollment)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     out_file = OUTPUT_DIR / f"enrollment_{SEMESTER.lower()}.csv"
     df_enrollment.to_csv(out_file, index=False, encoding="utf-8-sig")

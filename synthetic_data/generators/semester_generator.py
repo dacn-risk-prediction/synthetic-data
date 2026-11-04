@@ -18,6 +18,7 @@ from academic_rules import (
     load_history,
     load_student_profiles,
     score_course_components,
+    sync_class_teamwork_btl,
     semester_index,
     students_by_course_from_eligibility,
 )
@@ -358,6 +359,7 @@ def generate_enrollment(semester, is_current=None):
             result[comp] = np.nan
             components_in_result.append(comp)
     result = result[base + components_in_result + end]
+    result = sync_class_teamwork_btl(result)
     output = ROOT_DIR / "generated" / "enrollments" / f"enrollment_{semester.lower()}.csv"
     result.to_csv(output, index=False, encoding="utf-8-sig")
     print(f"Created {output.name}: {len(result)} enrollment records")

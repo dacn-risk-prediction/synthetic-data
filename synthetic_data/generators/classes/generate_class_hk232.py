@@ -650,40 +650,55 @@ def generate_class_hk232() -> Path:
                     if str(prof_by_id.get(uid, {}).get("early_graduation_candidate", "")).lower() == "true"
                 ]
 
+            # Tính số lượng sinh viên K20 cần học cải thiện CO4029 (< 5.5) trong hệ này
+            co4029_prev = all_prev_enrollments[all_prev_enrollments["course_id"] == "CO4029"].copy()
+            co4029_prev["final_score"] = pd.to_numeric(co4029_prev["final_score"], errors="coerce")
+            k20_p_uids = set(k20_active_students[k20_active_students["program"] == prog]["user_id"])
+            low_co4029_uids = set(co4029_prev[co4029_prev["final_score"] < 5.5]["student_id"]) & k20_p_uids
+
+            codes_to_open = []
             if early_candidates:
-                for early_code in ["CO3061", "CO4029"]:
-                    sizes = balanced_class_sizes(len(early_candidates), max_size=REGULAR_CLASS_MAX_CAPACITY)
-                    eligible_gvs, dept, c_name = get_all_lecturers_with_fallback(early_code, all_lecturers)
-                    pref_specs = course_spec_preference.get(early_code, [])
+                codes_to_open.append("CO3061")
+            if early_candidates or low_co4029_uids:
+                codes_to_open.append("CO4029")
 
-                    existing_count = sum(1 for cl in classes if cl["course_code"] == early_code and cl["program"] == prog)
-                    for idx, size in enumerate(sizes, start=existing_count + 1):
-                        group_code = f"{prefix}{idx:02d}"
-                        best_gv = min(
-                            eligible_gvs,
-                            key=lambda g: (
-                                assigned_count[g["user_id"]],
-                                0 if g.get("specialization") in pref_specs else 1,
-                                g["user_id"],
-                            ),
-                        )
-                        assigned_count[best_gv["user_id"]] += 1
+            for early_code in codes_to_open:
+                cur_demand = len(early_candidates) + (len(low_co4029_uids) if early_code == "CO4029" else 0)
+                if cur_demand <= 0:
+                    continue
+                sizes = balanced_class_sizes(cur_demand, max_size=REGULAR_CLASS_MAX_CAPACITY)
+                eligible_gvs, dept, c_name = get_all_lecturers_with_fallback(early_code, all_lecturers)
+                pref_specs = course_spec_preference.get(early_code, [])
 
-                        classes.append({
-                            "class_id": f"{SEMESTER}_{early_code}_{group_code}",
-                            "course_code": early_code,
-                            "course_name": f"{c_name} (Học sớm)",
-                            "semester": SEMESTER,
-                            "class_group": group_code,
-                            "program": prog,
-                            "max_capacity": REGULAR_CLASS_MAX_CAPACITY,
-                            "lecturer_id": best_gv["user_id"],
-                            "lecturer_name": best_gv["name"],
-                            "department": dept,
-                        })
+                existing_count = sum(1 for cl in classes if cl["course_code"] == early_code and cl["program"] == prog)
+                for idx, size in enumerate(sizes, start=existing_count + 1):
+                    group_code = f"{prefix}{idx:02d}"
+                    best_gv = min(
+                        eligible_gvs,
+                        key=lambda g: (
+                            assigned_count[g["user_id"]],
+                            0 if g.get("specialization") in pref_specs else 1,
+                            g["user_id"],
+                        ),
+                    )
+                    assigned_count[best_gv["user_id"]] += 1
 
-                    suffix_note = " (CLC+TT)" if prog == "high-quality" else ""
-                    print(f"   + [K21 Tốt nghiệp sớm] {early_code} ({c_name}): demand={len(early_candidates)} SV{suffix_note} -> {len(sizes)} lớp")
+                    classes.append({
+                        "class_id": f"{SEMESTER}_{early_code}_{group_code}",
+                        "course_code": early_code,
+                        "course_name": f"{c_name} (Học sớm/Cải thiện)",
+                        "semester": SEMESTER,
+                        "class_group": group_code,
+                        "program": prog,
+                        "max_capacity": REGULAR_CLASS_MAX_CAPACITY,
+                        "lecturer_id": best_gv["user_id"],
+                        "lecturer_name": best_gv["name"],
+                        "department": dept,
+                    })
+
+                impr_note = f" (gồm {len(low_co4029_uids)} SV K20 học cải thiện)" if early_code == "CO4029" and low_co4029_uids else ""
+                suffix_note = " (CLC+TT)" if prog == "high-quality" else ""
+                print(f"   + [{early_code} ({prog})]: demand={cur_demand}{impr_note}{suffix_note} -> {len(sizes)} lớp")
 
             # Tự chọn ngành Group C cho sinh viên K21 thông thường (chọn 2 môn theo chuyên ngành)
             regular_k21_uids = list(combined_prog_uids)

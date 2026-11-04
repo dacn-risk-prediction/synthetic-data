@@ -78,6 +78,11 @@ flowchart TD
 - Các file `generate_class_hk221.py` đến `generate_class_hk261.py` chỉ còn vỏn vẹn 4 dòng gọi hàm.
 - Tích hợp kiểm tra học kỳ hiện tại đang hoạt động (`is_semester_active(semester)`), đồng bộ với cờ `is_active = True` của kỳ `HK261` trong bảng danh mục học kỳ `semester.csv`.
 
+### 2.6. Quy tắc mở lớp Đồ án Tốt nghiệp & Đồ án Chuyên ngành ở các kỳ trễ hạn (HK241 -> HK261)
+- **Mở lớp Đồ án tốt nghiệp (`CO4337`):** Nhu cầu mở lớp không chỉ lấy từ danh sách học lại (`retake_demand` - tức sinh viên từng rớt `CO4337`), mà bao gồm **toàn bộ sinh viên khóa trên (K20, K21, K22)** chưa hoàn thành ĐATN và đáp ứng đủ các điều kiện tiên quyết (tích lũy $\ge 105$ TC, ĐACN $\ge 5.5$, $\text{GPA} \ge 2.00$).
+- **Mở lớp Đồ án chuyên ngành (`CO4029`):** Tính toán nhu cầu bao gồm cả các sinh viên học cải thiện điểm khi $4.0 \le \text{final\_score} < 5.5$ để đủ điều kiện làm ĐATN.
+- **Tự động tinh gọn lớp rỗng (`prune_empty_classes.py`):** Sau khi hoàn tất quy trình phân bổ, script tự động loại bỏ các lớp học phần không có sinh viên đăng ký (sĩ số = 0), bảo đảm dữ liệu lớp học sạch (10,883 lớp học phần thực tế trên toàn trường).
+
 ---
 
 ## 3. Bản Đồ Chuyển Đổi Sang Hệ Thống Dữ Liệu Mới (K20 – K26)

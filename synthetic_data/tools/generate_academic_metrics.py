@@ -252,19 +252,26 @@ def _profile_graduation_state(
     graduation_ready = (graduation_semester is not None)
     missing_courses = set() if graduation_ready else (effective_required_courses - passed_courses)
 
+    min_thesis_credits = float(graduation_config.get("minimum_passed_credits_for_thesis", 105.0))
+    min_co4029_score = float(graduation_config.get("co4029_minimum_score_for_thesis", 5.5))
+    min_thesis_gpa = float(graduation_config.get("minimum_gpa4_for_thesis", 2.0))
+    co4029_best_score = best_by_course.get("CO4029", [0.0, 0.0])[1]
+
+    thesis_eligible = (
+        english_pass
+        and ctxh_days >= GENERATOR_CONFIG["student_progress"]["ctxh"]["minimum_for_thesis"]
+        and credit_total >= min_thesis_credits
+        and co4029_best_score >= min_co4029_score
+        and (pd.notna(gpa4) and float(gpa4) >= min_thesis_gpa)
+    )
+
     return {
         "passed_credits": credit_total,
         "gpa_4": gpa4,
         "gpa_10": gpa10,
         "ctxh_days": ctxh_days,
         "english_pass": english_pass,
-        "thesis_eligible": (
-            english_pass
-            and ctxh_days
-            >= GENERATOR_CONFIG["student_progress"]["ctxh"][
-                "minimum_for_thesis"
-            ]
-        ),
+        "thesis_eligible": thesis_eligible,
         "graduation_ready": graduation_ready,
         "graduation_semester": graduation_semester,
         "missing_required_courses": len(missing_courses),
@@ -337,7 +344,7 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
             student_id, history.iloc[0:0].copy()
         )
         all_student_records = student_history[
-            ["course_code", "semester_code", "sem_idx", "is_passed"]
+            ["course_code", "semester_code", "sem_idx", "is_passed", "final_score", "gpa_4"]
         ].to_dict("records")
         suspension_semesters = academic_suspension_semesters(
             student_history,
@@ -414,6 +421,62 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
                 semester,
                 before=True,
             )
+            before_passed_credits = sum(
+                float(credits[code])
+                for code in before_completed_codes
+                if code in credits
+            )
+            before_co4029_score = max(
+                (
+                    float(r["final_score"])
+                    for r in all_student_records
+                    if r["sem_idx"] < s_idx
+                    and r["course_code"] == "CO4029"
+                    and pd.notna(r["final_score"])
+                    and r["final_score"] != 12.0
+                ),
+                default=0.0,
+            )
+            before_best_gpa = {}
+            for r in all_student_records:
+                if (
+                    r["sem_idx"] < s_idx
+                    and r["is_passed"]
+                    and pd.notna(r["gpa_4"])
+                    and pd.notna(r["final_score"])
+                    and r["final_score"] != 12.0
+                    and r["course_code"] in credits
+                ):
+                    c = r["course_code"]
+                    g4 = float(r["gpa_4"])
+                    if c not in before_best_gpa or g4 > before_best_gpa[c]:
+                        before_best_gpa[c] = g4
+            before_gpa_creds = sum(float(credits[c]) for c in before_best_gpa)
+            before_cum_gpa = (
+                sum(before_best_gpa[c] * float(credits[c]) for c in before_best_gpa) / before_gpa_creds
+                if before_gpa_creds > 0 else 0.0
+            )
+
+            grad_cfg = GENERATOR_CONFIG["student_progress"]["graduation"]
+            min_th_credits = float(grad_cfg.get("minimum_passed_credits_for_thesis", 105.0))
+            min_th_co4029 = float(grad_cfg.get("co4029_minimum_score_for_thesis", 5.5))
+            min_th_gpa = float(grad_cfg.get("minimum_gpa4_for_thesis", 2.0))
+
+            thesis_eligible_before = (
+                before_english_pass
+                and _ctxh_days_for_semester(
+                    progress,
+                    semester,
+                    before=True,
+                )
+                >= GENERATOR_CONFIG["student_progress"]["ctxh"][
+                    "minimum_for_thesis"
+                ]
+                and before_passed_credits >= min_th_credits
+                and before_co4029_score >= min_th_co4029
+                and before_cum_gpa >= min_th_gpa
+            )
+
             progress_rows.append({
                 "student_id": student_id,
                 "cohort": f"K{str(student_id)[:2]}",
@@ -428,17 +491,7 @@ def _build_student_reports(profiles, history, semesters, tracked_ids, credits):
                 "passed_credits": passed_credits,
                 "ctxh_days_cumulative": cumulative_ctxh,
                 "english_pass": term_english_pass,
-                "thesis_eligible_before_semester": (
-                    before_english_pass
-                    and _ctxh_days_for_semester(
-                        progress,
-                        semester,
-                        before=True,
-                    )
-                    >= GENERATOR_CONFIG["student_progress"]["ctxh"][
-                        "minimum_for_thesis"
-                    ]
-                ),
+                "thesis_eligible_before_semester": thesis_eligible_before,
                 "semester_complete": complete,
                 "academic_suspension": academic_suspension,
             })

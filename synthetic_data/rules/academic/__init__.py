@@ -75,6 +75,7 @@ from .scoring_rules import (
     course_mean_score,
     generate_observed_score,
     score_course_components,
+    sync_class_teamwork_btl,
 )
 
 from .retake_rules import (
@@ -106,6 +107,7 @@ from .eligibility_rules import (
     get_exempted_english_courses,
     get_free_course_codes,
     get_group_c_course_codes,
+    extract_student_academic_standing,
     is_english_passed,
     is_thesis_eligible,
 )

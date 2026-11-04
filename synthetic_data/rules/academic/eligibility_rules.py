@@ -2,7 +2,7 @@
 
 import hashlib
 import json
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional, Set, Tuple, Union
 import numpy as np
 import pandas as pd
 
@@ -212,16 +212,80 @@ def is_english_passed(
     return set(ENGLISH_COURSE_CODES).issubset(set(passed_courses) | exempted)
 
 
+def extract_student_academic_standing(
+    prev_enrollments: Union[pd.DataFrame, List[pd.DataFrame]],
+    credits_map: Dict[str, float],
+) -> Tuple[Dict[str, float], Dict[str, float], Dict[str, float]]:
+    """Extract (passed_credits_map, co4029_scores_map, cumulative_gpa_map)
+    from previous enrollment records.
+
+    - passed_credits_map: student_id -> total passed credits
+    - co4029_scores_map: student_id -> best final_score in CO4029
+    - cumulative_gpa_map: student_id -> cumulative GPA (scale 4.0)
+    """
+    if isinstance(prev_enrollments, list):
+        if not prev_enrollments:
+            return {}, {}, {}
+        df_all = pd.concat(prev_enrollments, ignore_index=True)
+    elif isinstance(prev_enrollments, pd.DataFrame):
+        df_all = prev_enrollments
+    else:
+        return {}, {}, {}
+
+    if df_all.empty:
+        return {}, {}, {}
+
+    df_all = df_all.copy()
+    df_all["student_id"] = df_all["student_id"].astype(str)
+
+    # 1. Total passed credits
+    passed_mask = (df_all["passed"] == True) | (df_all["status"].astype(str).str.lower().isin(["pass", "exempted"]))
+    passed_df = df_all[passed_mask].copy()
+    passed_df["credits"] = passed_df["course_id"].map(credits_map).fillna(0.0)
+
+    unique_passed = passed_df.drop_duplicates(subset=["student_id", "course_id"])
+    passed_credits_map = unique_passed.groupby("student_id")["credits"].sum().to_dict()
+
+    # 2. CO4029 best final score
+    co4029_df = df_all[df_all["course_id"] == "CO4029"].copy()
+    co4029_scores_map: Dict[str, float] = {}
+    if not co4029_df.empty:
+        co4029_df["final_score_num"] = pd.to_numeric(co4029_df["final_score"], errors="coerce")
+        co4029_scores_map = co4029_df.groupby("student_id")["final_score_num"].max().dropna().to_dict()
+
+    # 3. Cumulative GPA (best score per course on passed courses)
+    gpa_records = passed_df[
+        (passed_df["final_score"] != 12.0) &
+        (passed_df["gpa_4"].notna()) &
+        (passed_df["credits"] > 0)
+    ].copy()
+    cumulative_gpa_map: Dict[str, float] = {}
+    if not gpa_records.empty:
+        gpa_records["gpa_4_num"] = pd.to_numeric(gpa_records["gpa_4"], errors="coerce")
+        best_gpa = gpa_records.sort_values("gpa_4_num", ascending=False).drop_duplicates(subset=["student_id", "course_id"])
+        best_gpa["pts"] = best_gpa["gpa_4_num"] * best_gpa["credits"]
+        student_pts = best_gpa.groupby("student_id")[["pts", "credits"]].sum()
+        cumulative_gpa_map = (student_pts["pts"] / student_pts["credits"]).round(2).to_dict()
+
+    return passed_credits_map, co4029_scores_map, cumulative_gpa_map
+
+
 def is_thesis_eligible(
     student: Any,
     semester_code: str,
     passed_courses: Optional[Set[str]] = None,
     profiles: Optional[Any] = None,
     config: Optional[Dict[str, Any]] = None,
+    passed_credits: Optional[float] = None,
+    co4029_score: Optional[float] = None,
+    cumulative_gpa: Optional[float] = None,
 ) -> bool:
-    """Check if student meets conditions to enroll in thesis/project (CO4029, CO4337):
+    """Check if student meets conditions to enroll in graduation thesis/project (CO4337):
     - Accumulated CTXH days before semester >= 12
     - Passed English requirement (all required English courses passed or exempt)
+    - Passed credits >= 105 TC
+    - Passed Capstone Project (CO4029) with final_score >= 5.5
+    - Cumulative GPA (4.0 scale) >= 2.00
     """
     # Accommodate callers that might pass (student, semester_code, passed_courses, config, profiles)
     if isinstance(profiles, dict) and ("student_progress" in profiles or "curriculum" in profiles):
@@ -244,6 +308,20 @@ def is_thesis_eligible(
         prof = prof_dict.get(sid, {})
         student_obj = {"student_id": sid, **prof}
 
+    grad_config = config.get("student_progress", {}).get("graduation", {})
+
+    # Extract standing from student_obj if not explicitly passed
+    if passed_credits is None and isinstance(student_obj, dict):
+        passed_credits = student_obj.get("passed_credits")
+    if co4029_score is None and isinstance(student_obj, dict):
+        co4029_score = student_obj.get("co4029_score")
+    if cumulative_gpa is None and isinstance(student_obj, dict):
+        cumulative_gpa = student_obj.get("cumulative_gpa")
+        if cumulative_gpa is None:
+            cumulative_gpa = student_obj.get("gpa_4")
+        if cumulative_gpa is None:
+            cumulative_gpa = student_obj.get("gpa")
+
     # 1. CTXH check: >= 12 days before semester
     min_ctxh = config.get("student_progress", {}).get("ctxh", {}).get("minimum_for_thesis", 12)
     ctxh_days = ctxh_days_before_semester(student_obj, semester_code, config)
@@ -253,6 +331,33 @@ def is_thesis_eligible(
     # 2. English check
     if not is_english_passed(student_obj, passed_courses, config, semester_code, before=True):
         return False
+
+    # 3. Minimum passed credits check: >= 105 TC
+    min_credits = grad_config.get("minimum_passed_credits_for_thesis", 105)
+    if passed_credits is not None:
+        try:
+            if float(passed_credits) < float(min_credits):
+                return False
+        except (ValueError, TypeError):
+            pass
+
+    # 4. Capstone Project (CO4029) score check: >= 5.5
+    min_co4029 = grad_config.get("co4029_minimum_score_for_thesis", 5.5)
+    if co4029_score is not None:
+        try:
+            if float(co4029_score) < float(min_co4029):
+                return False
+        except (ValueError, TypeError):
+            pass
+
+    # 5. Cumulative GPA check: >= 2.00
+    min_gpa = grad_config.get("minimum_gpa4_for_thesis", 2.0)
+    if cumulative_gpa is not None:
+        try:
+            if float(cumulative_gpa) < float(min_gpa):
+                return False
+        except (ValueError, TypeError):
+            pass
 
     return True
 

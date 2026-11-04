@@ -55,6 +55,7 @@ from curriculum_rules import (
 
 from academic_rules import (
     GENERATOR_CONFIG,
+    extract_student_academic_standing,
     filter_active_students_for_semester,
     is_student_active_for_semester,
     is_thesis_eligible,
@@ -63,6 +64,7 @@ from academic_rules import (
     filter_retake_demand_by_credit_limit,
     generate_grade_improvement_retakes,
     score_course_components,
+    sync_class_teamwork_btl,
     assign_student_hp1_sport,
     build_pe_enrollments_for_semester,
 )
@@ -208,6 +210,7 @@ def generate_enrollment_hk231() -> Path:
     courses_file = ACADEMICS_DIR / "courses.csv"
     df_courses = pd.read_csv(courses_file, encoding="utf-8-sig")
     credits_map: Dict[str, float] = dict(zip(df_courses["course_code"], df_courses["credits"].astype(float)))
+    passed_credits_map, co4029_scores_map, cum_gpa_map = extract_student_academic_standing(all_prev_enrollments, credits_map)
     tq_map = get_tq_prerequisite_map()
 
     # Ràng buộc trần tín chỉ: Lọc môn học lại để không vượt quá trần tín chỉ học kỳ
@@ -927,7 +930,7 @@ def generate_enrollment_hk231() -> Path:
             print(f"   -> Đã gán {len(student_ids)} SV vào môn {course_code} ({len(class_ids)} lớp)")
 
         # CO4029 (Đồ án chuyên ngành): chỉ SV K20 chưa hoàn thành ở HK222
-        k20_co4029_learners = [uid for uid in student_ids if uid not in k20_passed_co4029 and is_thesis_eligible(uid, SEMESTER, set(history_passed[uid].keys()), df_profiles)]
+        k20_co4029_learners = [uid for uid in student_ids if uid not in k20_passed_co4029]
         if k20_co4029_learners:
             course_code = "CO4029"
             class_ids = classes_by_prog_course.get((prog, course_code), [])
@@ -992,7 +995,15 @@ def generate_enrollment_hk231() -> Path:
             for early_code in ["CO4337", "SP1007"]:
                 current_candidates = [
                     uid for uid in early_candidates
-                    if early_code != "CO4337" or is_thesis_eligible(uid, SEMESTER, set(history_passed[uid].keys()), df_profiles)
+                    if early_code != "CO4337" or is_thesis_eligible(
+                        uid,
+                        SEMESTER,
+                        set(history_passed[uid].keys()),
+                        df_profiles,
+                        passed_credits=passed_credits_map.get(uid, 0.0),
+                        co4029_score=co4029_scores_map.get(uid, None),
+                        cumulative_gpa=cum_gpa_map.get(uid, None),
+                    )
                 ]
                 if not current_candidates:
                     continue
@@ -1152,6 +1163,7 @@ def generate_enrollment_hk231() -> Path:
     df_enrollment["semester_gpa"] = df_enrollment["student_id"].map(semester_gpas)
     df_enrollment["cumulative_gpa"] = df_enrollment["student_id"].map(final_gpas)
 
+    df_enrollment = sync_class_teamwork_btl(df_enrollment)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     out_file = OUTPUT_DIR / f"enrollment_{SEMESTER.lower()}.csv"
     df_enrollment.to_csv(out_file, index=False, encoding="utf-8-sig")

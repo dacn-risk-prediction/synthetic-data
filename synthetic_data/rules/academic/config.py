@@ -85,6 +85,21 @@ def validate_generator_config(config: Dict[str, Any]) -> Dict[str, Any]:
     if config["score"]["min"] >= config["score"]["max"]:
         raise ValueError("score.min must be less than score.max")
 
+    if "component_shifts" in config:
+        shifts = config["component_shifts"]
+        if not isinstance(shifts, dict):
+            raise ValueError("component_shifts must be a dictionary")
+        for comp_name, shift_val in shifts.items():
+            if not isinstance(shift_val, (int, float)):
+                raise ValueError(f"component_shifts.{comp_name} must be a number")
+
+    if "teamwork_btl" in config:
+        tw = config["teamwork_btl"]
+        if not isinstance(tw, dict):
+            raise ValueError("teamwork_btl must be a dictionary")
+        if int(tw.get("team_size", 4)) < 2:
+            raise ValueError("teamwork_btl.team_size must be at least 2")
+
     progress = config["student_progress"]
     semesters = progress["observed_semesters"]
     if (

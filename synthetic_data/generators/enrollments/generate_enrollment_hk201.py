@@ -48,6 +48,7 @@ from academic_rules import (
     course_mean_score,
     generate_student_profile,
     score_course_components,
+    sync_class_teamwork_btl,
 )
 
 SEMESTER = "HK201"
@@ -360,6 +361,7 @@ def generate_enrollment_hk201() -> Path:
     df_enrollment = df_enrollment[base_cols + comp_cols + end_cols]
 
     # 9. Xuất file CSV
+    df_enrollment = sync_class_teamwork_btl(df_enrollment)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     out_file = OUTPUT_DIR / f"enrollment_{SEMESTER.lower()}.csv"
     df_enrollment.to_csv(out_file, index=False, encoding="utf-8-sig")

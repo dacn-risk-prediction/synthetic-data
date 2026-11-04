@@ -63,6 +63,7 @@ from curriculum_rules import (
 
 from academic_rules import (
     GENERATOR_CONFIG,
+    extract_student_academic_standing,
     filter_active_students_for_semester,
     is_student_active_for_semester,
     is_thesis_eligible,
@@ -70,6 +71,7 @@ from academic_rules import (
     filter_retake_demand_by_credit_limit,
     generate_grade_improvement_retakes,
     score_course_components,
+    sync_class_teamwork_btl,
     assign_student_hp1_sport,
     build_pe_enrollments_for_semester,
 )
@@ -256,6 +258,7 @@ def generate_enrollment_hk241() -> Path:
     courses_file = ACADEMICS_DIR / "courses.csv"
     df_courses = pd.read_csv(courses_file, encoding="utf-8-sig")
     credits_map: Dict[str, float] = dict(zip(df_courses["course_code"], df_courses["credits"].astype(float)))
+    passed_credits_map, co4029_scores_map, cum_gpa_map = extract_student_academic_standing(all_prev_enrollments, credits_map)
 
     # Ràng buộc trần tín chỉ: Lọc môn học lại để không vượt quá trần tín chỉ học kỳ
     retake_demand = filter_retake_demand_by_credit_limit(retake_demand, credits_map, SEMESTER)
@@ -275,11 +278,19 @@ def generate_enrollment_hk241() -> Path:
         tc = credits_map.get(course_code, 0.0)
         if tc > 0 and (student_credits[uid] + tc > MAX_SEMESTER_CREDITS):
             return False
-        # Đối với môn Đồ án / Khóa luận tốt nghiệp (CO4029, CO4337):
+        # Đối với Đồ án tốt nghiệp / Khóa luận tốt nghiệp (CO4337):
         # Bắt buộc đạt chuẩn CTXH >= 12 ngày và chuẩn tiếng Anh
-        if course_code in ("CO4029", "CO4337"):
+        if course_code == "CO4337":
             passed_set = set(history_passed[uid].keys()) if isinstance(history_passed[uid], dict) else set(history_passed[uid])
-            if not is_thesis_eligible(uid, SEMESTER, passed_set, df_profiles):
+            if not is_thesis_eligible(
+                uid,
+                SEMESTER,
+                passed_set,
+                df_profiles,
+                passed_credits=passed_credits_map.get(uid, 0.0),
+                co4029_score=co4029_scores_map.get(uid, None),
+                cumulative_gpa=cum_gpa_map.get(uid, None),
+            ):
                 return False
 
         # Đối với CO4337: Nhóm tốt nghiệp sớm K21 học KLTN ở HK7 song hành với Thực tập CO3335
@@ -730,17 +741,17 @@ def generate_enrollment_hk241() -> Path:
             if str(student_profiles.get(uid, {}).get("early_graduation_candidate", "")).lower() == "true"
             and uid in k21_passed_co4029
         ]
-        k20_prog_retakers_co4337 = [
-            uid for uid in retake_demand.get("CO4337", [])
-            if uid in set(k20_active_students[k20_active_students["program"] == prog]["user_id"])
+        k20_prog_late_co4337 = [
+            uid for uid in set(k20_active_students[k20_active_students["program"] == prog]["user_id"])
+            if "CO4337" not in history_passed[uid]
         ]
-        k20_prog_retakers_sp1007 = [
-            uid for uid in retake_demand.get("SP1007", [])
-            if uid in set(k20_active_students[k20_active_students["program"] == prog]["user_id"])
+        k20_prog_late_sp1007 = [
+            uid for uid in set(k20_active_students[k20_active_students["program"] == prog]["user_id"])
+            if "SP1007" not in history_passed[uid]
         ]
 
         # Xử lý CO4337 (Khóa luận tốt nghiệp)
-        all_co4337 = early_candidates + k20_prog_retakers_co4337
+        all_co4337 = early_candidates + k20_prog_late_co4337
         valid_co4337 = [uid for uid in all_co4337 if can_enroll(uid, "CO4337")]
         if valid_co4337:
             course_code = "CO4337"
@@ -753,12 +764,12 @@ def generate_enrollment_hk241() -> Path:
                 offset += size
 
                 for uid in assigned_chunk:
-                    record_grade(uid, course_code, class_id, is_retake=(uid in set(k20_prog_retakers_co4337)), seed_suffix="_grad")
+                    record_grade(uid, course_code, class_id, is_retake=(uid in set(k20_prog_late_co4337)), seed_suffix="_grad")
 
             print(f"   -> [CO4337] {len(valid_co4337)} SV hoàn tất đăng ký ({len(class_ids)} lớp)")
 
         # Xử lý SP1007
-        all_sp1007 = early_candidates + k20_prog_retakers_sp1007
+        all_sp1007 = early_candidates + k20_prog_late_sp1007
         valid_sp1007 = [uid for uid in all_sp1007 if can_enroll(uid, "SP1007")]
         if valid_sp1007:
             course_code = "SP1007"
@@ -771,7 +782,7 @@ def generate_enrollment_hk241() -> Path:
                 offset += size
 
                 for uid in assigned_chunk:
-                    record_grade(uid, course_code, class_id, is_retake=(uid in set(k20_prog_retakers_sp1007)), seed_suffix="_grad")
+                    record_grade(uid, course_code, class_id, is_retake=(uid in set(k20_prog_late_sp1007)), seed_suffix="_grad")
 
             print(f"   -> [SP1007] {len(valid_sp1007)} SV hoàn tất đăng ký ({len(class_ids)} lớp)")
 
@@ -891,6 +902,7 @@ def generate_enrollment_hk241() -> Path:
         semester_gpas[str(uid)] = round(hk_points / hk_credits, 2) if hk_credits > 0 else np.nan
 
     # Xuất file kết quả
+    df_enrollment = sync_class_teamwork_btl(df_enrollment)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     out_file = OUTPUT_DIR / f"enrollment_{SEMESTER.lower()}.csv"
     df_enrollment.to_csv(out_file, index=False, encoding="utf-8-sig")

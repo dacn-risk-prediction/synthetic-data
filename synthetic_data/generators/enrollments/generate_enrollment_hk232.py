@@ -60,6 +60,7 @@ from curriculum_rules import (
 
 from academic_rules import (
     GENERATOR_CONFIG,
+    extract_student_academic_standing,
     filter_active_students_for_semester,
     is_student_active_for_semester,
     is_thesis_eligible,
@@ -68,6 +69,7 @@ from academic_rules import (
     filter_retake_demand_by_credit_limit,
     generate_grade_improvement_retakes,
     score_course_components,
+    sync_class_teamwork_btl,
     get_student_hp2_sport,
     build_pe_enrollments_for_semester,
 )
@@ -227,6 +229,7 @@ def generate_enrollment_hk232() -> Path:
 
     # Sinh viên nợ môn
     df_all_prev = pd.concat(all_prev_enrollments)
+    passed_credits_map, co4029_scores_map, cum_gpa_map = extract_student_academic_standing(df_all_prev, credits_map)
 
     # Lịch sử tất cả các môn đã từng đăng ký ở các kỳ trước
     history_enrolled: Dict[str, Set[str]] = defaultdict(set)
@@ -721,7 +724,6 @@ def generate_enrollment_hk232() -> Path:
                     current_early = [
                         uid for uid in early_candidates
                         if early_code not in passed_map.get(uid, set())
-                        and (early_code != "CO4029" or is_thesis_eligible(uid, SEMESTER, passed_map.get(uid, set()), df_prof))
                     ]
                     if not current_early: continue
                     class_ids = classes_by_prog_course.get((prog, early_code), [])
@@ -876,7 +878,15 @@ def generate_enrollment_hk232() -> Path:
             current_learners = [
                 uid for uid in student_ids
                 if course_code != "CO4337" or (
-                    is_thesis_eligible(uid, SEMESTER, passed_map.get(uid, set()), df_prof)
+                    is_thesis_eligible(
+                        uid,
+                        SEMESTER,
+                        passed_map.get(uid, set()),
+                        df_prof,
+                        passed_credits=passed_credits_map.get(uid, 0.0),
+                        co4029_score=co4029_scores_map.get(uid, None),
+                        cumulative_gpa=cum_gpa_map.get(uid, None),
+                    )
                     and "CO4029" in passed_map.get(uid, set())
                     and "CO3335" in passed_map.get(uid, set())
                 )
@@ -1103,6 +1113,7 @@ def generate_enrollment_hk232() -> Path:
         semester_gpas[str(uid)] = round(hk_points / hk_credits, 2) if hk_credits > 0 else 0.0
 
     # Xuất file kết quả
+    df_enrollment = sync_class_teamwork_btl(df_enrollment)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     out_file = OUTPUT_DIR / f"enrollment_{SEMESTER.lower()}.csv"
     df_enrollment.to_csv(out_file, index=False, encoding="utf-8-sig")

@@ -51,6 +51,7 @@ from academic_rules import (
     convert_score_to_grade,
     filter_retake_demand_by_credit_limit,
     score_course_components,
+    sync_class_teamwork_btl,
 )
 
 ANALYSIS_DIR = ROOT_DIR / "analysis"
@@ -929,6 +930,7 @@ def generate_enrollment_hk221() -> Path:
     df_enrollment["semester_gpa"] = df_enrollment["student_id"].map(semester_gpas)
     df_enrollment["cumulative_gpa"] = df_enrollment["student_id"].map(final_gpas)
 
+    df_enrollment = sync_class_teamwork_btl(df_enrollment)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     out_file = OUTPUT_DIR / f"enrollment_{SEMESTER.lower()}.csv"
     df_enrollment.to_csv(out_file, index=False, encoding="utf-8-sig")

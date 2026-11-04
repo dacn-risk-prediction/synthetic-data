@@ -192,6 +192,17 @@
     "max": 10.0,
     "retake_bonus": 2.0
   },
+  "component_shifts": {
+    "quiz": 0.3,
+    "lab": 0.8,
+    "btl": 0.0,
+    "giua_ky": -0.3,
+    "cuoi_ky": -0.6
+  },
+  "teamwork_btl": {
+    "team_size": 4,
+    "equal_score": true
+  },
   "student_progress": {
     "observed_semesters": [
       "HK201",
@@ -281,9 +292,11 @@
       "minimum_passed_credits_per_semester": 11,
       "minimum_credits_for_graduation": 128,
       "minimum_gpa4_for_graduation": 2.0,
+      "minimum_passed_credits_for_thesis": 105,
+      "co4029_minimum_score_for_thesis": 5.5,
+      "minimum_gpa4_for_thesis": 2.0,
       "ineligible_thesis_empty_semester_probability": 0.8,
       "thesis_course_codes": [
-        "CO4029",
         "CO4337"
       ],
       "graduation_project_codes": [
