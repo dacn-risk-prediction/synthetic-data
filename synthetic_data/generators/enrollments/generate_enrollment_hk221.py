@@ -43,6 +43,7 @@ if str(RULES_DIR) not in sys.path:
 from curriculum_rules import select_student_group_c_course, get_student_specialization_map
 
 from academic_rules import (
+    init_prerequisite_grades_for_semester,
     GENERATOR_CONFIG,
     filter_active_students_for_semester,
     is_student_active_for_semester,
@@ -117,6 +118,8 @@ def get_k20_group_c_distribution(
 def generate_enrollment_hk221() -> Path:
     """Execute enrollment generation for semester HK221 and export to enrollment_hk221.csv."""
     print(f"=== KHỞI CHẠY SINH DỮ LIỆU ĐĂNG KÝ HỌC PHẦN CHO {SEMESTER} (ĐA KHÓA: K20, K21, K22) ===")
+
+    init_prerequisite_grades_for_semester(SEMESTER)
 
     # 1. Đọc sinh viên K20, K21, K22
     students_file = USERS_DIR / "student.csv"

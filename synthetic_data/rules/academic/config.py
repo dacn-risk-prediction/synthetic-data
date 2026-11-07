@@ -100,6 +100,13 @@ def validate_generator_config(config: Dict[str, Any]) -> Dict[str, Any]:
         if int(tw.get("team_size", 4)) < 2:
             raise ValueError("teamwork_btl.team_size must be at least 2")
 
+    if "prerequisite_rules" in config:
+        prereq = config["prerequisite_rules"]
+        if not isinstance(prereq, dict):
+            raise ValueError("prerequisite_rules must be a dictionary")
+        if prereq.get("penalty_rate", 0) < 0 or prereq.get("max_penalty", 0) < 0:
+            raise ValueError("prerequisite_rules penalty values must be non-negative")
+
     progress = config["student_progress"]
     semesters = progress["observed_semesters"]
     if (

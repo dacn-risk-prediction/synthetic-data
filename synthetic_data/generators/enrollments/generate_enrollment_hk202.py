@@ -37,6 +37,7 @@ if str(RULES_DIR) not in sys.path:
     sys.path.insert(0, str(RULES_DIR))
 
 from academic_rules import (
+    init_prerequisite_grades_for_semester,
     GENERATOR_CONFIG,
     balanced_class_sizes,
     convert_score_to_grade,
@@ -74,6 +75,8 @@ def get_acceleration_students(k20_students: pd.DataFrame, df_prof: pd.DataFrame)
 def generate_enrollment_hk202() -> Path:
     """Execute enrollment generation for semester HK202 and export to enrollment_hk202.csv."""
     print(f"=== KHỞI CHẠY SINH DỮ LIỆU ĐĂNG KÝ HỌC PHẦN (ENROLLMENT) CHO {SEMESTER} ===")
+
+    init_prerequisite_grades_for_semester(SEMESTER)
 
     # 1. Đọc dữ liệu sinh viên K20
     students_file = USERS_DIR / "student.csv"

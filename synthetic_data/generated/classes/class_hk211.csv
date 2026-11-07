@@ -22,6 +22,7 @@ HK211_MT1003_L20,MT1003,Giải tích 1,HK211,L20,standard,40,GV00152,Lê Hữu H
 HK211_MT1003_L21,MT1003,Giải tích 1,HK211,L21,standard,40,GV00153,Phan Tuấn Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK211_MT1003_L22,MT1003,Giải tích 1,HK211,L22,standard,40,GV00154,Trần Quang An,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK211_MT1003_L23,MT1003,Giải tích 1,HK211,L23,standard,40,GV00155,Lý Tuấn Việt,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT1003_L24,MT1003,Giải tích 1,HK211,L24,standard,40,GV00156,Đỗ Minh Trinh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK211_PH1003_L01,PH1003,Vật lý 1,HK211,L01,standard,40,GV00191,Võ Văn Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK211_PH1003_L02,PH1003,Vật lý 1,HK211,L02,standard,40,GV00192,Trần Ngọc Hải,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK211_PH1003_L03,PH1003,Vật lý 1,HK211,L03,standard,40,GV00193,Lý Quang Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
@@ -45,6 +46,7 @@ HK211_PH1003_L20,PH1003,Vật lý 1,HK211,L20,standard,40,GV00200,Dương Tuấn
 HK211_PH1003_L21,PH1003,Vật lý 1,HK211,L21,standard,40,GV00191,Võ Văn Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK211_PH1003_L22,PH1003,Vật lý 1,HK211,L22,standard,40,GV00192,Trần Ngọc Hải,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK211_PH1003_L23,PH1003,Vật lý 1,HK211,L23,standard,40,GV00193,Lý Quang Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK211_PH1003_L24,PH1003,Vật lý 1,HK211,L24,standard,40,GV00194,Phan Gia Linh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK211_CO1005_L01,CO1005,Nhập môn Điện toán,HK211,L01,standard,40,GV00036,Nguyễn Ngọc Hải,Khoa Khoa học và Kỹ thuật Máy tính
 HK211_CO1005_L02,CO1005,Nhập môn Điện toán,HK211,L02,standard,40,GV00037,Lý Hoàng Trinh,Khoa Khoa học và Kỹ thuật Máy tính
 HK211_CO1005_L03,CO1005,Nhập môn Điện toán,HK211,L03,standard,40,GV00038,Hồ Thị Hiếu,Khoa Khoa học và Kỹ thuật Máy tính
@@ -385,30 +387,30 @@ HK211_PE1061_L20,PE1061,Pickleball (Học phần 1),HK211,L20,standard,40,GV0020
 HK211_PE1061_L21,PE1061,Pickleball (Học phần 1),HK211,L21,standard,40,GV00207,Hồ Thị An,Bộ môn Giáo dục Thể chất
 HK211_PE1061_L22,PE1061,Pickleball (Học phần 1),HK211,L22,standard,40,GV00208,Hoàng Minh An,Bộ môn Giáo dục Thể chất
 HK211_PE1061_L23,PE1061,Pickleball (Học phần 1),HK211,L23,standard,40,GV00209,Võ Quang Anh,Bộ môn Giáo dục Thể chất
-HK211_MT1003_CC01,MT1003,Giải tích 1,HK211,CC01,high-quality,40,GV00156,Đỗ Minh Trinh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT1003_CC02,MT1003,Giải tích 1,HK211,CC02,high-quality,40,GV00157,Bùi Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT1003_CC03,MT1003,Giải tích 1,HK211,CC03,high-quality,40,GV00158,Vũ Hoàng Uyên,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT1003_CC04,MT1003,Giải tích 1,HK211,CC04,high-quality,40,GV00159,Phạm Quốc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT1003_CC05,MT1003,Giải tích 1,HK211,CC05,high-quality,40,GV00160,Vũ Văn Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT1003_CC06,MT1003,Giải tích 1,HK211,CC06,high-quality,40,GV00161,Ngô Thị Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT1003_CC07,MT1003,Giải tích 1,HK211,CC07,high-quality,40,GV00162,Bùi Đức Uyên,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT1003_CC08,MT1003,Giải tích 1,HK211,CC08,high-quality,40,GV00163,Phan Đức Khang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT1003_CC09,MT1003,Giải tích 1,HK211,CC09,high-quality,40,GV00164,Lê Khánh Tuấn,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT1003_CC10,MT1003,Giải tích 1,HK211,CC10,high-quality,40,GV00165,Huỳnh Thanh Việt,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT1003_CC11,MT1003,Giải tích 1,HK211,CC11,high-quality,40,GV00166,Nguyễn Văn Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT1003_CC12,MT1003,Giải tích 1,HK211,CC12,high-quality,40,GV00167,Hoàng Anh Linh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_PH1003_CC01,PH1003,Vật lý 1,HK211,CC01,high-quality,40,GV00194,Phan Gia Linh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK211_PH1003_CC02,PH1003,Vật lý 1,HK211,CC02,high-quality,40,GV00195,Phạm Khánh Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK211_PH1003_CC03,PH1003,Vật lý 1,HK211,CC03,high-quality,40,GV00196,Dương Đức Yến,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK211_PH1003_CC04,PH1003,Vật lý 1,HK211,CC04,high-quality,40,GV00197,Hoàng Thanh Khang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK211_PH1003_CC05,PH1003,Vật lý 1,HK211,CC05,high-quality,40,GV00198,Lý Tuấn Châu,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK211_PH1003_CC06,PH1003,Vật lý 1,HK211,CC06,high-quality,40,GV00199,Dương Phương Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK211_PH1003_CC07,PH1003,Vật lý 1,HK211,CC07,high-quality,40,GV00200,Dương Tuấn Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK211_PH1003_CC08,PH1003,Vật lý 1,HK211,CC08,high-quality,40,GV00191,Võ Văn Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK211_PH1003_CC09,PH1003,Vật lý 1,HK211,CC09,high-quality,40,GV00192,Trần Ngọc Hải,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK211_PH1003_CC10,PH1003,Vật lý 1,HK211,CC10,high-quality,40,GV00193,Lý Quang Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK211_PH1003_CC11,PH1003,Vật lý 1,HK211,CC11,high-quality,40,GV00194,Phan Gia Linh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK211_PH1003_CC12,PH1003,Vật lý 1,HK211,CC12,high-quality,40,GV00195,Phạm Khánh Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK211_MT1003_CC01,MT1003,Giải tích 1,HK211,CC01,high-quality,40,GV00157,Bùi Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT1003_CC02,MT1003,Giải tích 1,HK211,CC02,high-quality,40,GV00158,Vũ Hoàng Uyên,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT1003_CC03,MT1003,Giải tích 1,HK211,CC03,high-quality,40,GV00159,Phạm Quốc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT1003_CC04,MT1003,Giải tích 1,HK211,CC04,high-quality,40,GV00160,Vũ Văn Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT1003_CC05,MT1003,Giải tích 1,HK211,CC05,high-quality,40,GV00161,Ngô Thị Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT1003_CC06,MT1003,Giải tích 1,HK211,CC06,high-quality,40,GV00162,Bùi Đức Uyên,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT1003_CC07,MT1003,Giải tích 1,HK211,CC07,high-quality,40,GV00163,Phan Đức Khang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT1003_CC08,MT1003,Giải tích 1,HK211,CC08,high-quality,40,GV00164,Lê Khánh Tuấn,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT1003_CC09,MT1003,Giải tích 1,HK211,CC09,high-quality,40,GV00165,Huỳnh Thanh Việt,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT1003_CC10,MT1003,Giải tích 1,HK211,CC10,high-quality,40,GV00166,Nguyễn Văn Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT1003_CC11,MT1003,Giải tích 1,HK211,CC11,high-quality,40,GV00167,Hoàng Anh Linh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT1003_CC12,MT1003,Giải tích 1,HK211,CC12,high-quality,40,GV00168,Bùi Khánh Trinh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_PH1003_CC01,PH1003,Vật lý 1,HK211,CC01,high-quality,40,GV00195,Phạm Khánh Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK211_PH1003_CC02,PH1003,Vật lý 1,HK211,CC02,high-quality,40,GV00196,Dương Đức Yến,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK211_PH1003_CC03,PH1003,Vật lý 1,HK211,CC03,high-quality,40,GV00197,Hoàng Thanh Khang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK211_PH1003_CC04,PH1003,Vật lý 1,HK211,CC04,high-quality,40,GV00198,Lý Tuấn Châu,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK211_PH1003_CC05,PH1003,Vật lý 1,HK211,CC05,high-quality,40,GV00199,Dương Phương Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK211_PH1003_CC06,PH1003,Vật lý 1,HK211,CC06,high-quality,40,GV00200,Dương Tuấn Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK211_PH1003_CC07,PH1003,Vật lý 1,HK211,CC07,high-quality,40,GV00191,Võ Văn Hiếu,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK211_PH1003_CC08,PH1003,Vật lý 1,HK211,CC08,high-quality,40,GV00192,Trần Ngọc Hải,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK211_PH1003_CC09,PH1003,Vật lý 1,HK211,CC09,high-quality,40,GV00193,Lý Quang Quân,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK211_PH1003_CC10,PH1003,Vật lý 1,HK211,CC10,high-quality,40,GV00194,Phan Gia Linh,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK211_PH1003_CC11,PH1003,Vật lý 1,HK211,CC11,high-quality,40,GV00195,Phạm Khánh Tú,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK211_PH1003_CC12,PH1003,Vật lý 1,HK211,CC12,high-quality,40,GV00196,Dương Đức Yến,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK211_CO1005_CC01,CO1005,Nhập môn Điện toán,HK211,CC01,high-quality,40,GV00059,Ngô Hữu Duy,Khoa Khoa học và Kỹ thuật Máy tính
 HK211_CO1005_CC02,CO1005,Nhập môn Điện toán,HK211,CC02,high-quality,40,GV00060,Huỳnh Phương Long,Khoa Khoa học và Kỹ thuật Máy tính
 HK211_CO1005_CC03,CO1005,Nhập môn Điện toán,HK211,CC03,high-quality,40,GV00061,Dương Quang Hà,Khoa Khoa học và Kỹ thuật Máy tính
@@ -577,14 +579,14 @@ HK211_PE1061_CC09,PE1061,Pickleball (Học phần 1),HK211,CC09,high-quality,40,
 HK211_PE1061_CC10,PE1061,Pickleball (Học phần 1),HK211,CC10,high-quality,40,GV00207,Hồ Thị An,Bộ môn Giáo dục Thể chất
 HK211_PE1061_CC11,PE1061,Pickleball (Học phần 1),HK211,CC11,high-quality,40,GV00208,Hoàng Minh An,Bộ môn Giáo dục Thể chất
 HK211_PE1061_CC12,PE1061,Pickleball (Học phần 1),HK211,CC12,high-quality,40,GV00209,Võ Quang Anh,Bộ môn Giáo dục Thể chất
-HK211_MT1003_TT01,MT1003,Giải tích 1,HK211,TT01,advanced,40,GV00168,Bùi Khánh Trinh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT1003_TT02,MT1003,Giải tích 1,HK211,TT02,advanced,40,GV00151,Đặng Tuấn Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT1003_TT03,MT1003,Giải tích 1,HK211,TT03,advanced,40,GV00152,Lê Hữu Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT1003_TT04,MT1003,Giải tích 1,HK211,TT04,advanced,40,GV00153,Phan Tuấn Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_PH1003_TT01,PH1003,Vật lý 1,HK211,TT01,advanced,40,GV00196,Dương Đức Yến,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK211_PH1003_TT02,PH1003,Vật lý 1,HK211,TT02,advanced,40,GV00197,Hoàng Thanh Khang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK211_PH1003_TT03,PH1003,Vật lý 1,HK211,TT03,advanced,40,GV00198,Lý Tuấn Châu,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
-HK211_PH1003_TT04,PH1003,Vật lý 1,HK211,TT04,advanced,40,GV00199,Dương Phương Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK211_MT1003_TT01,MT1003,Giải tích 1,HK211,TT01,advanced,40,GV00151,Đặng Tuấn Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT1003_TT02,MT1003,Giải tích 1,HK211,TT02,advanced,40,GV00152,Lê Hữu Hà,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT1003_TT03,MT1003,Giải tích 1,HK211,TT03,advanced,40,GV00153,Phan Tuấn Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT1003_TT04,MT1003,Giải tích 1,HK211,TT04,advanced,40,GV00154,Trần Quang An,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_PH1003_TT01,PH1003,Vật lý 1,HK211,TT01,advanced,40,GV00197,Hoàng Thanh Khang,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK211_PH1003_TT02,PH1003,Vật lý 1,HK211,TT02,advanced,40,GV00198,Lý Tuấn Châu,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK211_PH1003_TT03,PH1003,Vật lý 1,HK211,TT03,advanced,40,GV00199,Dương Phương Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
+HK211_PH1003_TT04,PH1003,Vật lý 1,HK211,TT04,advanced,40,GV00200,Dương Tuấn Duy,Khoa Khoa học Ứng dụng - Bộ môn Vật lý ứng dụng
 HK211_CO1005_TT01,CO1005,Nhập môn Điện toán,HK211,TT01,advanced,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
 HK211_CO1005_TT02,CO1005,Nhập môn Điện toán,HK211,TT02,advanced,40,GV00012,Huỳnh Ngọc Khôi,Khoa Khoa học và Kỹ thuật Máy tính
 HK211_CO1005_TT03,CO1005,Nhập môn Điện toán,HK211,TT03,advanced,40,GV00013,Đỗ Đức Khang,Khoa Khoa học và Kỹ thuật Máy tính
@@ -741,10 +743,10 @@ HK211_CO2007_L20,CO2007,Kiến trúc Máy tính,HK211,L20,standard,40,GV00144,L�
 HK211_CO2007_L21,CO2007,Kiến trúc Máy tính,HK211,L21,standard,40,GV00145,Đỗ Đức Phúc,Khoa Khoa học và Kỹ thuật Máy tính
 HK211_CO2007_L22,CO2007,Kiến trúc Máy tính,HK211,L22,standard,40,GV00146,Đỗ Đức Yến,Khoa Khoa học và Kỹ thuật Máy tính
 HK211_CO2007_L23,CO2007,Kiến trúc Máy tính,HK211,L23,standard,40,GV00147,Lý Khánh Hà,Khoa Khoa học và Kỹ thuật Máy tính
-HK211_MT2013_L01,MT2013,Xác suất và Thống kê (Học vượt),HK211,L01,standard,40,GV00154,Trần Quang An,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT2013_L02,MT2013,Xác suất và Thống kê (Học vượt),HK211,L02,standard,40,GV00155,Lý Tuấn Việt,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT2013_L03,MT2013,Xác suất và Thống kê (Học vượt),HK211,L03,standard,40,GV00156,Đỗ Minh Trinh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT2013_L04,MT2013,Xác suất và Thống kê (Học vượt),HK211,L04,standard,40,GV00157,Bùi Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT2013_L01,MT2013,Xác suất và Thống kê (Học vượt),HK211,L01,standard,40,GV00155,Lý Tuấn Việt,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT2013_L02,MT2013,Xác suất và Thống kê (Học vượt),HK211,L02,standard,40,GV00156,Đỗ Minh Trinh,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT2013_L03,MT2013,Xác suất và Thống kê (Học vượt),HK211,L03,standard,40,GV00157,Bùi Phương Hùng,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT2013_L04,MT2013,Xác suất và Thống kê (Học vượt),HK211,L04,standard,40,GV00158,Vũ Hoàng Uyên,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK211_CO2011_CC01,CO2011,Mô hình hóa Toán học,HK211,CC01,high-quality,40,GV00148,Hoàng Minh Long,Khoa Khoa học và Kỹ thuật Máy tính
 HK211_CO2011_CC02,CO2011,Mô hình hóa Toán học,HK211,CC02,high-quality,40,GV00149,Bùi Quang Duy,Khoa Khoa học và Kỹ thuật Máy tính
 HK211_CO2011_CC03,CO2011,Mô hình hóa Toán học,HK211,CC03,high-quality,40,GV00150,Lê Quang Phát,Khoa Khoa học và Kỹ thuật Máy tính
@@ -785,9 +787,9 @@ HK211_CO2007_CC09,CO2007,Kiến trúc Máy tính,HK211,CC09,high-quality,40,GV00
 HK211_CO2007_CC10,CO2007,Kiến trúc Máy tính,HK211,CC10,high-quality,40,GV00110,Huỳnh Hoàng Yến,Khoa Khoa học và Kỹ thuật Máy tính
 HK211_CO2007_CC11,CO2007,Kiến trúc Máy tính,HK211,CC11,high-quality,40,GV00111,Vũ Ngọc Hùng,Khoa Khoa học và Kỹ thuật Máy tính
 HK211_CO2007_CC12,CO2007,Kiến trúc Máy tính,HK211,CC12,high-quality,40,GV00112,Phạm Phương Nam,Khoa Khoa học và Kỹ thuật Máy tính
-HK211_MT2013_CC01,MT2013,Xác suất và Thống kê (Học vượt),HK211,CC01,high-quality,40,GV00158,Vũ Hoàng Uyên,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT2013_CC02,MT2013,Xác suất và Thống kê (Học vượt),HK211,CC02,high-quality,40,GV00159,Phạm Quốc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
-HK211_MT2013_CC03,MT2013,Xác suất và Thống kê (Học vượt),HK211,CC03,high-quality,40,GV00160,Vũ Văn Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT2013_CC01,MT2013,Xác suất và Thống kê (Học vượt),HK211,CC01,high-quality,40,GV00159,Phạm Quốc Lam,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT2013_CC02,MT2013,Xác suất và Thống kê (Học vượt),HK211,CC02,high-quality,40,GV00160,Vũ Văn Mai,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT2013_CC03,MT2013,Xác suất và Thống kê (Học vượt),HK211,CC03,high-quality,40,GV00161,Ngô Thị Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
 HK211_CO2011_TT01,CO2011,Mô hình hóa Toán học,HK211,TT01,advanced,40,GV00010,Dương Hữu Bảo,Khoa Khoa học và Kỹ thuật Máy tính
 HK211_CO2011_TT02,CO2011,Mô hình hóa Toán học,HK211,TT02,advanced,40,GV00011,Lê Tuấn Nhi,Khoa Khoa học và Kỹ thuật Máy tính
 HK211_CO2011_TT03,CO2011,Mô hình hóa Toán học,HK211,TT03,advanced,40,GV00012,Huỳnh Ngọc Khôi,Khoa Khoa học và Kỹ thuật Máy tính
@@ -802,4 +804,4 @@ HK211_CO2007_TT01,CO2007,Kiến trúc Máy tính,HK211,TT01,advanced,40,GV00113,
 HK211_CO2007_TT02,CO2007,Kiến trúc Máy tính,HK211,TT02,advanced,40,GV00114,Đặng Quang Quân,Khoa Khoa học và Kỹ thuật Máy tính
 HK211_CO2007_TT03,CO2007,Kiến trúc Máy tính,HK211,TT03,advanced,40,GV00115,Huỳnh Quốc Châu,Khoa Khoa học và Kỹ thuật Máy tính
 HK211_CO2007_TT04,CO2007,Kiến trúc Máy tính,HK211,TT04,advanced,40,GV00116,Phạm Khánh Linh,Khoa Khoa học và Kỹ thuật Máy tính
-HK211_MT2013_TT01,MT2013,Xác suất và Thống kê (Học vượt),HK211,TT01,advanced,40,GV00161,Ngô Thị Trang,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng
+HK211_MT2013_TT01,MT2013,Xác suất và Thống kê (Học vượt),HK211,TT01,advanced,40,GV00162,Bùi Đức Uyên,Khoa Khoa học Ứng dụng - Bộ môn Toán ứng dụng

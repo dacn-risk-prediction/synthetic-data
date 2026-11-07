@@ -15,6 +15,7 @@ from academic_rules import (
     assign_balanced_lecturers,
     balanced_class_sizes,
     calculate_eligibility_for_schedule,
+    init_prerequisite_grades_for_semester,
     load_history,
     load_student_profiles,
     score_course_components,
@@ -256,6 +257,7 @@ def generate_enrollment(semester, is_current=None):
     prereq_file = ROOT_DIR / "generated" / "academics" / "course_prerequisites.csv"
     prerequisites = pd.read_csv(prereq_file)
 
+    init_prerequisite_grades_for_semester(semester)
     history = load_history(_history_for(semester))
     _, course_credits, difficulties = course_catalog()
     eligibility, failed = _eligibility(

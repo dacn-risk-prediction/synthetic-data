@@ -54,6 +54,7 @@ from curriculum_rules import (
 )
 
 from academic_rules import (
+    init_prerequisite_grades_for_semester,
     GENERATOR_CONFIG,
     extract_student_academic_standing,
     filter_active_students_for_semester,
@@ -132,6 +133,8 @@ def get_k21_group_c_distribution(
 def generate_enrollment_hk231() -> Path:
     """Execute enrollment generation for semester HK231 and export to enrollment_hk231.csv."""
     print(f"=== KHỞI CHẠY SINH DỮ LIỆU ĐĂNG KÝ HỌC PHẦN CHO {SEMESTER} (ĐA KHÓA: K20, K21, K22, K23) ===")
+
+    init_prerequisite_grades_for_semester(SEMESTER)
 
     # 1. Đọc sinh viên 4 khóa
     students_file = USERS_DIR / "student.csv"

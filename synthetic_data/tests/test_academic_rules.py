@@ -22,6 +22,8 @@ from academic_rules import (
     assign_balanced_lecturers,
     balanced_class_sizes,
     calculate_eligibility_for_schedule,
+    calculate_prerequisite_adjustment,
+    clear_student_past_grades,
     convert_score_to_grade,
     course_mean_score,
     extract_student_academic_standing,
@@ -36,6 +38,7 @@ from academic_rules import (
     is_late_semester,
     is_thesis_eligible,
     score_course_components,
+    set_student_past_grades,
     sync_class_teamwork_btl,
     select_early_graduation_candidates,
     semester_from_index,
@@ -1356,6 +1359,75 @@ class AcademicScoreRulesTests(unittest.TestCase):
         self.assertEqual(co4029_sc["2010002"], 5.0)
         # 2010001 GPA: (3.5*4 + 2.5*3) / 7 = 21.5 / 7 = 3.07
         self.assertAlmostEqual(cum_gpa["2010001"], 3.07, places=2)
+
+    def test_calculate_prerequisite_adjustment_penalties_and_bonuses(self):
+        # MT1005 requires MT1003
+        # When MT1003 = 4.0: deficit = 6.0 - 4.0 = 2.0 -> penalty = 2.0 * 0.6 = 1.2 -> adj = -1.2
+        adj_40 = calculate_prerequisite_adjustment(
+            student_id="sv01",
+            course_code="MT1005",
+            past_grades={"MT1003": 4.0},
+        )
+        self.assertEqual(adj_40, -1.2)
+
+        # When MT1003 = 5.0: deficit = 6.0 - 5.0 = 1.0 -> penalty = 1.0 * 0.6 = 0.6 -> adj = -0.6
+        adj_50 = calculate_prerequisite_adjustment(
+            student_id="sv01",
+            course_code="MT1005",
+            past_grades={"MT1003": 5.0},
+        )
+        self.assertEqual(adj_50, -0.6)
+
+        # When MT1003 = 6.5: between safe (6.0) and bonus (7.5) -> adj = 0.0
+        adj_65 = calculate_prerequisite_adjustment(
+            student_id="sv01",
+            course_code="MT1005",
+            past_grades={"MT1003": 6.5},
+        )
+        self.assertEqual(adj_65, 0.0)
+
+        # When MT1003 = 8.5: surplus = 8.5 - 7.5 = 1.0 -> bonus = 1.0 * 0.1 = 0.1 -> adj = +0.1
+        adj_85 = calculate_prerequisite_adjustment(
+            student_id="sv01",
+            course_code="MT1005",
+            past_grades={"MT1003": 8.5},
+        )
+        self.assertEqual(adj_85, 0.1)
+
+    def test_calculate_prerequisite_adjustment_weakest_link(self):
+        # MT2013 requires MT1003 and MT1007
+        # Weakest link is MT1003 (4.0) even though MT1007 is 8.0
+        adj_weak = calculate_prerequisite_adjustment(
+            student_id="sv02",
+            course_code="MT2013",
+            past_grades={"MT1003": 4.0, "MT1007": 8.0},
+        )
+        self.assertEqual(adj_weak, -1.2)
+
+    def test_course_mean_score_applies_prerequisite_adjustment(self):
+        profile = {
+            "student_id": "sv03",
+            "academic_level": 3,
+            "math_level": 3,
+            "discipline": 3,
+            "motivation": 3,
+            "stress": 3,
+        }
+        score_no_prereq = course_mean_score(profile, "MT1005", 0.0, GENERATOR_CONFIG, student_id="sv03")
+        score_weak_prereq = course_mean_score(
+            profile, "MT1005", 0.0, GENERATOR_CONFIG,
+            student_id="sv03",
+            past_prereq_scores={"MT1003": 4.0},
+        )
+        self.assertAlmostEqual(score_no_prereq - score_weak_prereq, 1.2, places=2)
+
+    def test_set_student_past_grades_cache_integration(self):
+        clear_student_past_grades()
+        set_student_past_grades({"sv04": {"MT1003": 4.5}})
+        # Deficit = 6.0 - 4.5 = 1.5 -> penalty = 1.5 * 0.6 = 0.9 -> adj = -0.9
+        adj = calculate_prerequisite_adjustment(student_id="sv04", course_code="MT1005")
+        self.assertEqual(adj, -0.9)
+        clear_student_past_grades()
 
 
 if __name__ == "__main__":

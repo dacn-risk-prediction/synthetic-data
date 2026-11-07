@@ -1,6 +1,8 @@
 """Course scoring models, random grading distributions, letter grades, and GPA calculations."""
 
+from collections import defaultdict
 import math
+from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 import numpy as np
 import pandas as pd
@@ -8,6 +10,153 @@ import pandas as pd
 from .common import ROOT_DIR, _normalized_trait, _student_value
 from .config import GENERATOR_CONFIG
 from .profile_rules import _base_score_for_level, resolve_student_profile
+
+_PREREQUISITE_MAP: Optional[Dict[str, List[str]]] = None
+_STUDENT_PAST_GRADES: Dict[str, Dict[str, float]] = defaultdict(dict)
+
+
+def get_course_prerequisites_map(prereq_file: Optional[Path] = None) -> Dict[str, List[str]]:
+    """Retrieve mapping of course_code -> list of prerequisite course codes (TQ and KN)."""
+    global _PREREQUISITE_MAP
+    if _PREREQUISITE_MAP is None:
+        _PREREQUISITE_MAP = defaultdict(list)
+        target = prereq_file or (ROOT_DIR / "generated" / "academics" / "course_prerequisites.csv")
+        if target.exists():
+            try:
+                df = pd.read_csv(target)
+                valid = df[df["relation_type"].isin(["TQ", "KN"])]
+                for _, row in valid.iterrows():
+                    c = str(row["course_code"]).strip().upper()
+                    p = str(row["prerequisite_course_code"]).strip().upper()
+                    if p not in _PREREQUISITE_MAP[c]:
+                        _PREREQUISITE_MAP[c].append(p)
+            except Exception:
+                pass
+    return _PREREQUISITE_MAP
+
+
+def clear_student_past_grades() -> None:
+    """Clear in-memory cache of student past course grades."""
+    global _STUDENT_PAST_GRADES
+    _STUDENT_PAST_GRADES.clear()
+
+
+def set_student_past_grades(grades: Dict[str, Dict[str, float]]) -> None:
+    """Set or update in-memory cache of student past course grades."""
+    global _STUDENT_PAST_GRADES
+    for sid, courses in grades.items():
+        _STUDENT_PAST_GRADES[str(sid).strip()].update({
+            str(c).strip().upper(): float(v) for c, v in courses.items() if pd.notna(v)
+        })
+
+
+def update_student_past_grades_from_df(df: pd.DataFrame) -> None:
+    """Extract and cache past final scores from an enrollment DataFrame."""
+    global _STUDENT_PAST_GRADES
+    c_col = "course_id" if "course_id" in df.columns else "course_code"
+    if "student_id" not in df.columns or c_col not in df.columns or "final_score" not in df.columns:
+        return
+    for _, r in df.iterrows():
+        sid = str(r["student_id"]).strip()
+        cid = str(r[c_col]).strip().upper()
+        score = r["final_score"]
+        if pd.notna(score):
+            try:
+                val = float(score)
+                if 0.0 <= val <= 10.0:
+                    current_max = _STUDENT_PAST_GRADES[sid].get(cid, -1.0)
+                    if val > current_max:
+                        _STUDENT_PAST_GRADES[sid][cid] = val
+            except (ValueError, TypeError):
+                pass
+
+
+def init_prerequisite_grades_for_semester(current_semester: str, enrollments_dir: Optional[Path] = None) -> None:
+    """Initialize student past grades cache from enrollment files prior to current_semester."""
+    global _STUDENT_PAST_GRADES
+    semesters_order = (
+        "HK201", "HK202", "HK211", "HK212",
+        "HK221", "HK222", "HK231", "HK232",
+        "HK241", "HK242", "HK251", "HK252",
+        "HK261",
+    )
+    cur_upper = str(current_semester).strip().upper()
+    if cur_upper not in semesters_order:
+        return
+    idx = semesters_order.index(cur_upper)
+    prior_sems = semesters_order[:idx]
+
+    clear_student_past_grades()
+    enr_dir = enrollments_dir or (ROOT_DIR / "generated" / "enrollments")
+    for sem in prior_sems:
+        fpath = enr_dir / f"enrollment_{sem.lower()}.csv"
+        if fpath.exists():
+            try:
+                df = pd.read_csv(
+                    fpath,
+                    usecols=["student_id", "course_id", "final_score"],
+                    dtype={"student_id": str, "course_id": str},
+                )
+                update_student_past_grades_from_df(df)
+            except Exception:
+                pass
+
+
+def calculate_prerequisite_adjustment(
+    student_id: Optional[str],
+    course_code: str,
+    past_grades: Optional[Dict[str, float]] = None,
+    config: Optional[Dict[str, Any]] = None,
+) -> float:
+    """Calculate score penalty or bonus based on student performance in prerequisite courses."""
+    cfg = config or GENERATOR_CONFIG
+    rules = cfg.get("prerequisite_rules", {})
+    if not rules.get("enabled", True):
+        return 0.0
+
+    c_code = str(course_code).strip().upper()
+    prereq_map = get_course_prerequisites_map()
+    prereqs = prereq_map.get(c_code, [])
+    if not prereqs:
+        return 0.0
+
+    sid = str(student_id).strip() if student_id else ""
+    if past_grades is not None:
+        grades_lookup = {str(k).strip().upper(): float(v) for k, v in past_grades.items() if pd.notna(v)}
+    elif sid and sid in _STUDENT_PAST_GRADES:
+        grades_lookup = _STUDENT_PAST_GRADES[sid]
+    else:
+        return 0.0
+
+    prereq_scores: List[float] = []
+    for p in prereqs:
+        if p in grades_lookup:
+            val = grades_lookup[p]
+            if 0.0 <= val <= 10.0:
+                prereq_scores.append(val)
+
+    if not prereq_scores:
+        return 0.0
+
+    # Weakest link principle (Nguyên tắc thùng gỗ): Môn tiên quyết điểm thấp nhất quyết định mức độ hổng kiến thức
+    min_score = min(prereq_scores)
+
+    safe_threshold = float(rules.get("safe_threshold", 6.0))
+    penalty_rate = float(rules.get("penalty_rate", 0.6))
+    max_penalty = float(rules.get("max_penalty", 1.5))
+    bonus_threshold = float(rules.get("bonus_threshold", 7.5))
+    bonus_rate = float(rules.get("bonus_rate", 0.1))
+    max_bonus = float(rules.get("max_bonus", 0.3))
+
+    if min_score < safe_threshold:
+        deficit = safe_threshold - min_score
+        penalty = min(deficit * penalty_rate, max_penalty)
+        return -round(penalty, 3)
+    elif min_score >= bonus_threshold:
+        surplus = min_score - bonus_threshold
+        bonus = min(surplus * bonus_rate, max_bonus)
+        return round(bonus, 3)
+    return 0.0
 
 
 def course_mean_score(
@@ -17,6 +166,7 @@ def course_mean_score(
     config: Optional[Dict[str, Any]] = None,
     *,
     student_id: Optional[str] = None,
+    past_prereq_scores: Optional[Dict[str, float]] = None,
 ) -> float:
     """Calculate expected mean score for a student in a specific course."""
     config = config or GENERATOR_CONFIG
@@ -79,7 +229,16 @@ def course_mean_score(
         * difficulty_config["max_penalty"]
         * (1.0 - difficulty_config["resilience"] * overall_strength)
     )
-    return mean_score + adjustment
+
+    # Prerequisite chain adjustment
+    prereq_adj = calculate_prerequisite_adjustment(
+        student_id=student_id_val,
+        course_code=course_code,
+        past_grades=past_prereq_scores,
+        config=config,
+    )
+
+    return mean_score + adjustment + prereq_adj
 
 
 def generate_observed_score(
@@ -130,6 +289,7 @@ def score_course_components(
     *,
     retaken: bool = False,
     student_id: Optional[str] = None,
+    past_prereq_scores: Optional[Dict[str, float]] = None,
 ) -> Tuple[Dict[str, float], float, str, float]:
     """Score individual assessment components (assignments, midterm, final exam)."""
     config = config or GENERATOR_CONFIG
@@ -139,6 +299,7 @@ def score_course_components(
         catalog_difficulty,
         config,
         student_id=student_id,
+        past_prereq_scores=past_prereq_scores,
     )
     shifts = config.get("component_shifts", {})
 

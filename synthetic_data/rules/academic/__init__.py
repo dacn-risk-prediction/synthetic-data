@@ -71,11 +71,17 @@ from .profile_rules import (
 
 from .scoring_rules import (
     add_gpa_summaries,
+    calculate_prerequisite_adjustment,
+    clear_student_past_grades,
     convert_score_to_grade,
     course_mean_score,
     generate_observed_score,
+    get_course_prerequisites_map,
+    init_prerequisite_grades_for_semester,
     score_course_components,
+    set_student_past_grades,
     sync_class_teamwork_btl,
+    update_student_past_grades_from_df,
 )
 
 from .retake_rules import (
