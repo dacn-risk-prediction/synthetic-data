@@ -1,10 +1,11 @@
 """Script to import synthetic academic data into Neon PostgreSQL Database.
 
-Clean Business Schema (13 tables):
+Clean Business Schema (15 tables):
   - Academic Catalogs: semesters, courses, course_prerequisites
   - Curriculum & Structure: curriculums, knowledge_blocks, program_structures, course_assessments
   - Users & Profiles: users, students, lecturers, admins
   - Operations & Grades: classes, enrollments
+  - Progression & ML Metrics: student_progress, student_metrics
 
 Usage:
     # 1. Chạy kiểm tra đối soát toàn diện (Dry Run - KHÔNG kết nối hoặc tác động DB):
@@ -56,7 +57,7 @@ DATABASE_URL = os.getenv("DATABASE_URL", "").strip()
 
 
 # -----------------------------------------------------------------------------
-# 2. SCHEMA DEFINITION (DDL CHUẨN NGHIỆP VỤ - 13 BẢNG)
+# 2. SCHEMA DEFINITION (DDL CHUẨN NGHIỆP VỤ - 15 BẢNG)
 # -----------------------------------------------------------------------------
 DDL_STATEMENTS = """
 -- ============================================================================
@@ -212,6 +213,69 @@ CREATE TABLE IF NOT EXISTS enrollments (
 );
 
 -- ============================================================================
+-- 4. TIẾN ĐỘ HỌC TẬP & CHỈ SỐ DỰ BÁO (ML & WHAT-IF ANALYSIS)
+-- ============================================================================
+
+-- 14. Student Progress (Tiến độ học kỳ của sinh viên) - UUID PK
+CREATE TABLE IF NOT EXISTS student_progress (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    student_id VARCHAR(50) NOT NULL REFERENCES students(student_id) ON DELETE CASCADE,
+    semester_code VARCHAR(20) NOT NULL REFERENCES semesters(semester_code) ON DELETE RESTRICT,
+    cohort VARCHAR(20) NOT NULL,
+    registered BOOLEAN NOT NULL DEFAULT TRUE,
+    registered_courses INT NOT NULL DEFAULT 0,
+    registered_credits FLOAT NOT NULL DEFAULT 0.0,
+    passed_credits FLOAT NOT NULL DEFAULT 0.0,
+    ctxh_days_cumulative INT NOT NULL DEFAULT 0,
+    english_pass BOOLEAN NOT NULL DEFAULT FALSE,
+    academic_suspension BOOLEAN NOT NULL DEFAULT FALSE,
+    semester_complete BOOLEAN NOT NULL DEFAULT TRUE,
+    thesis_eligible_before_semester BOOLEAN NOT NULL DEFAULT FALSE,
+    CONSTRAINT uq_student_progress_term UNIQUE (student_id, semester_code)
+);
+
+-- 15. Student Metrics (Chỉ số tổng thể & Kết cục cuối cùng của sinh viên)
+CREATE TABLE IF NOT EXISTS student_metrics (
+    student_id VARCHAR(50) PRIMARY KEY REFERENCES students(student_id) ON DELETE CASCADE,
+    cohort VARCHAR(20) NOT NULL,
+    
+    -- 1. Nhóm Nhãn mục tiêu (Targets cho Machine Learning)
+    dropout BOOLEAN NOT NULL DEFAULT FALSE,
+    dropout_type VARCHAR(50) DEFAULT 'none',            -- none, voluntary, forced
+    dropout_reason VARCHAR(100),                        -- overdue_more_than_two_years, financial, etc.
+    dropout_semester VARCHAR(20) REFERENCES semesters(semester_code) ON DELETE SET NULL,
+    graduation_ready BOOLEAN NOT NULL DEFAULT FALSE,
+    graduation_timing VARCHAR(20),                      -- early, on_time, late
+    graduation_semester VARCHAR(20) REFERENCES semesters(semester_code) ON DELETE SET NULL,
+    degree_classification VARCHAR(50),                  -- excellent, good, fairly_average, average, fair
+    
+    -- 2. Nhóm Học thuật tích lũy toàn khóa
+    gpa_4 FLOAT,
+    gpa_10 FLOAT,
+    passed_credits FLOAT NOT NULL DEFAULT 0.0,
+    ctxh_days_cumulative INT NOT NULL DEFAULT 0,
+    english_pass BOOLEAN NOT NULL DEFAULT FALSE,
+    thesis_eligible BOOLEAN NOT NULL DEFAULT FALSE,
+    tracked_semesters INT NOT NULL DEFAULT 0,
+    registered_semesters INT NOT NULL DEFAULT 0,
+    empty_semesters INT NOT NULL DEFAULT 0,
+    academic_suspension_count INT NOT NULL DEFAULT 0,
+    missing_required_courses INT NOT NULL DEFAULT 0,
+
+    -- 3. Nhóm Hồ sơ nền & Tâm lý (Static Profile Features)
+    family_income VARCHAR(50),
+    financial_pressure VARCHAR(50),
+    living_condition VARCHAR(50),
+    discipline INT,
+    motivation INT,
+    stress INT,
+    social_activity INT,
+    academic_level INT,
+    english_level INT,
+    profile_strength FLOAT
+);
+
+-- ============================================================================
 -- CHỈ MỤC TỐI ƯU HIỆU NĂNG (INDEXES)
 -- ============================================================================
 CREATE INDEX IF NOT EXISTS idx_users_user_code ON users(user_code);
@@ -229,6 +293,15 @@ CREATE INDEX IF NOT EXISTS idx_enrollments_semester ON enrollments(semester_code
 
 CREATE INDEX IF NOT EXISTS idx_prog_struct_curriculum ON program_structures(curriculum_id);
 CREATE INDEX IF NOT EXISTS idx_prog_struct_course ON program_structures(course_code);
+
+CREATE INDEX IF NOT EXISTS idx_student_progress_student ON student_progress(student_id);
+CREATE INDEX IF NOT EXISTS idx_student_progress_semester ON student_progress(semester_code);
+CREATE INDEX IF NOT EXISTS idx_student_progress_cohort ON student_progress(cohort);
+
+CREATE INDEX IF NOT EXISTS idx_student_metrics_dropout ON student_metrics(dropout);
+CREATE INDEX IF NOT EXISTS idx_student_metrics_grad_timing ON student_metrics(graduation_timing);
+CREATE INDEX IF NOT EXISTS idx_student_metrics_degree ON student_metrics(degree_classification);
+CREATE INDEX IF NOT EXISTS idx_student_metrics_cohort ON student_metrics(cohort);
 """
 
 
@@ -436,7 +509,7 @@ def load_enrollments_data():
 
     dfs = []
     for file_path in enroll_files:
-        df_part = pd.read_csv(file_path, dtype={"student_id": str})
+        df_part = pd.read_csv(file_path, dtype={"student_id": str}, low_memory=False)
         dfs.append(df_part)
 
     df_enroll = pd.concat(dfs, ignore_index=True)
@@ -474,15 +547,81 @@ def load_enrollments_data():
     return df_enroll[[c for c in columns_order if c in df_enroll.columns]]
 
 
+def load_student_progress_data():
+    """Load student semester-level progression snapshots (tiến độ học kỳ từng sinh viên)."""
+    csv_file = SYNTHETIC_DIR / "generated" / "metrics" / "student_progress.csv"
+    df = pd.read_csv(csv_file, dtype={"student_id": str, "cohort": str, "semester": str})
+
+    # Generate UUID Primary Key for each progress record
+    df["id"] = [str(uuid.uuid4()) for _ in range(len(df))]
+
+    # Map CSV column 'semester' to database column 'semester_code'
+    df.rename(columns={"semester": "semester_code"}, inplace=True)
+
+    # Ensure boolean types
+    bool_cols = [
+        "registered", "english_pass", "academic_suspension",
+        "semester_complete", "thesis_eligible_before_semester"
+    ]
+    for c in bool_cols:
+        if c in df.columns:
+            df[c] = df[c].astype(bool)
+
+    cols = [
+        "id", "student_id", "semester_code", "cohort", "registered",
+        "registered_courses", "registered_credits", "passed_credits",
+        "ctxh_days_cumulative", "english_pass", "academic_suspension",
+        "semester_complete", "thesis_eligible_before_semester"
+    ]
+    return df[cols].drop_duplicates(subset=["student_id", "semester_code"])
+
+
+def load_student_metrics_data():
+    """Load overall student metrics & ground truth targets (chỉ số tổng thể & kết cục tốt nghiệp/thôi học)."""
+    csv_file = SYNTHETIC_DIR / "generated" / "metrics" / "student_metrics.csv"
+    df = pd.read_csv(
+        csv_file,
+        dtype={
+            "student_id": str,
+            "cohort": str,
+            "dropout_semester": str,
+            "graduation_semester": str,
+        },
+    )
+
+    # Ensure boolean types
+    bool_cols = ["dropout", "graduation_ready", "english_pass", "thesis_eligible"]
+    for c in bool_cols:
+        if c in df.columns:
+            df[c] = df[c].astype(bool)
+
+    cols = [
+        "student_id", "cohort",
+        # 1. Nhóm Nhãn mục tiêu
+        "dropout", "dropout_type", "dropout_reason", "dropout_semester",
+        "graduation_ready", "graduation_timing", "graduation_semester", "degree_classification",
+        # 2. Nhóm Học thuật tích lũy toàn khóa
+        "gpa_4", "gpa_10", "passed_credits", "ctxh_days_cumulative",
+        "english_pass", "thesis_eligible", "tracked_semesters",
+        "registered_semesters", "empty_semesters", "academic_suspension_count",
+        "missing_required_courses",
+        # 3. Nhóm Hồ sơ nền & Tâm lý
+        "family_income", "financial_pressure", "living_condition",
+        "discipline", "motivation", "stress", "social_activity",
+        "academic_level", "english_level", "profile_strength"
+    ]
+    return df[cols].drop_duplicates(subset=["student_id"])
+
+
 # -----------------------------------------------------------------------------
 # 4. DRY-RUN VALIDATION PIPELINE (KIỂM TRA DỮ LIỆU KHÔNG CẦN KẾT NỐI DB)
 # -----------------------------------------------------------------------------
 def run_dry_run_validation():
-    """Kiểm tra toàn bộ 13 bảng dữ liệu nghiệp vụ, ràng buộc khóa ngoại và tính tương thích."""
+    """Kiểm tra toàn bộ 15 bảng dữ liệu nghiệp vụ, ràng buộc khóa ngoại và tính tương thích."""
     print("==================================================================")
-    print("      DRY-RUN VALIDATION: KIỂM TRA 13 BẢNG DỮ LIỆU NGHIỆP VỤ      ")
+    print("      DRY-RUN VALIDATION: KIỂM TRA 15 BẢNG DỮ LIỆU NGHIỆP VỤ      ")
     print("==================================================================")
-    print("[*] Đang đọc và chuyển đổi 13 bảng dữ liệu...")
+    print("[*] Đang đọc và chuyển đổi 15 bảng dữ liệu...")
 
     start_all = time.time()
     dfs = {}
@@ -504,8 +643,10 @@ def run_dry_run_validation():
     dfs["admins"] = load_admins_data(uuid_map)
     dfs["classes"] = load_classes_data()
     dfs["enrollments"] = load_enrollments_data()
+    dfs["student_progress"] = load_student_progress_data()
+    dfs["student_metrics"] = load_student_metrics_data()
 
-    print(f"[✓] Đã load thành công 13 bảng dữ liệu ({time.time() - start_all:.2f}s)\n")
+    print(f"[✓] Đã load thành công 15 bảng dữ liệu ({time.time() - start_all:.2f}s)\n")
 
     print(f"{'Tên Bảng':<25} | {'Số Bản Ghi':>12} | {'Số Cột':>6} | {'Trạng Thái':<12}")
     print("-" * 62)
@@ -544,6 +685,16 @@ def run_dry_run_validation():
          set(dfs["enrollments"]["semester_code"].dropna()).issubset(set(dfs["semesters"]["semester_code"]))),
         ("enrollments.class_id -> classes",
          set(dfs["enrollments"]["class_id"].dropna()).issubset(set(dfs["classes"]["class_id"]))),
+        ("student_progress.student_id -> students",
+         set(dfs["student_progress"]["student_id"]).issubset(set(dfs["students"]["student_id"]))),
+        ("student_progress.semester_code -> semesters",
+         set(dfs["student_progress"]["semester_code"]).issubset(set(dfs["semesters"]["semester_code"]))),
+        ("student_metrics.student_id -> students",
+         set(dfs["student_metrics"]["student_id"]).issubset(set(dfs["students"]["student_id"]))),
+        ("student_metrics.dropout_semester -> semesters",
+         set(dfs["student_metrics"]["dropout_semester"].dropna()).issubset(set(dfs["semesters"]["semester_code"]))),
+        ("student_metrics.graduation_semester -> semesters",
+         set(dfs["student_metrics"]["graduation_semester"].dropna()).issubset(set(dfs["semesters"]["semester_code"]))),
     ]
 
     all_passed = True
@@ -555,7 +706,7 @@ def run_dry_run_validation():
 
     if all_passed:
         print("\n[✓] KẾT QUẢ DRY-RUN: 100% CÁC RÀNG BUỘC KHÓA NGOẠI VÀ CỘT DỮ LIỆU ĐỀU HỢP LỆ!")
-        print("    Dữ liệu 13 bảng nghiệp vụ đã sẵn sàng để push lên Neon Database.")
+        print("    Dữ liệu 15 bảng nghiệp vụ đã sẵn sàng để push lên Neon Database.")
     else:
         print("\n[!] PHÁT HIỆN LỖI RÀNG BUỘC DỮ LIỆU! Cần kiểm tra lại các mục báo [X] FAIL.")
 
@@ -604,15 +755,23 @@ def run_push_to_neon():
                 text("SELECT column_name FROM information_schema.columns WHERE table_name = 'semesters'")
             ).fetchall()
         ]
+        existing_tables = [
+            row[0]
+            for row in conn.execute(
+                text("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'")
+            ).fetchall()
+        ]
         if (
             "--reset" in sys.argv
             or (students_cols and ("program" not in students_cols or "ctxh_days" not in students_cols or "family_income" in students_cols))
             or (semesters_cols and "is_active" not in semesters_cols)
+            or (existing_tables and ("student_progress" not in existing_tables or "student_metrics" not in existing_tables))
         ):
-            print("[*] Đang làm sạch và tái cấu trúc toàn bộ 13 bảng (DROP & RECREATE CASCADE)...")
+            print("[*] Đang làm sạch và tái cấu trúc toàn bộ 15 bảng (DROP & RECREATE CASCADE)...")
             conn.execute(text("""
-                DROP TABLE IF EXISTS enrollments, classes, course_assessments, program_structures,
-                                     knowledge_blocks, curriculums, lecturers, students, admins, users,
+                DROP TABLE IF EXISTS student_progress, student_metrics, enrollments, classes,
+                                     course_assessments, program_structures, knowledge_blocks,
+                                     curriculums, lecturers, students, admins, users,
                                      course_prerequisites, courses, semesters CASCADE;
             """))
             conn.commit()
@@ -620,7 +779,7 @@ def run_push_to_neon():
         print("[*] Đang khởi tạo bảng và chỉ mục (DDL Statements)...")
         conn.execute(text(DDL_STATEMENTS))
         conn.commit()
-    print("[✓] Khởi tạo cấu trúc 13 bảng hoàn tất.\n")
+    print("[✓] Khởi tạo cấu trúc 15 bảng hoàn tất.\n")
 
     # Helper function to bulk insert with null cleaning
     def insert_table(table_name, df, chunksize=2000, dtypes=None):
@@ -684,12 +843,17 @@ def run_push_to_neon():
     insert_table("classes", load_classes_data(), chunksize=2000)
     insert_table("enrollments", load_enrollments_data(), chunksize=3000, dtypes={"id": PG_UUID(as_uuid=True)})
 
-    # Step E: Verification Query
+    # Step E: Load Progression & ML Metrics
+    insert_table("student_progress", load_student_progress_data(), chunksize=3000, dtypes={"id": PG_UUID(as_uuid=True)})
+    insert_table("student_metrics", load_student_metrics_data(), chunksize=2000)
+
+    # Step F: Verification Query
     all_table_names = [
         "semesters", "courses", "course_prerequisites", "curriculums",
         "knowledge_blocks", "program_structures", "course_assessments",
         "users", "admins", "students", "lecturers",
         "classes", "enrollments",
+        "student_progress", "student_metrics",
     ]
     print("==================================================================")
     print("                  KIỂM TRA DỮ LIỆU SAU KHI ĐẨY                    ")
@@ -699,7 +863,7 @@ def run_push_to_neon():
             count = conn.execute(text(f"SELECT COUNT(*) FROM {t_name}")).scalar()
             print(f"  - Bảng {t_name:<22}: {count:>8,} bản ghi")
 
-    print("\n[✓] TOÀN BỘ 13 BẢNG DỮ LIỆU ĐÃ ĐƯỢC ĐẨY LÊN NEON DATABASE THÀNH CÔNG!")
+    print("\n[✓] TOÀN BỘ 15 BẢNG DỮ LIỆU ĐÃ ĐƯỢC ĐẨY LÊN NEON DATABASE THÀNH CÔNG!")
 
 
 if __name__ == "__main__":

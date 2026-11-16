@@ -6,3 +6,9 @@ __pycache__/
 *.py[cod]
 
 .env
+
+# MCP Server configuration (contains sensitive tokens, DB credentials, endpoints)
+.agent/mcp_config.json
+.agent/mcp.json
+mcp_config.json
+mcp.json
